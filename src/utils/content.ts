@@ -43,6 +43,10 @@ export const chapters: Chapter[] = [
     title: 'Prerequisites',
     alias: 'prerequisites',
   }]),
+  new Chapter('Introduction To Apollo', 'introduction', [{
+    title: 'Get Started',
+    alias: 'get-started',
+  }]),
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])

@@ -1,0 +1,115 @@
+.paragraph {
+    position: relative;
+}
+
+.paragraph .helpWrapper {
+    position: absolute;
+    top: calc(50% - 46px);
+    padding: 30px;
+    right: -85px;
+}
+
+.paragraph .help {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    background: var(--color-gray-1);
+    color: var(--color-gray-4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.paragraph:hover .help {
+    opacity: 0.5;
+}
+
+.helpWrapper:hover .help {
+    opacity: 1;
+}
+
+.paragraph .help:hover {
+    background: var(--color-accent);
+    color: #fff;
+    opacity: 1;
+}
+
+.content {
+  max-width: 740px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.content iframe {
+    width: 100%;
+}
+
+.content h2 {
+    border-bottom: 1px solid var(--color-gray-1);
+}
+
+.content h2,
+.content h3 {
+  font-weight: 400 !important;
+}
+
+.content h4 {
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.content p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+}
+
+.content a {
+    color: var(--color-accent);
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.content pre {
+  margin: 0 0 1rem;
+}
+
+.content pre code {
+  background: none;
+}
+
+.content code {
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    background: var(--color-gray-1);
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.content pre code {
+    white-space: pre;
+}
+
+.content img {
+    max-width: 100%;
+}
+
+.content li {
+    margin: 0.2rem 0;
+    line-height: 1.7;
+}
+
+.content blockquote {
+    margin: 2rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 6px solid var(--color-accent);
+}
+
+.content blockquote p {
+    margin: 0;
+}

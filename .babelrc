@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "react-relay"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements"
+      ]
+    }
+  }
+}

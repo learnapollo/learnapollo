@@ -1,0 +1,41 @@
+.button
+  padding 15px
+  font-size 1.5rem
+  // font-weight 300
+  // background var(--color-accent)
+  border-radius 3px
+  color #fff !important
+  margin-top 1rem
+  text-align center
+
+  &:hover
+    text-decoration none !important
+
+  @media (max-width: 540px)
+    padding 10px
+    font-size 1rem
+
+.mail
+  @extend .button
+  border-top-right-radius 0
+  border-bottom-right-radius 0
+  outline none
+  box-shadow none
+  border none
+  background rgba(0,0,0,0.1)
+  color rgba(0,0,0,0.5) !important
+
+.slackButton
+  @extend .button
+  border-top-left-radius 0
+  border-bottom-left-radius 0
+  background var(--color-accent)
+  border none
+  cursor pointer
+  display flex
+  align-items center
+
+  img
+    height 25px
+    margin-right 7px
+    width auto

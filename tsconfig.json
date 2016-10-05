@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "jsx": "react",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es2015",
+    "outDir": "lib",
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./custom.d.ts"
+  ]
+}

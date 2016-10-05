@@ -1,0 +1,69 @@
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600';
+/*@import '~tachyons';*/
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --color-accent:  #22A699;
+    --color-gray-1:  #ededed;
+    --color-gray-2:  #FAFAFA;
+    --color-gray-3:  #CCC;
+    --color-green:   #64BF00;
+}
+
+.gray-3 {
+    color: var(--color-gray-3);
+}
+
+.bg-accent {
+    background: var(--color-accent);
+}
+
+.bg-gray-2 {
+    background: var(--color-gray-2);
+}
+
+.accent {
+    color: var(--color-accent);
+}
+
+.green {
+    color: #64BF00;
+}
+
+/*.vertical-line {
+    border-right: solid rgba(0, 0, 0, 0.1) 1px;
+}*/
+
+.width-270 {
+    width: 270px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.font-small {
+   font-size: 0.9rem;
+}
+
+.indent-char-dimensions {
+  min-width: 8px;
+  max-height: 1rem;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+pre code {
+  padding: 0 !important
+}

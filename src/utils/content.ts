@@ -47,6 +47,13 @@ export const chapters: Chapter[] = [
     title: 'Get Started',
     alias: 'get-started',
   }]),
+  new Chapter('Tutorial', 'exercises', [{
+    title: 'Apollo Client on React/RN/Angular 2',
+    alias: 'all-00',
+  }, {
+    title: 'React Track 01 - Getting Started',
+    alias: 'react-01',
+  }]),
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])

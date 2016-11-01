@@ -25,7 +25,7 @@ Before we start working directly on our goal to show the pokemons a trainer owns
 One of the available query options are variables. A common use case for query variables is when we want to display the same type of information for two different nodes. We will see that use case in a subsequent exercise, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
-const TrainerQuery = gql`query { Trainer(name: "<your name>") { id name } }`
+const TrainerQuery = gql`query { Trainer(name: "__NAME__") { id name } }`
 ```
 
 To introduce a variable for the trainer `name`, we have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
@@ -34,18 +34,20 @@ To introduce a variable for the trainer `name`, we have to add the `$name` argum
 const TrainerQuery = gql`query($name: String!) { Trainer(name: $name) { id name } }`
 ```
 
-Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course, now we also have to supply a value for that variable once we use it to wrap the `Pokedex` component:
+Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course, now we also have to supply a value for that variable when we use it to wrap the `Pokedex` component:
 
 ```js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
       variables: {
-        name: "<your name>"
+        name: "__NAME__"
       }
     }
   }
-)(withRouter(Pokedex))
+)(Pokedex)
 ```
+
+Remember to insert your own name into the variables.
 
 > Note: later we will see a way how to control query variables from the parent via props.
 

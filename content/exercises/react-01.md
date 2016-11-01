@@ -8,7 +8,7 @@ Welcome to the first exercise in the **React Track**! If you prefer React Native
 
 The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding the Apollo Client for React and with the App structure of the Pokedex.
 
-## Cloning the Pokedex React App
+## Introduction
 
 Head over to the Pokedex React App on GitHub and clone it from your console
 

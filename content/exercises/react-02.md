@@ -6,7 +6,7 @@ This is the second exercise in the **React Track**! If you prefer React Native o
 
 The **goal** of this exercise is to do our first simple query using the Apollo Client and expose its result to the Pokedex component. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
 
-## Preparation
+## Introduction
 
 Checkout the second exercise of the Pokedex React App and install the npm dependencies from your console
 

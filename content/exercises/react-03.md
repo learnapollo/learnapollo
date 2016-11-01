@@ -20,9 +20,9 @@ npm install
 
 Before we start working directly on our goal to show the pokemons a trainer owns, let's take some time to get more familiar with some of the available options when using queries.
 
-### Query Variables
+### Static Query Variables
 
-One of the available query options are variables. A common use case for query variables is when we want to display the same type of information for two different nodes. We will see that use case in a subsequent exercise, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
+One of the available query options are variables. A common use case for query variables is when we want to display the same type of information for two different nodes. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
 const TrainerQuery = gql`query { Trainer(name: "__NAME__") { id name } }`
@@ -47,9 +47,24 @@ const PokedexWithData = graphql(TrainerQuery, {
 )(Pokedex)
 ```
 
-Remember to insert your own name into the variables.
+Remember to insert your own name into the `variables` object.
 
-> Note: later we will see a way how to control query variables from the parent via props.
+### Dynamic Query Variables
+
+Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
+
+Let us add a new route to `src/index.js` that connects to `PokemonPage`. The route path will be `view/:pokemonId` so we can use the passed `pokemonId` to query a pokemon:
+
+```js
+<Route path='/view/:pokemonId' component={PokemonPage} />
+```
+
+Then, in 
+
+
+
+
+The `PokemonPage` component is responsible to pass down a pokemon  as a parentNow let's see how we can use query variables to control which Pokemon gets rendered in this component.
 
 ### Nested Queries
 

@@ -21,13 +21,13 @@ npm install
 Before we add additional content to our components, let's take a step back. Right now, `PokedexPage` defines a `PokemonQuery` that fetches the pokemon needed to render the `PokemonCard` component. This results in a few disadvantages when we want to make changes later:
 
 * if the data requirements of the `PokemonCard` component change, we have to go back to the `PokedexPage` and add additional fields to the `PokemonQuery`
-* if we want to include `PokemonCard` in different parent component than `PokedexPage`, we will have to duplicate the `PokemonQuery` in that other component again
+* if we want to include `PokemonCard` in a another component, we will have to duplicate the `PokemonQuery`, resulting in possible errors when we have to change the query later and forget to update all places it's defined
 
-Therefor it would be great to let the `PokemonCard` component handle the declaration of its data requirements. Then we could make sure in the `PokedexPage` component to include the required data in the `PokemonQuery`. This is exactly the way fragments work.
+Therefor it would be great to let the `PokemonCard` component handle the declaration of its own data requirements. Then we could refer to this in the `PokedexPage` component to make sure that we  included all required data in the `PokemonQuery`. This is exactly the way fragments work.
 
 ### Defining a pokemon fragment in `PokemonCard`
 
-To start using fragments, we can make use of the package `graphql-fragments` in `PokemonCard`. With that package, we can define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just before defining the `propTypes`:
+To help you get started using fragments, we implemented them already in `PokemonCard`. There, we make use of the package `graphql-fragments` to define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just before defining the `propTypes`:
 
 ```js
 static fragments = {
@@ -40,7 +40,7 @@ static fragments = {
 }
 ```
 
-We can also replace the `pokemon` prop declaration in the `propTypes` object by using the newly created fragment:
+We also replaced the `pokemon` prop declaration in the `propTypes` object by using the new fragment:
 
 ```js
 static propTypes = {
@@ -49,11 +49,11 @@ static propTypes = {
 }
 ```
 
-Note that the `propType` of a fragment is already required. If the incoming `pokemon` prop is missing or doesn't have a field that is included in the fragment, we will see a warning when using the component.
+Note that the `propType` of a fragment already results in a  required prop. If the incoming `pokemon` prop is missing or doesn't have a field that is included in the fragment, we will see a warning when using the component.
 
 ### Using the PokemonCardPokemon fragment in `PokedexPage`
 
-Now we can use the new `PokemonCardPokemon` fragment to declare our `PokemonQuery`:
+We updated our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
 ```js
 const PokemonQuery = gql`query($id: ID!) {
@@ -63,16 +63,17 @@ const PokemonQuery = gql`query($id: ID!) {
   }
 `
 ```
+We can see that the `PokemonPage` component doesn't need to know anything about the `PokemonCardPokemon` fragment, other than the fact that it is a fragment on the Pokemon type.
 
 ### Defining a pokemon fragment in `PokemonCardHeader`
 
-Now you should use the same principle to define a `PokemonCardHeaderPokemon` fragment in the `PokemonCardHeader` component that we added in `src/components/PokemonCardHeader.js`. You have to import `graphql-fragments`
+Now it's your turn to use fragments! You should use the same steps to define a `PokemonCardHeaderPokemon` fragment in the `PokemonCardHeader` component that you can find in `src/components/PokemonCardHeader.js`. First, you have to import `graphql-fragments`
 
 ```js
 import Fragment from 'graphql-fragments'
 ```
 
-and define the new fragment:
+and define the new fragment just before `propTypes` are defined:
 
 ```js
 static fragments = {
@@ -87,7 +88,7 @@ static fragments = {
 }
 ```
 
-Note that we included different fields for this fragment, as the `PokemonCardHeader` component needs different information of the pokemon object than the `PokemonCard` component. As seen above, we can also use the fragment for the `pokemon` `propType`:
+Note that this fragment includes different fields as the other fragment we saw before. That's because the `PokemonCardHeader` component needs different information of the pokemon object than the `PokemonCard` component. As we did before, use the fragment now to define the `pokemon` `propType`:
 
 ```js
 static propTypes = {
@@ -128,7 +129,7 @@ const PokemonQuery = gql`query($id: ID!) {
 `
 ```
 
-Note that the two fragments both include the `name` field on `Pokemon`, but both fragments have fields that only one of the includes.
+Note that there are fields that are include either in both fragments (like `name`) or only in one of them (like `imageUrl` or `trainer`).
 
 Let's add the new fragment when wrapping the `PokedexPage` component as well:
 
@@ -161,7 +162,7 @@ return (
 )
 ```
 
-A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using `fragment.filter`:
+A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using the `filter` method of the fragments:
 
 ```js
 const pokemon = this.props.data.Pokemon
@@ -182,9 +183,11 @@ Check if you got everthing right by running the app:
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser and open the detailed view of a pokemon. It should have a new message about the pokemon and it's trainer at the top of the page.
+Open [http://localhost:3000](http://localhost:3000) in your browser and open the detailed view of a pokemon. It should have a new message about the pokemon and its trainer at the top of the page.
 
 ## Recap
+
+Congratulations, you increased the modularity of your components by introducing fragments. We learned a lot about fragments, let's do a quick recap:
 
 * **Co-located fragments** help to decouple the declaration of data requirements
 * Using **multiple fragments** in a parent component is easy and merges the selected fields of the different child components

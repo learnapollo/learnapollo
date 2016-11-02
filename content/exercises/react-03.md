@@ -16,7 +16,7 @@ git checkout exercise-03
 npm install
 ```
 
-## Advanced Queries
+## Display a list of pokemon with advanced queries
 
 Before we start working directly on our goal to show the pokemons a trainer owns, let's take some time to get more familiar with some of the available options when using queries.
 
@@ -48,23 +48,6 @@ const PokedexWithData = graphql(TrainerQuery, {
 ```
 
 Remember to insert your own name into the `variables` object.
-
-### Dynamic Query Variables
-
-Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
-
-Let us add a new route to `src/index.js` that connects to `PokemonPage`. The route path will be `view/:pokemonId` so we can use the passed `pokemonId` to query a pokemon:
-
-```js
-<Route path='/view/:pokemonId' component={PokemonPage} />
-```
-
-Then, in 
-
-
-
-
-The `PokemonPage` component is responsible to pass down a pokemon  as a parentNow let's see how we can use query variables to control which Pokemon gets rendered in this component.
 
 ### Nested Queries
 
@@ -153,19 +136,109 @@ render () {
 Note the use of `this.props.data.Trainer.ownedPokemons.length` that displays the correct amount of pokemons.
 
 
-## Show a list of Pokemons
+### Dynamic Query Variables
 
-If you followed along with the changes run the app to see if everything is working
+Cool, so now we can see all the pokemons we own in our pokedex. Verify that by running
 
 ```sh
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons.
+and visiting [http://localhost:3000](http://localhost:3000). If everything working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
+
+We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPage` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
+
+```js
+render () {
+  return (
+    <Link to={`/view/${this.props.pokemon.id}`} className='dib mw4 tc black link dim ml1 mr1 mb2 bg-white pa2'>
+      <div className='db'>
+        <img src={this.props.pokemon.imageUrl} alt={this.props.pokemon.name} />
+      </div>
+      <span className='gray'>{this.props.pokemon.name}</span>
+    </Link>
+  )
+}
+```
+
+The `PokemonPage` component is responsible to pass down a pokemon to the `PokemonCard` component. Let's add a `PokemonQuery` to `PokemonPage` that is fetching the required pokemon object:
+
+```js
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
+    Pokemon(id: $id) {
+      id
+      imageUrl
+      name
+    }
+  }
+`
+```
+
+As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, other than with the trainer name variable, we cannot just use a cannot value as the id in our case. For that reason, we have the possibility to access the props when creating the `variables` object. So, we can replace:
+
+```js
+export default withRouter(PokemonPage)
+```
+
+with:
+
+```js
+const PokemonPageWithQuery = graphql(PokemonQuery, {
+  options: (ownProps) => ({
+      variables: {
+        id: ownProps.params.pokemonId
+      }
+    })
+  }
+)(withRouter(PokemonPage))
+
+export default PokemonPageWithQuery
+```
+
+Now we can replace the placeholder content of the render method in `PokemonPage` with the `PokemonCard` component:
+
+```js
+class PokemonPage extends React.Component {
+
+  static propTypes = {
+    data: React.PropTypes.object.isRequired,
+    router: React.PropTypes.object.isRequired,
+    params: React.PropTypes.object.isRequired,
+  }
+
+  render () {
+    if (this.props.data.loading) {
+      return (<div>Loading</div>)
+    }
+
+    return (
+      <div>
+        <PokemonCard pokemon={this.props.data.Pokemon} handleCancel={this.goBack}/>
+      </div>
+    )
+  }
+
+  goBack = () => {
+    this.props.router.replace('/')
+  }
+}
+```
+
+Note that we introduced the new required `data` prop and guarded its usage again with the boolean `data.loading`.
+
+Now let's run the app again to see if everything is working
+
+```sh
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons. Click on a pokemon preview to move over to the detailed view. Click the cancel button to return back to your pokedex.
 
 ## Recap
 
-Nice, our pokedex starts to get some shape! Let's go through what we saw in this exercise:
+Nice, our pokedex starts to get some shape! We added both an overview of all our pokemons as well as a detailed view of a single pokemon. Let's go through what we saw in this exercise again:
 
-* With **query variables** we got a sneak peek into more advanced query features
+* **Constants as query variables** helped us getting started with advanced query features
 * Using GraphQL, we can easily create **nested queries**
+* Combining **router parameters** and **dynamic query variables**, we were able to supply different data to the same component to quickly control what concent we want to render.

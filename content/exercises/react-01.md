@@ -1,6 +1,6 @@
 # React Track 01 - Getting Started
 
-Welcome to the first exercise in the **React Track**! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
+Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
 
 > Get the most out of this tutorial by signing up with your GitHub account and receive a indivual endpoint to your Pokedex database!
 

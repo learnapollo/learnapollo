@@ -3,7 +3,6 @@ import * as Immutable from 'immutable'
 interface UserData {
   endpoint: string
   email: string
-  resetPasswordToken: string
   name: string
 }
 

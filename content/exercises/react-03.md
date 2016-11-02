@@ -4,7 +4,7 @@ This is the third exercise in the **React Track**! If you prefer React Native or
 
 ## Goal
 
-In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns.
+In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns. Upon clicking on a pokemon in this list, we will see a detailed view of that pokemon and can navigate back to the complete pokedex.
 
 ## Introduction
 

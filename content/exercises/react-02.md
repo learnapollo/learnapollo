@@ -4,7 +4,7 @@ This is the second exercise in the **React Track** of this Apollo Client Tutoria
 
 ## Goal
 
-The **goal** of this exercise is to do our first simple query using the Apollo Client and expose its result to the Pokedex component. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
+The **goal** of this exercise is to display information on your very own trainer node. With will learn how to use the Apollo Client to send queries that fetch data from a GraphQL server. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
 
 ## Introduction
 
@@ -37,7 +37,7 @@ We can manage pokemon trainers that are related to multiple pokemons and are ide
 
 Let's now build a GraphQL query together to get the information of your trainer node stored on the server and change the message displayed in `src/components/Pokedex.js`.
 
-## Using Simple Queries
+## Displaying information of your trainer
 
 Queries offer a flexible way to state data requirements. With Apollo Client, we first define queries and then inject their response to the inner component. As far as the inner component is concerned, the data is coming from *somewhere*, which means we have a good decoupling between data source and data consumer.
 
@@ -143,7 +143,11 @@ class Pokedex extends React.Component {
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
 ```js
-const TrainerQuery = gql`query { Trainer(name: "__NAME__") { id name } }`
+const TrainerQuery = gql`query {
+  Trainer(name: "__NAME__") {
+     name
+   }
+ }`
 
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 
@@ -160,11 +164,15 @@ npm start
 
 After the app starts, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the updated greeting.
 
+## Excursion: Redux DevTools
+
+Coming soon.
+
 ## Recap
 
-Nice, you executed your first GraphQL query with the Apollo Client and used its response to modify the rendering of the Pokedex component. In this exercise we again learned a lot! Let's recap that:
+Nice, you executed your first GraphQL query with the Apollo Client and used it to display your trainer name. In this exercise we learned a lot! Let's recap that:
 
 * The shape of valid queries depend on the **schema from the GraphQL server**.
 * Before executing them, we have to **define queries using the `gql` tag** from the `graphql-tag` package.
-* **Wrapping a component with `graphql`** from `react-apollo` injects the `data` prop to the inner component
+* **Wrapping a component with `graphql`** from `react-apollo` using a query injects the `data` prop to the inner component
 * The **`data` prop contains the fields of the query, once `data.loading` is `false`**. Before that, we can render a loading state by using `data.loading`.

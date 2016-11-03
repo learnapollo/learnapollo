@@ -25,13 +25,21 @@ Before we start working directly on our goal to show the pokemons a trainer owns
 One of the available query options are variables. A common use case for query variables is when we want to display the same type of information for two different nodes. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
-const TrainerQuery = gql`query { Trainer(name: "__NAME__") { id name } }`
+const TrainerQuery = gql`query {
+  Trainer(name: "__NAME__") {
+     name
+   }
+ }`
 ```
 
 To introduce a variable for the trainer `name`, we have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
 
 ```js
-const TrainerQuery = gql`query($name: String!) { Trainer(name: $name) { id name } }`
+const TrainerQuery = gql`query($name: String!) {
+  Trainer(name: $name) {
+    name
+  }
+}`
 ```
 
 Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course, now we also have to supply a value for that variable when we use it to wrap the `Pokedex` component:
@@ -94,7 +102,7 @@ type Pokemon {
 ```
 
 As we can see, the server stores the owned pokemons of each trainer, exactly the information that we need!
-We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `imageUrl` and `name` in the nested selection on the owned pokemons:
+We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `imageUrl` and `name` in the nested selection:
 
 ```js
 const TrainerQuery = gql`query($name: String!) {

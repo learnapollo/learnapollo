@@ -8,11 +8,10 @@ The **goal** of this exercise is to add some information to the pokemon detail v
 
 ## Introduction
 
-Checkout the 4th exercise of the Pokedex React App and install the npm dependencies from your console
+Change to the 4th exercise of the Pokedex React App and install the npm dependencies from your console
 
 ```sh
-cd pokedex-react
-git checkout exercise-04
+cd pokedex-react/exercise-04
 npm install
 ```
 

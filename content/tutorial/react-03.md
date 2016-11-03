@@ -8,11 +8,10 @@ In this exercise we will have a look at advanced query features with the **goal*
 
 ## Introduction
 
-Checkout the third exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the third exercise of the Pokedex React App and install the npm dependencies from your console
 
 ```sh
-cd pokedex-react
-git checkout exercise-03
+cd pokedex-react/exercise-03
 npm install
 ```
 

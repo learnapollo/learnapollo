@@ -8,11 +8,10 @@ The **goal** of this exercise is to add the possibility to update and delete exi
 
 ## Introduction
 
-Checkout the 6th exercise of the Pokedex React App and install the npm dependencies from your console
+Change to the 6th exercise of the Pokedex React App and install the npm dependencies from your console
 
 ```sh
-cd pokedex-react
-git checkout exercise-05
+cd pokedex-react/exercise-06
 npm install
 ```
 

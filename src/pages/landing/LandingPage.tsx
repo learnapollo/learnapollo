@@ -14,24 +14,16 @@ export default class LandingPage extends React.Component<Props, {}> {
       <div className={styles.root}>
         <header>
           <h1>Learn Apollo</h1>
-          <h2>A comprehensive introduction to Apollo</h2>
+          <h2>A hands-on tutorial for the Apollo Client in React, Angular 2 and React Native</h2>
         </header>
         <dl className={styles.contents}>
           <dt>
-            <h3>Overview</h3>
-            <p>Get a broad overview of the goals and prerequisites of this introduction to Apollo and get to know the Pokedex app we will build together.</p>
-          </dt>
-          <dt>
-            <h3>Introduction to Apollo</h3>
-            <p>Learn the basics of Apollo and set up your environment for the following chapters. As Apollo is a GraphQL client, this introduction focuses on the client side. You can use the included GraphQL backend to get the most out of this introduction and follow along in several practical steps that will lead to a fully functional Pokedex app!</p>
-          </dt>
-          <dt>
-            <h3>Queries</h3>
-            <p><b>Queries</b> are a central part of Apollo as they are used to fetch data from the GraphQL server.
-            Whenever we want to declare a data dependency in one of our React components, we have to wrap it with a <b>container</b>.
-            Usually, you are building queries by combining <b>fragments</b> and using <b>query variables</b> to add additional flexibility.
+            <h3>Apollo Client Tutorial for React, Angular 2 and React Native</h3>
+            <p>Get a broad overview of the goals and prerequisites for this hands-on tutorial to the Apollo Client and get to know the Pokedex app we will build together. You can use the included GraphQL backend to get the most out of this tutorial and follow along in several practical steps that will lead to a fully functional Pokedex app! This tutorial includes tracks for React, Angular 2 and React Native!</p>
 
-            Combine these parts and get familiar with the Pokedex app by preparing things for the following chapters.</p>
+            <p>As Apollo is a GraphQL client, this introduction focuses on the client side. The pokedex application will be build in multiple steps</p>
+
+            <p>Several excursions are also provided covering topics such as the Redux DevTools and controlling the Apollo Client Store with mutation results.</p>
           </dt>
         </dl>
         <div className={styles.start}>

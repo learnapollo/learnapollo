@@ -8,11 +8,10 @@ The **goal** of this exercise is to display information on your very own trainer
 
 ## Introduction
 
-Checkout the second exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the second exercise of the Pokedex React App and install the npm dependencies from your console
 
 ```sh
-cd pokedex-react
-git checkout exercise-02
+cd pokedex-react/exercise-02
 npm install
 ```
 

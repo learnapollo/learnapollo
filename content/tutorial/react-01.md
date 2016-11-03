@@ -2,7 +2,6 @@
 
 Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
 
-> Get the most out of this tutorial by signing up with your GitHub account and receive a indivual endpoint to your Pokedex database!
 
 ## Goal
 
@@ -10,17 +9,14 @@ The **goal** of this first exercise is to install a React App and run it afterwa
 
 ## Introduction
 
-Head over to the Pokedex React App on GitHub and clone it from your console
+> Get the most out of this tutorial by signing up with your GitHub account and receive a indivual endpoint to your own Pokedex backend!
+
+Alternatively, clone the `pokedex-react` from the Learn Apollo GitHub page.
+
+Now change to the first exercise and install the npm dependencies from your console
 
 ```sh
-git clone git@github.com:learnapollo/pokedex-react.git
-cd pokedex-react
-```
-
-Now checkout the first exercise and install the npm dependencies from your console
-
-```sh
-git checkout exercise-01
+cd pokedex-react/exercise-01
 npm install
 ```
 

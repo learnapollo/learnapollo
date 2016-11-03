@@ -8,11 +8,10 @@ In this exercise we have the **goal** of adding the possibility to create new po
 
 ## Introduction
 
-Checkout the 5th exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the 5th exercise of the Pokedex React App and install the npm dependencies from your console
 
 ```sh
-cd pokedex-react
-git checkout exercise-05
+cd pokedex-react/exercise-05
 npm install
 ```
 

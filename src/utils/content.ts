@@ -36,18 +36,14 @@ class Subchapter {
 }
 
 export const chapters: Chapter[] = [
-  new Chapter('Overview', 'overview', [{
-    title: 'Brief Introduction',
-    alias: 'intro',
+  new Chapter('Overview', 'introduction', [{
+    title: 'Introduction',
+    alias: 'introduction',
   }, {
-    title: 'Prerequisites',
-    alias: 'prerequisites',
-  }]),
-  new Chapter('Introduction To Apollo', 'introduction', [{
     title: 'Get Started',
     alias: 'get-started',
   }]),
-  new Chapter('Tutorial', 'tutorial', [{
+  new Chapter('Hands-On Tutorial', 'tutorial', [{
     title: 'Apollo Client on React/RN/Angular 2',
     alias: 'all-00',
   }, {

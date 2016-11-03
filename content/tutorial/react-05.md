@@ -12,7 +12,7 @@ Checkout the 5th exercise of the Pokedex React App and install the npm dependenc
 
 ```sh
 cd pokedex-react
-git checkout exercise-04
+git checkout exercise-05
 npm install
 ```
 
@@ -148,6 +148,8 @@ handleSave = () => {
 }
 ```
 
+Note how we provide the variables using the `variables` object. As you can see, the mutation return a promise, so we can chain another function by using `then` to return back to the pokemon list.
+
 Check if you got everthing right by running the app:
 
 ```sh
@@ -165,15 +167,11 @@ const client = new ApolloClient({
 
 Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your browser and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
 
-## Excursion: Mutation Results
-
-Coming soon.
-
 ## Recap
 
 Now that you got to use mutations you already know a lot about the Apollo Client, good job! Let's review what we saw in this exercise:
 
 * **Mutations** are used to change data on the server
+* Calling mutations returns a **promise that can be used to react on mutation results**
 * **Wrapping a component with `graphql`** from `react-apollo` using a mutation injects the `mutate` prop to the inner component
 * Other than with queries, **mutation variables can be assigned in the inner component** making it easy to use the components state as variable inputs
-* Choosing the right **mutation result can be tricky** but we have a few options to tackle this issue

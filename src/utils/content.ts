@@ -47,7 +47,7 @@ export const chapters: Chapter[] = [
     title: 'Get Started',
     alias: 'get-started',
   }]),
-  new Chapter('Tutorial', 'exercises', [{
+  new Chapter('Tutorial', 'tutorial', [{
     title: 'Apollo Client on React/RN/Angular 2',
     alias: 'all-00',
   }, {
@@ -65,6 +65,16 @@ export const chapters: Chapter[] = [
   }, {
     title: 'React Track 05 - Basic Mutations',
     alias: 'react-05',
+  }, {
+    title: 'React Track 06 - Multiple Mutations',
+    alias: 'react-06',
+  }]),
+  new Chapter('Excursions', 'excursions', [{
+    title: 'Excursion 01 - Using the Redux DevTools',
+    alias: 'excursion-01',
+  }, {
+    title: 'Excursion 02 - Mutation Results',
+    alias: 'excursion-02',
   }]),
 ]
 

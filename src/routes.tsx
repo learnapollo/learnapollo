@@ -10,9 +10,10 @@ export default (
     <Route path='/' component={LandingPage}/>
     <Route
       path='/:chapter/:subchapter'
-      component={({ params }) => (
+      component={({ params, location }) => (
         <MarkdownPage
           params={params}
+          location={location}
           ast={subchapters.find((s) => s.alias === params.subchapter)!.ast()}
           sourceName={`${params.chapter}/${params.subchapter}.md`}
         />

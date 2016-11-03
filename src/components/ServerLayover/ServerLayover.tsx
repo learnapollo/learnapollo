@@ -8,7 +8,7 @@ import Icon from '../Icon/Icon'
 require('graphiql/graphiql.css')
 
 interface Props {
-  endpoint: string
+  projectId: string
   close: () => void
   viewer: any
 }
@@ -25,7 +25,7 @@ class ServerLayover extends React.Component<Props, State> {
 
   render() {
     const graphQLFetcher = (graphQLParams) => {
-      return fetch(this.props.endpoint, {
+      return fetch(`https://api.graph.cool/simple/v1/${this.props.projectId}`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(graphQLParams),
@@ -67,7 +67,7 @@ class ServerLayover extends React.Component<Props, State> {
             <div className='o-30' style={{marginRight: 12}}>API Endpoint</div>
             <div className='flex items-center'>
               <CopyToClipboard
-                text={this.props.endpoint}
+                text={`https://api.graph.cool/simple/v1/${this.props.projectId}`}
                 onCopy={() => analytics.track('overlay: copied endpoint')}
               >
                 <Icon src={require('../../assets/icons/copy.svg')}
@@ -83,7 +83,7 @@ class ServerLayover extends React.Component<Props, State> {
                 className='o-50'
                 style={{background: 'rgba(0,0,0,0.05)', padding: '6px 12px'}}
               >
-                {this.props.endpoint}
+                {`https://api.graph.cool/simple/v1/${this.props.projectId}`}
               </div>
             </div>
             <div
@@ -137,7 +137,7 @@ const LayoverContainer = Relay.createContainer(ServerLayover, {
 })
 
 interface RendererProps {
-  endpoint: string
+  projectId: string
   close: () => void
 }
 
@@ -146,7 +146,7 @@ export default class LayoverRenderer extends React.Component<RendererProps, {}> 
   constructor(props) {
     super(props)
 
-    Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer(this.props.endpoint))
+    Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer(`https://api.graph.cool/relay/v1/${this.props.projectId}`))
   }
 
   render() {
@@ -157,7 +157,7 @@ export default class LayoverRenderer extends React.Component<RendererProps, {}> 
         queryConfig={{
           name: '',
           queries: {viewer: () => Relay.QL`query { viewer }`},
-          params: {endpoint: this.props.endpoint, close: this.props.close},
+          params: {projectId: this.props.projectId, close: this.props.close},
         }}
       />
     )

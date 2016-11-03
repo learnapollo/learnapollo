@@ -1,7 +1,7 @@
 import * as Immutable from 'immutable'
 
 interface UserData {
-  endpoint: string
+  projectId: string
   email: string
   name: string
 }

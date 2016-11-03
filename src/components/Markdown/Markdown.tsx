@@ -11,6 +11,7 @@ const styles: any = require('./Markdown.module.css')
 interface Props {
   ast: Node
   sourceName: string
+  location: any
 }
 
 function childrenToString(children): string {
@@ -32,10 +33,11 @@ function childrenToString(children): string {
 export default class Markdown extends React.Component<Props, {}> {
 
   shouldComponentUpdate(nextProps: Props) {
-    return nextProps.sourceName !== this.props.sourceName
+    return nextProps.sourceName !== this.props.sourceName || nextProps.location !== this.props.location
   }
 
   render() {
+    const self = this
     const renderers = {
       Heading (props) {
         const padding = {
@@ -72,7 +74,7 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       HtmlBlock (props) {
         if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
-          return <ContentEndpoint />
+          return <ContentEndpoint location={self.props.location} />
         }
 
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {

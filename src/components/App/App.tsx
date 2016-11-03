@@ -6,7 +6,6 @@ import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
-import {getParameterByName} from '../../utils/location'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 
 require('./style.css')
@@ -17,6 +16,7 @@ interface Props {
   children: React.ReactElement<any>
   router: any
   params: any
+  location: any
 }
 
 interface State {
@@ -36,9 +36,8 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const code = getParameterByName('code')
-    if (code) {
-      this.fetchEndpoint(code)
+    if (props.location.query.code) {
+      this.fetchEndpoint(props.location.query.code)
     }
 
     this.state = {
@@ -206,7 +205,7 @@ class App extends React.Component<Props, State> {
               </div>
             ))}
           </div>
-          {this.state.storedState.user && this.state.storedState.user.endpoint &&
+          {this.state.storedState.user && this.state.storedState.user.projectId &&
           <div
             className={`
               fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}
@@ -251,7 +250,7 @@ class App extends React.Component<Props, State> {
           }
           {nextSubchapter &&
           (
-            currentSubchapterAlias !== 'get-started' || 
+            currentSubchapterAlias !== 'get-started' ||
             this.state.storedState.user ||
             this.state.storedState.skippedAuth
           ) &&
@@ -275,7 +274,7 @@ class App extends React.Component<Props, State> {
         </div>
         {this.state.showLayover && this.state.storedState.user &&
         <ServerLayover
-          endpoint={this.state.storedState.user.endpoint}
+          projectId={this.state.storedState.user.projectId}
           close={this.closeLayover}
         />
         }
@@ -312,17 +311,19 @@ class App extends React.Component<Props, State> {
     }
 
     const {projectId, email, name} = body
-    const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
 
     analytics.alias(email)
-    setTimeout(() => {
-      analytics.identify(email, {
-        name: name || email,
-        email: email,
-      })
-    }, 2000)
+    setTimeout(
+      () => {
+        analytics.identify(email, {
+          name: name || email,
+          email: email,
+        })
+      },
+      2000
+    )
 
-    this.updateStoredState(['user'], {endpoint, email, name})
+    this.updateStoredState(['user'], {projectId, email, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
   }

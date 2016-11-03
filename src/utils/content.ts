@@ -62,6 +62,9 @@ export const chapters: Chapter[] = [
   }, {
     title: 'React Track 04 - Fragments',
     alias: 'react-04',
+  }, {
+    title: 'React Track 05 - Basic Mutations',
+    alias: 'react-05',
   }]),
 ]
 

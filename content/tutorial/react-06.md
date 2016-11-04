@@ -8,11 +8,11 @@ The **goal** of this exercise is to add the possibility to update and delete exi
 
 ## Introduction
 
-Change to the 6th exercise of the Pokedex React App and install the npm dependencies from your console
+Change to the 6th exercise of the Pokedex React App and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-06
-npm install
+yarn install
 ```
 
 ## Updating and deleting pokemons
@@ -143,7 +143,7 @@ Again, we are making use of the promise returned by the mutations to call anothe
 Check if you got everthing right by running the app:
 
 ```sh
-npm start
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and click on an existing pokemon button. Update one of its attributes and click the update button. You should get back to the updated pokemon list. Repeat the same but this time delete the pokemon.

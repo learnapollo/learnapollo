@@ -8,11 +8,11 @@ In this exercise we have the **goal** of adding the possibility to create new po
 
 ## Introduction
 
-Move to the 5th exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the 5th exercise of the Pokedex React App and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-05
-npm install
+yarn install
 ```
 
 ## Adding new pokemons to the pokemon list
@@ -152,7 +152,7 @@ Note how we provide the variables using the `variables` object. As you can see, 
 Check if you got everthing right by running the app:
 
 ```sh
-npm start
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page. To fix this, we have to do one more thing. Head over to `src/index.js` and replace the creation of the Apollo Client by this:

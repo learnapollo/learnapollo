@@ -13,18 +13,18 @@ The **goal** of this first exercise is to install a React App and run it afterwa
 
 Alternatively, clone the `pokedex-react` from the Learn Apollo GitHub page.
 
-Now change to the first exercise and install the npm dependencies from your console
+Now change to the first exercise and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-01
-npm install
+yarn install
 ```
 
 ## Getting Familiar with the App
 
 While the dependencies are installing, let's take a moment to get more familiar with the structure of the app before we run it.
 
-### npm Packages
+### Package Dependencies
 
 Open `src/package.json` to have a look what packages we are using.
 
@@ -70,7 +70,7 @@ Our Pokedex component lives in `'src/components/Pokedex.js'`. Currently, it only
 To confirm your environment is all correctly setup, let's now start the app from your console.
 
 ```sh
-npm start
+yarn start
 ```
 
 After the app starts, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the greeting from the Pokedex component.

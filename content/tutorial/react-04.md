@@ -8,11 +8,11 @@ The **goal** of this exercise is to add some information to the pokemon detail v
 
 ## Introduction
 
-Change to the 4th exercise of the Pokedex React App and install the npm dependencies from your console
+Change to the 4th exercise of the Pokedex React App and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-04
-npm install
+yarn install
 ```
 
 ## Adding information to the pokemon page
@@ -179,7 +179,7 @@ This will make sure that only the required fields of the `pokemon` object get pa
 Check if you got everthing right by running the app:
 
 ```sh
-npm start
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and open the detailed view of a pokemon. It should have a new message about the pokemon and its trainer at the top of the page.

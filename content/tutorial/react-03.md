@@ -8,11 +8,11 @@ In this exercise we will have a look at advanced query features with the **goal*
 
 ## Introduction
 
-Move to the third exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the third exercise of the Pokedex React App and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-03
-npm install
+yarn install
 ```
 
 ## Display a list of pokemon with advanced queries
@@ -148,7 +148,7 @@ Note the use of `this.props.data.Trainer.ownedPokemons.length` that displays the
 Cool, so now we can see all the pokemons we own in our pokedex. Verify that by running
 
 ```sh
-npm start
+yarn start
 ```
 
 and visiting [http://localhost:3000](http://localhost:3000). If everything working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
@@ -237,7 +237,7 @@ Note that we introduced the new required `data` prop and guarded its usage again
 Now let's run the app again to see if everything is working
 
 ```sh
-npm start
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons. Click on a pokemon preview to move over to the detailed view. Click the cancel button to return back to your pokedex.

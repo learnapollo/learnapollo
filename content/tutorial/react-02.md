@@ -8,11 +8,11 @@ The **goal** of this exercise is to display information on your very own trainer
 
 ## Introduction
 
-Move to the second exercise of the Pokedex React App and install the npm dependencies from your console
+Move to the second exercise of the Pokedex React App and install the dependencies from your console
 
 ```sh
 cd pokedex-react/exercise-02
-npm install
+yarn install
 ```
 
 As you saw before, the schema exposed by our GraphQL server includes the following models
@@ -158,7 +158,7 @@ export default PokedexWithData
 If you finished all the changes to `src/components/Pokedex.js` successfully, go ahead and run the app again
 
 ```sh
-npm start
+yarn start
 ```
 
 After the app starts, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the updated greeting.

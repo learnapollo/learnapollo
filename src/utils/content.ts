@@ -72,6 +72,10 @@ export const chapters: Chapter[] = [
     title: 'Excursion 02 - Mutation Results',
     alias: 'excursion-02',
   }]),
+  new Chapter('Go Further', 'go-further', [{
+    title: 'Wrap Up',
+    alias: 'wrap-up',
+  }]),
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])

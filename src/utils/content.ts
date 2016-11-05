@@ -43,7 +43,7 @@ export const chapters: Chapter[] = [
     title: 'Get Started',
     alias: 'get-started',
   }]),
-  new Chapter('Hands-On Tutorial', 'tutorial', [{
+  new Chapter('Tutorial Tracks', 'tutorial', [{
     title: 'Apollo Client on React/RN/Angular 2',
     alias: 'all-00',
   }, {

@@ -56,13 +56,23 @@ query {
 With Apollo, we need to denote queries like this by using the `gql` tag contained in the `graphql-tag` package.
 
 ```js
-const TrainerQuery = gql`query { Trainer(name: "__NAME__") { id name } }`
+const TrainerQuery = gql`query {
+  Trainer(name: "__NAME__") {
+    id
+    name
+  }
+}`
 ```
 
-Insert the name you signed up with into the query. For example, the trainer named Ash, would need this `TrainerQuery`:
+Insert the name you signed up with into the query. For example, the trainer named Ash Ketchum would need this `TrainerQuery`:
 
 ```js
-const TrainerQuery = gql`query { Trainer(name: "Ash") { id name } }`
+const TrainerQuery = gql`query {
+  Trainer(name: "Ash Ketchum") {
+    id
+    name
+  }
+}`
 ```
 
 But how do we use this query in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
@@ -155,7 +165,7 @@ export default PokedexWithData
 
 ## Hello, Trainer!
 
-If you finished all the changes to `src/components/Pokedex.js` successfully, go ahead and run the app again
+If you finished all the changes to `src/components/Pokedex.js` successfully, go ahead and run the app:
 
 ```sh
 yarn start
@@ -165,7 +175,7 @@ After the app starts, open [http://localhost:3000](http://localhost:3000) in you
 
 ## Excursion: Redux DevTools
 
-Coming soon.
+[Coming soon](/exercises/excursion-01).
 
 ## Recap
 

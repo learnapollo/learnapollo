@@ -8,8 +8,7 @@ If you have a suggestion on how to improve Learn Apollo please either [open an i
 
 ## Contributing to the Pokedex app
 
-Learn Apollo features a [a practical example app](https://github.com/learnapollo/pokedex) that follows along the interactive guide.
-If you find some inconsistencies between the guide and the application or you want to contribute something else, head over to [the Pokedex project](https://github.com/learnapollo/pokedex/blob/master/CONTRIBUTING.md) to find out more about the contributing workflow for the Pokedex app.
+Learn Apollo features a practical example app in [React](https://github.com/learnapollo/pokedex-react/blob/master/CONTRIBUTING.md), [Angular 2](https://github.com/learnapollo/pokedex-angular/blob/master/CONTRIBUTING.md) and [React Native](https://github.com/learnapollo/pokedex-react-native/blob/master/CONTRIBUTING.md) that follows along the interactive guide. If you find some inconsistencies between the guide and the application or you want to contribute something else, head over to the respective Pokedex project to find out more about the contributing workflow for the Pokedex app.
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 

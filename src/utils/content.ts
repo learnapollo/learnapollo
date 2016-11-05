@@ -44,9 +44,6 @@ export const chapters: Chapter[] = [
     alias: 'get-started',
   }]),
   new Chapter('Tutorial Tracks', 'tutorial', [{
-    title: 'Apollo Client on React/RN/Angular 2',
-    alias: 'all-00',
-  }, {
     title: 'React Track 01 - Getting Started',
     alias: 'react-01',
   }, {

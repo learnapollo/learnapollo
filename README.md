@@ -10,8 +10,28 @@ If you have a suggestion on how to improve Learn Apollo please either [open an i
 
 ```
 .
-├── TODO
-│   └── TODO
+├── excursions
+│   ├── excursion-01.md
+│   └── excursion-02.md
+├── go-further
+│   ├── wrap-up.md
+├── images
+│   ├── demo.png
+│   ├── edges.png
+│   ├── favicon.png
+│   ├── playground.png
+│   └── pokedex.png
+├── introduction
+│   ├── get-started-bottom.md
+│   ├── get-started.md
+│   └── introduction.md
+└── tutorial
+    ├── react-01.md
+    ├── react-02.md
+    ├── react-03.md
+    ├── react-04.md
+    ├── react-05.md
+    └── react-06.md
 ```
 
 ## Development [![CircleCI](https://circleci.com/gh/learnapollo/learnapollo.svg?style=svg)](https://circleci.com/gh/learnapollo/learnapollo)

@@ -1,4 +1,4 @@
-# React Track 04 - Fragments
+# Tutorial 04 - Fragments
 
 Welcome to the 4th exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
 

@@ -1,4 +1,4 @@
-# React Track 05 - Basic Mutations
+# Tutorial 05 - Basic Mutations
 
 Welcome to the 5th exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
 

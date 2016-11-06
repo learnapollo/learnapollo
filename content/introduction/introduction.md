@@ -1,6 +1,7 @@
 # Introduction
 
-Welcome to *Learn Apollo*, a hands-on tutorial for the Apollo Client. Choose between React, Angular 2 or React Native and follow along several exercises, from a basic starter-kit application to a complete pokedex application!
+Welcome to *Learn Apollo*, a hands-on tutorial for the Apollo Client. Choose between React, Angular 2 or React Native 
+and follow along several exercises, from a basic starter-kit application to a complete pokedex application!
 
 ## Goals
 

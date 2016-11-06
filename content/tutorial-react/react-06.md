@@ -1,4 +1,4 @@
-# React Track 06 - Multiple Mutations
+# Tutorial 06 - Multiple Mutations
 
 Welcome to the 6th exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
 

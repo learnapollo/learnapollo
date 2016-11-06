@@ -43,30 +43,35 @@ export const chapters: Chapter[] = [
     title: 'Get Started',
     alias: 'get-started',
   }]),
-  new Chapter('Tutorial Tracks', 'tutorial', [{
-    title: 'React Track 01 - Getting Started',
+  new Chapter('React Tutorial', 'tutorial-react', [{
+    title: '01 - Getting Started',
     alias: 'react-01',
   }, {
-    title: 'React Track 02 - Basic Queries',
+    title: '02 - Basic Queries',
     alias: 'react-02',
   }, {
-    title: 'React Track 03 - Advanced Queries',
+    title: '03 - Advanced Queries',
     alias: 'react-03',
   }, {
-    title: 'React Track 04 - Fragments',
+    title: '04 - Fragments',
     alias: 'react-04',
   }, {
-    title: 'React Track 05 - Basic Mutations',
+    title: '05 - Basic Mutations',
     alias: 'react-05',
   }, {
-    title: 'React Track 06 - Multiple Mutations',
+    title: '06 - Multiple Mutations',
     alias: 'react-06',
   }]),
+  new Chapter('React Native Tutorial', 'tutorial-react-native', [{
+    title: '01 - Getting Started',
+    alias: 'rn-01',
+  },
+  ]),
   new Chapter('Excursions', 'excursions', [{
-    title: 'Excursion 01 - Using the Redux DevTools',
+    title: '01 - Using the DevTools',
     alias: 'excursion-01',
   }, {
-    title: 'Excursion 02 - Mutation Results',
+    title: '02 - Mutation Results',
     alias: 'excursion-02',
   }]),
   new Chapter('Go Further', 'go-further', [{

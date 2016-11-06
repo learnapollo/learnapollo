@@ -6,7 +6,9 @@ Source code for [learnapollo.org](https://learnapollo.org)
 
 ## Contribution
 
-If you have a suggestion on how to improve Learn Apollo please either [open an issue](https://github.com/learnapollo/learnapollo/issues/new) or create a pull request by changing the source files in [`content`](https://github.com/learnapollo/learnapollo/tree/master/content).
+If you have a suggestion on how to improve Learn Apollo please either 
+[open an issue](https://github.com/learnapollo/learnapollo/issues/new) or create a pull request by changing the source 
+files in [`content`](https://github.com/learnapollo/learnapollo/tree/master/content).
 
 ```
 .

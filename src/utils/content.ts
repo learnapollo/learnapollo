@@ -65,8 +65,10 @@ export const chapters: Chapter[] = [
   new Chapter('React Native Tutorial', 'tutorial-react-native', [{
     title: '01 - Getting Started',
     alias: 'rn-01',
-  },
-  ]),
+  }, {
+    title: '02 - Basic Queries',
+    alias: 'rn-02'
+  }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',
     alias: 'excursion-01',

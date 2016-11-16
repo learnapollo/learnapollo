@@ -21,7 +21,7 @@ can teach you a trick or two or give you a better understanding of specific conc
 ## Enviroment setup
 
 You only need [git](https://git-scm.com/downloads) and a Node package manager like [yarn](https://yarnpkg.com/en/docs/install) 
-or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Normally, the Apollo Client 
+or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Normally, Apollo Client 
 requires you to set up a GraphQL server on your own. However we already prepared your own GraphQL server and set it up 
 properly for you! 
 

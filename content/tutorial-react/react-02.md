@@ -4,7 +4,7 @@ This is the second exercise in the **React Track** of this Apollo Client Tutoria
 
 ## Goal
 
-The **goal** of this exercise is to display information on your very own trainer node. With will learn how to use the Apollo Client to send queries that fetch data from a GraphQL server. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
+The **goal** of this exercise is to display information on your very own trainer node. With will learn how to use Apollo Client to send queries that fetch data from a GraphQL server. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
 
 ## Introduction
 
@@ -179,7 +179,7 @@ After the app starts, open [http://localhost:3000](http://localhost:3000) in you
 
 ## Recap
 
-Nice, you executed your first GraphQL query with the Apollo Client and used it to display your trainer name. In this exercise we learned a lot! Let's recap that:
+Nice, you executed your first GraphQL query with Apollo Client and used it to display your trainer name. In this exercise we learned a lot! Let's recap that:
 
 * The shape of valid queries depend on the **schema from the GraphQL server**.
 * Before executing them, we have to **define queries using the `gql` tag** from the `graphql-tag` package.

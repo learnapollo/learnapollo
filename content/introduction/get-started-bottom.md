@@ -4,7 +4,7 @@ Now that you got your own GraphQL server, let's first get familiar with the gene
 
 Each exercise is based on a feature-oriented **goal**, like the possibility to list all pokemons or to add a new pokemon.
 You can follow along the several **steps** that are provided to finish the exercise. Exercises focus on different 
-**concepts** of the Apollo Client which will be explained as soon as we encounter them with a short **recap** of the 
+**concepts** of Apollo Client which will be explained as soon as we encounter them with a short **recap** of the 
 most important parts at the end of the exercise.
 
 Now it's time to get started! Choose your favorite Tutorial Track out of React, Angular 2 and React Native and let's 

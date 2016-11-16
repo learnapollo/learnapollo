@@ -155,7 +155,7 @@ Check if you got everthing right by running the app:
 yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page. To fix this, we have to do one more thing. Head over to `src/index.js` and replace the creation of the Apollo Client by this:
+Open [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page. To fix this, we have to do one more thing. Head over to `src/index.js` and replace the creation of Apollo Client by this:
 
 ```js
 const client = new ApolloClient({
@@ -168,7 +168,7 @@ Note that we added the `dataIdFromObject` attribute that maps an object to the i
 
 ## Recap
 
-Now that you got to use mutations you already know a lot about the Apollo Client, good job! Let's review what we saw in this exercise:
+Now that you got to use mutations you already know a lot about Apollo Client, good job! Let's review what we saw in this exercise:
 
 * **Mutations** are used to change data on the server
 * Calling mutations returns a **promise that can be used to react on mutation results**

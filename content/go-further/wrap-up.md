@@ -4,8 +4,8 @@
 
 ## Further Resources
 
-* http://graphql.org/
-* http://dev.apollodata.com
+* [http://graphql.org/](http://graphql.org/)
+* [http://dev.apollodata.com](http://dev.apollodata.com)
 
 ### Analytics
 

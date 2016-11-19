@@ -68,6 +68,12 @@ export default class Markdown extends React.Component<Props, {}> {
     return nextProps.sourceName !== this.props.sourceName || nextProps.location !== this.props.location
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.context.storedState.user) {
+      replace(nextProps.ast, /__NAME__/g, this.context.storedState.user.name)
+    }
+  }
+
   render() {
     const self = this
     const renderers = {

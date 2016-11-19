@@ -59,6 +59,7 @@ module.exports = {
       __SEGMENT_TOKEN__: '"7FHjXj58suFRzllOdSQ7Ij6a9nvYD2hS"',
       __GITHUB_OAUTH_CLIENT_ID__: '"f83113f8d6c4d78f17e5"',
       __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnapollo-dev_auth"',
+      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-file-processing_getting-started-example"',
     }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',

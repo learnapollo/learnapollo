@@ -2,9 +2,11 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import {slug} from '../../utils/string'
+import {StoredState} from '../../utils/statestore'
 import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
+import Download from '../Download/Download'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -30,7 +32,37 @@ function childrenToString(children): string {
     .join('')
 }
 
+export function replace(ast: Node, regex: RegExp, value: string) {
+  const walker = ast.walker()
+  let e = walker.next() as any
+  while (e !== null) {
+    if (e.node._literal) {
+      e.node._literal = e.node._literal.replace(regex, value)
+    }
+
+    e = walker.next() as any
+  }
+}
+
+interface Context {
+  storedState: StoredState
+}
+
 export default class Markdown extends React.Component<Props, {}> {
+
+  static contextTypes = {
+    storedState: React.PropTypes.object.isRequired,
+  }
+
+  context: Context
+
+  constructor (props, context) {
+    super(props)
+
+    if (context.storedState.user) {
+      replace(props.ast, /__NAME__/g, context.storedState.user.name)
+    }
+  }
 
   shouldComponentUpdate(nextProps: Props) {
     return nextProps.sourceName !== this.props.sourceName || nextProps.location !== this.props.location
@@ -75,6 +107,10 @@ export default class Markdown extends React.Component<Props, {}> {
       HtmlBlock (props) {
         if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
           return <ContentEndpoint location={self.props.location} />
+        }
+
+        if (props.literal.indexOf('__DOWNLOAD_REACT__') > -1) {
+          return <Download location={self.props.location} repository='pokedex-react' />
         }
 
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {

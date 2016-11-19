@@ -22,6 +22,7 @@ declare var analytics: any
 declare var mixpanel: any
 declare var __LAST_UPDATE__: string
 declare var __LAMBDA_AUTH__: string
+declare var __LAMBDA_DOWNLOAD_EXAMPLE__: string
 declare var __GITHUB_OAUTH_CLIENT_ID__: string
 declare var __ENABLE_SEGMENT__: boolean
 declare var __SEGMENT_TOKEN__: string

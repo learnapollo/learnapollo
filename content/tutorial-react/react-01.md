@@ -10,6 +10,8 @@ The **goal** of this first exercise is to install a React App and run it afterwa
 
 If you signed up with GitHub, should have received your own `pokedex-react`. Alternatively, clone the [repository from GitHub](https://github.com/learnapollo/pokedex-react).
 
+<!-- __DOWNLOAD_REACT__ -->
+
 Now change to the first exercise and install the dependencies from your console
 
 ```sh

@@ -60,6 +60,7 @@ module.exports = {
       __SEGMENT_TOKEN__: '"7FHjXj58suFRzllOdSQ7Ij6a9nvYD2hS"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
       __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
+      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-file-processing_getting-started-example"',
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       },

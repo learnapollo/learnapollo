@@ -50,7 +50,7 @@ export default class Download extends React.Component<Props, State> {
         </a>
         {this.state.downloading &&
         <div className='pb4 black-50'>
-          Download starts in a few seconds...
+          Magic in progress. Download starts in a few seconds...
         </div>
         }
       </div>

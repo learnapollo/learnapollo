@@ -51,7 +51,7 @@ const TrainerQuery = gql`query($name: String!) {
     ownedPokemons {
       id
       name
-      imageUrl
+      url
     }
   }
 }`
@@ -99,8 +99,8 @@ Right now, the `AddPokemonCard` doesn't do too much. As we want to create a new 
 
 ```js
 const createPokemonMutation = gql`
-  mutation ($name: String!, $imageUrl: String!, $trainerId: ID) {
-    createPokemon(name: $name, imageUrl: $imageUrl, trainerId: $trainerId) {
+  mutation ($name: String!, $url: String!, $trainerId: ID) {
+    createPokemon(name: $name, url: $url, trainerId: $trainerId) {
       trainer {
         id
         ownedPokemons {
@@ -112,7 +112,7 @@ const createPokemonMutation = gql`
 `
 ```
 
-Note that as we discussed above, the mutation requires the variables `$name`, `$imageUrl` and `$trainerId`. Instead of only using `export default withRouter(AddPokemonCard)` we can inject the mutation similar to how we inject queries to `AddPokemonCard`:
+Note that as we discussed above, the mutation requires the variables `$name`, `$url` and `$trainerId`. Instead of only using `export default withRouter(AddPokemonCard)` we can inject the mutation similar to how we inject queries to `AddPokemonCard`:
 
 ```js
 const AddPokemonCardWithMutation = graphql(createPokemonMutation)(withRouter(AddPokemonCard))
@@ -138,9 +138,9 @@ Now we can call the `createPokemon` mutations by using `mutate` in `handleSave`:
 
 ```js
 handleSave = () => {
-  const {name, imageUrl} = this.state
+  const {name, url} = this.state
   const trainerId = this.props.params.trainerId
-  this.props.mutate({variables: {name, imageUrl, trainerId}})
+  this.props.mutate({variables: {name, url, trainerId}})
     .then(() => {
       this.props.router.replace('/')
     })

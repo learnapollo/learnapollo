@@ -73,7 +73,7 @@ export default class PokemonPreview extends React.Component {
     return (
       <div className='dib mw4 tc black link dim ml1 mr1 mb2 bg-white pa2'>
         <div className='db'>
-          <img src={this.props.pokemon.imageUrl} alt={this.props.pokemon.name} />
+          <img src={this.props.pokemon.url} alt={this.props.pokemon.name} />
         </div>
         <span className='gray'>{this.props.pokemon.name}</span>
       </div>
@@ -94,14 +94,14 @@ type Trainer {
 
 type Pokemon {
   id: String!
-  imageUrl: String!
+  url: String!
   name: String!
   trainer: Trainer
 }
 ```
 
 As we can see, the server stores the owned pokemons of each trainer, exactly the information that we need!
-We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `imageUrl` and `name` in the nested selection:
+We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `url` and `name` in the nested selection:
 
 ```js
 const TrainerQuery = gql`query($name: String!) {
@@ -111,7 +111,7 @@ const TrainerQuery = gql`query($name: String!) {
     ownedPokemons {
       id
       name
-      imageUrl
+      url
     }
   }
 }`
@@ -160,7 +160,7 @@ render () {
   return (
     <Link to={`/view/${this.props.pokemon.id}`} className='dib mw4 tc black link dim ml1 mr1 mb2 bg-white pa2'>
       <div className='db'>
-        <img src={this.props.pokemon.imageUrl} alt={this.props.pokemon.name} />
+        <img src={this.props.pokemon.url} alt={this.props.pokemon.name} />
       </div>
       <span className='gray'>{this.props.pokemon.name}</span>
     </Link>
@@ -175,7 +175,7 @@ const PokemonQuery = gql`
   query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       id
-      imageUrl
+      url
       name
     }
   }

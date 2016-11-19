@@ -32,7 +32,7 @@ To help you get started using fragments, we implemented them already in `Pokemon
 static fragments = {
   pokemon: new Fragment(gql`
     fragment PokemonCardPokemon on Pokemon {
-      imageUrl
+      url
       name
     }
   `)
@@ -128,7 +128,7 @@ const PokemonQuery = gql`query($id: ID!) {
 `
 ```
 
-Note that there are fields that are include either in both fragments (like `name`) or only in one of them (like `imageUrl` or `trainer`).
+Note that there are fields that are include either in both fragments (like `name`) or only in one of them (like `url` or `trainer`).
 
 Let's add the new fragment when wrapping the `PokedexPage` component as well:
 

@@ -22,12 +22,12 @@ You will add an update and a delete button to the `PokemonCard` component that c
 
 ### Changes to `PokemonCard`
 
-We already prepared some changes to the `PokemonCard` component and updated `PokemonPage` accordingly. Let's have a closer look at `PokemonCard`. First of all, we introduced `name` and `imageUrl` as part of the component's state:
+We already prepared some changes to the `PokemonCard` component and updated `PokemonPage` accordingly. Let's have a closer look at `PokemonCard`. First of all, we introduced `name` and `url` as part of the component's state:
 
 ```js
 state = {
   name: this.props.pokemon.name,
-  imageUrl: this.props.pokemon.imageUrl,
+  url: this.props.pokemon.url,
 }
 ```
 
@@ -42,12 +42,12 @@ The state gets initialized with the passed props and `onChange` events for the t
 />
 <input
   className='w-100 pa3 mv2'
-  value={this.state.imageUrl}
+  value={this.state.url}
   placeholder='Image Url'
-  onChange={(e) => this.setState({imageUrl: e.target.value})}
+  onChange={(e) => this.setState({url: e.target.value})}
 />
-{this.state.imageUrl &&
-  <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+{this.state.url &&
+  <img src={this.state.url} role='presentation' className='w-100 mv3' />
 }
 ```
 
@@ -68,15 +68,15 @@ However, you have to implement the `onClick` methods yourself. Before that, let 
 
 ### The `updatePokemon` mutation
 
-We want to be able to update pokemon names and image URLs. That's why we make use of `updatePokemon` and its arguments `name` and `imageUrl`. Add this mutation to the `PokemonCard`:
+We want to be able to update pokemon names and image URLs. That's why we make use of `updatePokemon` and its arguments `name` and `url`. Add this mutation to the `PokemonCard`:
 
 ```js
 const updatePokemon = gql`
-  mutation updatePokemon($id: ID!, $name: String!, $imageUrl: String!) {
-    updatePokemon(id: $id, name: $name, imageUrl: $imageUrl) {
+  mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
+    updatePokemon(id: $id, name: $name, url: $url) {
       id
       name
-      imageUrl
+      url
     }
   }
 `
@@ -128,7 +128,7 @@ Finally, you can now call the mutations from within the `onClick` of the buttons
 
 ```js
 handleUpdate = () => {
-  this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, imageUrl: this.state.imageUrl }})
+  this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, url: this.state.url }})
     .then(this.props.afterChange)
 }
 

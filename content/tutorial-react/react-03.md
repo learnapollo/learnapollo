@@ -54,8 +54,6 @@ const PokedexWithData = graphql(TrainerQuery, {
 )(Pokedex)
 ```
 
-Remember to insert your own name into the `variables` object.
-
 ### Nested Queries
 
 Now that we saw query variables in action we can focus on displaying the pokemons of a given trainer. We will use the `PokemonPreview` component that you can find in `src/components/PokemonPreview.js` to display the individual pokemons:

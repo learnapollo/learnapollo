@@ -42,7 +42,7 @@ Queries offer a flexible way to state data requirements. With Apollo Client, we 
 
 ### Building Queries
 
-The GraphQL server for the Pokedex App is configured so that we can identify trainers by their name. To query the information of a trainer, you can use the following query:
+The GraphQL server for the Pokedex App is configured so that we can identify trainers by their name. To query the information of a trainer given his name, you can use the following query:
 
 ```
 query {
@@ -64,18 +64,7 @@ const TrainerQuery = gql`query {
 }`
 ```
 
-Insert the name you signed up with into the query. For example, the trainer named Ash Ketchum would need this `TrainerQuery`:
-
-```js
-const TrainerQuery = gql`query {
-  Trainer(name: "Ash Ketchum") {
-    id
-    name
-  }
-}`
-```
-
-But how do we use this query in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
+If you signed up with GitHub, we already inserted the name you signed up with. But how do we use this query in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
 
 ```js
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)

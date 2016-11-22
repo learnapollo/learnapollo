@@ -64,7 +64,19 @@ The update and delete buttons were added:
 </div>
 ```
 
-However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together.
+However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard`:
+
+```js
+static fragments = {
+pokemon: gql`
+  fragment PokemonCardPokemon on Pokemon {
+    id
+    url
+    name
+  }
+`
+}
+```
 
 ### The `updatePokemon` mutation
 

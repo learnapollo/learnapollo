@@ -38,7 +38,7 @@ Let's now build a GraphQL query together to get the information of your trainer 
 
 ## Displaying information of your trainer
 
-Queries offer a flexible way to state data requirements. With Apollo Client, we first define queries and then inject their response to the inner component. As far as the inner component is concerned, the data is coming from *somewhere*, which means we have a good decoupling between data source and data consumer.
+Queries offer a flexible way to state data requirements. With Apollo Client, we first define queries and then inject their response to the inner component. As far as the inner component is concerned, the data could be coming from *anywhere*, which means we have a good decoupling between data source and data consumer.
 
 ### Building Queries
 

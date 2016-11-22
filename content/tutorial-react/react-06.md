@@ -17,7 +17,7 @@ yarn install
 
 ## Updating and deleting pokemons
 
-Let's use what we learned about mutations in the last exercise to start using the `updatePokemon` and a `deletePokemon` mutations.
+Let's use what we learned about mutations in the last exercise to start using the `updatePokemon` and `deletePokemon` mutations.
 You will add an update and a delete button to the `PokemonCard` component that call the according mutation when clicked. Let's get started then!
 
 ### Changes to `PokemonCard`

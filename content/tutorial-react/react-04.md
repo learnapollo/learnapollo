@@ -22,7 +22,7 @@ Before we add additional content to our components, let's take a step back. Righ
 * if the data requirements of the `PokemonCard` component change, we have to go back to the `PokedexPage` and add additional fields to the `PokemonQuery`
 * if we want to include `PokemonCard` in a another component, we will have to duplicate the `PokemonQuery`, resulting in possible errors when we have to change the query later and forget to update all places it's defined
 
-Therefor it would be great to let the `PokemonCard` component handle the declaration of its own data requirements. Then we could refer to this in the `PokedexPage` component to make sure that we  included all required data in the `PokemonQuery`. This is exactly the way fragments work.
+Therefore it would be great to let the `PokemonCard` component handle the declaration of its own data requirements. Then we could refer to this in the `PokedexPage` component to make sure that we  included all required data in the `PokemonQuery`. This is exactly the way fragments work.
 
 ### Defining a pokemon fragment in `PokemonCard`
 

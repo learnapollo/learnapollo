@@ -18,7 +18,7 @@ Apart from the self-contained Apollo tutorial, we offer a few selected excursion
 topics such as the *Redux DevTools* or *optimistic UI*. The excursions are not necessary to finish the exercises, but 
 can teach you a trick or two or give you a better understanding of specific concepts.
 
-## Enviroment setup
+## Environment setup
 
 You only need [git](https://git-scm.com/downloads) and a Node package manager like [yarn](https://yarnpkg.com/en/docs/install) 
 or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Normally, Apollo Client 

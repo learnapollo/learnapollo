@@ -36,7 +36,7 @@ export default class Download extends React.Component<Props, State> {
       )
     }
 
-    const url = `${__LAMBDA_DOWNLOAD_EXAMPLE__}?repository=${this.props.repository}&project_id=${this.context.storedState.user.projectId}&user=learnapollo&name=${encodeURI(this.context.storedState.user.name)}`
+    const url = `${__LAMBDA_DOWNLOAD_EXAMPLE__}?repository=${this.props.repository}&project_id=${this.context.storedState.user.projectId}&user=learnapollo&name=${encodeURIComponent(this.context.storedState.user.name)}`
     return (
       <div className='tc'>
         <a

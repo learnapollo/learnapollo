@@ -12,11 +12,12 @@ We will learn how to query information from a GraphQL server with Apollo Client.
 
 ## Introduction
 
-Move to the second exercise of the Pokedex React App and install the dependencies from your console
+Move to the second exercise, install the dependencies and start the Pokedex React App from your console
 
 ```sh
 cd pokedex-react/exercise-02
-yarn install
+yarn install # or npm install
+yarn start # or npm start
 ```
 
 As you saw before, the schema exposed by our GraphQL server includes the following models
@@ -178,13 +179,7 @@ export default PokedexWithData
 
 ## Hello, Trainer!
 
-If you finished all the changes to `src/components/Pokedex.js` successfully, go ahead and run the app:
-
-```sh
-yarn start
-```
-
-After the app starts, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the updated greeting.
+If you finished all the changes to `src/components/Pokedex.js` successfully, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the updated greeting.
 
 ## Excursion: Redux DevTools
 

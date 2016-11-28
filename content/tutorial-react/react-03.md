@@ -14,11 +14,12 @@ Upon clicking on a pokemon in this list, we will see a detailed view of that pok
 
 ## Introduction
 
-Move to the third exercise of the Pokedex React App and install the dependencies from your console
+Move to the third exercise, install the dependencies and start the Pokedex React App from your console
 
 ```sh
 cd pokedex-react/exercise-03
-yarn install
+yarn install # or npm install
+yarn start # or npm start
 ```
 
 ## Display a list of pokemon with advanced queries
@@ -154,13 +155,7 @@ Note the use of `this.props.data.Trainer.ownedPokemons.length` that displays the
 
 ### Dynamic Query Variables
 
-Cool, so now we can see all the pokemons we own in our pokedex. Verify that by running
-
-```sh
-yarn start
-```
-
-and visiting [http://localhost:3000](http://localhost:3000). If everything is working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
+Cool, so now we can see all the pokemons we own in our pokedex. Verify that in your browser by visiting [http://localhost:3000](http://localhost:3000). If everything is working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
 
 We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPage` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
 
@@ -251,12 +246,6 @@ class PokemonPage extends React.Component {
 ```
 
 Note that we introduced the new required `data` prop and guarded its usage again with the boolean `data.loading`. If an error occurs, we notify the user.
-
-Now let's run the app again to see if everything is working
-
-```sh
-yarn start
-```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons. Click on a pokemon preview to move over to the detailed view. Click the cancel button to return back to your pokedex.
 

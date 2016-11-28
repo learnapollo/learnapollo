@@ -12,11 +12,12 @@ We will use fragments and learn how they can be used to define data requirements
 
 ## Introduction
 
-Change to the 4th exercise of the Pokedex React App and install the dependencies from your console
+Change to the 4th exercise, install the dependencies and run the Pokedex React App from your console
 
 ```sh
 cd pokedex-react/exercise-04
-yarn install
+yarn install # or npm install
+yarn start # or npm start
 ```
 
 ## Adding information to the pokemon page
@@ -196,13 +197,7 @@ return (
 
 This will make sure that only the required fields of the `pokemon` object get passed to `PokemonCard` and `PokemonCardHeader`, respectively. If we need additional fields later, for example in `PokemonCard`, we just have to add them in the fragment defined in `PokemonCard`.
 
-Check if you got everthing right by running the app:
-
-```sh
-yarn start
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser and open the detailed view of a pokemon. It should have a new message about the pokemon and its trainer at the top of the page.
+Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and going to the detailed view of a pokemon. It should have a new message about the pokemon and its trainer at the top of the page.
 
 ## Recap
 

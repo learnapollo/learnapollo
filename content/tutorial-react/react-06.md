@@ -12,11 +12,12 @@ This will both let you increase your understanding of mutations as well as show 
 
 ## Introduction
 
-Change to the 6th exercise of the Pokedex React App and install the dependencies from your console
+Change to the 6th exercise, install the dependencies and run the Pokedex React App from your console
 
 ```sh
 cd pokedex-react/exercise-06
-yarn install
+yarn install # or npm install
+yarn start # or npm start
 ```
 
 ## Updating and deleting pokemons
@@ -156,13 +157,7 @@ handleDelete = () => {
 
 Again, we are making use of the promise returned by the mutations to call another function after the mutation results came in.
 
-Check if you got everthing right by running the app:
-
-```sh
-yarn start
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser and click on an existing pokemon button. Update one of its attributes and click the update button. You should get back to the updated pokemon list. Repeat the same but this time delete the pokemon.
+Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and click on an existing pokemon button. Update one of its attributes and click the update button. You should get back to the updated pokemon list. Repeat the same but this time delete the pokemon.
 
 ## Recap
 

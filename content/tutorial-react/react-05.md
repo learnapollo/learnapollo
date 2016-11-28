@@ -4,7 +4,15 @@ Welcome to the 5th exercise in the **React Track** of this Apollo Client Tutoria
 
 ## Goal
 
-In this exercise we have the **goal** of adding the possibility to create new pokemons and assign them to your trainer node! Data changes in GraphQL are done by using mutations, so it's time for us to learn about them.
+In this exercise we have the **goal** of adding the possibility to create new pokemons:
+
+![](../images/react-exercise-05-addpokemon.png)
+
+A button in the pokedex will redirect to the new component. After creating the pokemon it will appear in our pokedex:
+
+![](../images/react-exercise-05-pokedex.png)
+
+Data changes in GraphQL are done by using mutations, so it's time for us to learn about them.
 
 ## Introduction
 

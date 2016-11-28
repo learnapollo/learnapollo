@@ -1,8 +1,22 @@
 <iframe height="315" src="https://www.youtube.com/embed/rzGkGQi3ZiM" frameborder="0" allowfullscreen></iframe>
 
-# Get started
+# Introduction
 
-Before you are ready with working on the pokedex application, we have to set you up with the necessary tools!
+Welcome to *Learn Apollo*, a hands-on tutorial for Apollo Client. Choose between React, Angular 2 or React Native 
+and follow along several exercises, from a basic starter-kit application to a complete pokedex application!
+
+## Goals
+
+* Understand what Apollo Client handles for you
+* Learn how to build a realistic Apollo Client application from start to finish in an interactive and fun way
+* Expand your understanding on different concepts through separate excursions
+* Access further resources and be able to enrich the community
+
+## The pokedex application
+
+![](../images/react-pokedex.png)
+
+Before you are ready with working on the pokedex application, we have to set you up with the necessary tools.
 
 ## The tutorial structure
 
@@ -20,10 +34,10 @@ can teach you a trick or two or give you a better understanding of specific conc
 
 ## Environment setup
 
-You only need [git](https://git-scm.com/downloads) and a Node package manager like [yarn](https://yarnpkg.com/en/docs/install) 
-or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Normally, Apollo Client 
+You only need [git](https://git-scm.com/downloads), [Node](https://nodejs.org) and a Node package manager like [yarn](https://yarnpkg.com/en/docs/install) 
+or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Usually, Apollo Client 
 requires you to set up a GraphQL server on your own. However we already prepared your own GraphQL server and set it up 
-properly for you! 
+properly for you.
 
 This means you can start working on the pokedex application without worrying about configuring your 
 own GraphQL server. Request your individual GraphQL endpoint and receive an integrated GraphQL Server console 

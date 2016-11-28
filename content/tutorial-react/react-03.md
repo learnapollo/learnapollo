@@ -28,7 +28,7 @@ Before we start working directly on our goal to show the pokemons a trainer owns
 
 ### Static Query Variables
 
-One of the available query options are variables. A common use case for query variables is when we want to display the same type of information for two different nodes. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
+One of the available query options are variables. A common use case for query variables is when a query argument depends of some external factor, like a route parameter. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
 const TrainerQuery = gql`query {
@@ -38,7 +38,7 @@ const TrainerQuery = gql`query {
  }`
 ```
 
-To introduce a variable for the trainer `name`, we have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
+To introduce a variable for the trainer `name`, we use the GraphQL notation for query variables. We have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
 
 ```js
 const TrainerQuery = gql`query($name: String!) {

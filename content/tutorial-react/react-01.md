@@ -23,6 +23,22 @@ yarn install
 
 Let's take a moment to get more familiar with the structure of the app before we run it.
 
+The starting point for our App is `src/index.js` At the moment, all that happens here is setting up the router to render the `Pokedex` component for the `/` route path:
+
+```js
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path='/' component={Pokedex} />
+  </Router>
+  ),
+  document.getElementById('root')
+)
+```
+
+## Adding Apollo Client to the App
+
+Let's see how we can add Apollo Client to our App together by adding these changes to `src/index.js`.
+
 ### Package Dependencies
 
 Open `src/package.json` to have a look what packages we are using.
@@ -30,9 +46,16 @@ Open `src/package.json` to have a look what packages we are using.
 * `apollo-client` - the core package exposes the vanilla JS Apollo Client which provides the core functionality
 * `react-apollo` - the React integration exposes the `ApolloProvider` that can be used to wrap other React components, allowing them to send queries and mutations
 
+Now go ahead and import the following things at the top of `src/index.js`:
+
+```js
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+```
+
 ### Configuring Apollo Client with our GraphQL server
 
-The starting point for our App is `src/index.js`. Here we connect Apollo Client with our GraphQL server by configuring the network layer
+Now we can connect Apollo Client with our GraphQL server in `src/index.js` by configuring the network layer
 
 ```js
 const client = new ApolloClient({
@@ -44,7 +67,7 @@ If you already received your own GraphQL server, `__PROJECT_ID__` is replaced wi
 
 ### Connecting Apollo Client to our React Components
 
-To allow our React components to issue GraphQL queries and mutations through the client we wrap them with the `ApolloProvider` component from the `react-apollo` package.
+To allow our React components to issue GraphQL queries and mutations through the client we wrap them with the `ApolloProvider` component in `src/index.js `from the `react-apollo` package.
 
 ```js
 ReactDOM.render((

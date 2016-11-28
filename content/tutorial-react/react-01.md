@@ -15,11 +15,12 @@ If you signed up with GitHub, should have received your own `pokedex-react`. Alt
 
 <!-- __DOWNLOAD_REACT__ -->
 
-Now change to the first exercise and install the dependencies from your console
+Now change to the first exercise, install the dependencies and start the app from your console
 
 ```sh
 cd pokedex-react/exercise-01
-yarn install
+yarn install # or npm install
+yarn start # or npm start
 ```
 
 ## Getting Familiar with the App
@@ -92,13 +93,7 @@ Our Pokedex component lives in `'src/components/Pokedex.js'`. Currently, it only
 
 ## Starting the App
 
-To confirm your environment is all correctly setup, start the app now from your console:
-
-```sh
-yarn start
-```
-
-After the app starts, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the greeting from the Pokedex component.
+To confirm your environment is all correctly setup, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the greeting from the Pokedex component.
 
 ## Recap
 

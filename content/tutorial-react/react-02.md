@@ -50,7 +50,7 @@ Queries offer a flexible way to state data requirements. With Apollo Client, we 
 The GraphQL server for the Pokedex App is configured so that we can identify trainers by their name. To query the information of a trainer given his name, you can use the following query:
 
 ```
-query {
+query TrainerQuery {
   Trainer(name: "__NAME__") {
     id
     name
@@ -61,7 +61,7 @@ query {
 With Apollo, we need to denote queries like this by using the `gql` tag contained in the `graphql-tag` package.
 
 ```js
-const TrainerQuery = gql`query {
+const TrainerQuery = gql`query TrainerQuery {
   Trainer(name: "__NAME__") {
     id
     name
@@ -166,7 +166,7 @@ class Pokedex extends React.Component {
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
 ```js
-const TrainerQuery = gql`query {
+const TrainerQuery = gql`query TrainerQuery {
   Trainer(name: "__NAME__") {
      name
    }

@@ -109,6 +109,11 @@ render () {
     return (<div>Loading</div>)
   }
 
+  if (this.props.data.error) {
+    console.log(this.props.data.error)
+    return (<div>An unexpexted error occured</div>)
+  }
+
   const pokemon = this.props.data.Pokemon
 
   return (

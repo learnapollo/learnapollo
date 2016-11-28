@@ -67,7 +67,7 @@ const client = new ApolloClient({
 })
 ```
 
-If you already received your own GraphQL server, `__PROJECT_ID__` is replaced with your individual GraphQL endpoint.
+If you signed up with GitHub and downloaded the example, we already inserted your individual GraphQL endpoint.
 
 ### Connecting Apollo Client to our React Components
 

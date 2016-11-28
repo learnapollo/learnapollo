@@ -6,6 +6,9 @@ Welcome to the first exercise in the **React Track** of this Apollo Client Tutor
 
 The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React and with the App structure of the Pokedex.
 
+This is how our pokedex will look like at the end of this exercise:
+![](../images/react-exercise-01-pokedex.png)
+
 ## Introduction
 
 If you signed up with GitHub, should have received your own `pokedex-react`. Alternatively, clone the [repository from GitHub](https://github.com/learnapollo/pokedex-react).

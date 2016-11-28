@@ -60,7 +60,7 @@ If the incoming `pokemon` prop is missing or doesn't have a field that is includ
 We updated our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
 ```js
-const PokemonQuery = gql`query($id: ID!) {
+const PokemonQuery = gql`query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
     }
@@ -133,7 +133,7 @@ render () {
 Again, we have to also use the `PokemonCardHeaderPokemon` fragment in the `PokemonQuery`:
 
 ```js
-const PokemonQuery = gql`query($id: ID!) {
+const PokemonQuery = gql`query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
       ... PokemonCardHeaderPokemon

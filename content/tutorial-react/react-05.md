@@ -53,7 +53,7 @@ return (
 Note that we require the trainer id now but didn't need it before, so we should add it to our `TrainerQuery` as well:
 
 ```js
-const TrainerQuery = gql`query($name: String!) {
+const TrainerQuery = gql`query TrainerQuery($name: String!) {
   Trainer(name: $name) {
     id
     name
@@ -108,7 +108,7 @@ Right now, the `AddPokemonCard` doesn't do too much. As we want to create a new 
 
 ```js
 const createPokemonMutation = gql`
-  mutation ($name: String!, $url: String!, $trainerId: ID) {
+  mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {
       trainer {
         id

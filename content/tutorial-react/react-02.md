@@ -4,7 +4,11 @@ This is the second exercise in the **React Track** of this Apollo Client Tutoria
 
 ## Goal
 
-The **goal** of this exercise is to display information on your very own trainer node. With will learn how to use Apollo Client to send queries that fetch data from a GraphQL server. Furthermore, we will explore how to use the Redux DevTools in combination with Apollo.
+The **goal** of this exercise is to query information on your very own trainer node. We will use it to add a personal touch to the greeting to our pokedex:
+
+![](../images/react-exercise-02-pokedex.png)
+ 
+We will learn how to query information from a GraphQL server with Apollo Client.
 
 ## Introduction
 

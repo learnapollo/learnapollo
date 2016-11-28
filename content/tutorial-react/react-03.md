@@ -4,7 +4,13 @@ This is the third exercise in the **React Track** of this Apollo Client Tutorial
 
 ## Goal
 
-In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns. Upon clicking on a pokemon in this list, we will see a detailed view of that pokemon and can navigate back to the complete pokedex.
+In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns:
+
+![](../images/react-exercise-03-pokedex.png)
+
+Upon clicking on a pokemon in this list, we will see a detailed view of that pokemon and can navigate back to the complete pokedex:
+
+![](../images/react-exercise-03-pokemonpage.png)
 
 ## Introduction
 

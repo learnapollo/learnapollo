@@ -1,6 +1,6 @@
 ## Choose your Tutorial Track
 
-Now that you got your own GraphQL server, let's first get familiar with the general structure of an exercise.
+Now that you got your own GraphQL server, let's get familiar with the general structure of an exercise.
 
 Each exercise is based on a feature-oriented **goal**, like the possibility to list all pokemons or to add a new pokemon.
 You can follow along the several **steps** that are provided to finish the exercise. Exercises focus on different 

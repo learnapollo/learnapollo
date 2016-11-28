@@ -38,9 +38,6 @@ class Subchapter {
 export const chapters: Chapter[] = [
   new Chapter('Overview', 'introduction', [{
     title: 'Introduction',
-    alias: 'introduction',
-  }, {
-    title: 'Get Started',
     alias: 'get-started',
   }]),
   new Chapter('React Tutorial', 'tutorial-react', [{

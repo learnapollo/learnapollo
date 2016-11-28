@@ -69,7 +69,7 @@ The update and delete buttons were added:
 </div>
 ```
 
-However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard`:
+However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard` by adding the `id`:
 
 ```js
 static fragments = {
@@ -99,7 +99,23 @@ const updatePokemon = gql`
 `
 ```
 
-Let's first think about the `deletePokemon` mutation before we will use both mutations and inject them to `PokemonCard`.
+You can also use fragments in mutations the same way you do in queries. We could write the `updatePokemon` mutation like this as well:
+
+```js
+const updatePokemon = gql`
+  mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
+    updatePokemon(id: $id, name: $name, url: $url) {
+      id
+      ... PokemonCardPokemon
+    }
+  }
+  ${PokemonCard.fragments.pokemon}
+`
+```
+
+We included the `id` in the query selection for good measure, even though it is already included in the `PokemonCardPokemon` fragment.
+
+Let's now think about the `deletePokemon` mutation before we will use both mutations and inject them to `PokemonCard`.
 
 ### The `deletePokemon` mutation
 

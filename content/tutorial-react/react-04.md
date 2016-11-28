@@ -44,6 +44,8 @@ pokemon: gql`
 }
 ```
 
+The fragment is name `PokemonCardPokemon`, because it is defined on the `PokemonCard` component and is a fragment for a `Pokemon`. Using this naming convention consistently can be helpful when using the fragment elsewhere.
+
 We also replaced the `pokemon` prop declaration in the `propTypes` object by using the new fragment and the `propType` function from `graphql-anywhere`:
 
 ```js

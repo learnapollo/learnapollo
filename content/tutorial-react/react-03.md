@@ -123,6 +123,11 @@ render () {
       return (<div>Loading</div>)
     }
 
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpexted error occured</div>)
+    }
+
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
         <div className='tc pt4'>
@@ -149,7 +154,7 @@ Cool, so now we can see all the pokemons we own in our pokedex. Verify that by r
 yarn start
 ```
 
-and visiting [http://localhost:3000](http://localhost:3000). If everything working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
+and visiting [http://localhost:3000](http://localhost:3000). If everything is working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
 
 We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPage` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
 
@@ -207,7 +212,11 @@ Now we can replace the placeholder content of the render method in `PokemonPage`
 class PokemonPage extends React.Component {
 
   static propTypes = {
-    data: React.PropTypes.object.isRequired,
+    data: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      Pokemon: React.PropTypes.object,
+    }).isRequired,
     router: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired,
   }
@@ -215,6 +224,11 @@ class PokemonPage extends React.Component {
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
+    }
+
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpexted error occured</div>)
     }
 
     return (
@@ -230,7 +244,7 @@ class PokemonPage extends React.Component {
 }
 ```
 
-Note that we introduced the new required `data` prop and guarded its usage again with the boolean `data.loading`.
+Note that we introduced the new required `data` prop and guarded its usage again with the boolean `data.loading`. If an error occurs, we notify the user.
 
 Now let's run the app again to see if everything is working
 

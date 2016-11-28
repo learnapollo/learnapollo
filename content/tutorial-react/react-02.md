@@ -76,7 +76,11 @@ Wrapping components like this with `graphql` injects a new `data` object to the 
 
 ```js
 static propTypes = {
-  data: React.PropTypes.object.isRequired,
+  data: React.PropTypes.shape({
+    loading: React.PropTypes.bool,
+    error: React.PropTypes.object,
+    Trainer: React.PropTypes.object,
+  }).isRequired,
 }
 ```
 
@@ -84,13 +88,19 @@ The `data` object provides several things, in particular
 
 * `data.loading` signifies whether a query is currently being sent to the server and we are waiting for the query response
 * once `loading` is `false`, we know that the query response arrived and all the fields from the query are available via `data`. In our case, this is a `Trainer` object with the `id` and `name` properties, available at `data.Trainer`
+* If something went wrong with the query and errors are returned, `data.error` will contain detailed information. 
 
-So let's now change the message to display the name of the trainer once `loading` is `false`:
+So let's now change the message to display the name of the trainer once `loading` is `false` and no error occured:
 
 ```js
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
+  }
+  
+  if (this.props.data.error) {
+    console.log(this.props.data.error)
+    return (<div>An unexpexted error occured</div>)
   }
 
   return (
@@ -119,12 +129,22 @@ We also include the `data` prop to the `propTypes` and use `data.loading` and `d
 // replace 'export default class' by 'class'
 class Pokedex extends React.Component {
   static propTypes = {
-    data: React.PropTypes.object.isRequired,
+    static propTypes = {
+      data: React.PropTypes.shape({
+        loading: React.PropTypes.bool,
+        error: React.PropTypes.object,
+        Trainer: React.PropTypes.object,
+      }).isRequired,
   }
 
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
+    }
+    
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpexted error occured</div>)
     }
 
     return (

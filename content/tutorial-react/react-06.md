@@ -175,7 +175,79 @@ Again, we are making use of the promise returned by the mutations to call anothe
 
 Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and click on an existing pokemon button. Update one of its attributes and click the update button. You should get back to the updated pokemon list. Repeat the same but this time delete the pokemon.
 
+## Force fetching for a consistent UI
+
+If you played around a bit with deleting pokemons, you will notice that it is only reflected in our UI after we refresh the page.
+We already saw this issue in the last exercise with the creation of pokemons and fixed it by telling the Apollo Store how to uniquely identify objects in our application, namely by their `id` field. We also included the `Trainer` object in the mutation response of `createPokemon`:
+ 
+```js
+const createPokemonMutation = gql`
+  mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
+    createPokemon(name: $name, url: $url, trainerId: $trainerId) {
+      trainer {
+        id
+        ownedPokemons {
+          id
+        }
+      }
+    }
+  }
+`
+```
+
+What this does, is telling Apollo Client to refetch the trainer object and all its related pokemons whenever we create a new pokemon. Apollo Store identifies the trainer object by its `id` and it basically merges the known pokemons with all the pokemons in the mutation response. Even though this is highly inefficient, this works in our example.
+ 
+Now the question is, if we can use the same logic for the deletion of pokemons. What if we changed the `deleteMutation` to also query the trainer and all its pokemons after the deletion of a pokemon?
+
+```js
+const deletePokemon = gql`
+  mutation deletePokemon($id: ID!) {
+    deletePokemon(id: $id) {
+      trainer {
+        id
+        ownedPokemons {
+          id
+        }
+      }
+    }
+  }
+`
+```
+
+As before, Apollo Client will merge the previously known pokemons with the pokemons in this mutation response. As the previous known pokemons already contain the now deleted pokemons, the pokemon will still be in the Apollo's store after this deletion. As things like filters on fields exist, there is no way for Apollo to know that in our case, we are fetching all the pokemon ids there are and not only a subset. A quick fix to make things work, is to force fetching the trainer object whenever the pokedex is being rendered.
+
+To do this, head over to the `Pokedex` component in `src/components/Pokedex.js` again and add the `forceFetch: true` option to the options of the query:
+
+```js
+const PokedexWithData = graphql(TrainerQuery, {
+  options: {
+    variables: {
+      name: '__NAME__'
+    },
+    forceFetch: true,
+  }
+}
+)(Pokedex)
+
+export default PokedexWithData
+```
+
+Now we can also get rid of fetching the trainer object in `AddPokemonCard` in `src/components/AddPokemonCard.js` after creating a new pokemon:
+
+```js
+const createPokemonMutation = gql`
+  mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
+    createPokemon(name: $name, url: $url, trainerId: $trainerId) {
+      id
+    }
+  }
+`
+```
+
+To learn more about handling the Apollo Store and get to know more efficient ways of handling situations like these, check out [the excursion about mutation results and optimistic UI](/content/excursions/excursion-02.md). 
+
 ## Recap
 
 * We saw how we can **update and delete** pokemons using mutations
 * **Injecting multiple mutations** is possible by using the `name` option
+* We learned a bit about how **caching** works with Apollo Client and used **force fetching** for a consistent but inefficient UI when creating or deleting nodes

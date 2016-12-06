@@ -68,6 +68,9 @@ export const chapters: Chapter[] = [
   }, {
     title: '03 - Advanced Queries',
     alias: 'rn-03',
+  },{
+    title: '04 - Fragments',
+    alias: 'rn-04',
   }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',

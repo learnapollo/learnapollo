@@ -58,6 +58,9 @@ export const chapters: Chapter[] = [
   }, {
     title: '06 - Multiple Mutations',
     alias: 'react-06',
+  }, {
+    title: '07 - Pagination',
+    alias: 'react-07',
   }]),
   new Chapter('React Native Tutorial', 'tutorial-react-native', [{
     title: '01 - Getting Started',

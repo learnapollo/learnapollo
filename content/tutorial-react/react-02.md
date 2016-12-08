@@ -2,12 +2,14 @@
 
 This is the second exercise in the **React Track** of this Apollo Client Tutorial!
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mds3w8ebudM" frameborder="0" allowfullscreen></iframe>
+
 ## Goal
 
 The **goal** of this exercise is to query information on your very own trainer node. We will use it to add a personal touch to the greeting to our pokedex:
 
 ![](../images/react-exercise-02-pokedex.png)
- 
+
 We will learn how to query information from a GraphQL server with Apollo Client.
 
 ## Introduction
@@ -93,7 +95,7 @@ The `data` object provides several things, in particular
 
 * `data.loading` signifies whether a query is currently being sent to the server and we are waiting for the query response
 * once `loading` is `false`, we know that the query response arrived and all the fields from the query are available via `data`. In our case, this is a `Trainer` object with the `id` and `name` properties, available at `data.Trainer`
-* If something went wrong with the query and errors are returned, `data.error` will contain detailed information. 
+* If something went wrong with the query and errors are returned, `data.error` will contain detailed information.
 
 So let's now change the message to display the name of the trainer once `loading` is `false` and no error occured:
 
@@ -102,7 +104,7 @@ render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
   }
-  
+
   if (this.props.data.error) {
     console.log(this.props.data.error)
     return (<div>An unexpexted error occured</div>)
@@ -146,7 +148,7 @@ class Pokedex extends React.Component {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
     }
-    
+
     if (this.props.data.error) {
       console.log(this.props.data.error)
       return (<div>An unexpexted error occured</div>)

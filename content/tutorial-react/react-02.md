@@ -136,12 +136,11 @@ We also include the `data` prop to the `propTypes` and use `data.loading` and `d
 // replace 'export default class' by 'class'
 class Pokedex extends React.Component {
   static propTypes = {
-    static propTypes = {
-      data: React.PropTypes.shape({
-        loading: React.PropTypes.bool,
-        error: React.PropTypes.object,
-        Trainer: React.PropTypes.object,
-      }).isRequired,
+    data: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      Trainer: React.PropTypes.object,
+    }).isRequired,
   }
 
   render () {

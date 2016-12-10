@@ -4,6 +4,7 @@ interface Props {
   viewer: any
   url: string
   name: string
+  trainerId: string
 }
 
 export default class AddPokemonMutation extends Relay.Mutation<Props, {}> {
@@ -49,6 +50,7 @@ export default class AddPokemonMutation extends Relay.Mutation<Props, {}> {
     return {
       name: this.props.name,
       url: this.props.url,
+      trainerId: this.props.trainerId,
     }
   }
 

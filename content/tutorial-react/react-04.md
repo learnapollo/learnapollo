@@ -148,21 +148,6 @@ const PokemonQuery = gql`query PokemonQuery($id: ID!) {
 
 Note that there are fields that are included either in both fragments (like `name`) or only in one of them (like `url` or `trainer`).
 
-Let's add the new fragment when wrapping the `PokemonPage` component as well:
-
-```js
-const PokemonPageWithData = graphql(PokemonQuery, {
-  options: (ownProps) => ({
-      variables: {
-        id: ownProps.params.pokemonId
-      }
-    })
-  }
-)(withRouter(PokemonPage))
-
-export default PokemonPageWithData
-```
-
 ### Filtering objects with fragments
 
 As stated above, both introduced fragments include fields that the other one doesn't include. Right now we are passing the same `pokemon` object to both `PokemonCard` and `PokemonCardHeader`:

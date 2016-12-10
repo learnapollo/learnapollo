@@ -164,11 +164,13 @@ We already created a new route in `src/index.js` that assigns the `PokemonPage` 
 ```js
 render () {
   return (
-    <Link to={`/view/${this.props.pokemon.id}`} className='dib mw4 tc black link dim ml1 mr1 mb2 bg-white pa2'>
-      <div className='db'>
-        <img src={this.props.pokemon.url} alt={this.props.pokemon.name} />
-      </div>
-      <span className='gray'>{this.props.pokemon.name}</span>
+    <Link
+      to={`/view/${this.props.pokemon.id}`}
+      style={{ minWidth: 200 }}
+      className='link dim grow mw4 bg-white ma2 pa3 shadow-1'
+    >
+      <img src={this.props.pokemon.url} alt={this.props.pokemon.name} />
+      <div className='gray tc'>{this.props.pokemon.name}</div>
     </Link>
   )
 }

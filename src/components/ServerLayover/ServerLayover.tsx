@@ -35,7 +35,7 @@ class ServerLayover extends React.Component<Props, State> {
 
     return (
       <div
-        className='fixed bottom-0 w-100 bg-gray-2'
+        className='fixed bottom-0 w-100 left-0 bg-gray-2'
         style={{
           height: this.state.showData ? 350 : 550,
           transition: 'height 0.5s ease',

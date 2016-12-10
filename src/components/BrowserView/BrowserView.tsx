@@ -95,7 +95,7 @@ class BrowserView extends React.Component<Props, State> {
   private addPokemon = () => {
     analytics.track('overlay: create pokemon')
     Relay.Store.commitUpdate(
-      new AddPokemonMutation({viewer: this.props.viewer, name: this.state.name, url: this.state.url}),
+      new AddPokemonMutation({viewer: this.props.viewer, name: this.state.name, url: this.state.url, trainerId: this.props.viewer.allTrainers.edges[0].node.id}),
       {
         onSuccess: () => this.setState({name: '', url: ''}),
       }
@@ -107,6 +107,13 @@ export default Relay.createContainer(BrowserView, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
+        allTrainers(first: 1) {
+            edges {
+                node {
+                    id
+                }
+            }
+        }
         allPokemons (first: 1000) {
           edges {
             node {

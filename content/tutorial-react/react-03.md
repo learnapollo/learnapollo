@@ -159,7 +159,7 @@ Note the use of `this.props.data.Trainer.ownedPokemons.length` that displays the
 
 Cool, so now we can see all the pokemons we own in our pokedex. Verify that in your browser by visiting [http://localhost:3000](http://localhost:3000). If everything is working, we can now continue to implement a detailed view of a single pokemon when we click on a `PokemonPreview` component. Have a look at the `PokemonCard` component in `src/components/PokemonCard.js` that we prepared for you. It renders a pokemon passed in as a prop from its parent, the `PokemonPage` component in `src/components/PokemonPage.js`.
 
-We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPage` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
+We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPreview` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
 
 ```js
 render () {

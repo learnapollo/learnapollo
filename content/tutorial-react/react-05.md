@@ -129,7 +129,7 @@ const AddPokemonCardWithMutation = graphql(createPokemonMutation)(withRouter(Add
 export default AddPokemonCardWithMutation
 ```
 
-But wait, why don't we supply the needed variables to the mutation? Let's find out!
+But wait, how do we supply the needed variables to the mutation? Let's find out!
 
 ### Using mutations in components
 

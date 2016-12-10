@@ -87,14 +87,14 @@ and define the new fragment just before `propTypes` are defined:
 
 ```js
 static fragments = {
-pokemon: gql`
-  fragment PokemonCardHeaderPokemon on Pokemon {
-    name
-    trainer {
+  pokemon: gql`
+    fragment PokemonCardHeaderPokemon on Pokemon {
       name
+      trainer {
+        name
+      }
     }
-  }
-`
+  `
 }
 ```
 

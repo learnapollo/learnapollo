@@ -22,12 +22,12 @@ yarn start # or npm start
 
 ## Adding information to the pokemon page
 
-Before we add additional content to our components, let's take a step back. Right now, `PokedexPage` defines a `PokemonQuery` that fetches the pokemon needed to render the `PokemonCard` component. This results in a few disadvantages when we want to make changes later:
+Before we add additional content to our components, let's take a step back. Right now, `PokemonPage` defines a `PokemonQuery` that fetches the pokemon needed to render the `PokemonCard` component. This results in a few disadvantages when we want to make changes later:
 
-* if the data requirements of the `PokemonCard` component change, we have to go back to the `PokedexPage` and add additional fields to the `PokemonQuery`
+* if the data requirements of the `PokemonCard` component change, we have to go back to the `PokemonPage` and add additional fields to the `PokemonQuery`
 * if we want to include `PokemonCard` in a another component, we will have to duplicate the `PokemonQuery`, resulting in possible errors when we have to change the query later and forget to update all places it's defined
 
-Therefore it would be great to let the `PokemonCard` component handle the declaration of its own data requirements. Then we could refer to this in the `PokedexPage` component to make sure that we  included all required data in the `PokemonQuery`. This is exactly the way fragments work.
+Therefore it would be great to let the `PokemonCard` component handle the declaration of its own data requirements. Then we could refer to this in the `PokemonPage` component to make sure that we  included all required data in the `PokemonQuery`. This is exactly the way fragments work.
 
 ### Defining a pokemon fragment in `PokemonCard`
 
@@ -57,7 +57,7 @@ static propTypes = {
 
 If the incoming `pokemon` prop is missing or doesn't have a field that is included in the fragment, we will see a warning when using the component.
 
-### Using the PokemonCardPokemon fragment in `PokedexPage`
+### Using the PokemonCardPokemon fragment in `PokemonPage`
 
 We updated our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
@@ -108,7 +108,7 @@ static propTypes = {
 
 ### Combining multiple fragments in `PokemonPage`
 
-Now we can include the `PokemonCardHeader` component just above the `PokemonCard` component in the render method of the `PokedexPage` component:
+Now we can include the `PokemonCardHeader` component just above the `PokemonCard` component in the render method of the `PokemonPage` component:
 
 ```js
 render () {
@@ -148,7 +148,7 @@ const PokemonQuery = gql`query PokemonQuery($id: ID!) {
 
 Note that there are fields that are included either in both fragments (like `name`) or only in one of them (like `url` or `trainer`).
 
-Let's add the new fragment when wrapping the `PokedexPage` component as well:
+Let's add the new fragment when wrapping the `PokemonPage` component as well:
 
 ```js
 const PokemonPageWithData = graphql(PokemonQuery, {

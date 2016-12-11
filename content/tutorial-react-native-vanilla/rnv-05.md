@@ -174,7 +174,7 @@ const client = new ApolloClient({
 })
 ```
 
-Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your browser and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
+Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your app and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
 
 ## Recap
 

@@ -62,7 +62,7 @@ export const chapters: Chapter[] = [
     title: '07 - Pagination',
     alias: 'react-07',
   }]),
-  new Chapter('React Native Exponent Track', 'tutorial-react-native', [{
+  new Chapter('React Native Exponent Track', 'tutorial-react-native-exponent', [{
     title: '01 - Getting Started',
     alias: 'rn-01',
   }, {

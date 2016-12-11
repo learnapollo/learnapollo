@@ -95,7 +95,12 @@ class BrowserView extends React.Component<Props, State> {
   private addPokemon = () => {
     analytics.track('overlay: create pokemon')
     Relay.Store.commitUpdate(
-      new AddPokemonMutation({viewer: this.props.viewer, name: this.state.name, url: this.state.url, trainerId: this.props.viewer.allTrainers.edges[0].node.id}),
+      new AddPokemonMutation({
+        viewer: this.props.viewer,
+        name: this.state.name,
+        url: this.state.url,
+        trainerId: this.props.viewer.allTrainers.edges[0].node.id
+      }),
       {
         onSuccess: () => this.setState({name: '', url: ''}),
       }

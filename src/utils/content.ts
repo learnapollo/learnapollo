@@ -80,13 +80,13 @@ export const chapters: Chapter[] = [
   }, {
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
-  }]),  
+  }]),
   new Chapter('React Native Exponent Track', 'tutorial-react-native-exponent', [{
     title: '01 - Getting Started',
     alias: 'rn-01',
   }, {
     title: '02 - Basic Queries',
-    alias: 'rn-02'
+    alias: 'rn-02',
   }, {
     title: '03 - Advanced Queries',
     alias: 'rn-03',

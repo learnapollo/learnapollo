@@ -78,6 +78,21 @@ export const chapters: Chapter[] = [
   new Chapter('React Native Vanilla Track', 'tutorial-react-native-vanilla', [{
     title: '01 - Getting Started',
     alias: 'rnv-01',
+  }, {
+    title: '02 - Basic Queries',
+    alias: 'rnv-02',
+  }, {
+    title: '03 - Advanced Queries',
+    alias: 'rnv-03',
+  }, {
+    title: '04 - Fragments',
+    alias: 'rnv-04',
+  }, {
+    title: '05 - Basic Mutations',
+    alias: 'rnv-05',
+  }, {
+    title: '06 - Multiple Mutations',
+    alias: 'rnv-06',
   }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',

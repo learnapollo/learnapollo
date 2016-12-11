@@ -67,7 +67,7 @@ Open `src/package.json` to have a look what packages we are using.
 * `apollo-client` - the core package exposes the vanilla JS Apollo Client which provides the core functionality
 * `react-apollo` - the React integration exposes the `ApolloProvider` that can be used to wrap other React components, allowing them to send queries and mutations
 
-Now go ahead and import the following things at the top of `src/client.js`:
+Now go ahead and import the following at the top of `src/client.js`:
 
 ```js
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
@@ -84,7 +84,7 @@ const client = new ApolloClient({
 })
 ```
 
-If you signed up with GitHub and downloaded the example, we already inserted your individual GraphQL endpoint here.
+If you signed up with GitHub and downloaded the example, we already inserted your individual GraphQL endpoint for the following exercises.
 
 ### Connecting Apollo Client to our React Components
 

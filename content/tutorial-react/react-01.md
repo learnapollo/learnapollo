@@ -13,7 +13,7 @@ We will see a generic greeting in our pokedex at the end of this exercise:
 
 ## Introduction
 
-If you signed up with GitHub, should have received your own `pokedex-react`. Alternatively, clone the [repository from GitHub](https://github.com/learnapollo/pokedex-react).
+Sign up with GitHub to receive your own `pokedex-react` here:
 
 <!-- __DOWNLOAD_REACT__ -->
 

@@ -228,11 +228,11 @@ class App extends React.Component<Props, State> {
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
-        <div className={styles.content}>
+        <div className={`${styles.content} ${this.state.showLayover ? styles.layoverPadding : ''}`}>
           {this.props.children}
           {previousSubchapter &&
           <div
-            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               <Icon
@@ -255,7 +255,7 @@ class App extends React.Component<Props, State> {
             this.state.storedState.skippedAuth
           ) &&
           <div
-            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
               <span className={`${styles.jumpDetail}`}>

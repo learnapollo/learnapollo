@@ -62,19 +62,6 @@ export const chapters: Chapter[] = [
     title: '07 - Pagination',
     alias: 'react-07',
   }]),
-  new Chapter('React Native Exponent Track', 'tutorial-react-native-exponent', [{
-    title: '01 - Getting Started',
-    alias: 'rn-01',
-  }, {
-    title: '02 - Basic Queries',
-    alias: 'rn-02'
-  }, {
-    title: '03 - Advanced Queries',
-    alias: 'rn-03',
-  },{
-    title: '04 - Fragments',
-    alias: 'rn-04',
-  }]),
   new Chapter('React Native Vanilla Track', 'tutorial-react-native-vanilla', [{
     title: '01 - Getting Started',
     alias: 'rnv-01',
@@ -93,6 +80,19 @@ export const chapters: Chapter[] = [
   }, {
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
+  }]),  
+  new Chapter('React Native Exponent Track', 'tutorial-react-native-exponent', [{
+    title: '01 - Getting Started',
+    alias: 'rn-01',
+  }, {
+    title: '02 - Basic Queries',
+    alias: 'rn-02'
+  }, {
+    title: '03 - Advanced Queries',
+    alias: 'rn-03',
+  },{
+    title: '04 - Fragments',
+    alias: 'rn-04',
   }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',

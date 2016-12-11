@@ -13,14 +13,14 @@ We will see a generic greeting in our pokedex at the end of this exercise:
 
 ## Introduction
 
-Sign up with GitHub to receive your own `pokedex-react` here:
+If you've signed up with GitHub, you can receive your own `pokedex-react-native-vanilla` here:
 
 <!-- __DOWNLOAD_RNVANILLA__ -->
 
 Now change to the first exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react/exercise-01
+cd pokedex-react-native-vanilla/exercise-01
 yarn install # or npm install
 ```
 

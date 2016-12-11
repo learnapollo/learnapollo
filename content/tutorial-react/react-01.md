@@ -1,6 +1,6 @@
 # Tutorial 01 - Getting Started
 
-Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native or Angular 2 over React, head over to the respective tutorial track.
+Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native Vanilla or React Native Exponent over React, head over to the respective tutorial track.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TiqPHEzSOg0" frameborder="0" allowfullscreen></iframe>
 

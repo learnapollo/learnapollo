@@ -133,7 +133,7 @@ type Pokemon {
 ```
 
 As we can see, the server stores the owned pokemons of each trainer, exactly the information that we need!
-We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `url` and `name` in the nested selection:
+We can now add the `ownedPokemons` field to our `TrainerQuery` in the `Pokedex` component. Let's include the `id`, `url` and `name` in the nested selection:
 
 ```js
 const TrainerQuery = gql`query TrainerQuery($name: String!) {

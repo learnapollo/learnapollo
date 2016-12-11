@@ -94,6 +94,10 @@ export const chapters: Chapter[] = [
     title: '04 - Fragments',
     alias: 'rn-04',
   }]),
+  new Chapter('Angular 2 Track', 'tutorial-angular', [{
+    title: 'Playground',
+    alias: 'playground',
+  }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',
     alias: 'excursion-01',

@@ -34,13 +34,17 @@ Therefore it would be great to let the `PokemonCard` component handle the declar
 To help you get started using fragments, we implemented them already in `PokemonCard`. There, we make use of the package `graphql-anywhere` to define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just before defining the `propTypes`:
 
 ```js
-static fragments = {
-pokemon: gql`
-  fragment PokemonCardPokemon on Pokemon {
-    url
-    name
+export default class PokemonCard extends React.Component {
+
+  static fragments = {
+    pokemon: gql`
+      fragment PokemonCardPokemon on Pokemon {
+        url
+        name
+      }
+    `
   }
-`
+  // ...
 }
 ```
 

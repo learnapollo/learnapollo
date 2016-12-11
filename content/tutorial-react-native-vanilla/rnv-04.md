@@ -30,12 +30,19 @@ Therefore it would be great to let the `PokemonCard` component handle the declar
 
 ### Defining a pokemon fragment in `PokemonCard`
 
-We can make use of the package `graphql-anywhere` to define fragments. Let's define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just before defining the `propTypes`:
+We can make use of the package `graphql-anywhere` to define fragments. Let's define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just after the imports:
 
 ```js
-static fragments = {
+import React from 'react'
+import { propType } from 'graphql-anywhere'
+import gql from 'graphql-tag'
+
+import { View, TextInput, Image } from 'react-native'
+
+export const pokemonCardFragments = {
   pokemon: gql`
     fragment PokemonCardPokemon on Pokemon {
+      id
       url
       name
     }
@@ -43,13 +50,18 @@ static fragments = {
 }
 ```
 
-The fragment is called `PokemonCardPokemon`, because it is defined on the `PokemonCard` component and is a fragment for a `Pokemon`. Using this naming convention consistently can be helpful when using the fragment elsewhere.
+The fragment is called `PokemonCardPokemon`, because it is defined for the `PokemonCard` component and is a fragment for a `Pokemon`. Using this naming convention consistently can be helpful when using the fragment elsewhere.
 
 We can now replace the `pokemon` prop declaration in the `propTypes` object by using the new fragment and the `propType` function from `graphql-anywhere`:
 
 ```js
-static propTypes = {
-  pokemon: propType(PokemonCard.fragments.pokemon).isRequired,
+export default class PokemonCard extends React.Component {
+
+  static propTypes = {
+    pokemon: propType(pokemonCardFragments.pokemon).isRequired,
+  }
+
+  // ...
 }
 ```
 

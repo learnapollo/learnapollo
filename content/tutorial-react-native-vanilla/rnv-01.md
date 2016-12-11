@@ -15,13 +15,9 @@ We will see a generic greeting in our pokedex at the end of this exercise:
 
 Sign up with GitHub to receive your own `pokedex-react` here:
 
-<!-- __DOWNLOAD_REACT__ -->
+<!-- __DOWNLOAD_RNVANILLA__ -->
 
-Now change to the first exercise, install the dependencies and start the app from your console
-
-<!-- __DOWNLOAD_REACT__ -->
-
-Now change to the first exercise, install the dependencies and start the app from your console
+Now change to the first exercise and install the dependencies from your console:
 
 ```sh
 cd pokedex-react/exercise-01

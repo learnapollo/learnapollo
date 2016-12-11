@@ -119,6 +119,10 @@ export default class Markdown extends React.Component<Props, {}> {
           return <Download location={self.props.location} repository='pokedex-react' />
         }
 
+        if (props.literal.indexOf('__DOWNLOAD_RNVANILLA__') > -1) {
+          return <Download location={self.props.location} repository='pokedex-react-native-vanilla' />
+        }
+
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
           return <Sharing />
         }

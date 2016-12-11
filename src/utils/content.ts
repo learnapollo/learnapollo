@@ -40,7 +40,7 @@ export const chapters: Chapter[] = [
     title: 'Introduction',
     alias: 'get-started',
   }]),
-  new Chapter('React Track', 'tutorial-react', [{
+  new Chapter('React', 'tutorial-react', [{
     title: '01 - Getting Started',
     alias: 'react-01',
   }, {
@@ -62,7 +62,7 @@ export const chapters: Chapter[] = [
     title: '07 - Pagination',
     alias: 'react-07',
   }]),
-  new Chapter('React Native Vanilla Track', 'tutorial-react-native-vanilla', [{
+  new Chapter('React Native Vanilla', 'tutorial-react-native-vanilla', [{
     title: '01 - Getting Started',
     alias: 'rnv-01',
   }, {
@@ -81,18 +81,21 @@ export const chapters: Chapter[] = [
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
   }]),
-  new Chapter('React Native Exponent Track', 'tutorial-react-native-exponent', [{
+  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', [{
     title: '01 - Getting Started',
-    alias: 'rn-01',
+    alias: 'rne-01',
   }, {
     title: '02 - Basic Queries',
-    alias: 'rn-02',
+    alias: 'rne-02',
   }, {
     title: '03 - Advanced Queries',
-    alias: 'rn-03',
-  },{
+    alias: 'rne-03',
+  }, {
     title: '04 - Fragments',
-    alias: 'rn-04',
+    alias: 'rne-04',
+  }, {
+    title: '05 - Basic Mutations',
+    alias: 'rne-05',
   }]),
   new Chapter('Angular 2 Track', 'tutorial-angular', [{
     title: 'Playground',

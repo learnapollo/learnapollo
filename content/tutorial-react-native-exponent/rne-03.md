@@ -1,6 +1,6 @@
 # Tutorial 03 - Advanced Queries
 
-This is the third exercise in the **React Native Exponent Track** of this Apollo Client Tutorial! 
+This is the third exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
 
 ## Goal
 

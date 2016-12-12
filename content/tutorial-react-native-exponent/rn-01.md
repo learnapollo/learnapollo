@@ -21,14 +21,15 @@ Note that you can you raw react native too.
 
 ## Introduction
 
-If you signed up with GitHub, should have received your own `pokedex-react-native-native`.
-Alternatively, clone the [repository from GitHub](https://github.com/learnapollo/pokedex-react-native).
+If you've signed up with GitHub, you can receive your own `pokedex-react-native-exponent` here:
 
-Now change to the first exercise and install the dependencies from your console
+<!-- __DOWNLOAD_RNEXPONENT__ -->
+
+Now change to the first exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react-native/exercise-01-initial
-yarn install
+cd pokedex-react-native-exponent/exercise-01-initial
+yarn install # or npm install
 ```
 
 ## Getting Familiar

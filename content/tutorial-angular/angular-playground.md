@@ -1,4 +1,4 @@
-# Playground
+# Angular 2 Playground
 
 Right now, we only have a playground for Angular 2. Download the app, read the code and play around a bit!
 

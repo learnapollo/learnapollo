@@ -96,7 +96,11 @@ export const chapters: Chapter[] = [
   }]),
   new Chapter('Angular 2 Track', 'tutorial-angular', [{
     title: 'Playground',
-    alias: 'playground',
+    alias: 'angular-playground',
+  }]),
+  new Chapter('Vue.js Track', 'tutorial-vue', [{
+    title: 'Playground',
+    alias: 'vue-playground',
   }]),
   new Chapter('Excursions', 'excursions', [{
     title: '01 - Using the DevTools',

@@ -2,7 +2,7 @@
 
 This is the third exercise in the **React Track** of this Apollo Client Tutorial!
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/e4jZ1TUSC1Q" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e4jZ1TUSC1Q" frameborder="0" allowfullscreen></iframe>
 
 ## Goal
 

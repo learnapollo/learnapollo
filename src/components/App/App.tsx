@@ -7,6 +7,7 @@ import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
+import SharePanel from '../SharePanel/SharePanel'
 
 require('./style.css')
 
@@ -51,8 +52,9 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll, false)
+    if(getStoredState().initialLoadTimestamp == null) update(['initialLoadTimestamp'], Date.now());
 
+    window.addEventListener('scroll', this.onScroll, false)
     this.onScroll()
   }
 

@@ -136,7 +136,39 @@ Check if you got everthing right by running your project in XDE.
 Click the add button. Add the pokemon name and image URL and click the save button.
 
 Weird, the pokemon is not displayed right away, only after refreshing the page.
-We will fix that later (@todo).
+Exponent does not unmount the component when we are switching between screens. 
+Thus, the query is not executed again and the list not updated.
+
+We have too way of fixing this:
+- refetching when the list get focused again
+- update the list on mutation result, by providing a reducer that will change the internal state
+
+Lets focus for now on reloading the whole list : go and edit the `PokemonsList` component:
+
+```js
+import { createFocusAwareComponent } from '@exponent/ex-navigation';
+
+// ...
+
+@createFocusAwareComponent
+export class PokemonsList extends Component {
+  //...
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps;
+    if (!data.loading && !data.error) {
+      //...
+      if (nextProps.isFocused && !this.props.isFocused) {
+        this.props.data.refetch();
+      }
+    }
+  }
+
+}
+```
+
+If the screen wasn't focused, but is going to be foucsed on next frame, we call `refetch`and fire the list query again.
+
+Please open your project in the XDE and check that the adding a pokemon update the query.
 
 ## Recap
 

@@ -20,7 +20,7 @@ Exercises and solutions are available in separate folders in the provided zip fi
 between and compare different exercises and solutions.
 
 Apart from the self-contained Apollo tutorial, we plan to offer a few selected excursions that will zoom in on more specific
-topics such as the *Redux DevTools* or *optimistic UI*. The excursions are not necessary to finish the exercises, but
+topics such as the *Redux DevTools* or *Caching with Apollo Client*. The excursions are not necessary to finish the exercises, but
 can teach you a trick or two or give you a better understanding of specific concepts.
 
 ## The pokedex application

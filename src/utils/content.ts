@@ -97,11 +97,11 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('Angular 2 Track', 'tutorial-angular', [{
+  new Chapter('Angular 2', 'tutorial-angular', [{
     title: 'Playground',
     alias: 'angular-playground',
   }]),
-  new Chapter('Vue.js Track', 'tutorial-vue', [{
+  new Chapter('Vue.js', 'tutorial-vue', [{
     title: 'Playground',
     alias: 'vue-playground',
   }]),

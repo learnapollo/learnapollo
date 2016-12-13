@@ -82,34 +82,48 @@ export default class Sharing extends React.Component<Props, State> {
           </a>
         </div>
         <p>
-          If you need further help with Apollo or have any other questions, come and join our Slack:
+          In this tutorial, you used a <a href='http://graph.cool'>Graphcool</a> backend. With Graphcool, you can setup your own GraphQL backend in under 5 minutes.
         </p>
-        {this.state.slackSent &&
-        <strong>
-          Gotcha! Please check your emails and look for the #learnapollo channel after joining Slack.
-        </strong>
-        }
-        {!this.state.slackSent &&
-        <div
-          className='flex justify-center'
+        <video
+          ref='video'
+          src='http://graph.cool/videos/landing.mp4'
           style={{
-            marginBottom: '2rem',
+            width: '100%',
           }}
-        >
-          <input
-            type='text'
-            value={this.state.email}
-            placeholder='you@gmail.com'
-            className={styles.mail}
-            onKeyDown={this.submitOnEnter}
-            onChange={(e: any) => this.setState({ email: e.target.value } as State)}
+          autoPlay
+          ///playsInline https://github.com/facebook/react/releases/tag/v15.3.2
+          muted
+          loop
           />
-          <button className={styles.slackButton} onClick={this.submit}>
-            <img src={require('../../assets/images/slack_logo.png')}/>
-            Join Slack
-          </button>
-        </div>
-        }
+          <p>
+            If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack:
+          </p>
+          {this.state.slackSent &&
+          <strong>
+            Gotcha! Please check your emails and look for the #learnapollo channel after joining Slack.
+          </strong>
+          }
+          {!this.state.slackSent &&
+          <div
+            className='flex justify-center'
+            style={{
+              marginBottom: '2rem',
+            }}
+          >
+            <input
+              type='text'
+              value={this.state.email}
+              placeholder='you@gmail.com'
+              className={styles.mail}
+              onKeyDown={this.submitOnEnter}
+              onChange={(e: any) => this.setState({ email: e.target.value } as State)}
+            />
+            <button className={styles.slackButton} onClick={this.submit}>
+              <img src={require('../../assets/images/slack_logo.png')}/>
+              Join Slack
+            </button>
+          </div>
+          }
       </div>
     )
   }

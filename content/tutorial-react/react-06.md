@@ -2,12 +2,14 @@
 
 Welcome to the 6th exercise in the **React Track** of this Apollo Client Tutorial!
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mOS6WDixs8A" frameborder="0" allowfullscreen></iframe>
+
 ## Goal
 
 The **goal** of this exercise is to add the possibility to update and delete existing pokemons:
- 
+
 ![](../images/react-exercise-06-pokemonpage.png)
- 
+
 This will both let you increase your understanding of mutations as well as show you how you can add multiple mutations to the same component.
 
 ## Introduction
@@ -179,7 +181,7 @@ Check if you got everthing right by opening [http://localhost:3000](http://local
 
 If you played around a bit with deleting pokemons, you will notice that it is only reflected in our UI after we refresh the page.
 We already saw this issue in the last exercise with the creation of pokemons and fixed it by telling the Apollo Store how to uniquely identify objects in our application, namely by their `id` field. We also included the `Trainer` object in the mutation response of `createPokemon`:
- 
+
 ```js
 const createPokemonMutation = gql`
   mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
@@ -196,7 +198,7 @@ const createPokemonMutation = gql`
 ```
 
 What this does, is telling Apollo Client to refetch the trainer object and all its related pokemons whenever we create a new pokemon. Apollo Store identifies the trainer object by its `id` and it basically merges the known pokemons with all the pokemons in the mutation response. Even though this is highly inefficient, this works in our example.
- 
+
 Now the question is, if we can use the same logic for the deletion of pokemons. What if we changed the `deleteMutation` to also query the trainer and all its pokemons after the deletion of a pokemon?
 
 ```js
@@ -244,7 +246,7 @@ const createPokemonMutation = gql`
 `
 ```
 
-To learn more about handling the Apollo Store and get to know more efficient ways of handling situations like these, check out [the excursion about mutation results and optimistic UI](/content/excursions/excursion-02.md). 
+To learn more about handling the Apollo Store and get to know more efficient ways of handling situations like these, check out [the excursion about mutation results and optimistic UI](/content/excursions/excursion-02.md).
 
 ## Recap
 

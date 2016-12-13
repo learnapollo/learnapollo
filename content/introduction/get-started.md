@@ -11,12 +11,6 @@ Welcome to *Learn Apollo*, a hands-on tutorial for Apollo Client where you take 
 * Expand your understanding on different concepts through separate excursions
 * Access further resources and be able to enrich the community
 
-## The pokedex application
-
-![](../images/react-pokedex.png)
-
-Before you are ready with working on the pokedex application, we have to set you up with the necessary tools.
-
 ## The tutorial structure
 
 We offer different so called *tutorial tracks* to work on the Pokedex application. Choose between React, React Native Vanilla,
@@ -28,6 +22,13 @@ between and compare different exercises and solutions.
 Apart from the self-contained Apollo tutorial, we plan to offer a few selected excursions that will zoom in on more specific
 topics such as the *Redux DevTools* or *optimistic UI*. The excursions are not necessary to finish the exercises, but
 can teach you a trick or two or give you a better understanding of specific concepts.
+
+## The pokedex application
+
+![](../images/react-pokedex.png)
+
+We will build a pokedex application where you are able to view the list of all the pokemons you own, view the details of a specific pokemon
+and create new pokemons or delete or update existing pokemons. Before you are ready with working on the pokedex application, we have to set you up with the necessary tools.
 
 ## Environment setup
 

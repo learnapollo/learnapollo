@@ -47,11 +47,14 @@ class App extends React.Component<Props, State> {
       showNav: false,
     }
 
+    if (getStoredState().initialLoadTimestamp === null) {
+      update(['initialLoadTimestamp'], Date.now())
+    }
+
     this.onScroll = throttle(this.onScroll.bind(this), 100)
   }
 
   componentDidMount() {
-    if (getStoredState().initialLoadTimestamp == null) { update(['initialLoadTimestamp'], Date.now()) }
 
     window.addEventListener('scroll', this.onScroll, false)
     this.onScroll()

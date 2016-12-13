@@ -123,11 +123,20 @@ export const chapters: Chapter[] = [
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])
-const subchaptersWithMeta = chapters.map((chapter => chapter.subchapters.map((subchapter, index) => {
-  return Object.assign(subchapter, {
-    isLast: chapter.subchapters.length - 1 === index,
-  }) as SubchapterDataWithMeta
-}))).reduce((acc, s) => acc.concat(s), [])
+
+// adds `isLast` property and returns all subchapters
+const subchaptersWithMeta = chapters
+  .map(chapter => chapter.subchapters
+    .map((subchapter, index) => (
+        Object.assign(
+          {},
+          subchapter,
+          {isLast: chapter.subchapters.length - 1 === index}
+        ) as SubchapterDataWithMeta
+      )
+    )
+  )
+  .reduce((acc, s) => acc.concat(s), [])
 
 export function neighboorSubchapter(currentSubchapterAlias: string, forward: boolean): Subchapter | null {
   const index = subchapters.findIndex((s) => s.alias === currentSubchapterAlias)

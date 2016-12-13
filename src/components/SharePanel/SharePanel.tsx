@@ -6,36 +6,22 @@ const styles: any = require('./SharingPanel.module.styl')
 interface Props {
 }
 
-interface State {
-  display: boolean
-}
-
 type Size = 'large' | 'medium' | 'small'
 const millUntilDisplay = 3 * 60 * 1000
 
-export default class SharePanel extends React.Component<Props, State> {
+export default class SharePanel extends React.Component<Props, {}> {
   constructor(props) {
     super(props)
-    this.state = {
-      display: false,
-    }
 
     this.onResize = throttle(this.onResize.bind(this), 100)
   }
 
   componentDidMount() {
-    const lastTimestamp = getStoredState().initialLoadTimestamp
-    const currentTimestamp = Date.now()
-
-    if ((currentTimestamp - lastTimestamp) < millUntilDisplay) {
-      setTimeout(() => {
-        this.setState({display: true} as State)
-      }, (millUntilDisplay - (currentTimestamp - lastTimestamp)))
-    } else {
-      this.setState({display: true} as State)
-    }
-
     window.addEventListener('resize', this.onResize, false)
+
+    if (!this.isDisplayed()) {
+      setTimeout(this.forceUpdate.bind(this), millUntilDisplay)
+    }
   }
 
   onResize(e) {
@@ -43,14 +29,17 @@ export default class SharePanel extends React.Component<Props, State> {
   }
 
   render() {
+    if (!this.isDisplayed()) {
+      return null
+    }
 
     const displayMode: Size = ((w: number): Size => {
       if (w <= 1600) {
-        return 'small' as Size
+        return 'small'
       } else if (w <= 2000) {
-        return 'medium' as Size
+        return 'medium'
       } else {
-        return 'large' as Size
+        return 'large'
       }
     })(window.innerWidth)
 
@@ -59,10 +48,10 @@ export default class SharePanel extends React.Component<Props, State> {
 
     return (
       <div className='flex justify-center'>
-        {this.state.display &&
-        <div className={'right-0 mt5 ph3 bg-black-05-opaque ' + (displayMode !== 'small' ? 'fixed' : '')}
-             style={{top: '18vh', maxWidth: (displayMode === 'medium' ? '16rem' : '40rem')}}>
-
+        <div
+          className={'right-0 mt5 ph3 bg-black-05-opaque ' + (displayMode !== 'small' ? 'fixed' : '')}
+          style={{top: '18vh', maxWidth: (displayMode === 'medium' ? '16rem' : '40rem')}}
+        >
           <h3 className='accent' style={{fontWeight: 400}}>Liked Learn Apollo so far?</h3>
           <p style={{color: 'black', opacity: 0.4}}>
             Please consider sharing it so that other people can enjoy it too.
@@ -92,8 +81,13 @@ export default class SharePanel extends React.Component<Props, State> {
             </a>
           </div>
         </div>
-        }
       </div>
     )
+  }
+
+  private isDisplayed = () => {
+    const lastTimestamp = getStoredState().initialLoadTimestamp
+    const currentTimestamp = Date.now()
+    return (currentTimestamp - lastTimestamp) >= millUntilDisplay
   }
 }

@@ -208,19 +208,22 @@ class App extends React.Component<Props, State> {
           {this.state.storedState.user && this.state.storedState.user.projectId &&
           <div
             className={`
-              fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}
+              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-column bg-accent pointer ${styles.serverButton}
             `}
             style={{ width: 269, height: 90 }}
             onClick={this.openLayover}
           >
-            <Icon
-              src={require('../../assets/icons/graph-logo.svg')}
-              width={22}
-              height={24}
-              className='pt1'
-              color='#fff'
-            />
-            <span className='white f3 pl2'>GraphQL Server</span>
+            <div className='flex-row flex'>
+              <Icon
+                src={require('../../assets/icons/graph-logo.svg')}
+                width={22}
+                height={24}
+                className='pt1'
+                color='#fff'
+              />
+              <span className='white f3 pl2'>GraphQL Server</span>
+            </div>
+            <span className='white'>powered by Graphcool</span>
           </div>
           }
         </div>

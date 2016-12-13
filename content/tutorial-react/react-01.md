@@ -1,12 +1,12 @@
 # Tutorial 01 - Getting Started
 
-Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native Vanilla or React Native Exponent over React, head over to the respective tutorial track.
+Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native, Angular 2 or Vue.js over React, head over to the respective tutorial track.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TiqPHEzSOg0" frameborder="0" allowfullscreen></iframe>
 
 ## Goal
 
-The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React and with the App structure of the Pokedex.
+The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React and with the app structure of the Pokedex.
 
 We will see a generic greeting in our pokedex at the end of this exercise:
 ![](../images/react-exercise-01-pokedex.png)
@@ -25,11 +25,11 @@ yarn install # or npm install
 yarn start # or npm start
 ```
 
-## Getting Familiar with the App
+## Getting Familiar with the app
 
 Let's take a moment to get more familiar with the structure of the app.
 
-The starting point for our App is `src/index.js` At the moment, all that happens here is setting up the router to render the `Pokedex` component for the `/` route path:
+The starting point for our app is `src/index.js`. At the moment, all that happens here is setting up the router to render the `Pokedex` component for the `/` route path:
 
 ```js
 ReactDOM.render((
@@ -41,9 +41,9 @@ ReactDOM.render((
 )
 ```
 
-## Adding Apollo Client to the App
+## Adding Apollo Client to the app
 
-Let's see how we can add Apollo Client to our App together by adding these changes to `src/index.js`.
+We can add Apollo Client to our app by adding the following changes to `src/index.js`.
 
 ### Package Dependencies
 
@@ -61,7 +61,7 @@ import { ApolloProvider } from 'react-apollo'
 
 ### Configuring Apollo Client with our GraphQL server
 
-Now we can connect Apollo Client with our GraphQL server in `src/index.js` by configuring the network layer. Paste the following right after the imports in `src/index.js`:
+Now we can connect Apollo Client with our GraphQL server by configuring the network layer. Paste the following right after the imports in `src/index.js`:
 
 ```js
 const client = new ApolloClient({
@@ -69,9 +69,9 @@ const client = new ApolloClient({
 })
 ```
 
-If you signed up with GitHub and downloaded the example, we already inserted your individual GraphQL endpoint for the following exercises.
+If you signed up with GitHub and downloaded the example, we already took care of this step for the following exercises.
 
-### Connecting Apollo Client to our React Components
+### Connecting Apollo Client to our React components
 
 To allow our React components to issue GraphQL queries and mutations through the client we wrap them with the `ApolloProvider` component in `src/index.js `from the `react-apollo` package. Go ahead and update the call to `ReactDOM.render` in `src/index.js`:
 
@@ -91,15 +91,15 @@ As we are using `react-router` to handle our routes, we wrap the `Router` compon
 
 > Note: You don't have to put `ApolloProvider` on the highest level of the component hierarchy - however, every component that wants to use Apollo Client needs to be a direct or indirect child of `ApolloProvider` in the component hierarchy.
 
-Our Pokedex component lives in `'src/components/Pokedex.js'`. Currently, it only contains a generic greeting, but that will change soon! We will further expand this component in the following exercises to give an overview about all the pokemon in your Pokedex as well as the possibility to add new pokemons or update existing ones. But for now, let's make sure you are ready to go.
+Our Pokedex component lives in `src/components/Pokedex.js`. Currently, it only contains a generic greeting, but that will change soon! We will further expand this component in the following exercises to give an overview about all the pokemon in your pokedex as well as the possibility to add new pokemons or update existing ones. But for now, let's make sure you are ready to go.
 
-## Starting the App
+## Starting the app
 
 To confirm your environment is all correctly setup, open [http://localhost:3000](http://localhost:3000) in your browser and you should see the greeting from the Pokedex component.
 
 ## Recap
 
-Great, you did it! You successfully ran the React App and got familiar with its general structure. Let's quickly summarize what we learned so far:
+Great, you did it! You successfully ran the React app and got familiar with its general structure. Let's quickly summarize what we learned so far:
 
 * To use **Apollo Client**, we need to import it from `apollo-client` and setup its **networkInterface**
 * We can **issue queries and mutations** in our React components by wrapping them in the **Apollo Provider** found in `react-apollo`

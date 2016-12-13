@@ -14,7 +14,7 @@ We will learn how to query information from a GraphQL server with Apollo Client.
 
 ## Introduction
 
-Move to the second exercise, install the dependencies and start the Pokedex React App from your console
+Move to the second exercise, install the dependencies and start the pokedex React app from your console
 
 ```sh
 cd pokedex-react/exercise-02
@@ -22,7 +22,7 @@ yarn install # or npm install
 yarn start # or npm start
 ```
 
-As you saw before, the schema exposed by our GraphQL server includes the following models
+The schema exposed by our GraphQL server includes the following models
 
 ```graphql
 type Trainer {
@@ -71,7 +71,9 @@ const TrainerQuery = gql`query TrainerQuery {
 }`
 ```
 
-If you signed up with GitHub, we already inserted the name you signed up with. But how do we use this query in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
+If you signed up with GitHub, we already inserted your name in this query.
+
+But how do we access the query result in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
 
 ```js
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)
@@ -94,8 +96,8 @@ static propTypes = {
 The `data` object provides several things, in particular
 
 * `data.loading` signifies whether a query is currently being sent to the server and we are waiting for the query response
+* If something went wrong with the query and errors are returned, `data.error` will contain detailed information
 * once `loading` is `false`, we know that the query response arrived and all the fields from the query are available via `data`. In our case, this is a `Trainer` object with the `id` and `name` properties, available at `data.Trainer`
-* If something went wrong with the query and errors are returned, `data.error` will contain detailed information.
 
 So let's now change the message to display the name of the trainer once `loading` is `false` and no error occured:
 
@@ -125,7 +127,6 @@ render () {
 Now let's put the previous steps together and modify our Pokedex component in `src/components/Pokedex.js`. First, we need to include the new dependencies:
 
 ```js
-// add the required dependencies
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 ```
@@ -190,7 +191,7 @@ If you finished all the changes to `src/components/Pokedex.js` successfully, ope
 
 Nice, you executed your first GraphQL query with Apollo Client and used it to display your trainer name. In this exercise we learned a lot! Let's recap that:
 
-* The shape of valid queries depend on the **schema from the GraphQL server**.
-* Before executing them, we have to **define queries using the `gql` tag** from the `graphql-tag` package.
+* The shape of valid queries depend on the **schema from the GraphQL server** (explore them in the data browser on this page!)
+* Before executing them, we have to **define queries using the `gql` tag** from the `graphql-tag` package
 * **Wrapping a component with `graphql`** from `react-apollo` using a query injects the `data` prop to the inner component
-* The **`data` prop contains the fields of the query, once `data.loading` is `false`**. Before that, we can render a loading state by using `data.loading`.
+* The **`data` prop contains the fields of the query, once `data.loading` is `false`**. We can render a loading state as long as `data.loading` if `true`.

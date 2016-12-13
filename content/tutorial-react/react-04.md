@@ -14,7 +14,7 @@ We will use fragments and learn how they can be used to define data requirements
 
 ## Introduction
 
-Change to the 4th exercise, install the dependencies and run the Pokedex React App from your console
+Change to the 4th exercise, install the dependencies and run the pokedex React app from your console
 
 ```sh
 cd pokedex-react/exercise-04
@@ -50,7 +50,7 @@ export default class PokemonCard extends React.Component {
 }
 ```
 
-The fragment is name `PokemonCardPokemon`, because it is defined on the `PokemonCard` component and is a fragment for a `Pokemon`. Using this naming convention consistently can be helpful when using the fragment elsewhere.
+The fragment is called `PokemonCardPokemon`, because it is defined on the `PokemonCard` component and is a fragment for a `Pokemon`. Using this naming convention consistently can be helpful when using the fragment elsewhere.
 
 We also replaced the `pokemon` prop declaration in the `propTypes` object by using the new fragment and the `propType` function from `graphql-anywhere`:
 
@@ -83,7 +83,7 @@ We can see that the `PokemonPage` component doesn't need to know anything about 
 
 ### Defining a pokemon fragment in `PokemonCardHeader`
 
-Now it's your turn to use fragments! You should use the same steps to define a `PokemonCardHeaderPokemon` fragment in the `PokemonCardHeader` component that you can find in `src/components/PokemonCardHeader.js`. First, you have to import `propType` from `graphql-anywhere`
+Now it's your turn to use fragments! You should follow the same steps to define a `PokemonCardHeaderPokemon` fragment in the `PokemonCardHeader` component that you can find in `src/components/PokemonCardHeader.js`. First, you have to import `propType` from `graphql-anywhere`
 
 ```js
 import { propType } from 'graphql-anywhere'
@@ -92,19 +92,23 @@ import { propType } from 'graphql-anywhere'
 and define the new fragment just before `propTypes` are defined:
 
 ```js
-static fragments = {
-  pokemon: gql`
-    fragment PokemonCardHeaderPokemon on Pokemon {
-      name
-      trainer {
+export default class PokemonCardHeader extends React.Component {
+
+  static fragments = {
+    pokemon: gql`
+      fragment PokemonCardHeaderPokemon on Pokemon {
         name
+        trainer {
+          name
+        }
       }
-    }
-  `
+    `
+  }
+  // ...
 }
 ```
 
-Note that this fragment includes different fields as the other fragment we saw before. That's because the `PokemonCardHeader` component needs different information of the pokemon object than the `PokemonCard` component. As we did before, use the fragment now to define the `pokemon` `propType`:
+Note that this fragment includes different fields than the other fragment we saw before. That's because the `PokemonCardHeader` component needs different information of the pokemon object than the `PokemonCard` component. As we did before, use the fragment now to define the `pokemon` `propType`:
 
 ```js
 static propTypes = {
@@ -152,7 +156,7 @@ const PokemonQuery = gql`query PokemonQuery($id: ID!) {
 `
 ```
 
-Note that there are fields that are included either in both fragments (like `name`) or only in one of them (like `url` or `trainer`).
+Note that there are fields that are included either in both fragments (like `name`) or only in one of them (like `url` or `trainer`). Combining fragments like this merges the fields, so `name` will be included only once in the query, for example.
 
 ### Filtering objects with fragments
 
@@ -194,7 +198,7 @@ Check if you got everthing right by opening [http://localhost:3000](http://local
 
 ## Recap
 
-Congratulations, you increased the modularity of your components by introducing fragments. We learned a lot about fragments, let's do a quick recap:
+Congratulations, you increased the modularity of your components by introducing fragments. We learned a lot about fragments in GraphQL, let's do a quick recap:
 
 * **Co-located fragments** help to decouple the declaration of data requirements
 * Using **multiple fragments** in a parent component is easy and merges the selected fields of the different child components

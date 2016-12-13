@@ -14,7 +14,7 @@ A button in the pokedex will redirect to the new component. After creating the p
 
 ![](../images/react-exercise-05-pokedex.png)
 
-Data changes in GraphQL are done by using mutations, so it's time for us to learn about them.
+Data changes in GraphQL are handled by mutations, so it's time for us to learn about them.
 
 ## Introduction
 
@@ -106,7 +106,7 @@ export default class AddPokemonPreview extends React.Component {
 
 ### Adding the createPokemon mutation to `AddPokemonCard`
 
-Right now, the `AddPokemonCard` doesn't do too much. As we want to create a new pokemon node at the server, now is the time to think about the right mutation for this. Let's first think about the data that is needed for creating a new pokemon. Of course, we need the name and the image URL of the new pokemon. Additionally we also need the trainer id to relate the pokemon to the trainer and vice-versa. The mutation we need to use is called `createPokemon`, which leaves us with the following mutation:
+Right now, the `AddPokemonCard` doesn't do too much. As we want to create a new pokemon node at the server, now is the time to think about the right mutation for this. Let's first think about the data that is needed for creating a new pokemon. Of course, we need the name and the image URL of the new pokemon. Additionally we also need the trainer id to relate the pokemon with the trainer. The mutation we need to use is called `createPokemon`. Putting this all together leaves us with the following mutation:
 
 ```js
 const createPokemonMutation = gql`
@@ -170,6 +170,10 @@ const client = new ApolloClient({
 ```
 
 Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your browser and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
+
+## Excursion: Caching with Apollo Client
+
+Find out more about in the excursion about [caching with Apollo Client](/exercises/excursion-02).
 
 ## Recap
 

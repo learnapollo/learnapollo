@@ -16,7 +16,7 @@ Upon clicking on a pokemon in this list, we will see a detailed view of that pok
 
 ## Introduction
 
-Move to the third exercise, install the dependencies and start the Pokedex React App from your console
+Move to the third exercise, install the dependencies and start the pokedex React app from your console
 
 ```sh
 cd pokedex-react/exercise-03
@@ -24,13 +24,13 @@ yarn install # or npm install
 yarn start # or npm start
 ```
 
-## Display a list of pokemon with advanced queries
+## Display a list of pokemons with advanced queries
 
 Before we start working directly on our goal to show the pokemons a trainer owns, let's take some time to get more familiar with some of the available options when using queries.
 
 ### Static Query Variables
 
-One of the available query options are variables. A common use case for query variables is when a query argument depends of some external factor, like a route parameter. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
+One of the available query options are variables. A common use case for query variables is when a query argument depends of some external factor, like a route parameter. We will see that use case shortly, but for now we are introducing a static query variable to the `TrainerQuery`. This is how the query looked like at the end of the last exercise:
 
 ```js
 const TrainerQuery = gql`query TrainerQuery {
@@ -124,36 +124,35 @@ const TrainerQuery = gql`query TrainerQuery($name: String!) {
 }`
 ```
 
-Once the query has finished, `this.props.data.Trainer` in the `Pokedex` component contains the `ownedPokemons` object that gives access to the information we selected. We can now map over the pokemons in `ownedPokemons` to include the `PokemonPreview` components in the `Pokedex` component:
+Once the query has finished, `this.props.data.Trainer` in the `Pokedex` component contains the `ownedPokemons` object that gives access to the information we selected. We can now map over the pokemons in `ownedPokemons` to display them using `PokemonPreview` components in the `render` method of `Pokedex`:
 
 ```js
 render () {
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
-
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpexted error occured</div>)
-    }
-
-    return (
-      <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pt4'>
-          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-        </div>
-        <div className='flex flex-wrap items-stretch pt5 center mw7'>
-          {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
-            <PokemonPreview key={pokemon.id} pokemon={pokemon} />
-          )}
-        </div>
-      </div>
-    )
+  if (this.props.data.loading) {
+    return (<div>Loading</div>)
   }
+
+  if (this.props.data.error) {
+    console.log(this.props.data.error)
+    return (<div>An unexpexted error occured</div>)
+  }
+
+  return (
+    <div className='w-100 bg-light-gray min-vh-100'>
+      <div className='tc pt4'>
+        Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
+      </div>
+      <div className='flex flex-wrap items-stretch pt5 center mw7'>
+        {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
+          <PokemonPreview key={pokemon.id} pokemon={pokemon} />
+        )}
+      </div>
+    </div>
+  )
+}
 ```
 
 Note the use of `this.props.data.Trainer.ownedPokemons.length` that displays the correct amount of pokemons.
-
 
 ### Dynamic Query Variables
 
@@ -248,9 +247,9 @@ class PokemonPage extends React.Component {
 }
 ```
 
-Note that we introduced the new required `data` prop and guarded its usage again with the boolean `data.loading`. If an error occurs, we notify the user.
+Note that we introduced the new required `data` prop and guarded its usage again with `data.loading`. If an error occurs, we notify the user.
 
-Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons. Click on a pokemon preview to move over to the detailed view. Click the cancel button to return back to your pokedex.
+Open [http://localhost:3000](http://localhost:3000) in your browser and you should see a list of pokemons. Click on a pokemon preview to see its detailed view. Click the cancel button to return back to your pokedex.
 
 ## Recap
 

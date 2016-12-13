@@ -91,7 +91,7 @@ export default class Sharing extends React.Component<Props, State> {
             width: '100%',
           }}
           autoPlay
-          playsInline //https://github.com/facebook/react/releases/tag/v15.3.2
+          ///playsInline https://github.com/facebook/react/releases/tag/v15.3.2
           muted
           loop
           />

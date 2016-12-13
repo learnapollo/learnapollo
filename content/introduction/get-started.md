@@ -34,8 +34,7 @@ and create new pokemons or delete or update existing pokemons. Before you are re
 
 You only need [Node](https://nodejs.org) and a Node package manager like [yarn](https://yarnpkg.com/en/docs/install)
 or [npm](https://www.npmjs.com/) to get started with working on the Pokedex application. Usually, Apollo Client
-requires you to set up a GraphQL server on your own. However we already prepared your own GraphQL server and set it up
-properly for you, if you sign in with Github.
+requires you to set up a GraphQL server on your own. However, iff you sign up with GitHub, we automatically prepare your individual GraphQL server powered by [Graphcool](http://graph.cool). With Graphcool, you can setup your own GraphQL backend in under 5 minutes.
 
 This means you can start working on the pokedex application without worrying about configuring your
 own GraphQL server. Request your individual GraphQL endpoint and receive an integrated GraphQL Server console

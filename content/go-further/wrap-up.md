@@ -2,10 +2,11 @@
 
 <!-- __INJECT_SHARING__ -->
 
-## Further Resources
+## Further resources
 
-* [http://graphql.org/](http://graphql.org/)
-* [http://dev.apollodata.com](http://dev.apollodata.com)
+* [Official GraphQL website](http://graphql.org/)
+* [Official Apollo documentation](http://dev.apollodata.com)
+* [Official Graphcool documentation](http://graph.cool/docs)
 
 ### Analytics
 

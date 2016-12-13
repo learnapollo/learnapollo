@@ -7,5 +7,5 @@ You can follow along the several **steps** that are provided to finish the exerc
 **concepts** of Apollo Client which will be explained as soon as we encounter them with a short **recap** of the
 most important parts at the end of the exercise.
 
-Now it's time to get started! Choose your favorite Tutorial Track and let's 
+Now it's time to get started! Choose your favorite Tutorial Track and let's
 create a Pokedex App together!

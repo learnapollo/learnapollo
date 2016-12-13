@@ -11,7 +11,7 @@ interface State {
 }
 
 type Size = 'large' | 'medium' | 'small'
-const millUntilDisplay = 10*1000;
+const millUntilDisplay = 3*60*1000;
 
 export default class SharePanel extends React.Component<Props, State> {
   constructor(props){

@@ -7,7 +7,6 @@ import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
-import SharePanel from '../SharePanel/SharePanel'
 
 require('./style.css')
 
@@ -52,7 +51,7 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    if(getStoredState().initialLoadTimestamp == null) update(['initialLoadTimestamp'], Date.now());
+    if (getStoredState().initialLoadTimestamp == null) { update(['initialLoadTimestamp'], Date.now()) }
 
     window.addEventListener('scroll', this.onScroll, false)
     this.onScroll()
@@ -210,7 +209,8 @@ class App extends React.Component<Props, State> {
           {this.state.storedState.user && this.state.storedState.user.projectId &&
           <div
             className={`
-              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-column bg-accent pointer ${styles.serverButton}
+              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-column bg-accent pointer
+              ${styles.serverButton}
             `}
             style={{ width: 269, height: 90 }}
             onClick={this.openLayover}
@@ -237,7 +237,9 @@ class App extends React.Component<Props, State> {
           {this.props.children}
           {previousSubchapter &&
           <div
-            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons
+            ? styles.jumpActive : ''} ${this.state.showLayover
+            ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               <Icon
@@ -260,7 +262,9 @@ class App extends React.Component<Props, State> {
             this.state.storedState.skippedAuth
           ) &&
           <div
-            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
+            ? styles.jumpActive : ''} ${this.state.showLayover
+            ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
               <span className={`${styles.jumpDetail}`}>

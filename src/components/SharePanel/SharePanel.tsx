@@ -54,7 +54,7 @@ export default class SharePanel extends React.Component<Props, State> {
       }
     })(window.innerWidth)
 
-    const shareTitle = 'I just learned how to develop apps with Apollo and GraphQL'
+    const shareTitle = 'Learning how to develop apps with Apollo and GraphQL using LearnApollo!'
     const shareUrl = encodeURIComponent(window.location.origin)
 
     return (
@@ -63,7 +63,7 @@ export default class SharePanel extends React.Component<Props, State> {
         <div className={'right-0 mt5 ph3 bg-black-05-opaque ' + (displayMode !== 'small' ? 'fixed' : '')}
              style={{top: '18vh', maxWidth: (displayMode === 'medium' ? '16rem' : '40rem')}}>
 
-          <h3 className='accent' style={{fontWeight: 400}}>Liked Learn Apollo So far?</h3>
+          <h3 className='accent' style={{fontWeight: 400}}>Liked Learn Apollo so far?</h3>
           <p style={{color: 'black', opacity: 0.4}}>
             Please consider sharing it so that other people can enjoy it too.
           </p>

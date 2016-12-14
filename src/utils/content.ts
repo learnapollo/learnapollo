@@ -23,6 +23,7 @@ interface SubchapterDataWithMeta extends SubchapterData {
 
 export interface Track {
   alias: string
+  title: string
 }
 
 const parser = new Parser()
@@ -130,7 +131,10 @@ export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).redu
 export const tracks: Track[] = chapters
   .slice(1, subchapters.length - 1)
   .map((chapter) => {
-    return {alias: chapter.alias}
+    return {
+      alias: chapter.alias,
+      title: chapter.title,
+    }
   })
 
 // adds `isLast` property and returns all subchapters

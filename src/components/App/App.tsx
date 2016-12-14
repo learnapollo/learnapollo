@@ -53,14 +53,16 @@ class App extends React.Component<Props, State> {
       update(['initialLoadTimestamp'], Date.now())
     }
 
+    this.onScroll = throttle(this.onScroll.bind(this), 100)
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
     const currentChapter = location.pathname.split('/')[1]
     if (tracks.findIndex((c) => c.alias === currentChapter) !== -1) {
       this.setTrack(currentChapter)
     } else if (!('selectedTrack' in getStoredState())) {
       this.setTrack('tutorial-react')
     }
-
-    this.onScroll = throttle(this.onScroll.bind(this), 100)
   }
 
   componentDidMount() {
@@ -167,7 +169,8 @@ class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-                {shouldDisplaySubtitles(selectedTrack,
+                {shouldDisplaySubtitles(
+                  selectedTrack,
                   index,
                   chapters,
                   chapter,

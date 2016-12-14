@@ -7,6 +7,7 @@ import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
 import Download from '../Download/Download'
+import SetTrack from '../SetTrack/SetTrack'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -139,6 +140,9 @@ export default class Markdown extends React.Component<Props, {}> {
           return <Sharing />
         }
 
+        if (props.literal.indexOf('__TRACK_SELECTION__') > -1) {
+          return <SetTrack />
+        }
         return ReactRenderer.renderers.HtmlBlock(props)
       },
     }
@@ -163,3 +167,4 @@ export default class Markdown extends React.Component<Props, {}> {
     )
   }
 }
+

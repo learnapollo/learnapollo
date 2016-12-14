@@ -31,6 +31,10 @@ a {
     background: var(--color-gray-2);
 }
 
+.bg-black-05-opaque {
+    background-color: #F3F3F3;
+}
+
 .accent {
     color: var(--color-accent);
 }

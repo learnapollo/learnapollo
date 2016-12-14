@@ -47,12 +47,16 @@ class App extends React.Component<Props, State> {
       showNav: false,
     }
 
+    if (getStoredState().initialLoadTimestamp === null) {
+      update(['initialLoadTimestamp'], Date.now())
+    }
+
     this.onScroll = throttle(this.onScroll.bind(this), 100)
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll, false)
 
+    window.addEventListener('scroll', this.onScroll, false)
     this.onScroll()
   }
 
@@ -208,19 +212,23 @@ class App extends React.Component<Props, State> {
           {this.state.storedState.user && this.state.storedState.user.projectId &&
           <div
             className={`
-              fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}
+              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-column bg-accent pointer
+              ${styles.serverButton}
             `}
             style={{ width: 269, height: 90 }}
             onClick={this.openLayover}
           >
-            <Icon
-              src={require('../../assets/icons/graph-logo.svg')}
-              width={22}
-              height={24}
-              className='pt1'
-              color='#fff'
-            />
-            <span className='white f3 pl2'>GraphQL Server</span>
+            <div className='flex-row flex'>
+              <Icon
+                src={require('../../assets/icons/graph-logo.svg')}
+                width={22}
+                height={24}
+                className='pt1'
+                color='#fff'
+              />
+              <span className='white f3 pl2'>GraphQL Server</span>
+            </div>
+            <span className='white'>powered by Graphcool</span>
           </div>
           }
         </div>
@@ -232,7 +240,9 @@ class App extends React.Component<Props, State> {
           {this.props.children}
           {previousSubchapter &&
           <div
-            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons
+            ? styles.jumpActive : ''} ${this.state.showLayover
+            ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               <Icon
@@ -255,7 +265,9 @@ class App extends React.Component<Props, State> {
             this.state.storedState.skippedAuth
           ) &&
           <div
-            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} ${this.state.showLayover ? styles.layoverPadding : ''} z-0`}
+            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
+            ? styles.jumpActive : ''} ${this.state.showLayover
+            ? styles.layoverPadding : ''} z-0`}
           >
             <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
               <span className={`${styles.jumpDetail}`}>

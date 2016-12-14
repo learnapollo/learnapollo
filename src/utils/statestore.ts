@@ -10,12 +10,14 @@ export interface StoredState {
   hasRead: { [key: string]: boolean }
   user: UserData | null
   skippedAuth: boolean
+  initialLoadTimestamp: number | null
 }
 
 const initialState: StoredState = {
   hasRead: {},
   user: null,
   skippedAuth: false,
+  initialLoadTimestamp: null,
 }
 
 let state: StoredState = window.localStorage.hasOwnProperty('learnapollo_state')

@@ -40,6 +40,6 @@ You need these tools to get started:
 * a Node package manager like [yarn](https://yarnpkg.com/en/docs/install)
 or [npm](https://www.npmjs.com/)
 
-Usually, you need to set up a GraphQL server on your own if you want to use GraphQL clients like Apollo Client. However, this tutorial provides you with your individual GraphQL server powered by [Graphcool](http://graph.cool). This means you can dive right into the action, without spending hours on building a backend first.
+Usually, you need to set up a GraphQL server on your own if you want to use GraphQL clients like Apollo Client. However, this tutorial provides you with your individual GraphQL server hosted by [Graphcool](http://graph.cool). This means you can dive right into the action, without spending hours on building a backend first.
 
 <!-- __INJECT_GRAPHQL_ENDPOINT__ -->

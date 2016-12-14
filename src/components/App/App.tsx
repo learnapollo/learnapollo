@@ -61,25 +61,20 @@ class App extends React.Component<Props, State> {
     window.addEventListener('scroll', this.onScroll, false)
 
     this.onScroll()
-
-	initSmooch().then(this.updateSmoochButton)
-
+    initSmooch().then(this.updateSmoochButton)
     this.updateSidebarTrack()
   }
 
   componentDidUpdate() {
     this.onScroll()
-
-	this.updateSmoochButton()
+    this.updateSmoochButton()
+    this.updateSidebarTrack()
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false)
 
     this.updateSmoochButton()
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
     this.updateSidebarTrack()
   }
 

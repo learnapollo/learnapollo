@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {getStoredState} from '../../utils/statestore'
 import {throttle} from 'lodash'
-import classNames from 'classnames'
+import * as classNames from 'classnames'
 const styles: any = require('./SharingPanel.module.styl')
 
 interface Props {
@@ -44,7 +44,7 @@ export default class SharePanel extends React.Component<Props, {}> {
       }
     })(window.innerWidth)
 
-    const shareTitle = 'Learning how to develop apps with Apollo and GraphQL using LearnApollo!'
+    const shareTitle = 'Learning how to develop apps with Apollo and GraphQL using Learn Apollo!'
     const shareUrl = encodeURIComponent(window.location.origin)
 
     return (

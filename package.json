@@ -7,6 +7,7 @@
     }
   },
   "dependencies": {
+    "@types/classnames": "^0.0.32",
     "@types/commonmark": "^0.22.29",
     "@types/immutable": "^3.8.4",
     "@types/js-cookie": "^2.0.28",

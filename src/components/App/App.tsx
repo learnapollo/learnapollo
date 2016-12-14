@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as classNames from 'classnames'
 import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
@@ -8,7 +9,6 @@ import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 import {tracks, Chapter} from '../../utils/content'
-import classNames from 'classnames'
 import {initSmooch} from '../../utils/smooch'
 
 require('./style.css')

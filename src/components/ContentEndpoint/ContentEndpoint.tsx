@@ -68,7 +68,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
             onChange={() => null}
           />
           <span className='black-50 pl2 f5'>
-            Star Learnapollo on Github
+            Star Learn Apollo on Github
           </span>
         </div>
       </div>

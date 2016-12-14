@@ -14,6 +14,7 @@ interface Props {
 }
 
 interface State {
+  allowStar: boolean
 }
 
 interface Context {
@@ -31,11 +32,16 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     updateStoredState: React.PropTypes.func.isRequired,
   }
 
+  state = {
+    allowStar: true,
+  }
+
   context: Context
 
   render() {
     const redirectUrl = `${window.location.origin}${window.location.pathname}#graphql-endpoint`
-    const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email&redirect_uri=${redirectUrl}` // tslint:disable-line
+    const scope = this.state.allowStar ? 'user:email,public_repo' : 'user:email'
+    const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=${scope}&redirect_uri=${redirectUrl}` // tslint:disable-line
 
     if (this.props.location.query.code) {
       return (
@@ -43,17 +49,36 @@ export default class ContentEndpoint extends React.Component<Props, State> {
       )
     }
 
+    const endpoint = (
+      <div className='mb5'>
+        <TrackLink
+          href={githubUrl}
+          className={`pa3 pointer ${styles.getEndpoint}`}
+          eventMessage='open github auth'
+        >
+          Get GraphQL Endpoint
+        </TrackLink>
+        <div
+          onClick={() => this.setState({ allowStar: !this.state.allowStar } as State)}
+          className='flex items-center justify-center pointer'
+        >
+          <input
+            type='checkbox'
+            checked={this.state.allowStar}
+            onChange={() => null}
+          />
+          <span className='black-50 pl2 f5'>
+            Star Learnapollo on Github
+          </span>
+        </div>
+      </div>
+    )
+
     if (this.context.storedState.skippedAuth) {
       return (
-        <div>
+        <div id='graphql-endpoint'>
           <div className='tc'>
-            <TrackLink
-              href={githubUrl}
-              className={`pa3 pointer ${styles.getEndpoint}`}
-              eventMessage='open github auth'
-            >
-              Get GraphQL Endpoint
-            </TrackLink>
+            {endpoint}
           </div>
           <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom' />
         </div>
@@ -62,7 +87,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
 
     if (this.context.storedState.user && this.context.storedState.user.projectId) {
       return (
-        <div className='flex flex-column'>
+        <div className='flex flex-column' id='graphql-endpoint'>
           Congrats, this is your endpoint:
           <div className={`pa3 flex ${styles.showEndpoint}`}>
             <span>
@@ -90,14 +115,8 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     }
 
     return (
-      <div className='tc'>
-        <TrackLink
-          href={githubUrl}
-          className={`pa3 pointer ${styles.getEndpoint}`}
-          eventMessage='open github auth'
-        >
-          Get GraphQL Endpoint
-        </TrackLink>
+      <div className='tc' id='graphql-endpoint'>
+        {endpoint}
         <div className='db mb4 pointer accent f6' onClick={this.skipEndpoint}>
           Read on without GraphQL endpoint (non-interactive)
         </div>

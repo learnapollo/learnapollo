@@ -18,6 +18,7 @@ declare interface Window {
   mixpanel: any
 }
 
+declare var Smooch: any
 declare var analytics: any
 declare var mixpanel: any
 declare var __LAST_UPDATE__: string

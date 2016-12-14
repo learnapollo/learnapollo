@@ -9,6 +9,7 @@ import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 import {tracks, Chapter} from '../../utils/content'
 import classNames from 'classnames'
+import {initSmooch} from '../../utils/smooch'
 
 require('./style.css')
 
@@ -63,9 +64,11 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-
     window.addEventListener('scroll', this.onScroll, false)
+
     this.onScroll()
+
+    initSmooch()
   }
 
   componentDidUpdate() {
@@ -257,7 +260,7 @@ class App extends React.Component<Props, State> {
             />
             <div className='flex-column flex'>
               <span className='white f3 pl2'>GraphQL Server</span>
-              <span className='white pl2'>powered by Graphcool</span>
+              <span className='white pl2'>Hosted by Graphcool</span>
             </div>
           </div>
           }
@@ -375,6 +378,8 @@ class App extends React.Component<Props, State> {
     this.updateStoredState(['user'], {projectId, email, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
+
+    initSmooch()
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {

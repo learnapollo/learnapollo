@@ -40,10 +40,6 @@ You need these tools to get started:
 * a Node package manager like [yarn](https://yarnpkg.com/en/docs/install)
 or [npm](https://www.npmjs.com/)
 
-Usually, Apollo Client requires you to set up a GraphQL server on your own. However, if you sign up with GitHub, we automatically prepare your individual GraphQL server powered by [Graphcool](http://graph.cool). With Graphcool, you can setup your own GraphQL backend in under 5 minutes.
-
-This means you can start working on the pokedex application without worrying about configuring your
-own GraphQL server. Request your individual GraphQL endpoint and receive an integrated GraphQL Server console
-right in your browser!
+Usually, you need to set up a GraphQL server on your own if you want to use GraphQL clients like Apollo Client. However, this tutorial provides you with your individual GraphQL server powered by [Graphcool](http://graph.cool). This means you can dive right into the action, without spending hours on building a backend first.
 
 <!-- __INJECT_GRAPHQL_ENDPOINT__ -->

@@ -52,14 +52,31 @@ export default class Sharing extends React.Component<Props, State> {
           You did it! Well done!
         </h1>
         <p>
-          We hope you enjoyed learning Apollo.
-          We put a lot of work into these resources and hope to reach as many developers as possible.
+          We hope you enjoyed learning Apollo and you are ready to use it in one of your next projects. If you liked to work with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL server in minutes so you can focus on building awesome applications.
+        </p>
+        <video
+          ref='video'
+          src='http://graph.cool/videos/landing.mp4'
+          style={{
+            width: '100%',
+            fontWeight: 300,
+            paddingTop: 30,
+            paddingBottom: '0.92rem',
+            marginTop: 'calc(2.3rem - 30px)',
+            marginBottom: '1.6rem',
+          }}
+          autoPlay
+          ///playsInline https://github.com/facebook/react/releases/tag/v15.3.2
+          muted
+          loop
+        />
+        <p>
+          We put a lot of work into these resources and hope it helps as many developers as possible getting started with Apollo.
           You can help us by sharing it:
         </p>
         <div
           className='flex justify-center'
           style={{
-            borderBottom: '1px solid rgba(0, 0, 0, 0.0980392)',
             paddingBottom: '2rem',
             marginBottom: '2rem',
           }}
@@ -81,49 +98,36 @@ export default class Sharing extends React.Component<Props, State> {
             Share on Facebook
           </a>
         </div>
+
         <p>
-          In this tutorial, you used a <a href='http://graph.cool'>Graphcool</a> backend. With Graphcool, you can setup your own GraphQL backend in under 5 minutes.
+          If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack:
         </p>
-        <video
-          ref='video'
-          src='http://graph.cool/videos/landing.mp4'
+        {this.state.slackSent &&
+        <strong>
+          Gotcha! Please check your emails and look for the #learnapollo channel after joining Slack.
+        </strong>
+        }
+        {!this.state.slackSent &&
+        <div
+          className='flex justify-center'
           style={{
-            width: '100%',
+            marginBottom: '2rem',
           }}
-          autoPlay
-          ///playsInline https://github.com/facebook/react/releases/tag/v15.3.2
-          muted
-          loop
+        >
+          <input
+            type='text'
+            value={this.state.email}
+            placeholder='you@gmail.com'
+            className={styles.mail}
+            onKeyDown={this.submitOnEnter}
+            onChange={(e: any) => this.setState({ email: e.target.value } as State)}
           />
-          <p>
-            If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack:
-          </p>
-          {this.state.slackSent &&
-          <strong>
-            Gotcha! Please check your emails and look for the #learnapollo channel after joining Slack.
-          </strong>
-          }
-          {!this.state.slackSent &&
-          <div
-            className='flex justify-center'
-            style={{
-              marginBottom: '2rem',
-            }}
-          >
-            <input
-              type='text'
-              value={this.state.email}
-              placeholder='you@gmail.com'
-              className={styles.mail}
-              onKeyDown={this.submitOnEnter}
-              onChange={(e: any) => this.setState({ email: e.target.value } as State)}
-            />
-            <button className={styles.slackButton} onClick={this.submit}>
-              <img src={require('../../assets/images/slack_logo.png')}/>
-              Join Slack
-            </button>
-          </div>
-          }
+          <button className={styles.slackButton} onClick={this.submit}>
+            <img src={require('../../assets/images/slack_logo.png')}/>
+            Join Slack
+          </button>
+        </div>
+        }
       </div>
     )
   }

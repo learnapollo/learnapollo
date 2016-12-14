@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {getStoredState} from '../../utils/statestore'
 import {throttle} from 'lodash'
+import classNames from 'classnames'
 const styles: any = require('./SharingPanel.module.styl')
 
 interface Props {
@@ -49,7 +50,7 @@ export default class SharePanel extends React.Component<Props, {}> {
     return (
       <div className='flex justify-center'>
         <div
-          className={'right-0 mt5 ph3 bg-black-05-opaque ' + (displayMode !== 'small' ? 'fixed' : '')}
+          className={classNames('right-0', 'mt5', 'ph3', 'bg-black-05-opaque', {'fixed': displayMode !== 'small' })}
           style={{top: '18vh', maxWidth: (displayMode === 'medium' ? '16rem' : '40rem')}}
         >
           <h3 className='accent' style={{fontWeight: 400}}>Liked Learn Apollo so far?</h3>
@@ -58,7 +59,13 @@ export default class SharePanel extends React.Component<Props, {}> {
           </p>
 
           <div
-            className={'flex justify-center '+ (displayMode === 'medium' ? 'flex-column' : '')}
+            className={classNames(
+               'flex',
+               'justify-center',
+               'items-center',
+               {
+                 'flex-column': displayMode === 'medium',
+               })}
             style={{
             paddingBottom: '2rem',
           }}
@@ -74,7 +81,7 @@ export default class SharePanel extends React.Component<Props, {}> {
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareTitle}`}
               target='_blank'
-              className={`ml2 ${styles.button}`}
+              className={classNames(styles.button, {'ml2': displayMode !== 'medium'})}
               style={{background: '#3b5998'}}
             >
               Share on Facebook

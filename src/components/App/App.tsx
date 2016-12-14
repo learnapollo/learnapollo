@@ -8,6 +8,7 @@ import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 import {tracks, Chapter} from '../../utils/content'
+import classNames from 'classnames'
 
 require('./style.css')
 
@@ -95,14 +96,13 @@ class App extends React.Component<Props, State> {
 
     const selectedTrack = getStoredState().selectedTrack
     const shouldDisplaySubtitles = (selectedTrack: Track,
-                              currentIndex: number,
-                              chapters: Chapter[],
-                              chapter: Chapter,
-                              chapterAliasFromUrl: string
-    ): boolean => {
+                                    currentIndex: number,
+                                    chapters: Chapter[],
+                                    chapter: Chapter,
+                                    chapterAliasFromUrl: string): boolean => {
       if (currentIndex === 0) {
         return true
-      } else if (currentIndex === chapters.length - 1 ) {
+      } else if (currentIndex === chapters.length - 1) {
         return true
       } else if (selectedTrack.alias === chapter.alias && chapterAliasFromUrl !== chapters[0].alias) {
         return true
@@ -165,10 +165,10 @@ class App extends React.Component<Props, State> {
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
                 {shouldDisplaySubtitles(selectedTrack,
-                                        index,
-                                        chapters,
-                                        chapter,
-                                        location.pathname.split('/')[1]
+                  index,
+                  chapters,
+                  chapter,
+                  location.pathname.split('/')[1]
                 ) && chapter.subchapters.map((subchapter) => (
                   <div
                     className='pb1'
@@ -242,23 +242,23 @@ class App extends React.Component<Props, State> {
           {this.state.storedState.user && this.state.storedState.user.projectId &&
           <div
             className={`
-              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-column bg-accent pointer
+              fixed bottom-0 left-0 flex fw3 items-center justify-center flex-row bg-accent pointer
               ${styles.serverButton}
             `}
             style={{ width: 269, height: 90 }}
             onClick={this.openLayover}
           >
-            <div className='flex-row flex'>
-              <Icon
-                src={require('../../assets/icons/graph-logo.svg')}
-                width={22}
-                height={24}
-                className='pt1'
-                color='#fff'
-              />
+            <Icon
+              src={require('../../assets/icons/graph-logo.svg')}
+              width={22}
+              height={24}
+              className='pt1'
+              color='#fff'
+            />
+            <div className='flex-column flex'>
               <span className='white f3 pl2'>GraphQL Server</span>
+              <span className='white pl2'>powered by Graphcool</span>
             </div>
-            <span className='white'>powered by Graphcool</span>
           </div>
           }
         </div>
@@ -270,9 +270,16 @@ class App extends React.Component<Props, State> {
           {this.props.children}
           {previousSubchapter &&
           <div
-            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons
-            ? styles.jumpActive : ''} ${this.state.showLayover
-            ? styles.layoverPadding : ''} z-0`}
+            className={
+              classNames( styles.jump,
+                          'z-0',
+                          styles.jumpLeft,
+                          {
+                            [styles.jumpActive]: this.state.expandNavButtons,
+                            [styles.layoverPadding]: this.state.showLayover,
+                          }
+              )
+            }
           >
             <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               <Icon

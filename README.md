@@ -2,7 +2,7 @@
 
 ![](https://learnapollo.org/images/twitter.png)
 
-Source code for [learnapollo.org](https://learnapollo.org)
+Source code for [Learn Apollo](https://learnapollo.com)
 
 ## Contribution
 
@@ -17,30 +17,26 @@ files in [`content`](https://github.com/learnapollo/learnapollo/tree/master/cont
 │   └── excursion-02.md
 ├── go-further
 │   ├── wrap-up.md
-├── images
-│   ├── demo.png
-│   ├── edges.png
-│   ├── favicon.png
-│   ├── playground.png
-│   └── pokedex.png
 ├── introduction
 │   ├── get-started-bottom.md
 │   ├── get-started.md
-│   └── introduction.md
-└── tutorial
+└── tutorial-react
     ├── react-01.md
     ├── react-02.md
     ├── react-03.md
     ├── react-04.md
     ├── react-05.md
-    └── react-06.md
+    ├── react-06.md
+    └── react-07.md
+└── ... 
 ```
 
 ## Development [![CircleCI](https://circleci.com/gh/learnapollo/learnapollo.svg?style=svg)](https://circleci.com/gh/learnapollo/learnapollo)
 
 ```sh
-npm install
-npm start # open localhost:4300
+yarn install # or npm install
+yarn start # or npm start
+# open localhost:4300
 ```
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)

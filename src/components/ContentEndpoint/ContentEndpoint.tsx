@@ -56,7 +56,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
           className={`pa3 pointer ${styles.getEndpoint}`}
           eventMessage='open github auth'
         >
-          Get GraphQL Endpoint
+          Get GraphQL Endpoint (via Github)
         </TrackLink>
         <div
           onClick={() => this.setState({ allowStar: !this.state.allowStar } as State)}

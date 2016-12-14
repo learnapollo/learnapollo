@@ -38,41 +38,13 @@ export default class Sharing extends React.Component<Props, State> {
 
     return (
       <div className='db'>
-        <h1
-          className='accent'
+        <p
           style={{
-            fontWeight: 300,
-            paddingTop: 30,
-            paddingBottom: '0.92rem',
-            marginTop: 'calc(2.3rem - 30px)',
-            marginBottom: '1.6rem',
-            borderBottom: '1px solid rgba(0, 0, 0, 0.0980392)',
+            paddingTop: '0.92rem',
           }}
         >
-          You did it! Well done!
-        </h1>
-        <p>
-          We hope you enjoyed learning Apollo and you are ready to use it in one of your next projects. If you liked to work with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL server in minutes so you can focus on building awesome applications.
-        </p>
-        <video
-          ref='video'
-          src='http://graph.cool/videos/landing.mp4'
-          style={{
-            width: '100%',
-            fontWeight: 300,
-            paddingTop: 30,
-            paddingBottom: '0.92rem',
-            marginTop: 'calc(2.3rem - 30px)',
-            marginBottom: '1.6rem',
-          }}
-          autoPlay
-          ///playsInline https://github.com/facebook/react/releases/tag/v15.3.2
-          muted
-          loop
-        />
-        <p>
-          We put a lot of work into these resources and hope it helps as many developers as possible getting started with Apollo.
-          You can help us by sharing it:
+          We hope you enjoyed learning Apollo! We put a lot of work into these resources and hope it helps as many developers as possible getting started with Apollo.
+          You can help us by sharing it.
         </p>
         <div
           className='flex justify-center'
@@ -98,9 +70,27 @@ export default class Sharing extends React.Component<Props, State> {
             Share on Facebook
           </a>
         </div>
-
+        <h1
+          className='accent'
+          style={{
+            fontWeight: 300,
+            paddingTop: 30,
+            paddingBottom: '0.92rem',
+            marginTop: 'calc(2.3rem - 30px)',
+            marginBottom: '1.6rem',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.0980392)',
+          }}
+        >
+          Setup a GraphQL backend for your next project
+        </h1>
         <p>
-          If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack:
+          If you liked working with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL backend in minutes so you can focus on building awesome applications.
+        </p>
+        <div className='w-100'>
+          <img src={'http://i.imgur.com/J0zGy6N.png'} />
+        </div>
+        <p>
+          If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack.
         </p>
         {this.state.slackSent &&
         <strong>

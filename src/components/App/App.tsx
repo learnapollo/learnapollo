@@ -49,6 +49,7 @@ class App extends React.Component<Props, State> {
       expandNavButtons: false,
       showNav: false,
     }
+
     if (getStoredState().initialLoadTimestamp === null) {
       update(['initialLoadTimestamp'], Date.now())
     }
@@ -61,20 +62,25 @@ class App extends React.Component<Props, State> {
 
     this.onScroll()
 
-    initSmooch()
+	initSmooch().then(this.updateSmoochButton)
 
     this.updateSidebarTrack()
   }
+
   componentDidUpdate() {
     this.onScroll()
-  }
 
-  componentWillReceiveProps(nextProps: Props) {
-    this.updateSidebarTrack()
+	this.updateSmoochButton()
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false)
+
+    this.updateSmoochButton()
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.updateSidebarTrack()
   }
 
   getChildContext() {
@@ -400,11 +406,20 @@ class App extends React.Component<Props, State> {
   private toggleNav = () => {
     this.setState({showNav: !this.state.showNav} as State)
   }
+
   private setTrack = (alias: String) => {
     const tracks = chapters.filter((c) => c.isTrack)
     const currentIndex = tracks.findIndex((c) => c.alias === alias)
     if (currentIndex !== -1) {
       update(['selectedTrackAlias'], tracks[currentIndex].alias)
+    }
+  }
+
+  private updateSmoochButton = () => {
+    const showsNextButton = !!neighboorSubchapter(this.props.params.subchapter, true) || this.state.expandNavButtons
+    const smoochButton = document.querySelector('#sk-holder #sk-messenger-button')
+    if (smoochButton) {
+      smoochButton.classList.toggle('inactive', !showsNextButton)
     }
   }
 

@@ -2,7 +2,7 @@
 
 ![](https://learnapollo.org/images/twitter.png)
 
-Source code for [learnapollo.org](https://learnapollo.org)
+Source code for [Learn Apollo](https://learnapollo.com)
 
 ## Contribution
 

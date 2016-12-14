@@ -8,6 +8,6 @@ export default () => {
   return {
     routes: chapterRoutes.concat(['/']),
     https: true,
-    hostname: 'https://learnapollo.org',
+    hostname: 'https://www.learnapollo.com',
   }
 }

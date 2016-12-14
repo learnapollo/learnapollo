@@ -4,11 +4,11 @@ import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias, Track} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
-import {tracks, Chapter} from '../../utils/content'
+import {Chapter} from '../../utils/content'
 import {initSmooch} from '../../utils/smooch'
 
 require('./style.css')
@@ -56,25 +56,21 @@ class App extends React.Component<Props, State> {
     this.onScroll = throttle(this.onScroll.bind(this), 100)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const currentChapter = location.pathname.split('/')[1]
-    if (tracks.findIndex((c) => c.alias === currentChapter) !== -1) {
-      this.setTrack(currentChapter)
-    } else if (!('selectedTrack' in getStoredState())) {
-      this.setTrack('tutorial-react')
-    }
-  }
-
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll, false)
 
     this.onScroll()
 
     initSmooch()
-  }
 
+    this.updateSidebarTrack()
+  }
   componentDidUpdate() {
     this.onScroll()
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.updateSidebarTrack()
   }
 
   componentWillUnmount() {
@@ -99,8 +95,8 @@ class App extends React.Component<Props, State> {
 
     const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
 
-    const selectedTrack = getStoredState().selectedTrack
-    const shouldDisplaySubtitles = (selectedTrack: Track,
+    const selectedTrackAlias: string = getStoredState().selectedTrackAlias
+    const shouldDisplaySubtitles = (selectedTrackAlias: string,
                                     currentIndex: number,
                                     chapters: Chapter[],
                                     chapter: Chapter,
@@ -109,7 +105,7 @@ class App extends React.Component<Props, State> {
         return true
       } else if (currentIndex === chapters.length - 1) {
         return true
-      } else if (selectedTrack.alias === chapter.alias && chapterAliasFromUrl !== chapters[0].alias) {
+      } else if (selectedTrackAlias === chapter.alias && chapterAliasFromUrl !== chapters[0].alias) {
         return true
       } else {
         return false
@@ -170,7 +166,7 @@ class App extends React.Component<Props, State> {
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
                 {shouldDisplaySubtitles(
-                  selectedTrack,
+                  selectedTrackAlias,
                   index,
                   chapters,
                   chapter,
@@ -405,9 +401,20 @@ class App extends React.Component<Props, State> {
     this.setState({showNav: !this.state.showNav} as State)
   }
   private setTrack = (alias: String) => {
-    const currentIndex = tracks.findIndex((item) => item.alias === alias)
+    const tracks = chapters.filter((c) => c.isTrack)
+    const currentIndex = tracks.findIndex((c) => c.alias === alias)
     if (currentIndex !== -1) {
-      update(['selectedTrack'], tracks[currentIndex])
+      update(['selectedTrackAlias'], tracks[currentIndex].alias)
+    }
+  }
+
+  private updateSidebarTrack() {
+    const currentChapterAlias = location.pathname.split('/')[1]
+    const index = chapters.findIndex((c) => c.alias === currentChapterAlias)
+    if (index !== -1 && chapters[index].isTrack) {
+      this.setTrack(currentChapterAlias)
+    } else if (!('selectedTrackAlias' in getStoredState())) {
+      this.setTrack('tutorial-react')
     }
   }
 }

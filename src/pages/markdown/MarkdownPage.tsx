@@ -4,7 +4,7 @@ import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
 import Icon from '../../components/Icon/Icon'
 import SharePanel from '../../components/SharePanel/SharePanel'
-import {tracks} from '../../utils/content';
+import {chapters} from '../../utils/content';
 const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
@@ -42,6 +42,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
 
   render() {
     const showSharePanel = () => {
+      const tracks = chapters.filter((c) => c.isTrack)
       const currentAlias = location.pathname.split('/')[1]
       return currentAlias !== tracks[0].alias || currentAlias === tracks[tracks.length - 1].alias
     }

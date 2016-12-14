@@ -1,5 +1,4 @@
 import * as Immutable from 'immutable'
-import {Track, tracks} from './content'
 
 interface UserData {
   projectId: string
@@ -12,7 +11,7 @@ export interface StoredState {
   user: UserData | null
   skippedAuth: boolean
   initialLoadTimestamp: number | null
-  selectedTrack: Track
+  selectedTrackAlias: string
 }
 
 const initialState: StoredState = {
@@ -20,7 +19,7 @@ const initialState: StoredState = {
   user: null,
   skippedAuth: false,
   initialLoadTimestamp: null,
-  selectedTrack: tracks[tracks.findIndex((item) => item.alias === 'tutorial-react')],
+  selectedTrackAlias: '',
 }
 
 let state: StoredState = window.localStorage.hasOwnProperty('learnapollo_state')

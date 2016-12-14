@@ -3,11 +3,13 @@ import {Parser, Node} from 'commonmark'
 export class Chapter {
   title: string
   alias: string
+  isTrack: boolean
   subchapters: Subchapter[]
 
-  constructor(title: string, alias: string, subchaptersData: SubchapterData[]) {
+  constructor(title: string, alias: string, isTrack: boolean, subchaptersData: SubchapterData[]) {
     this.title = title
     this.alias = alias
+    this.isTrack = isTrack
     this.subchapters = subchaptersData.map((d) => new Subchapter(d.title, d.alias, this))
   }
 }
@@ -19,11 +21,6 @@ interface SubchapterData {
 
 interface SubchapterDataWithMeta extends SubchapterData {
   isLast: boolean
-}
-
-export interface Track {
-  alias: string
-  title: string
 }
 
 const parser = new Parser()
@@ -45,11 +42,11 @@ class Subchapter {
 }
 
 export const chapters: Chapter[] = [
-  new Chapter('Overview', 'introduction', [{
+  new Chapter('Overview', 'introduction', false, [{
     title: 'Introduction',
     alias: 'get-started',
   }]),
-  new Chapter('React', 'tutorial-react', [{
+  new Chapter('React', 'tutorial-react', true, [{
     title: '01 - Getting Started',
     alias: 'react-01',
   }, {
@@ -71,7 +68,7 @@ export const chapters: Chapter[] = [
     title: '07 - Pagination',
     alias: 'react-07',
   }]),
-  new Chapter('React Native Vanilla', 'tutorial-react-native-vanilla', [{
+  new Chapter('React Native Vanilla', 'tutorial-react-native-vanilla', true, [{
     title: '01 - Getting Started',
     alias: 'rnv-01',
   }, {
@@ -90,7 +87,7 @@ export const chapters: Chapter[] = [
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
   }]),
-  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', [{
+  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, [{
     title: '01 - Getting Started',
     alias: 'rne-01',
   }, {
@@ -106,36 +103,28 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('Angular 2', 'tutorial-angular', [{
+  new Chapter('Angular 2', 'tutorial-angular', true, [{
     title: 'Playground',
     alias: 'angular-playground',
   }]),
-  new Chapter('Vue.js', 'tutorial-vue', [{
+  new Chapter('Vue.js', 'tutorial-vue', true, [{
     title: 'Playground',
     alias: 'vue-playground',
   }]),
-  new Chapter('Excursions', 'excursions', [{
+  new Chapter('Excursions', 'excursions', true, [{
     title: '01 - Using the DevTools',
     alias: 'excursion-01',
   }, {
     title: '02 - Mutation Results',
     alias: 'excursion-02',
   }]),
-  new Chapter('Go Further', 'go-further', [{
+  new Chapter('Go Further', 'go-further', false, [{
     title: 'Wrap Up',
     alias: 'wrap-up',
   }]),
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])
-export const tracks: Track[] = chapters
-  .slice(1, subchapters.length - 1)
-  .map((chapter) => {
-    return {
-      alias: chapter.alias,
-      title: chapter.title,
-    }
-  })
 
 // adds `isLast` property and returns all subchapters
 const subchaptersWithMeta = chapters

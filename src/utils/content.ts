@@ -17,10 +17,6 @@ interface SubchapterData {
   alias: string
 }
 
-interface SubchapterDataWithMeta extends SubchapterData {
-  isLast: boolean
-}
-
 const parser = new Parser()
 
 class Subchapter {
@@ -124,26 +120,11 @@ export const chapters: Chapter[] = [
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])
 
-// adds `isLast` property and returns all subchapters
-const subchaptersWithMeta = chapters
-  .map(chapter => chapter.subchapters
-    .map((subchapter, index) => (
-        Object.assign(
-          {},
-          subchapter,
-          {isLast: chapter.subchapters.length - 1 === index}
-        ) as SubchapterDataWithMeta
-      )
-    )
-  )
-  .reduce((acc, s) => acc.concat(s), [])
-
 export function neighboorSubchapter(currentSubchapterAlias: string, forward: boolean): Subchapter | null {
-  const index = subchapters.findIndex((s) => s.alias === currentSubchapterAlias)
-  const currentIndex = index === -1 ? 0 : index
+  const currentIndex = subchapters.findIndex((s) => s.alias === currentSubchapterAlias)
+
   if (forward && currentIndex + 1 <= subchapters.length) {
-    return subchaptersWithMeta[currentIndex].isLast && currentIndex !== 0 && currentIndex < subchapters.length - 1
-      ? subchapters[subchapters.length - 1] : subchapters[currentIndex + 1]
+    return subchapters[currentIndex + 1]
   } else if (!forward && currentIndex >= 1) {
     return subchapters[currentIndex - 1]
   }

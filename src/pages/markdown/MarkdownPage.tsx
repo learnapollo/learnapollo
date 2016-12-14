@@ -3,7 +3,6 @@ import {Node} from 'commonmark'
 import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
 import Icon from '../../components/Icon/Icon'
-import SharePanel from '../../components/SharePanel/SharePanel'
 const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
@@ -60,7 +59,6 @@ export default class MarkdownPage extends React.Component<Props, {}> {
             <span className='black'>Edit this page</span>
           </a>
         </div>
-        <SharePanel/>
       </div>
     )
   }

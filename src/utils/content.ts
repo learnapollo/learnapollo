@@ -1,6 +1,6 @@
 import {Parser, Node} from 'commonmark'
 
-class Chapter {
+export class Chapter {
   title: string
   alias: string
   subchapters: Subchapter[]
@@ -19,6 +19,10 @@ interface SubchapterData {
 
 interface SubchapterDataWithMeta extends SubchapterData {
   isLast: boolean
+}
+
+export interface Track {
+  alias: string
 }
 
 const parser = new Parser()
@@ -123,6 +127,11 @@ export const chapters: Chapter[] = [
 ]
 
 export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])
+export const tracks: Track[] = chapters
+  .slice(1, subchapters.length - 1)
+  .map((chapter) => {
+    return {alias: chapter.alias}
+  })
 
 // adds `isLast` property and returns all subchapters
 const subchaptersWithMeta = chapters

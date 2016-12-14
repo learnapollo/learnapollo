@@ -3,10 +3,11 @@ import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias, Track} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
+import {tracks, Chapter} from '../../utils/content'
 
 require('./style.css')
 
@@ -46,9 +47,15 @@ class App extends React.Component<Props, State> {
       expandNavButtons: false,
       showNav: false,
     }
-
     if (getStoredState().initialLoadTimestamp === null) {
       update(['initialLoadTimestamp'], Date.now())
+    }
+
+    const currentChapter = location.pathname.split('/')[1]
+    if (tracks.findIndex((c) => c.alias === currentChapter) !== -1) {
+      this.setTrack(currentChapter)
+    } else if (!('selectedTrack' in getStoredState())) {
+      this.setTrack('tutorial-react')
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -85,6 +92,24 @@ class App extends React.Component<Props, State> {
     const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
 
     const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
+
+    const selectedTrack = getStoredState().selectedTrack
+    const shouldDisplaySubtitles = (selectedTrack: Track,
+                              currentIndex: number,
+                              chapters: Chapter[],
+                              chapter: Chapter,
+                              chapterAliasFromUrl: string
+    ): boolean => {
+      if (currentIndex === 0) {
+        return true
+      } else if (currentIndex === chapters.length - 1 ) {
+        return true
+      } else if (selectedTrack.alias === chapter.alias && chapterAliasFromUrl !== chapters[0].alias) {
+        return true
+      } else {
+        return false
+      }
+    }
 
     return (
       <div className='flex row-reverse'>
@@ -131,7 +156,7 @@ class App extends React.Component<Props, State> {
                 <Link
                   className='fw6 ph4 pb3 black'
                   to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
-                  onClick={this.toggleNav}
+                  onClick={() => this.setTrack(chapter.alias)}
                   style={{
                     paddingBottom: '0.5rem',
                     paddingTop: '1rem',
@@ -139,7 +164,12 @@ class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-                {chapter.subchapters.map((subchapter) => (
+                {shouldDisplaySubtitles(selectedTrack,
+                                        index,
+                                        chapters,
+                                        chapter,
+                                        location.pathname.split('/')[1]
+                ) && chapter.subchapters.map((subchapter) => (
                   <div
                     className='pb1'
                     key={subchapter.alias}
@@ -358,6 +388,12 @@ class App extends React.Component<Props, State> {
 
   private toggleNav = () => {
     this.setState({showNav: !this.state.showNav} as State)
+  }
+  private setTrack = (alias: String) => {
+    const currentIndex = tracks.findIndex((item) => item.alias === alias)
+    if (currentIndex !== -1) {
+      update(['selectedTrack'], tracks[currentIndex])
+    }
   }
 }
 

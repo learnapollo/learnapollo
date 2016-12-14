@@ -52,7 +52,7 @@ export default class Sharing extends React.Component<Props, State> {
           You did it! Well done!
         </h1>
         <p>
-          We hope you enjoyed learning Apollo and you are ready to use it in one of your next projects. If you liked to work with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL server in minutes so you can focus on building awesome applications.
+          We hope you enjoyed learning Apollo and you are ready to use it in one of your next projects. If you liked working with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL server in minutes so you can focus on building awesome applications.
         </p>
         <video
           ref='video'

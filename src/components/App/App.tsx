@@ -7,6 +7,7 @@ import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
+import {initSmooch} from '../../utils/smooch'
 
 require('./style.css')
 
@@ -55,9 +56,11 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-
     window.addEventListener('scroll', this.onScroll, false)
+
     this.onScroll()
+
+    initSmooch()
   }
 
   componentDidUpdate() {
@@ -338,6 +341,8 @@ class App extends React.Component<Props, State> {
     this.updateStoredState(['user'], {projectId, email, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
+
+    initSmooch()
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {

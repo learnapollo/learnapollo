@@ -231,7 +231,7 @@ class App extends React.Component<Props, State> {
               />
               <span className='white f3 pl2'>GraphQL Server</span>
             </div>
-            <span className='white'>powered by Graphcool</span>
+            <span className='white'>Hosted by Graphcool</span>
           </div>
           }
         </div>

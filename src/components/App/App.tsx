@@ -60,15 +60,19 @@ class App extends React.Component<Props, State> {
 
     this.onScroll()
 
-    initSmooch()
+    initSmooch().then(this.updateSmoochButton)
   }
 
   componentDidUpdate() {
     this.onScroll()
+
+    this.updateSmoochButton()
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false)
+
+    this.updateSmoochButton()
   }
 
   getChildContext() {
@@ -363,6 +367,14 @@ class App extends React.Component<Props, State> {
 
   private toggleNav = () => {
     this.setState({showNav: !this.state.showNav} as State)
+  }
+
+  private updateSmoochButton = () => {
+    const showsNextButton = !!neighboorSubchapter(this.props.params.subchapter, true) || this.state.expandNavButtons
+    const smoochButton = document.querySelector('#sk-holder #sk-messenger-button')
+    if (smoochButton) {
+      smoochButton.classList.toggle('inactive', !showsNextButton)
+    }
   }
 }
 

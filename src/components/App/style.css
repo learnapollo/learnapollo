@@ -72,3 +72,16 @@ pre code {
   padding: 0 !important
 }
 
+/* Smooch button */
+#sk-holder #sk-messenger-button {
+  transition: margin-bottom 0.3s ease;
+  margin-bottom: 65px;
+}
+
+#sk-holder #sk-messenger-button.inactive {
+  margin-bottom: 0;
+}
+
+#sk-holder #sk-messenger-button svg path {
+  filter: url("#dropShadow") !important;
+}

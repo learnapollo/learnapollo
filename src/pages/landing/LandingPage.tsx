@@ -9,6 +9,14 @@ interface Props {
 
 export default class LandingPage extends React.Component<Props, {}> {
 
+  componentDidMount() {
+    this.toggleSmoochButton(false)
+  }
+
+  componentWillUnmount() {
+    this.toggleSmoochButton(true)
+  }
+
   render() {
     return (
       <div className={styles.root}>
@@ -48,5 +56,20 @@ export default class LandingPage extends React.Component<Props, {}> {
         </div>
       </div>
     )
+  }
+
+  private toggleSmoochButton = (visible: boolean) => {
+    const id = 'smooch-tmp-style'
+
+    if (visible) {
+      const style = document.getElementById(id)!
+      document.head.removeChild(style)
+    } else {
+      const style = document.createElement('style')
+      style.id = id
+      style.type = 'text/css'
+      style.appendChild(document.createTextNode('#sk-holder #sk-messenger-button { display: none; }'))
+      document.head.appendChild(style)
+    }
   }
 }

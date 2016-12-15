@@ -22,7 +22,7 @@ export default class LandingPage extends React.Component<Props, {}> {
       <div className={styles.root}>
         <header>
           <h1>Learn Apollo</h1>
-          <h2>A hands-on tutorial for Apollo Client</h2>
+          <h2>A hands-on tutorial for Apollo GraphQL Client</h2>
         </header>
         <dl className={styles.contents}>
           <dt>

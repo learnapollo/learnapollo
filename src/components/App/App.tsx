@@ -95,8 +95,8 @@ class App extends React.Component<Props, State> {
     const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
 
     const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
-
     const selectedTrackAlias: string = getStoredState().selectedTrackAlias
+
     const shouldDisplaySubtitles = (selectedTrackAlias: string,
                                     currentIndex: number,
                                     chapters: Chapter[],
@@ -403,8 +403,11 @@ class App extends React.Component<Props, State> {
   }
 
   private setTrack = (alias: String) => {
-    const tracks = chapters.filter((c) => c.isTrack)
+    const tracks = chapters.filter((c) => {
+      return c.isTrack
+    })
     const currentIndex = tracks.findIndex((c) => c.alias === alias)
+
     if (currentIndex !== -1) {
       update(['selectedTrackAlias'], tracks[currentIndex].alias)
     }

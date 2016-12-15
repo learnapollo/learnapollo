@@ -102,7 +102,7 @@ class App extends React.Component<Props, State> {
                                     chapters: Chapter[],
                                     chapter: Chapter,
                                     chapterAliasFromUrl: string): boolean => {
-      if (currentIndex === 0) {
+      if (!chapter.isTrack) {
         return true
       } else if (currentIndex === chapters.length - 1) {
         return true

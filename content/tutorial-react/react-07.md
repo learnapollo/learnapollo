@@ -123,21 +123,20 @@ const TrainerQuery = gql`
 What values do we pass to these variables? For `first`, we always pass `POKEMONS_PER_PAGE` which is three in our case. However, the value we pass for the `skip` variable depends on the current page, that is accessible with the `params` props. We can access the props when setting query options like this:
 
 ```js@src/components/Pokedex.js
-const PokedexWithData = graphql(TrainerQuery,{
-    options: (ownProps) => ({
-      variables: {
-        name: '__NAME__',
-        skip: (
-          ownProps.params &&
-          ownProps.params.page &&
-          (ownProps.params.page - 1) * POKEMONS_PER_PAGE
-        ) || 0,
-        first: POKEMONS_PER_PAGE,
-      },
-      forceFetch: true,
-    })
-  }
-)(withRouter(Pokedex))
+const PokedexWithData = graphql(TrainerQuery, {
+  options: (ownProps) => ({
+    variables: {
+      name: '__NAME__',
+      skip: (
+        ownProps.params &&
+        ownProps.params.page &&
+        (ownProps.params.page - 1) * POKEMONS_PER_PAGE
+      ) || 0,
+      first: POKEMONS_PER_PAGE,
+    },
+    forceFetch: true,
+  })
+})(withRouter(Pokedex))
 
 export default PokedexWithData
 ```

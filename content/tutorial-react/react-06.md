@@ -135,12 +135,25 @@ const deletePokemon = gql`
 
 ### Combining multiple mutations when wrapping components
 
-Now it's time for you to inject these mutations to `PokemonCard`. By default, injected mutations are accessible with `this.props.mutate`. But how can we inject multiple mutations? We simply provide a `name` option:
+Now it's time for you to inject these mutations to `PokemonCard`. By default, injected mutations are accessible with `this.props.mutate`. But how can we inject multiple mutations? There are several approaches to accomplish this, we will use `compose` from the `react-apollo` package here.
+
+First, import `compose` in `src/components/PokemonCard.js`
 
 ```js@src/components/PokemonCard.js
-const PokemonCardWithMutations =  graphql(deletePokemon, {name : 'deletePokemon'})(
-  graphql(updatePokemon, {name: 'updatePokemon'})(PokemonCard)
-)
+import { compose } from 'react-apollo'
+```
+
+Then use it and provide the `name` option for each mutation:
+
+```js@src/components/PokemonCard.js
+const PokemonCardWithMutations =  compose(
+  graphql(deletePokemon, {
+    name : 'deletePokemon'
+  }),
+  graphql(updatePokemon, {
+    name: 'updatePokemon'
+  })
+)(PokemonCard)
 
 export default PokemonCardWithMutations
 ```
@@ -228,8 +241,7 @@ const PokedexWithData = graphql(TrainerQuery, {
     },
     forceFetch: true,
   }
-}
-)(Pokedex)
+})(Pokedex)
 
 export default PokedexWithData
 ```

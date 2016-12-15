@@ -61,12 +61,11 @@ Note that we have to denote the variable type as well, `String!` signifying a re
 ```js@src/component/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
-      variables: {
-        name: "__NAME__"
-      }
+    variables: {
+      name: "__NAME__"
     }
   }
-)(Pokedex)
+})(Pokedex)
 ```
 
 ### Nested Queries
@@ -208,12 +207,11 @@ with:
 ```js@src/component/PokemonPage.js
 const PokemonPageWithQuery = graphql(PokemonQuery, {
   options: (ownProps) => ({
-      variables: {
-        id: ownProps.params.pokemonId
-      }
-    })
-  }
-)(withRouter(PokemonPage))
+    variables: {
+      id: ownProps.params.pokemonId
+    }
+  })
+})(withRouter(PokemonPage))
 
 export default PokemonPageWithQuery
 ```

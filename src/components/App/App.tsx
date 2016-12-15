@@ -4,7 +4,7 @@ import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias, Chapter} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
@@ -96,6 +96,9 @@ class App extends React.Component<Props, State> {
     const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
     const selectedTrackAlias: string = getStoredState().selectedTrackAlias
 
+    const shouldDisplaySubchapters = (chapter: Chapter, selectedTrackAlias: string): boolean => {
+      return !chapter.isTrack || selectedTrackAlias === chapter.alias
+    }
     return (
       <div className='flex row-reverse'>
         <div className={styles.hamburger} onClick={this.toggleNav}>
@@ -149,7 +152,7 @@ class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-                {(!chapter.isTrack || selectedTrackAlias === chapter.alias) && chapter.subchapters.map((subchapter) => (
+                {shouldDisplaySubchapters(chapter, selectedTrackAlias) && chapter.subchapters.map((subchapter) => (
                   <div
                     className='pb1'
                     key={subchapter.alias}

@@ -2,8 +2,7 @@
 
 Welcome to the 5th exercise in the **React Track** of this Apollo Client Tutorial!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZXvBmA-hKwc" frameborder="0" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZXvBmA-hKwc?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
 ## Goal
 
 In this exercise we have the **goal** of adding the possibility to create new pokemons:

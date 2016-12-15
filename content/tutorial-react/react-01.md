@@ -2,8 +2,7 @@
 
 Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native, Angular 2 or Vue.js over React, head over to the respective tutorial track.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TiqPHEzSOg0" frameborder="0" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TiqPHEzSOg0?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
 ## Goal
 
 The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React and with the app structure of the Pokedex.

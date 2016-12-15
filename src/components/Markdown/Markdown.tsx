@@ -110,9 +110,9 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <pre>
             {filepath &&
-              <div className='flex justify-between flex-row black-30 sourceSans'>
+              <div className='flex justify-between flex-row black-30 sourceSans f6'>
                 <p>COPY THIS SNIPPET</p>
-                <p className='pl3'>in <span className='accent'>{filepath}</span></p>
+                <p className='pl3'>copy to <span className='accent'>{filepath}</span></p>
               </div>
             }
             <PrismCode className={className}>

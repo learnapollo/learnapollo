@@ -92,7 +92,9 @@ export default class Sharing extends React.Component<Props, State> {
           If you liked working with the included server and console right in your browser, check out <a href='http://graph.cool'>Graphcool</a>. It enables you to setup a GraphQL backend in minutes so you can focus on building awesome applications.
         </p>
         <div className='w-100'>
-          <img src={'http://i.imgur.com/J0zGy6N.png'} />
+          <a href='https://www.graph.cool' target='_blank'>
+            <img src={'http://i.imgur.com/J0zGy6N.png'} />
+          </a>
         </div>
         <p>
           If you need further help with GraphQL, Apollo or Graphcool or have any other questions, come and join our Slack.

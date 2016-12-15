@@ -15,7 +15,7 @@ We will use fragments and learn how they can be used to define data requirements
 Change to the 4th exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react/exercise-04
+cd pokedex-react-native-vanilla/exercise-04
 yarn install # or npm install
 ```
 

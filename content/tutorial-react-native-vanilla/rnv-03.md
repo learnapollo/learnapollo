@@ -19,7 +19,7 @@ Upon clicking on a pokemon in this list, we will see a detailed view of that pok
 Move to the third exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react/exercise-03
+cd pokedex-react-native-vanilla/exercise-03
 yarn install # or npm install
 ```
 

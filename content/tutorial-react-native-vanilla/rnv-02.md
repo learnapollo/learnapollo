@@ -17,7 +17,7 @@ We will learn how to query information from a GraphQL server with Apollo Client.
 Move to the second exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react/exercise-02
+cd pokedex-react-native-vanilla/exercise-02
 yarn install # or npm install
 ```
 

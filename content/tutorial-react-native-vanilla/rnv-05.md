@@ -19,7 +19,7 @@ Data changes in GraphQL are done by using mutations, so it's time for us to lear
 Move to the 5th exercise and install the dependencies from your console:
 
 ```sh
-cd pokedex-react/exercise-05
+cd pokedex-react-native-vanilla/exercise-05
 yarn install # or npm install
 ```
 

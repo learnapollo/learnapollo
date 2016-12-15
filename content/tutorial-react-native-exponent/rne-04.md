@@ -4,9 +4,7 @@ Welcome to the 4th exercise in the **React Native Exponent Track** of this Apoll
 
 ## Goal
 
-The **goal** of this exercise is to add some information to the pokemon detail view about the pokemon's trainer:
-
-@TODO : insert screenshot
+The **goal** of this exercise is to add some information to the pokemon detail view about the pokemon's trainer.
 
 We will use fragments and learn how they can be used to define data requirements that are co-located with the component requiring that data.
 
@@ -100,7 +98,7 @@ after the query with `${PokemonListItem.fragments.pokemon}`.
 We can see that the `PokemonsList` component doesn't need to know anything about the `PokemonListItem` fragment,
 other than the fact that it is a fragment on the Pokemon type.
 
-In the same way, go ahead and replace the Trainer 's id and name field by a fragment in the `Title`component.
+In the same way, go ahead and replace the Trainer 's id and name field by a fragment in the `Title` component.
 
 ### Filtering objects with fragments
 
@@ -141,11 +139,11 @@ Then we can use it when passing the `trainer` as a prop:
   );
 ```
 
-This will make sure that only the required fields of the `pokemon` object get passed to `Title`component.
+This will make sure that only the required fields of the `pokemon` object get passed to `Title` component.
 If we need additional fields later, for example in `PokemonCard`, we just have to add them in the fragment defined
 in `PokemonCard`.
 
-Check if you got everthing right by openning the XDE and navigating to the detailed view of a pokemon.
+Check if you got everthing right by opening the XDE and navigating to the detailed view of a pokemon.
 
 ## Recap
 

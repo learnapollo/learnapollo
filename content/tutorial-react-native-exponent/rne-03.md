@@ -29,22 +29,26 @@ the same type of information for two different nodes. We will see that use case 
 a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
-const TrainerQuery = gql`query {
-  Trainer(name: "__NAME__") {
-     name
-   }
- }`
+const TrainerQuery = gql`
+  query {
+    Trainer(name: "__NAME__") {
+       name
+     }
+  }
+`
 ```
 
 To introduce a variable for the trainer `name`, we have to add the `$name` argument to the query parameters and assign
 it to the `name` argument of `Trainer`:
 
 ```js
-const TrainerQuery = gql`query($name: String!) {
-  Trainer(name: $name) {
-    name
+const TrainerQuery = gql`
+  query($name: String!) {
+    Trainer(name: $name) {
+      name
+    }
   }
-}`
+`
 ```
 
 Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course,
@@ -52,7 +56,7 @@ now we also have to supply a value for that variable when we use it to wrap the 
 
 ```js
 export const TitleWithData = graphql(TrainerQuery, {
-options: {
+  options: {
     variables: {
       name: "__NAME__"
     }
@@ -62,9 +66,8 @@ options: {
 
 ### Nested Queries
 
-Now that we saw query variables in action we can focus on displaying the pokemons of a given trainer. We will use the a
-React Native ListView as it is the most pragmatic way to display a list of elements in a mobile app, while being
-performant out of the box.
+Now that we saw query variables in action we can focus on displaying the pokemons of a given trainer. We will use a
+React Native ListView for that.
 
 Each Row will render a `PokemonListItem` component that you can find in `screen/PokemonsListScreen/components/PokemonListItem.js`
 to display the individual pokemons:
@@ -122,45 +125,25 @@ As we can see, the server stores the owned pokemons of each trainer, exactly the
 We can now add the `ownedPokemons` field to our `TrainerQuery`. Let's include the `id`, `url` and `name` in the nested selection:
 
 ```js
-const TrainerQuery = gql`query($name: String!) {
-  Trainer(name: $name) {
-    id
-    name
-    ownedPokemons {
+const TrainerQuery = gql`
+  query($name: String!) {
+    Trainer(name: $name) {
       id
       name
-      url
+      ownedPokemons {
+        id
+        name
+        url
+      }
     }
   }
-}`
+`
 ```
 
 Once the query has finished, `this.props.data.Trainer` in the `Pokedex` component contains the `ownedPokemons` object
-that gives access to the information we selected. We can now map over the pokemons in `ownedPokemons` to include the
-`PokemonPreview` components in the `Pokedex` component.
+that gives access to the information we selected.
 
-Instead of doing something like :
-
-```js
-render () {
-   // ...
-
-    return (
-      <View>
-        {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
-          <PokemonListItem key={pokemon.id} pokemon={pokemon} />
-        )}
-      </View>
-    )
-  }
-```
-
-we are going to use react native ListView for multiple reasons :
-- it makes possible to render separator between the row, header, or footer
-- it renders only the visible components preventing to load to much images for instance
-- it recycles the unvisible components to prevent excessive element creation.
-
-This make possible to create fluid scroll view at 60 FPS, which is really important for the end user.
+To a create fluid scroll view we are using ListView now to render the pokemons.
 
 ```js
 import React, { Component } from 'react';
@@ -253,8 +236,8 @@ we will still do the extra request to show you how to customize the request base
 Have a look at the `PokemonDetailScreen` directory that we prepared for you.
 
 We already created the navigation in `navigation/` that assigns the `PokemonDetailScreen` to the path `pokemonDetail`
-so we can `.push(Router.getRoute('pokemonDetail'))` to change page.
-Exponent navigation allows us to pass extra parameters to the route like this :
+so we can `.push(Router.getRoute('pokemonDetail'))` to change the route.
+Exponent navigation allows us to pass extra parameters to the route like this:
 
 ```js
 _goToDetail = (pokemon) => {
@@ -264,11 +247,11 @@ _goToDetail = (pokemon) => {
 }
 ```
 
-In a mobile App, we want the tab bar to be visible only on the first page, and to be hidden, while we go deep in the
-navigation tree : that is exactly what `getNavigator` allows us to do.
-Selecting the root navigator and pushing routes directly on top of it overides the tab bar navigator and thus hide it.
+In a mobile app, we want the tab bar to be visible only on the first page and to be hidden if we go deeper into the
+navigation tree: that is exactly what `getNavigator` allows us to do.
+Selecting the root navigator and pushing routes directly on top of it overrides the tab bar navigator and thus hides it.
 
-The back button in the nav bar and the native back button is handled by default by exponent-navigation.
+The back button in the nav bar and the native back button on Android is handled by default by exponent-navigation.
 
 Then, in the `PokemonDetailScreen`, we can get the paramater `pokemonId` like this:
 
@@ -317,7 +300,7 @@ export const PokemonDetailWithData = graphql(PokemonQuery, {
 })(PokemonDetail);
 ```
 
-Note that by default Apollo tries to fill any unfilled variable (for instance a varaibale called `pokemonId`) with the
+Note that by default Apollo tries to fill any unfilled variable (for instance a variable called `pokemonId`) with the
 same variable from ownProps, so this is valid too:
 
 

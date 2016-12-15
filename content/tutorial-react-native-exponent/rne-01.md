@@ -11,17 +11,11 @@ You will get familiar with the infrastructure surrounding Apollo Client for Reac
 ## Prerequisites
 
 This tutorial uses [ExponentJS](https://getexponent.com/).
-
-ExponentJS is a macro framework over React Native, that is batteries included.
-Using it will help getting to the point, instead of spending time setting up navigator, custom font ect..
-
-Note that you can you raw react native too.
-
-@TODO : show a diff between final exponent exercice and react native version.
+ExponentJS is a mobile app development tool for React Native with an included SKD for system functionality and also provides UI components
 
 ## Introduction
 
-If you've signed up with GitHub, you can receive your own `pokedex-react-native-exponent` here:
+Sign up with GitHub to receive your own `pokedex-react-native-exponent` here:
 
 <!-- __DOWNLOAD_RNEXPONENT__ -->
 
@@ -32,22 +26,21 @@ cd pokedex-react-native-exponent/exercise-01-initial
 yarn install # or npm install
 ```
 
-## Getting Familiar
+## Getting familiar with the app
 
 Let's take a moment to get more familiar with the structure of the app before we run it.
 
-* `./.exponent` - gitignored preferences of your exponent XDE
-* `./assets` - custom font or image
-* `./components` - common react component like `BaseText` (to have a custom font by default)
-* `./constants` - color, layout constants for style consistancy
-* `./navigation` - router (based on Navigation Experimental) and Tab navigation
-* `./screens` - screens and assoictated components
-* `./state` - configuration of redux store
+* `./assets` - custom fonts or images
+* `./components` - commonly needed React components like `BaseText` for text components with a custom font
+* `./constants` - color and layout constants for style consistency
+* `./navigation` - router and tab navigation
+* `./screens` - screens and associated components
+* `./state` - configuration of Redux store
 * `./utilities` - utilities
 * `./exp.json` - configuration of exponent project
 * `./main.js` - root file of the project
 
-## Exercice
+## Exercise
 
 ### Package Dependencies
 
@@ -63,7 +56,7 @@ yarn add apollo-client react-apollo
 
 ### Add a Apollo Client
 
-Create a file in `./state/Apollo.js` with the following content.
+Create a new file in `./state/Apollo.js` with the following content.
 
 ```js
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -75,13 +68,13 @@ const client = new ApolloClient({
 export default client;
 ```
 
-If you already received your own GraphQL server, `__PROJECT_ID__` is replaced with your individual GraphQL endpoint.
+If you signed up with GitHub and downloaded the example, we already took care of this step for the following exercises.
 
-This client will perform the API call and manage the cache.
+This client will perform the API calls and manage the cache.
 
-### Modify Redux store
+### Modifying the Redux store
 
-In order to connect apollo to the existing store, modify `./state/Store.js`:
+In order to connect Apollo Client to the existing store, modify `./state/Store.js`:
 
 ```js
 // ...
@@ -102,15 +95,14 @@ const store = createStoreWithNavigation(
 // ...
 ```
 
-This allow redux to intercept apollo queries and then apollo to write on
-Redux store.
+This integrates Redux and Apollo Client so that Redux can intercept queries made with Apollo Client, while Apollo Client can write to application wide Redux store.
 
 ### Add the Provider
 
 To allow our React components to issue GraphQL queries and mutations through the client, we wrap them
 with the `ApolloProvider` component from the `react-apollo` package.
 
-It is 100% similar to what Redux does with `react-redux`.
+This package is analogous to the React integration of Redux, `react-redux`.
 
 To do this, modify the `./main.js` to wrap the NavigationProvider inside ApolloProvider.
 
@@ -122,19 +114,19 @@ import Client from 'learnapollo/state/Apollo';
 class AppContainer extends Component {
   render() {
     // ...
-        return (
-          // ...
-          <ApolloProvider store={Store} client={Client}>
-            <NavigationProvider router={navigationContext}>
-              <StackNavigation
-                id="root"
-                initialRoute={initialRoute}
-              />
-            </NavigationProvider>
-          </ApolloProvider>
-          // ...
-        )
-        // ...
+    return (
+      // ...
+      <ApolloProvider store={Store} client={Client}>
+        <NavigationProvider router={navigationContext}>
+          <StackNavigation
+            id="root"
+            initialRoute={initialRoute}
+          />
+        </NavigationProvider>
+      </ApolloProvider>
+      // ...
+    )
+    // ...
   }
 }
 ```
@@ -143,7 +135,7 @@ class AppContainer extends Component {
   every component that wants to use Apollo Client needs to be a direct or indirect children
   of `ApolloProvider` in the component hierarchy.
 
-Our Home component lives in `'screen/Home.js'`. Currently, it only contains a generic title, but that will change soon!
+Our Home component lives in `screen/Home.js`. Currently, it only contains a generic title, but that will change soon!
 We will further expand this component in the following exercises to give an overview about all the pokemon in your
 Pokedex as well as the possibility to add new pokemons or update existing ones.
 
@@ -155,12 +147,12 @@ To confirm your environment is all correctly setup, start the app now from XDE:
 
 ![](../images/xde.png)
 
-Click on `Device` to start the iOS Simulator.
+Click on `Device` to start the iOS or Android Simulator.
 
 ## Recap
 
 Great, you did it!
-You successfully ran the React Native App and got familiar with its general structure.
+You successfully ran the React Native App with Exponent and got familiar with its general structure.
 Let's quickly summarize what we learned so far:
 
 * To use the **Apollo Client**, we need to import it from `apollo-client` and setup its **networkInterface**

@@ -9,6 +9,7 @@ Welcome to the first exercise in the **React Native Vanilla Track** of this Apol
 The **goal** of this first exercise is to install a vanilla React Native App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React Native and with the App structure of the Pokedex.
 
 We will see a generic greeting in our pokedex at the end of this exercise:
+
 ![](../images/rnv-exercise-01-pokedex.png)
 
 ## Introduction

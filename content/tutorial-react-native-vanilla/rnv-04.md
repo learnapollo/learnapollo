@@ -32,7 +32,7 @@ Therefore it would be great to let the `PokemonCard` component handle the declar
 
 We can make use of the package `graphql-anywhere` to define fragments. Let's define the `PokemonCardPokemon` fragment in `src/components/PokemonCard.js` just after the imports:
 
-```js
+```js@src/components/PokemonCard.js
 import React from 'react'
 import { propType } from 'graphql-anywhere'
 import gql from 'graphql-tag'
@@ -54,7 +54,7 @@ The fragment is called `PokemonCardPokemon`, because it is defined for the `Poke
 
 We can now replace the `pokemon` prop declaration in the `propTypes` object by using the new fragment and the `propType` function from `graphql-anywhere`:
 
-```js
+```js@src/components/PokemonCard.js
 export default class PokemonCard extends React.Component {
 
   static propTypes = {
@@ -71,7 +71,7 @@ If the incoming `pokemon` prop is missing or doesn't have a field that is includ
 
 Let's now update our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
-```js
+```js@src/components/PokemonPage.js
 const PokemonQuery = gql`
   query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
@@ -88,32 +88,17 @@ We can see that the `PokemonPage` component doesn't need to know anything about 
 
 ### Filtering objects with fragments
 
-Right now we are passing the object `pokemon` to `PokemonCard`:
-
-```js
-const pokemon = this.props.data.Pokemon
-
-return (
-  <View
-    style={{
-      flex: 1,
-      marginTop: 64
-    }}
-  >
-    <PokemonCard pokemon={pokemon}/>
-  </View>
-)
-```
+Right now we are passing the bare object `pokemon` to `PokemonCard`.
 
 A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using the `filter` method of the fragments. First, we need to include the `filter` method from `graphql-anywhere`:
 
-```js
+```js@src/components/PokemonCard.js
 import { filter } from 'graphql-anywhere'
 ```
 
 Then we can use it when passing the `pokemon` as a prop:
 
-```js
+```js@src/components/PokemonCard.js
 const pokemon = this.props.data.Pokemon
 
 return (

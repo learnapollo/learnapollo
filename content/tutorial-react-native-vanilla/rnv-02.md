@@ -125,16 +125,14 @@ render () {
 
 Now let's put the previous steps together and modify our Pokedex component in `src/components/Pokedex.js`. First, we need to include the new dependencies:
 
-```js
-// add the required dependencies
+```js@src/components/Pokedex.js
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 ```
 
 We also include the `data` prop to the `propTypes` and use `data.loading` and `data.Trainer` as discussed above:
 
-```js
-// replace 'export default class' by 'class'
+```js@src/components/Pokedex.js
 class Pokedex extends React.Component {
   static propTypes = {
     data: React.PropTypes.shape({
@@ -167,7 +165,7 @@ class Pokedex extends React.Component {
 
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
-```js
+```js@src/components/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery {
     Trainer(name: "__NAME__") {

@@ -41,9 +41,12 @@ export default class MarkdownPage extends React.Component<Props, {}> {
   }
 
   render() {
-    const tracks = chapters.filter((c) => c.isTrack)
     const currentAlias = location.pathname.split('/')[1]
-    const showSharePanel = tracks.findIndex((t) => t.alias === currentAlias) !== -1
+    const showSharePanel = (): boolean => {
+      const introAlias: string = chapters[0].alias
+      const overviewAlias: string = chapters[chapters.length - 1].alias
+      return currentAlias !== introAlias && currentAlias !== overviewAlias
+    }
 
     return (
       <div className={styles.container} >
@@ -65,7 +68,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
             <span className='black'>Edit this page</span>
           </a>
         </div>
-        {showSharePanel && <SharePanel/>}
+        {showSharePanel() && <SharePanel/>}
       </div>
     )
   }

@@ -127,7 +127,7 @@ class App extends React.Component<Props, State> {
               />
             </div>
             <Link to='/' onClick={this.toggleNav}>
-              <h2 className='fw3 pa4 pb0 black'>
+              <h2 className='fw3 pa4 pb0 black flex items-center'>
                 <span className='dib mr3 mrl-1'>
                   <Icon
                     src={require('../../assets/icons/logo.svg')}
@@ -234,16 +234,13 @@ class App extends React.Component<Props, State> {
             onClick={this.openLayover}
           >
             <Icon
-              src={require('../../assets/icons/graph-logo.svg')}
+              src={require('../../assets/icons/graphcool-logo.svg')}
               width={22}
               height={24}
               className='pt1'
               color='#fff'
             />
-            <div className='flex-column flex'>
-              <span className='white f3 pl2'>GraphQL Server</span>
-              <span className='white pl2'>Hosted by Graphcool</span>
-            </div>
+            <span className='white f3 pl2'>GraphQL Server</span>
           </div>
           }
         </div>
@@ -251,60 +248,64 @@ class App extends React.Component<Props, State> {
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
-        <div className={`${styles.content} ${this.state.showLayover ? styles.layoverPadding : ''}`}>
+        <div className={`${styles.content} ${this.state.showLayover
+                ? styles.layoverPadding
+                : ''}`}>
           {this.props.children}
-          {previousSubchapter &&
-          <div
-            className={
-              classNames( styles.jump,
-                          'z-0',
-                          styles.jumpLeft,
-                          {
-                            [styles.jumpActive]: this.state.expandNavButtons,
-                            [styles.layoverPadding]: this.state.showLayover,
-                          }
-              )
+          {currentSubchapter && currentSubchapter.chapter && currentSubchapter.chapter.isTrack && <div>
+            {previousSubchapter &&
+            <div
+              className={
+                classNames( styles.jump,
+                            'z-0',
+                            styles.jumpLeft,
+                            {
+                              [styles.jumpActive]: this.state.expandNavButtons,
+                              [styles.layoverPadding]: this.state.showLayover,
+                            }
+                )
+              }
+            >
+              <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+                <Icon
+                  src={require('../../assets/icons/previous.svg')}
+                  width={11}
+                  height={20}
+                  className={`${styles.icon}`}
+                  color='#000'
+                />
+                <span className={`${styles.jumpDetail}`}>
+                  <span>Previous:</span> {previousSubchapter.title}
+                </span>
+              </Link>
+            </div>
             }
-          >
-            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
-              <Icon
-                src={require('../../assets/icons/previous.svg')}
-                width={11}
-                height={20}
-                className={`${styles.icon}`}
-                color='#000'
-              />
-              <span className={`${styles.jumpDetail}`}>
-                <span>Previous:</span> {previousSubchapter.title}
-              </span>
-            </Link>
-          </div>
-          }
-          {nextSubchapter &&
-          (
-            currentSubchapterAlias !== 'get-started' ||
-            this.state.storedState.user ||
-            this.state.storedState.skippedAuth
-          ) &&
-          <div
-            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
-            ? styles.jumpActive : ''} ${this.state.showLayover
-            ? styles.layoverPadding : ''} z-0`}
-          >
-            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
-              <span className={`${styles.jumpDetail}`}>
-                <span>Next:</span> {nextSubchapter.title}
-              </span>
-              <Icon
-                src={require('../../assets/icons/next.svg')}
-                width={11}
-                height={20}
-                className={`${styles.icon}`}
-                color='#000'
-              />
-            </Link>
-          </div>
-          }
+            {nextSubchapter &&
+            (
+              currentSubchapterAlias !== 'get-started' ||
+              this.state.storedState.user ||
+              this.state.storedState.skippedAuth
+            ) &&
+            <div
+              className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
+              ? styles.jumpActive : ''} ${this.state.showLayover
+              ? styles.layoverPadding : ''} z-0`}
+            >
+              <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+                <span className={`${styles.jumpDetail}`}>
+                  <span>Next:</span> {nextSubchapter.title}
+                </span>
+                <Icon
+                  src={require('../../assets/icons/next.svg')}
+                  width={11}
+                  height={20}
+                  className={`${styles.icon}`}
+                  color='#000'
+                />
+              </Link>
+            </div>
+            }
+          </div>}
         </div>
         {this.state.showLayover && this.state.storedState.user &&
         <ServerLayover

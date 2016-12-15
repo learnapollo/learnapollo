@@ -69,7 +69,7 @@ Open `src/package.json` to have a look what packages we are using.
 
 Now go ahead and import the following at the top of `src/client.js`:
 
-```js
+```js@src/client.js
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 ```
@@ -78,7 +78,7 @@ import { ApolloProvider } from 'react-apollo'
 
 Now we can connect Apollo Client with our GraphQL server in `src/client.js` by configuring the network layer. Paste the following right after the imports in `src/client.js`:
 
-```js
+```js@src/client.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
 })
@@ -90,7 +90,7 @@ If you signed up with GitHub and downloaded the example, we already inserted you
 
 To allow our React components to issue GraphQL queries and mutations through the client we wrap them with the `ApolloProvider` component from the `react-apollo` package. Replace the `routes` object in `src/client.js` with:
 
-```js
+```js@src/client.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'})
 })

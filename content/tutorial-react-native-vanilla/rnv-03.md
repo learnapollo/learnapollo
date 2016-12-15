@@ -32,26 +32,30 @@ Before we start working directly on our goal to show the pokemons a trainer owns
 One of the available query options are variables. A common use case for query variables is when a query argument depends of some external factor, like a route parameter. We will see that use case shortly, but for now we are introducing a query variable to the `TrainerQuery`. This is how it looked like at the end of the last exercise:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-     name
-   }
- }`
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "__NAME__") {
+      name
+    }
+  }
+`
 ```
 
 To introduce a variable for the trainer `name`, we use the GraphQL notation for query variables. We have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
 
-```js
-const TrainerQuery = gql`query TrainerQuery($name: String!) {
-  Trainer(name: $name) {
-    name
+```js@src/components/Pokedex.js
+const TrainerQuery = gql`
+  query TrainerQuery($name: String!) {
+    Trainer(name: $name) {
+      name
+    }
   }
-}`
+`
 ```
 
 Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course, now we also have to supply a value for that variable when we use it to wrap the `Pokedex` component:
 
-```js
+```js@src/components/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
       variables: {
@@ -135,23 +139,25 @@ type Pokemon {
 As we can see, the server stores the owned pokemons of each trainer, exactly the information that we need!
 We can now add the `ownedPokemons` field to our `TrainerQuery` in the `Pokedex` component. Let's include the `id`, `url` and `name` in the nested selection:
 
-```js
-const TrainerQuery = gql`query TrainerQuery($name: String!) {
-  Trainer(name: $name) {
-    id
-    name
-    ownedPokemons {
+```js@src/components/Pokedex.js
+const TrainerQuery = gql`
+  query TrainerQuery($name: String!) {
+    Trainer(name: $name) {
       id
       name
-      url
+      ownedPokemons {
+        id
+        name
+        url
+      }
     }
   }
-}`
+`
 ```
 
 Once the query has finished, `this.props.data.Trainer` in the `Pokedex` component contains the `ownedPokemons` object that gives access to the information we selected. We can now map over the pokemons in `ownedPokemons` to include the `PokemonPreview` components in the `render` method of the `Pokedex` component:
 
-```js
+```js@src/components/Pokedex.js
 render () {
   if (this.props.data.loading) {
     return (<Text style={{marginTop: 64}}>Loading</Text>)
@@ -205,14 +211,16 @@ We already created a new route in `src/client.js` that assigns the `PokemonPage`
 
 The `PokemonPage` component is responsible to pass down a pokemon to the `PokemonCard` component. Let's add a `PokemonQuery` now to `PokemonPage` that is fetching the required pokemon object:
 
-```js
-const PokemonQuery = gql`query PokemonQuery($id: ID!) {
-  Pokemon(id: $id) {
-    id
-    url
-    name
+```js@src/components/PokemonPage.js
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
+    Pokemon(id: $id) {
+      id
+      url
+      name
+    }
   }
-}`
+`
 ```
 
 As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, other than with the trainer name variable, we cannot just use a cannot value as the id in our case. For that reason, we have the possibility to access the props when creating the `variables` object. So, we can replace:
@@ -223,7 +231,7 @@ export default PokemonPage
 
 with:
 
-```js
+```js@src/components/PokemonPage.js
 const PokemonPageWithData = graphql(PokemonQuery, {
     options: (ownProps) => {
       return {
@@ -240,7 +248,7 @@ export default PokemonPageWithData
 
 Now we can replace the placeholder content of the render method in `PokemonPage` with the `PokemonCard` component:
 
-```js
+```js@src/components/PokemonPage.js
 class PokemonPage extends React.Component {
 
   static propTypes = {

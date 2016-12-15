@@ -63,12 +63,13 @@ query TrainerQuery {
 With Apollo, we need to denote queries like this by using the `gql` tag contained in the `graphql-tag` package.
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-    id
-    name
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "__NAME__") {
+      name
+    }
   }
-}`
+`
 ```
 
 If you signed up with GitHub, we already inserted your name in this query.
@@ -81,7 +82,7 @@ const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 
 ### Using query results in React components
 
-Wrapping components like this with `graphql` injects a new `data` object to the props of the inner components. We can stress this by updating the `propTypes` of the `Pokedex` component:
+Wrapping components like this with `graphql` injects a new `data` object to the props of the inner component. We can stress this by updating the `propTypes` of the `Pokedex` component:
 
 ```js
 static propTypes = {
@@ -126,7 +127,7 @@ render () {
 
 Now let's put the previous steps together and modify our Pokedex component in `src/components/Pokedex.js`. First, we need to include the new dependencies:
 
-```js
+```js@src/component/Pokedex.js
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 ```
@@ -134,7 +135,6 @@ import gql from 'graphql-tag'
 We also include the `data` prop to the `propTypes` and use `data.loading` and `data.Trainer` as discussed above:
 
 ```js
-// replace 'export default class' by 'class'
 class Pokedex extends React.Component {
   static propTypes = {
     data: React.PropTypes.shape({
@@ -167,12 +167,14 @@ class Pokedex extends React.Component {
 
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
-```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-     name
-   }
- }`
+```js@src/component/Pokedex.js
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "Sashko Stubailo") {
+      name
+    }
+  }
+`
 
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 

@@ -9,6 +9,7 @@ Welcome to the first exercise in the **React Track** of this Apollo Client Tutor
 The **goal** of this first exercise is to install a React App and run it afterwards. You will get familiar with the infrastructure surrounding Apollo Client for React and with the app structure of the Pokedex.
 
 We will see a generic greeting in our pokedex at the end of this exercise:
+
 ![](../images/react-exercise-01-pokedex.png)
 
 ## Introduction
@@ -54,7 +55,7 @@ Open `src/package.json` to have a look what packages we are using.
 
 Now go ahead and import the following at the top of `src/index.js`:
 
-```js
+```js@src/index.js
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 ```
@@ -63,7 +64,7 @@ import { ApolloProvider } from 'react-apollo'
 
 Now we can connect Apollo Client with our GraphQL server by configuring the network layer. Paste the following right after the imports in `src/index.js`:
 
-```js
+```js@src/index.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
 })
@@ -75,7 +76,7 @@ If you signed up with GitHub and downloaded the example, we already took care of
 
 To allow our React components to issue GraphQL queries and mutations through the client we wrap them with the `ApolloProvider` component in `src/index.js `from the `react-apollo` package. Go ahead and update the call to `ReactDOM.render` in `src/index.js`:
 
-```js
+```js@src/index.js
 ReactDOM.render((
   <ApolloProvider client={client}>
     <Router history={browserHistory}>

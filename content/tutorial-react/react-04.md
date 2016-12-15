@@ -68,7 +68,8 @@ If the incoming `pokemon` prop is missing or doesn't have a field that is includ
 We updated our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
 ```js
-const PokemonQuery = gql`query PokemonQuery($id: ID!) {
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
     }
@@ -85,13 +86,13 @@ We can see that the `PokemonPage` component doesn't need to know anything about 
 
 Now it's your turn to use fragments! You should follow the same steps to define a `PokemonCardHeaderPokemon` fragment in the `PokemonCardHeader` component that you can find in `src/components/PokemonCardHeader.js`. First, you have to import `propType` from `graphql-anywhere`
 
-```js
+```js@src/component/PokemonCardHeader.js
 import { propType } from 'graphql-anywhere'
 ```
 
 and define the new fragment just before `propTypes` are defined:
 
-```js
+```js@src/component/PokemonCardHeader.js
 export default class PokemonCardHeader extends React.Component {
 
   static fragments = {
@@ -110,7 +111,7 @@ export default class PokemonCardHeader extends React.Component {
 
 Note that this fragment includes different fields than the other fragment we saw before. That's because the `PokemonCardHeader` component needs different information of the pokemon object than the `PokemonCard` component. As we did before, use the fragment now to define the `pokemon` `propType`:
 
-```js
+```js@src/component/PokemonCardHeader.js
 static propTypes = {
   pokemon: propType(PokemonCardHeader.fragments.pokemon).isRequired,
 }
@@ -120,7 +121,7 @@ static propTypes = {
 
 Now we can include the `PokemonCardHeader` component just above the `PokemonCard` component in the render method of the `PokemonPage` component:
 
-```js
+```js@src/component/PokemonPage.js
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
@@ -144,8 +145,9 @@ render () {
 
 Again, we have to also use the `PokemonCardHeaderPokemon` fragment in the `PokemonQuery`:
 
-```js
-const PokemonQuery = gql`query PokemonQuery($id: ID!) {
+```js@src/component/PokemonPage.js
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
       ... PokemonCardHeaderPokemon
@@ -160,28 +162,17 @@ Note that there are fields that are included either in both fragments (like `nam
 
 ### Filtering objects with fragments
 
-As stated above, both introduced fragments include fields that the other one doesn't include. Right now we are passing the same `pokemon` object to both `PokemonCard` and `PokemonCardHeader`:
+As stated above, both introduced fragments include fields that the other one doesn't include. Right now we are passing the same `pokemon` object to both `PokemonCard` and `PokemonCardHeader`.
 
-```js
-const pokemon = this.props.data.Pokemon
+A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using the `filter` method of the fragments. First, we need to include the `filter` method from `graphql-anywhere` in `src/components/PokemonPage.js`:
 
-return (
-  <div>
-    <PokemonCardHeader pokemon={pokemon} />
-    <PokemonCard pokemon={pokemon} handleCancel={this.goBack}/>
-  </div>
-)
-```
-
-A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using the `filter` method of the fragments. First, we need to include the `filter` method from `graphql-anywhere`:
-
-```js
+```js@src/component/PokemonPage.js
 import { filter } from 'graphql-anywhere'
 ```
 
 Then we can use it when passing the `pokemon` as a prop:
 
-```js
+```js@src/component/PokemonPage.js
 const pokemon = this.props.data.Pokemon
 
 return (

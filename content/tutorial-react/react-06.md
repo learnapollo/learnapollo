@@ -73,15 +73,15 @@ The update and delete buttons were added:
 
 However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard` by adding the `id`:
 
-```js
+```js@src/components/PokemonCard.js
 static fragments = {
-pokemon: gql`
-  fragment PokemonCardPokemon on Pokemon {
-    id
-    url
-    name
-  }
-`
+  pokemon: gql`
+    fragment PokemonCardPokemon on Pokemon {
+      id
+      url
+      name
+    }
+  `
 }
 ```
 
@@ -89,7 +89,7 @@ pokemon: gql`
 
 We want to be able to update pokemon names and image URLs. That's why we make use of `updatePokemon` and its arguments `name` and `url`. Add this mutation to the `PokemonCard`:
 
-```js
+```js@src/components/PokemonCard.js
 const updatePokemon = gql`
   mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
     updatePokemon(id: $id, name: $name, url: $url) {
@@ -123,7 +123,7 @@ Let's now think about the `deletePokemon` mutation before we will use both mutat
 
 The `deletePokemon` mutation only needs the `id` pokemon to delete it. Add it to `PokemonCard` as well:
 
-```js
+```js@src/components/PokemonCard.js
 const deletePokemon = gql`
   mutation deletePokemon($id: ID!) {
     deletePokemon(id: $id) {
@@ -137,7 +137,7 @@ const deletePokemon = gql`
 
 Now it's time for you to inject these mutations to `PokemonCard`. By default, injected mutations are accessible with `this.props.mutate`. But how can we inject multiple mutations? We simply provide a `name` option:
 
-```js
+```js@src/components/PokemonCard.js
 const PokemonCardWithMutations =  graphql(deletePokemon, {name : 'deletePokemon'})(
   graphql(updatePokemon, {name: 'updatePokemon'})(PokemonCard)
 )
@@ -147,7 +147,7 @@ export default PokemonCardWithMutations
 
 This results in the two new props `updatePokemon` and `deletePokemon`, so let's reflect that when defining the `propTypes`:
 
-```js
+```js@src/components/PokemonCard.js
 static propTypes = {
   pokemon: PokemonCard.fragments.pokemon.propType,
   handleCancel: React.PropTypes.func.isRequired,
@@ -161,7 +161,7 @@ static propTypes = {
 
 Finally, you can now call the mutations from within the `onClick` of the buttons:
 
-```js
+```js@src/components/PokemonCard.js
 handleUpdate = () => {
   this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, url: this.state.url }})
     .then(this.props.afterChange)
@@ -220,7 +220,7 @@ As before, Apollo Client will merge the previously known pokemons with the pokem
 
 To do this, head over to the `Pokedex` component in `src/components/Pokedex.js` again and add the `forceFetch: true` option to the options of the query:
 
-```js
+```js@src/components/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
     variables: {
@@ -236,7 +236,7 @@ export default PokedexWithData
 
 Now we can also get rid of fetching the trainer object in `AddPokemonCard` in `src/components/AddPokemonCard.js` after creating a new pokemon:
 
-```js
+```js@src/components/AddPokemonCard.js
 const createPokemonMutation = gql`
   mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {

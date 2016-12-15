@@ -8,7 +8,6 @@ import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
-import {Chapter} from '../../utils/content'
 import {initSmooch} from '../../utils/smooch'
 
 require('./style.css')
@@ -97,22 +96,6 @@ class App extends React.Component<Props, State> {
     const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
     const selectedTrackAlias: string = getStoredState().selectedTrackAlias
 
-    const shouldDisplaySubtitles = (selectedTrackAlias: string,
-                                    currentIndex: number,
-                                    chapters: Chapter[],
-                                    chapter: Chapter,
-                                    chapterAliasFromUrl: string): boolean => {
-      if (!chapter.isTrack) {
-        return true
-      } else if (currentIndex === chapters.length - 1) {
-        return true
-      } else if (selectedTrackAlias === chapter.alias && chapterAliasFromUrl !== chapters[0].alias) {
-        return true
-      } else {
-        return false
-      }
-    }
-
     return (
       <div className='flex row-reverse'>
         <div className={styles.hamburger} onClick={this.toggleNav}>
@@ -166,13 +149,7 @@ class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-                {shouldDisplaySubtitles(
-                  selectedTrackAlias,
-                  index,
-                  chapters,
-                  chapter,
-                  location.pathname.split('/')[1]
-                ) && chapter.subchapters.map((subchapter) => (
+                {(!chapter.isTrack || selectedTrackAlias === chapter.alias) && chapter.subchapters.map((subchapter) => (
                   <div
                     className='pb1'
                     key={subchapter.alias}
@@ -403,9 +380,7 @@ class App extends React.Component<Props, State> {
   }
 
   private setTrack = (alias: String) => {
-    const tracks = chapters.filter((c) => {
-      return c.isTrack
-    })
+    const tracks = chapters.filter((c) => c.isTrack)
     const currentIndex = tracks.findIndex((c) => c.alias === alias)
 
     if (currentIndex !== -1) {

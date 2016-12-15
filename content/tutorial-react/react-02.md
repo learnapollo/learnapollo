@@ -102,7 +102,7 @@ The `data` object provides several things, in particular
 
 So let's now change the message to display the name of the trainer once `loading` is `false` and no error occured:
 
-```js
+```js@src/component/Pokedex.js
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
@@ -115,9 +115,9 @@ render () {
 
   return (
     <div className='w-100 bg-light-gray min-vh-100'>
-      <div className='tc pt4'>
+      <Title className='tc pa5'>
         Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-      </div>
+      </Title>
     </div>
   )
 }
@@ -156,9 +156,9 @@ class Pokedex extends React.Component {
 
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pt4'>
+        <Title className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-        </div>
+        </Title>
       </div>
     )
   }

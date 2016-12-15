@@ -163,9 +163,9 @@ render () {
 
   return (
     <div className='w-100 bg-light-gray min-vh-100'>
-      <div className='tc pa5'>
+      <Title className='tc pa5'>
         Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer._ownedPokemonsMeta.count} Pokemons in your pokedex
-      </div>
+      </Title>
       <div className='flex flex-wrap justify-center center w-75'>
         {!this._isFirstPage() && <PageNavigation onClick={this._previousPage} isPrevious={true} />}
         {this.props.params.page === '1' && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}

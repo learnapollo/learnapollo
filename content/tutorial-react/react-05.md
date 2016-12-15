@@ -36,12 +36,12 @@ We are going to add the new component `AddPokemonPreview` we prepared for you al
 
 As we need to know which trainer gets assigned the new pokemon, `AddPokemonPreview` has a required `trainerId` prop. Head over to the `Pokedex` component and add the `AddPokemonPreview` component right above the `PokemonPreview` components:
 
-```js@src/components/PokemonPreview.js
+```js@src/components/Pokedex.js
 return (
   <div className='w-100 bg-light-gray min-vh-100'>
-    <div className='tc pa5'>
+    <Title className='tc pa5'>
       Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-    </div>
+    </Title>
     <div className='flex flex-wrap justify-center center w-75'>
       <AddPokemonPreview trainerId={this.props.data.Trainer.id} />
       {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
@@ -82,7 +82,7 @@ Similar to how `PokemonPreview` and `PokemonCard` work together, clicking on `Ad
 
 So all you have to do now is to use the `Link` component from `react-router` in `AddPokemonPreview` and redirect to the `/create/:trainerId` path:
 
-```js@src/index.js
+```js@src/AddPokemonPreview.js
 import React from 'react'
 import { Link } from 'react-router'
 

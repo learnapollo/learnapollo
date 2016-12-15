@@ -41,34 +41,38 @@ state = {
 The state gets initialized with the passed props and `onChange` events for the two input elements update the according part of the state:
 
 ```js
-<input
-  className='w-100 pa3 mv2'
-  value={this.state.name}
-  placeholder='Name'
-  onChange={(e) => this.setState({name: e.target.value})}
-/>
-<input
-  className='w-100 pa3 mv2'
-  value={this.state.url}
-  placeholder='Image Url'
-  onChange={(e) => this.setState({url: e.target.value})}
-/>
-{this.state.url &&
-  <img src={this.state.url} role='presentation' className='w-100 mv3' />
-}
+<Card style={{ maxWidth: 400 }}>
+  <input
+    className='w-100 pa3 mv2'
+    value={this.state.name}
+    placeholder='Name'
+    onChange={(e) => this.setState({name: e.target.value})}
+  />
+  <input
+    className='w-100 pa3 mv2'
+    value={this.state.url}
+    placeholder='Image Url'
+    onChange={(e) => this.setState({url: e.target.value})}
+  />
+  {this.state.url &&
+    <img src={this.state.url} role='presentation' className='w-100 mv3 pa4' />
+  }
+  // ...
 ```
 
 The update and delete buttons were added:
 
 ```js
-<div className='flex justify-between'>
-  <button className='pa3 bn dim ttu bg-red pointer' onClick={this.handleDelete}>Delete</button>
-  <button className='pa3 bn dim ttu pointer' onClick={this.props.handleCancel}>Cancel</button>
-  {this.canUpdate()
-    ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleUpdate}>Update</button>
-    : <button className='pa3 bn ttu gray light-gray'>Update</button>
-  }
-</div>
+  // ...
+  <div className='flex justify-between'>
+    <Button delete onClick={this.handleDelete}>Delete</Button>
+    <Button onClick={this.props.handleCancel}>Cancel</Button>
+    {this.canUpdate()
+      ? <Button save onClick={this.handleUpdate}>Update</Button>
+      : <Button disabled>Update</Button>
+    }
+  </div>
+</Card>
 ```
 
 However, you have to implement the `onClick` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard` by adding the `id`:

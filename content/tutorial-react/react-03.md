@@ -146,10 +146,10 @@ render () {
 
   return (
     <div className='w-100 bg-light-gray min-vh-100'>
-      <div className='tc pt4'>
+      <Title className='tc pa5'>
         Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-      </div>
-      <div className='flex flex-wrap items-stretch pt5 center mw7'>
+      </Title>
+      <div className='flex flex-wrap justify-center center w-75'>
         {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
           <PokemonPreview key={pokemon.id} pokemon={pokemon} />
         )}
@@ -167,7 +167,7 @@ Cool, so now we can see all the pokemons we own in our pokedex. Verify that in y
 
 We already created a new route in `src/index.js` that assigns the `PokemonPage` to the path `view/:pokemonId` so we can use the path parameter `pokemonId` to query a pokemon. You now have to change the render method of `PokemonPreview` so that it includes the `Link` component from `react-router` that redirects to the `view/:pokemonId` path:
 
-```js
+```js@src/component/PokemonPreview.js
 render () {
   return (
     <Link

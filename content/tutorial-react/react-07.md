@@ -3,6 +3,7 @@
 Welcome to the 7th exercise in the **React Track** of this Apollo Client Tutorial!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xloj6Rh3R54?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
+
 ## Goal
 
 The **goal** in this exercise is to use pagination to provide a better browsing experience:

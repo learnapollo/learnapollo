@@ -3,6 +3,7 @@
 Welcome to the 4th exercise in the **React Track** of this Apollo Client Tutorial!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NskpYO6Vneo?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
+
 ## Goal
 
 The **goal** of this exercise is to add some information to the pokemon detail view about the pokemon's trainer:

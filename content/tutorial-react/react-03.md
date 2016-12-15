@@ -3,6 +3,7 @@
 This is the third exercise in the **React Track** of this Apollo Client Tutorial!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/e4jZ1TUSC1Q?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
+
 ## Goal
 
 In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns:

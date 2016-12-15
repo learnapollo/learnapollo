@@ -55,17 +55,19 @@ return (
 Note that we require the trainer id now but didn't need it before, so we should add it to our `TrainerQuery` as well:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery($name: String!) {
-  Trainer(name: $name) {
-    id
-    name
-    ownedPokemons {
+const TrainerQuery = gql`
+  query TrainerQuery($name: String!) {
+    Trainer(name: $name) {
       id
       name
-      url
+      ownedPokemons {
+        id
+        name
+        url
+      }
     }
   }
-}`
+`
 ```
 
 ### Redirecting to `AddPokemonCard`

@@ -74,20 +74,22 @@ Note that we use the `_ownedPokemonsMeta.count` meta information that the server
 Of course, we also included it in the query itself as well:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery($name: String!) {
-  Trainer(name: $name) {
-    id
-    name
-    ownedPokemons {
+const TrainerQuery = gql`
+  query TrainerQuery($name: String!) {
+    Trainer(name: $name) {
       id
       name
-      url
-    }
-    _ownedPokemonsMeta {
-      count
+      ownedPokemons {
+        id
+        name
+        url
+      }
+      _ownedPokemonsMeta {
+        count
+      }
     }
   }
-}`
+`
 ```
 
 With these preparations, you are now ready to actually implement pagination in your pokedex!
@@ -100,26 +102,28 @@ Our server offers the `first` and `skip` parameters for the `ownedPokemons` fiel
 So go ahead and add the `first` and `skip` variables to the `TrainerQuery` in `Pokedex.js` like this:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery($name: String!, $first: Int!, $skip: Int!) {
-  Trainer(name: $name) {
-    id
-    name
-    ownedPokemons(first: $first, skip: $skip) {
+const TrainerQuery = gql`
+  query TrainerQuery($name: String!, $first: Int!, $skip: Int!) {
+    Trainer(name: $name) {
       id
       name
-      url
-    }
-    _ownedPokemonsMeta {
-      count
+      ownedPokemons(first: $first, skip: $skip) {
+        id
+        name
+        url
+      }
+      _ownedPokemonsMeta {
+        count
+      }
     }
   }
-}`
+`
 ```
 
 What values do we pass to these variables? For `first`, we always pass `POKEMONS_PER_PAGE` which is three in our case. However, the value we pass for the `skip` variable depends on the current page, that is accessible with the `params` props. We can access the props when setting query options like this:
 
 ```js
-const PokedexWithData = graphql(TrainerQuery, {
+const PokedexWithData = graphql(TrainerQuery,{
     options: (ownProps) => ({
       variables: {
         name: '__NAME__',

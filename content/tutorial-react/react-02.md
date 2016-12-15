@@ -63,12 +63,13 @@ query TrainerQuery {
 With Apollo, we need to denote queries like this by using the `gql` tag contained in the `graphql-tag` package.
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-    id
-    name
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "__NAME__") {
+      name
+    }
   }
-}`
+`
 ```
 
 If you signed up with GitHub, we already inserted your name in this query.
@@ -134,7 +135,6 @@ import gql from 'graphql-tag'
 We also include the `data` prop to the `propTypes` and use `data.loading` and `data.Trainer` as discussed above:
 
 ```js
-// replace 'export default class' by 'class'
 class Pokedex extends React.Component {
   static propTypes = {
     data: React.PropTypes.shape({
@@ -168,11 +168,13 @@ class Pokedex extends React.Component {
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-     name
-   }
- }`
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "Sashko Stubailo") {
+      name
+    }
+  }
+`
 
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 

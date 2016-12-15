@@ -75,13 +75,13 @@ However, you have to implement the `onClick` methods yourself. Before that, let 
 
 ```js
 static fragments = {
-pokemon: gql`
-  fragment PokemonCardPokemon on Pokemon {
-    id
-    url
-    name
-  }
-`
+  pokemon: gql`
+    fragment PokemonCardPokemon on Pokemon {
+      id
+      url
+      name
+    }
+  `
 }
 ```
 

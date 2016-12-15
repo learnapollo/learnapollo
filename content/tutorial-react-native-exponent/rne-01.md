@@ -58,7 +58,7 @@ yarn add apollo-client react-apollo
 
 Create a new file in `./state/Apollo.js` with the following content.
 
-```js
+```js@./state/Apollo.js
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 const client = new ApolloClient({
@@ -76,7 +76,7 @@ This client will perform the API calls and manage the cache.
 
 In order to connect Apollo Client to the existing store, modify `./state/Store.js`:
 
-```js
+```js@./state/AddPokemonCard.js
 // ...
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import client from 'learnapollo/state/Apollo.js';
@@ -106,7 +106,7 @@ This package is analogous to the React integration of Redux, `react-redux`.
 
 To do this, modify the `./main.js` to wrap the NavigationProvider inside ApolloProvider.
 
-```js
+```js@./main.js
 import Store from 'learnapollo/state/Store';
 import Client from 'learnapollo/state/Apollo';
 

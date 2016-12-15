@@ -246,60 +246,64 @@ class App extends React.Component<Props, State> {
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
-        <div className={`${styles.content} ${this.state.showLayover ? styles.layoverPadding : ''}`}>
+        <div className={`${styles.content} ${this.state.showLayover
+                ? styles.layoverPadding
+                : ''}`}>
           {this.props.children}
-          {previousSubchapter &&
-          <div
-            className={
-              classNames( styles.jump,
-                          'z-0',
-                          styles.jumpLeft,
-                          {
-                            [styles.jumpActive]: this.state.expandNavButtons,
-                            [styles.layoverPadding]: this.state.showLayover,
-                          }
-              )
+          {currentSubchapter.chapter.isTrack && <div>
+            {previousSubchapter &&
+            <div
+              className={
+                classNames( styles.jump,
+                            'z-0',
+                            styles.jumpLeft,
+                            {
+                              [styles.jumpActive]: this.state.expandNavButtons,
+                              [styles.layoverPadding]: this.state.showLayover,
+                            }
+                )
+              }
+            >
+              <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+                <Icon
+                  src={require('../../assets/icons/previous.svg')}
+                  width={11}
+                  height={20}
+                  className={`${styles.icon}`}
+                  color='#000'
+                />
+                <span className={`${styles.jumpDetail}`}>
+                  <span>Previous:</span> {previousSubchapter.title}
+                </span>
+              </Link>
+            </div>
             }
-          >
-            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
-              <Icon
-                src={require('../../assets/icons/previous.svg')}
-                width={11}
-                height={20}
-                className={`${styles.icon}`}
-                color='#000'
-              />
-              <span className={`${styles.jumpDetail}`}>
-                <span>Previous:</span> {previousSubchapter.title}
-              </span>
-            </Link>
-          </div>
-          }
-          {nextSubchapter &&
-          (
-            currentSubchapterAlias !== 'get-started' ||
-            this.state.storedState.user ||
-            this.state.storedState.skippedAuth
-          ) &&
-          <div
-            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
-            ? styles.jumpActive : ''} ${this.state.showLayover
-            ? styles.layoverPadding : ''} z-0`}
-          >
-            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
-              <span className={`${styles.jumpDetail}`}>
-                <span>Next:</span> {nextSubchapter.title}
-              </span>
-              <Icon
-                src={require('../../assets/icons/next.svg')}
-                width={11}
-                height={20}
-                className={`${styles.icon}`}
-                color='#000'
-              />
-            </Link>
-          </div>
-          }
+            {nextSubchapter &&
+            (
+              currentSubchapterAlias !== 'get-started' ||
+              this.state.storedState.user ||
+              this.state.storedState.skippedAuth
+            ) &&
+            <div
+              className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons
+              ? styles.jumpActive : ''} ${this.state.showLayover
+              ? styles.layoverPadding : ''} z-0`}
+            >
+              <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+                <span className={`${styles.jumpDetail}`}>
+                  <span>Next:</span> {nextSubchapter.title}
+                </span>
+                <Icon
+                  src={require('../../assets/icons/next.svg')}
+                  width={11}
+                  height={20}
+                  className={`${styles.icon}`}
+                  color='#000'
+                />
+              </Link>
+            </div>
+            }
+          </div>}
         </div>
         {this.state.showLayover && this.state.storedState.user &&
         <ServerLayover

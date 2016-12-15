@@ -62,12 +62,14 @@ query TrainerQuery {
 With Apollo, we need to denote queries like this by using the `gql` tag contained in the `graphql-tag` package.
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-    id
-    name
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "__NAME__") {
+      id
+      name
+    }
   }
-}`
+`
 ```
 
 If you signed up with GitHub, we already inserted the name you signed up with. But how do we use this query in our Pokedex component? We can use `graphql` exposed from the `react-apollo` package to inject query results to React components via the `data` prop.
@@ -166,11 +168,13 @@ class Pokedex extends React.Component {
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
 ```js
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "__NAME__") {
-     name
-   }
- }`
+const TrainerQuery = gql`
+  query TrainerQuery {
+    Trainer(name: "__NAME__") {
+       name
+    }
+  }
+`
 
 const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 

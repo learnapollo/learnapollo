@@ -72,12 +72,13 @@ If the incoming `pokemon` prop is missing or doesn't have a field that is includ
 Let's now update our `PokemonQuery` with the new `PokemonCardPokemon` fragment:
 
 ```js
-const PokemonQuery = gql`query PokemonQuery($id: ID!) {
-  Pokemon(id: $id) {
-    ... PokemonCardPokemon
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
+    Pokemon(id: $id) {
+      ... PokemonCardPokemon
+    }
   }
-}
-${PokemonCard.fragments.pokemon}
+  ${PokemonCard.fragments.pokemon}
 `
 ```
 

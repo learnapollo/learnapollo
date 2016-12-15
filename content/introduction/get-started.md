@@ -2,7 +2,7 @@
 
 Welcome to *Learn Apollo*, a hands-on tutorial for Apollo Client where you take a journey from a basic starter-kit application to a complete pokedex application!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ai041BtmH2c" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UNoHVLrItXQ?list=PLn2e1F9Rfr6neWxkWtlTAwshh07-m1p5I" frameborder="0" allowfullscreen></iframe>
 
 ## Goals
 

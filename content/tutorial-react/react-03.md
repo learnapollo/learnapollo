@@ -44,7 +44,7 @@ const TrainerQuery = gql`
 
 To introduce a variable for the trainer `name`, we use the GraphQL notation for query variables. We have to add the `$name` argument to the query parameters and assign it to the `name` argument of `Trainer`:
 
-```js
+```js@src/component/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery($name: String!) {
     Trainer(name: $name) {
@@ -56,7 +56,7 @@ const TrainerQuery = gql`
 
 Note that we have to denote the variable type as well, `String!` signifying a required String in this case. Of course, now we also have to supply a value for that variable when we use it to wrap the `Pokedex` component:
 
-```js
+```js@src/component/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
       variables: {
@@ -114,7 +114,7 @@ type Pokemon {
 As we can see, the server stores the owned pokemons of each trainer, exactly the information that we need!
 We can now add the `ownedPokemons` field to our `TrainerQuery` in the `Pokedex` component. Let's include the `id`, `url` and `name` in the nested selection:
 
-```js
+```js@src/component/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery($name: String!) {
     Trainer(name: $name) {
@@ -132,7 +132,7 @@ const TrainerQuery = gql`
 
 Once the query has finished, `this.props.data.Trainer` in the `Pokedex` component contains the `ownedPokemons` object that gives access to the information we selected. We can now map over the pokemons in `ownedPokemons` to display them using `PokemonPreview` components in the `render` method of `Pokedex`:
 
-```js
+```js@src/component/Pokedex.js
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
@@ -183,7 +183,7 @@ render () {
 
 The `PokemonPage` component is responsible to pass down a pokemon to the `PokemonCard` component. Let's add a `PokemonQuery` to `PokemonPage` that is fetching the required pokemon object:
 
-```js
+```js@src/component/PokemonPage.js
 const PokemonQuery = gql`
   query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
@@ -203,7 +203,7 @@ export default withRouter(PokemonPage)
 
 with:
 
-```js
+```js@src/component/PokemonPage.js
 const PokemonPageWithQuery = graphql(PokemonQuery, {
   options: (ownProps) => ({
       variables: {
@@ -218,7 +218,7 @@ export default PokemonPageWithQuery
 
 Now we can replace the placeholder content of the render method in `PokemonPage` with the `PokemonCard` component:
 
-```js
+```js@src/component/PokemonPage.js
 class PokemonPage extends React.Component {
 
   static propTypes = {

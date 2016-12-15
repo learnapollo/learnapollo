@@ -101,7 +101,7 @@ Our server offers the `first` and `skip` parameters for the `ownedPokemons` fiel
 
 So go ahead and add the `first` and `skip` variables to the `TrainerQuery` in `Pokedex.js` like this:
 
-```js
+```js@src/components/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery($name: String!, $first: Int!, $skip: Int!) {
     Trainer(name: $name) {
@@ -122,7 +122,7 @@ const TrainerQuery = gql`
 
 What values do we pass to these variables? For `first`, we always pass `POKEMONS_PER_PAGE` which is three in our case. However, the value we pass for the `skip` variable depends on the current page, that is accessible with the `params` props. We can access the props when setting query options like this:
 
-```js
+```js@src/components/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery,{
     options: (ownProps) => ({
       variables: {
@@ -144,7 +144,7 @@ export default PokedexWithData
 
 All that you have to do now is to update `render` method of `Pokedex.js`. Before actually rendering, we make sure that the `params.page` in the props is a sensible number, if not we navigate to the first page. If all is well, we include the prepared `PageNavigation` component in the `render` method of `Pokedex.js` to allow the user to browse through the different pages:
 
-```js
+```js@src/components/Pokedex.js
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)

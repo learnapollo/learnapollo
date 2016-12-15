@@ -127,7 +127,7 @@ render () {
 
 Now let's put the previous steps together and modify our Pokedex component in `src/components/Pokedex.js`. First, we need to include the new dependencies:
 
-```js
+```js@src/component/Pokedex.js
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 ```
@@ -167,7 +167,7 @@ class Pokedex extends React.Component {
 
 Finally, we are defining the `TrainerQuery` (insert your name!), connect it to our `Pokedex` component and finally export the new component:
 
-```js
+```js@src/component/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery {
     Trainer(name: "Sashko Stubailo") {

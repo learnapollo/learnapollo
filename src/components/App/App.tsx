@@ -232,16 +232,13 @@ class App extends React.Component<Props, State> {
             onClick={this.openLayover}
           >
             <Icon
-              src={require('../../assets/icons/graph-logo.svg')}
+              src={require('../../assets/icons/graphcool-logo.svg')}
               width={22}
               height={24}
               className='pt1'
               color='#fff'
             />
-            <div className='flex-column flex'>
-              <span className='white f3 pl2'>GraphQL Server</span>
-              <span className='white pl2'>Hosted by Graphcool</span>
-            </div>
+            <span className='white f3 pl2'>GraphQL Server</span>
           </div>
           }
         </div>

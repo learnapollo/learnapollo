@@ -4,12 +4,19 @@ export class Chapter {
   title: string
   alias: string
   isTrack: boolean
+  description: string
   subchapters: Subchapter[]
 
-  constructor(title: string, alias: string, isTrack: boolean, subchaptersData: SubchapterData[]) {
+  constructor(title: string,
+              alias: string,
+              isTrack: boolean,
+              description: string,
+              subchaptersData: SubchapterData[]
+  ) {
     this.title = title
     this.alias = alias
     this.isTrack = isTrack
+    this.description = description
     this.subchapters = subchaptersData.map((d) => new Subchapter(d.title, d.alias, this))
   }
 }
@@ -42,11 +49,11 @@ class Subchapter {
 }
 
 export const chapters: Chapter[] = [
-  new Chapter('Overview', 'introduction', false, [{
+  new Chapter('Overview', 'introduction', false, 'Here is a short dasdasdescription...', [{
     title: 'Introduction',
     alias: 'get-started',
   }]),
-  new Chapter('React', 'tutorial-react', true, [{
+  new Chapter('React', 'tutorial-react', true, 'Here is a short desasdasdcription...',[{
     title: '01 - Getting Started',
     alias: 'react-01',
   }, {
@@ -68,7 +75,7 @@ export const chapters: Chapter[] = [
     title: '07 - Pagination',
     alias: 'react-07',
   }]),
-  new Chapter('React Native Vanilla', 'tutorial-react-native-vanilla', true, [{
+  new Chapter('React Native Vanilla', 'tutorial-react-native-vanilla', true, 'Here isdasdad a short description...', [{
     title: '01 - Getting Started',
     alias: 'rnv-01',
   }, {
@@ -87,7 +94,7 @@ export const chapters: Chapter[] = [
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
   }]),
-  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, [{
+  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, 'Here is a short description...', [{
     title: '01 - Getting Started',
     alias: 'rne-01',
   }, {
@@ -103,22 +110,22 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('Angular 2', 'tutorial-angular', true, [{
+  new Chapter('Angular 2', 'tutorial-angular', true, 'Here is a sddadasdhort description...', [{
     title: 'Playground',
     alias: 'angular-playground',
   }]),
-  new Chapter('Vue.js', 'tutorial-vue', true, [{
+  new Chapter('Vue.js', 'tutorial-vue', true, 'Here is a short description...', [{
     title: 'Playground',
     alias: 'vue-playground',
   }]),
-  new Chapter('Excursions', 'excursions', false, [{
+  new Chapter('Excursions', 'excursions', false, 'Here is a shorasdasdt description...', [{
     title: '01 - Using the DevTools',
     alias: 'excursion-01',
   }, {
     title: '02 - Mutation Results',
     alias: 'excursion-02',
   }]),
-  new Chapter('Go Further', 'go-further', false, [{
+  new Chapter('Go Further', 'go-further', false, 'Here is a short description...', [{
     title: 'Wrap Up',
     alias: 'wrap-up',
   }]),

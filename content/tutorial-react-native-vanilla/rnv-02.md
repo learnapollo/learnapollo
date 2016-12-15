@@ -191,7 +191,7 @@ You should see the updated greeting.
 
 ## Excursion: Redux DevTools
 
-[Coming soon](/exercises/excursion-01).
+[Coming soon](/excursions/excursion-01).
 
 ## Recap
 

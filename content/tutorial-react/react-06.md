@@ -246,7 +246,7 @@ const createPokemonMutation = gql`
 `
 ```
 
-To learn more about handling the Apollo Store and get to know more efficient ways of handling situations like these, check out [the excursion about caching with Apollo Client](/content/excursions/excursion-02.md).
+To learn more about handling the Apollo Store and get to know more efficient ways of handling situations like these, check out [the excursion on managing Apollo store](/excursions/excursion-02).
 
 ## Recap
 

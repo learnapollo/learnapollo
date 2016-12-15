@@ -187,7 +187,7 @@ If you finished all the changes to `src/components/Pokedex.js` successfully, ope
 
 ## Excursion: Redux DevTools
 
-[Coming soon](/exercises/excursion-01).
+[Coming soon](/excursions/excursion-01).
 
 ## Recap
 

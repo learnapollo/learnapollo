@@ -122,7 +122,7 @@ export const chapters: Chapter[] = [
     title: '01 - Using the DevTools',
     alias: 'excursion-01',
   }, {
-    title: '02 - Caching with Apollo Client',
+    title: '02 - Managing Apollo store',
     alias: 'excursion-02',
   }]),
   new Chapter('Go Further', 'go-further', false, 'Learn about how you can apply the knowledge you gained about Apollo Client and GraphQL throughout this tutorial in one of your next frontend projects.', [{

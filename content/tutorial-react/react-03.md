@@ -30,7 +30,9 @@ Before we start working directly on our goal to show the pokemons a trainer owns
 
 ### Static Query Variables
 
-One of the available query options are variables. A common use case for query variables is when a query argument depends of some external factor, like a route parameter. We will see that use case shortly, but for now we are introducing a static query variable to the `TrainerQuery`. This is how the query looked like at the end of the last exercise:
+One of the available query options are variables. A common use case for query variables is when a query argument depends on some external factor, like a route parameter. Apollo takes care of escaping special characters (for example in JSON values or strings) and leverages the GraphQL type system when specifying variables.
+
+For now we are introducing a static query variable to the `TrainerQuery`. This is how the query looked like at the end of the last exercise:
 
 ```js
 const TrainerQuery = gql`

@@ -1,12 +1,12 @@
-# Excursion 02 - Caching with Apollo Client
+# Excursion 02 - Managing Apollo store
 
-Apart from executing queries and mutations, Apollo Client takes care of caching query and mutation results. Let's explore the caching mechanisms encountered in Apollo Client and its React integration.
+Apart from executing queries and mutations, Apollo Client takes care of caching query and mutation results in a client-side store. Let's explore the caching mechanisms encountered in Apollo Client and its React integration.
 
 ## Default caching behaviour
 
-Caching in this case is a client-side mechanism that stores data from queries in a client-side store. With the correct setup, different components that need the same data don't store this data separately, but both link to the same data in this store.
+With the correct setup, different components that need the same data don't store this data separately, but both link to the same data in the client-side store mostly managed by Apollo.
 
-Per default, a data is identified by its query path. In our pokedex example, this is the path for the pokemon nodes of our Trainer:
+Per default, data is identified by its query path. In our pokedex example, this is the path for the pokemon nodes of our Trainer:
 
 > RootQuery - Trainer(name: `__NAME__`) - ownedPokemons
 

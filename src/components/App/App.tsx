@@ -250,7 +250,7 @@ class App extends React.Component<Props, State> {
                 ? styles.layoverPadding
                 : ''}`}>
           {this.props.children}
-          {currentSubchapter.chapter.isTrack && <div>
+          {currentSubchapter && currentSubchapter.chapter && currentSubchapter.chapter.isTrack && <div>
             {previousSubchapter &&
             <div
               className={

@@ -1,5 +1,8 @@
 import * as React from 'react'
 import {StoredState} from '../../utils/statestore'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
+import TrackLink from '../TrackLink/TrackLink'
 
 const styles: any = require('./Sharing.module.styl')
 
@@ -53,22 +56,24 @@ export default class Sharing extends React.Component<Props, State> {
             marginBottom: '2rem',
           }}
         >
-          <a
+          <TrackLink
+            event={events.ShareWrapupTwitter}
             href={`http://www.twitter.com/share?url=${shareUrl}&text=${shareTitle}`}
             target='_blank'
             className={styles.button}
             style={{background: '#3cf'}}
           >
             Share on Twitter
-          </a>
-          <a
+          </TrackLink>
+          <TrackLink
+            event={events.ShareWrapupTwitter}
             href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareTitle}`}
             target='_blank'
             className={`ml2 ${styles.button}`}
             style={{background: '#3b5998'}}
           >
             Share on Facebook
-          </a>
+          </TrackLink>
         </div>
         <h1
           className='accent'
@@ -131,7 +136,7 @@ export default class Sharing extends React.Component<Props, State> {
   private submit = () => {
     const { email } = this.state
 
-    analytics.track('join slack', { email })
+    ReactGA.event(events.JoinSlack)
 
     fetch('https://slack.graph.cool/invite', {
       method: 'POST',

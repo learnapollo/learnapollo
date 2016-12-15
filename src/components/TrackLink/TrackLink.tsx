@@ -1,30 +1,38 @@
 import * as React from 'react'
-import {findDOMNode} from 'react-dom'
+import * as ReactGA from 'react-ga'
 
 interface Props {
-  eventMessage: string
+  event: ReactGA.EventArgs
   children?: JSX.Element
   href: string
-  className: string
-  [key: string]: any
+  className?: string
+  target?: string
+  style?: any
+  download?: string
 }
 
 export default class TrackLink extends React.Component<Props, {}> {
-
-  componentDidMount () {
-    const link = findDOMNode(this.refs['link'])
-    analytics.trackLink(link, this.props.eventMessage)
-  }
 
   render() {
     return (
       <a
         href={this.props.href}
-        ref='link'
         className={this.props.className}
+        onClick={this.onClick}
+        target={this.props.target}
+        style={this.props.style}
+        download={this.props.download}
       >
         {this.props.children}
       </a>
     )
+  }
+
+  private onClick = (e: React.MouseEvent<any>) => {
+    e.preventDefault()
+    ReactGA.event(this.props.event)
+    setTimeout(() => {
+      window.location.href = this.props.href
+    }, 250)
   }
 }

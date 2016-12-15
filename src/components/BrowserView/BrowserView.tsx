@@ -3,6 +3,8 @@ import * as Relay from 'react-relay'
 import Icon from '../Icon/Icon'
 import AddPokemonMutation from '../../mutations/AddPokemonMutation'
 import BrowserRow from '../BrowserRow/BrowserRow'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
 
 const styles: any = require('./BrowserView.module.styl')
 
@@ -93,7 +95,8 @@ class BrowserView extends React.Component<Props, State> {
   }
 
   private addPokemon = () => {
-    analytics.track('overlay: create pokemon')
+    ReactGA.event(events.OverlayCreatePokemon)
+
     Relay.Store.commitUpdate(
       new AddPokemonMutation({
         viewer: this.props.viewer,

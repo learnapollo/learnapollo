@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import Loading from '../Loading/Loading'
-import {StoredState} from '../../utils/statestore'
+import { StoredState } from '../../utils/statestore'
 import Markdown from '../Markdown/Markdown'
-import TrackLink from '../TrackLink/TrackLink'
 import Icon from '../Icon/Icon'
-import {Parser} from 'commonmark'
+import { Parser } from 'commonmark'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
+import TrackLink from '../TrackLink/TrackLink'
 
 const styles: any = require('./ContentEndpoint.module.styl')
 
@@ -54,7 +56,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
         <TrackLink
           href={githubUrl}
           className={`pa3 pointer ${styles.getEndpoint}`}
-          eventMessage='open github auth'
+          event={Object.assign({}, events.OpenGithub, {label: this.state.allowStar ? 'star-allowed' : 'star-disallowed'})}
         >
           Get GraphQL Endpoint (via Github)
         </TrackLink>
@@ -80,7 +82,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
           <div className='tc'>
             {endpoint}
           </div>
-          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom' />
+          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom'/>
         </div>
       )
     }
@@ -96,7 +98,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
             <CopyToClipboard
               className='ml3'
               text={`https://api.graph.cool/simple/v1/${this.context.storedState.user.projectId}`}
-              onCopy={() => analytics.track('overlay: copied endpoint')}
+              onCopy={() => ReactGA.event(events.ContentCopiedEndpoint)}
             >
               <Icon
                 src={require('../../assets/icons/copy.svg')}
@@ -109,7 +111,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
               />
             </CopyToClipboard>
           </div>
-          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom' />
+          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom'/>
         </div>
       )
     }
@@ -125,7 +127,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
   }
 
   private skipEndpoint = () => {
-    analytics.track('skip endpoint')
+    ReactGA.event(events.ContentSkippedEndpoint)
     this.context.updateStoredState(['skippedAuth'], true)
   }
 }

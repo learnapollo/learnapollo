@@ -4,6 +4,8 @@ import * as CopyToClipboard from 'react-copy-to-clipboard'
 import * as Relay from 'react-relay'
 import BrowserView from '../BrowserView/BrowserView'
 import Icon from '../Icon/Icon'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
 
 require('graphiql/graphiql.css')
 
@@ -30,7 +32,13 @@ class ServerLayover extends React.Component<Props, State> {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(graphQLParams),
       })
-        .then(response => response.json())
+        .then(response => {
+          if (response.ok && !graphQLParams.query.includes('IntrospectionQuery')) {
+            ReactGA.event(events.OverlayGraphiQLRanQuery)
+          }
+
+          return response.json()
+        })
     }
 
     return (
@@ -68,7 +76,7 @@ class ServerLayover extends React.Component<Props, State> {
             <div className='flex items-center'>
               <CopyToClipboard
                 text={`https://api.graph.cool/simple/v1/${this.props.projectId}`}
-                onCopy={() => analytics.track('overlay: copied endpoint')}
+                onCopy={() => ReactGA.event(events.OverlayCopiedEndpoint)}
               >
                 <Icon src={require('../../assets/icons/copy.svg')}
                       className='dim'
@@ -115,13 +123,13 @@ class ServerLayover extends React.Component<Props, State> {
   }
 
   private showData = () => {
-    analytics.track('overlay: show data')
-    this.setState({ showData: true } as State)
+    ReactGA.event(events.OverlayShowDatabrowser)
+    this.setState({showData: true} as State)
   }
 
   private showGraphiQL = () => {
-    analytics.track('overlay: show graphiql')
-    this.setState({ showData: false } as State)
+    ReactGA.event(events.OverlayShowGraphiQL)
+    this.setState({showData: false} as State)
   }
 }
 

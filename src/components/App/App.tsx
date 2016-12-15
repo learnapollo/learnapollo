@@ -9,6 +9,8 @@ import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 import {initSmooch} from '../../utils/smooch'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
 
 require('./style.css')
 
@@ -315,12 +317,12 @@ class App extends React.Component<Props, State> {
   }
 
   private openLayover = () => {
-    analytics.track(`overlay: open`)
+    ReactGA.event(events.OverlayOpen)
     this.setState({showLayover: true} as State)
   }
 
   private closeLayover = () => {
-    analytics.track(`overlay: close`)
+    ReactGA.event(events.OverlayClose)
     this.setState({showLayover: false} as State)
   }
 
@@ -342,18 +344,9 @@ class App extends React.Component<Props, State> {
       throw Error(response.statusText)
     }
 
-    const {projectId, email, name} = body
+    ReactGA.event(events.EndpointReceived)
 
-    analytics.alias(email)
-    setTimeout(
-      () => {
-        analytics.identify(email, {
-          name: name || email,
-          email: email,
-        })
-      },
-      2000
-    )
+    const {projectId, email, name} = body
 
     this.updateStoredState(['user'], {projectId, email, name})
     this.updateStoredState(['skippedAuth'], false)

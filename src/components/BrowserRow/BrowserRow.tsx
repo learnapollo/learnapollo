@@ -3,6 +3,8 @@ import * as Relay from 'react-relay'
 import Icon from '../Icon/Icon'
 import DeletePokemonMutation from '../../mutations/DeletePokemonMutation'
 import UpdatePokemonMutation from '../../mutations/UpdatePokemonMutation'
+import * as ReactGA from 'react-ga'
+import { events } from '../../utils/events'
 
 const styles: any = require('./BrowserRow.module.styl')
 
@@ -81,14 +83,14 @@ class BrowserRow extends React.Component<Props, State> {
   }
 
   private removePokemon = () => {
-    analytics.track('overlay: delete pokemon')
+    ReactGA.event(events.OverlayDeletePokemon)
     Relay.Store.commitUpdate(
       new DeletePokemonMutation({viewerId: this.props.viewerId, pokemonId: this.props.pokemon.id})
     )
   }
 
   private updatePokemon = () => {
-    analytics.track('overlay: update pokemon')
+    ReactGA.event(events.OverlayUpdatePokemon)
     if (this.state.changesMade) {
       Relay.Store.commitUpdate(
         new UpdatePokemonMutation({pokemonId: this.props.pokemon.id, name: this.state.name, url: this.state.url})

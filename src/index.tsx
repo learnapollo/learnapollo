@@ -1,17 +1,30 @@
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
-import {Router, browserHistory, applyRouterMiddleware} from 'react-router'
-import {useScroll} from 'react-router-scroll'
+import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
+import { useScroll } from 'react-router-scroll'
 import routes from './routes'
 import * as ReactGA from 'react-ga'
+import { events } from './utils/events'
 
 import './polyfill'
 
 if (__GA_TRACKING_CODE__) {
-  ReactGA.initialize(__GA_TRACKING_CODE__)
+  ReactGA.initialize(__GA_TRACKING_CODE__, {
+    titleCase: false,
+  } as ReactGA.InitializeOptions)
 
   browserHistory.listen((location) => {
     ReactGA.pageview(location.pathname)
+  })
+}
+
+if (Smooch) {
+  Smooch.on('widget:opened', () => {
+    ReactGA.event(events.SmoochOpened)
+  })
+
+  Smooch.on('message:sent', () => {
+    ReactGA.event(events.SmoochMessageSent)
   })
 }
 

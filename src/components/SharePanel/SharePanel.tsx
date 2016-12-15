@@ -1,8 +1,10 @@
 import * as React from 'react'
-import {getStoredState} from '../../utils/statestore'
-import {throttle} from 'lodash'
+import { getStoredState } from '../../utils/statestore'
+import { throttle } from 'lodash'
 import * as classNames from 'classnames'
 const styles: any = require('./SharingPanel.module.styl')
+import { events } from '../../utils/events'
+import TrackLink from '../TrackLink/TrackLink'
 
 interface Props {
 }
@@ -70,22 +72,24 @@ export default class SharePanel extends React.Component<Props, {}> {
             paddingBottom: '2rem',
           }}
           >
-            <a
+            <TrackLink
+              event={events.SharePanelTwitter}
               href={`http://www.twitter.com/share?url=${shareUrl}&text=${shareTitle}`}
               target='_blank'
               className={styles.button}
               style={{background: '#3cf'}}
             >
               Share on Twitter
-            </a>
-            <a
+            </TrackLink>
+            <TrackLink
+              event={events.SharePanelFacebook}
               href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareTitle}`}
               target='_blank'
               className={classNames(styles.button, {'ml2': displayMode !== 'medium'})}
               style={{background: '#3b5998'}}
             >
               Share on Facebook
-            </a>
+            </TrackLink>
           </div>
         </div>
       </div>

@@ -4,29 +4,16 @@ declare module 'react-router-relay'
 declare module 'react-router-scroll'
 declare module 'commonmark-react-renderer'
 declare module 'slug'
-declare module 'smooch'
 declare module 'graphiql'
 declare module 'react-copy-to-clipboard'
 declare module 'cuid'
 
-//declare function require(name: string): any
-
 declare var fetch: any
-
-declare interface Window {
-  analytics: any
-  mixpanel: any
-}
-
 declare var Smooch: any
-declare var analytics: any
-declare var mixpanel: any
 declare var __LAST_UPDATE__: string
 declare var __LAMBDA_AUTH__: string
 declare var __LAMBDA_DOWNLOAD_EXAMPLE__: string
 declare var __GITHUB_OAUTH_CLIENT_ID__: string
-declare var __ENABLE_SEGMENT__: boolean
-declare var __SEGMENT_TOKEN__: string
 declare var __GA_TRACKING_CODE__: string
 
 declare module 'react-relay' {
@@ -137,3 +124,4 @@ declare module 'react-relay' {
     setVariables(variables: Object)
   }
 }
+

@@ -124,12 +124,16 @@ export default class Markdown extends React.Component<Props, {}> {
               onCopy={() => true}
             >
               <Icon src={require('../../assets/icons/copy.svg')}
-                    className='dim relative align-right'
+                    className='dim relative align-right justify-center items-center bg-white black-70 shadow-4 br1'
+                    width={20}
+                    height={20}
                     style={{
-                    padding: '6px',
-                    background: 'rgba(0,0,0,0.1)',
-                    cursor: 'pointer',
-                  }}
+                      marginLeft: 'auto',
+                      width: 24,
+                      height:24,
+                      padding: '6px',
+                      cursor: 'pointer',
+                    }}
               />
             </CopyToClipboard>
             }

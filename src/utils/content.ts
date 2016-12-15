@@ -111,7 +111,7 @@ export const chapters: Chapter[] = [
     title: 'Playground',
     alias: 'vue-playground',
   }]),
-  new Chapter('Excursions', 'excursions', true, [{
+  new Chapter('Excursions', 'excursions', false, [{
     title: '01 - Using the DevTools',
     alias: 'excursion-01',
   }, {

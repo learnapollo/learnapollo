@@ -125,7 +125,7 @@ class App extends React.Component<Props, State> {
               />
             </div>
             <Link to='/' onClick={this.toggleNav}>
-              <h2 className='fw3 pa4 pb0 black'>
+              <h2 className='fw3 pa4 pb0 black flex items-center'>
                 <span className='dib mr3 mrl-1'>
                   <Icon
                     src={require('../../assets/icons/logo.svg')}

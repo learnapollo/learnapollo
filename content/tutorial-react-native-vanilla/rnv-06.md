@@ -38,24 +38,22 @@ state = {
 The state gets initialized with the passed props and `onChangeText` events for the two new `TextInput` elements update the according part of the state:
 
 ```js
-<View style={{
-  width: 200
-}}>
+<View>
   <TextInput
     style={{
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1
+      padding: 20,
+      height: 60,
+      fontFamily: 'HelveticaNeue-Light',
     }}
     onChangeText={(name) => this.setState({name})}
     value={this.state.name}
-    placeholder='Image Url'
+    placeholder='Type a name...'
   />
   <TextInput
     style={{
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1
+      padding: 20,
+      height: 60,
+      fontFamily: 'HelveticaNeue-Light',
     }}
     onChangeText={(url) => this.setState({url})}
     value={this.state.url}
@@ -69,8 +67,8 @@ The update and delete buttons were added:
 ```js
 <View
   style={{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 12
   }}

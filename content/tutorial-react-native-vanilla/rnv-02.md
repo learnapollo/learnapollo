@@ -103,19 +103,36 @@ So let's now change the message to display the name of the trainer once `loading
 ```js
 render () {
   if (this.props.data.loading) {
-    return (<Text style={{marginTop: 64}}>Loading</Text>)
+    return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
   }
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+    return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: 'gray'}}>
-      <Text style={{marginTop: 64}}>
-        Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-      </Text>
+    <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+      <CustomText
+        style={{
+          marginTop: 64,
+          padding: 16,
+          fontSize: 24,
+          textAlign: 'center'
+        }}
+      >
+        Hey {this.props.data.Trainer.name}!
+      </CustomText>
+      <CustomText
+        style={{
+          padding: 16,
+          paddingTop: 0,
+          fontSize: 18,
+          textAlign: 'center'
+        }}
+      >
+        There are 0 Pokemons in your pokedex
+      </CustomText>
     </View>
   )
 }
@@ -144,19 +161,36 @@ class Pokedex extends React.Component {
 
   render () {
     if (this.props.data.loading) {
-      return (<Text style={{marginTop: 64}}>Loading</Text>)
+      return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
     }
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+      return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'gray'}}>
-        <Text style={{marginTop: 64}}>
-          Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-        </Text>
+      <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+        <CustomText
+          style={{
+            marginTop: 64,
+            padding: 16,
+            fontSize: 24,
+            textAlign: 'center'
+          }}
+        >
+          Hey {this.props.data.Trainer.name}!
+        </CustomText>
+        <CustomText
+          style={{
+            padding: 16,
+            paddingTop: 0,
+            fontSize: 18,
+            textAlign: 'center'
+          }}
+        >
+          There are 0 Pokemons in your pokedex
+        </CustomText>
       </View>
     )
   }

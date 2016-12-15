@@ -92,25 +92,36 @@ Right now we are passing the bare object `pokemon` to `PokemonCard`.
 
 A nice thing we can add is the filtering of the `pokemon` object when passing it as a prop by using the `filter` method of the fragments. First, we need to include the `filter` method from `graphql-anywhere`:
 
-```js@src/components/PokemonCard.js
+```js@src/components/PokemonPage.js
 import { filter } from 'graphql-anywhere'
 ```
 
 Then we can use it when passing the `pokemon` as a prop:
 
-```js@src/components/PokemonCard.js
-const pokemon = this.props.data.Pokemon
+```js@src/components/PokemonPage.js
+render () {
+  if (this.props.data.loading) {
+    return (<Text style={{marginTop: 64}}>Loading</Text>)
+  }
 
-return (
-  <View
-    style={{
-      flex: 1,
-      marginTop: 64
-    }}
-  >
-    <PokemonCard pokemon={filter(pokemonCardFragments.pokemon, pokemon)}/>
-  </View>
-)
+  if (this.props.data.error) {
+    console.log(this.props.data.error)
+    return (<View style={{marginTop: 64}}>An unexpexted error occured</View>)
+  }
+
+  const pokemon = this.props.data.Pokemon
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        marginTop: 64
+      }}
+    >
+      <PokemonCard pokemon={filter(pokemonCardFragments.pokemon, pokemon)}/>
+    </View>
+  )
+}
 ```
 
 This will make sure that only the required fields of the `pokemon` object get passed to `PokemonCard`. If we need additional fields later, for example in `PokemonCard`, we just have to add them in the fragment defined in `PokemonCard`.

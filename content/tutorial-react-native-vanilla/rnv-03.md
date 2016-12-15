@@ -74,7 +74,8 @@ Now that we saw query variables in action we can focus on displaying the pokemon
 
 ```js
 import React from 'react'
-import { View, Image, Text, TouchableHighlight } from 'react-native'
+import { View, Image, TouchableHighlight, Dimensions } from 'react-native'
+import CustomText from './CustomText'
 
 import { Actions } from 'react-native-router-flux'
 
@@ -86,22 +87,34 @@ export default class PokemonPreview extends React.Component {
 
   render () {
     const pokemonId = this.props.pokemon.id
+    const {height, width} = Dimensions.get('window')
 
     return (
       <View
           style={{
-            flex: 1,
-            margin: 12,
+            margin: 6,
+            height: (width / 2) - 18,
+            width: (width / 2) - 18,
+            backgroundColor: 'white',
+            padding: 16,
           }}
+          shadowColor='rgba(0,0,0,0.25)'
+          shadowOffset={{
+            width: 0,
+            height: 2
+          }}
+          shadowOpacity={0.5}
+          shadowRadius={1}
         >
         <TouchableHighlight
           onPress={() => Actions.pokemonPage({pokemonId})}
           underlayColor='lightgray'
         >
-          <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              flexDirection: 'column'
             }}
           >
             <Image
@@ -112,7 +125,12 @@ export default class PokemonPreview extends React.Component {
                 resizeMode: 'contain'
               }}
             />
-            <Text>{this.props.pokemon.name}</Text>
+            <CustomText
+              style={{
+                height: 20,
+                marginTop: 20
+              }}
+            >{this.props.pokemon.name}</CustomText>
           </View>
         </TouchableHighlight>
       </View>
@@ -162,26 +180,44 @@ Once the query has finished, `this.props.data.Trainer` in the `Pokedex` componen
 ```js@src/components/Pokedex.js
 render () {
   if (this.props.data.loading) {
-    return (<Text style={{marginTop: 64}}>Loading</Text>)
+    return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
   }
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+    return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: 'gray'}}>
-      <Text style={{marginTop: 64}}>
-        Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-      </Text>
+    <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+      <CustomText
+        style={{
+          marginTop: 64,
+          padding: 16,
+          fontSize: 24,
+          textAlign: 'center'
+        }}
+      >
+        Hey {this.props.data.Trainer.name}!
+      </CustomText>
+      <CustomText
+        style={{
+          padding: 16,
+          paddingTop: 0,
+          fontSize: 18,
+          textAlign: 'center'
+        }}
+      >
+        There are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
+      </CustomText>
       <ScrollView>
         <View
           style={{
             flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            margin: 6,
           }}
         >
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>

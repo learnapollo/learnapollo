@@ -113,3 +113,7 @@
 .content blockquote p {
     margin: 0;
 }
+
+.sourceSans {
+    font-family: 'Source Sans Pro', sans-serif;
+}

@@ -8,6 +8,8 @@ import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
 import Download from '../Download/Download'
 import SetTrack from '../SetTrack/SetTrack'
+import Icon from '../Icon/Icon'
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -102,12 +104,35 @@ export default class Markdown extends React.Component<Props, {}> {
         return React.createElement('h' + props.level, elProps, props.children)
       },
       CodeBlock (props) {
-        const className = props.language && 'language-' + props.language
+        const [language, filepath] = props.language ? props.language.split('@') : ['', null]
+        const className = 'language-' + language
+
         return (
           <pre>
+            {filepath &&
+              <div className='flex justify-between flex-row black-30 sourceSans'>
+                <p>COPY THIS SNIPPET</p>
+                <p className='pl3'>in <span className='accent'>{filepath}</span></p>
+              </div>
+            }
             <PrismCode className={className}>
               {props.literal}
             </PrismCode>
+            {filepath &&
+            <CopyToClipboard
+              text={props.literal}
+              onCopy={() => true}
+            >
+              <Icon src={require('../../assets/icons/copy.svg')}
+                    className='dim relative align-right'
+                    style={{
+                    padding: '6px',
+                    background: 'rgba(0,0,0,0.1)',
+                    cursor: 'pointer',
+                  }}
+              />
+            </CopyToClipboard>
+            }
           </pre>
         )
       },

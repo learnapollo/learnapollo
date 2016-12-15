@@ -16,7 +16,7 @@ We will learn how to query information from a GraphQL server with Apollo Client.
 
 Move to the second exercise, install the dependencies and start the pokedex React app from your console
 
-```sh
+```sh@an/undisclosed/location
 cd pokedex-react/exercise-02
 yarn install # or npm install
 yarn start # or npm start

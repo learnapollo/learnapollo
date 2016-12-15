@@ -167,16 +167,20 @@ react-native run-ios # or react-native run-android
 ```
 
 
-Click the add button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page. To fix this, we have to do one more thing. Head over to `src/client.js` and replace the creation of Apollo Client by this:
+Click the add button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page
 
-```js@src/client.js
+## Data Normalization and the Apollo store
+
+To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `src/index.js` like this:
+
+```js@src/index.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
   dataIdFromObject: o => o.id
 })
 ```
 
-Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your app and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
+Note that we added the `dataIdFromObject` function to express this relation. Here, we map an object to its id field. How you handle data normalization with `dataIdFromObject` depends on your GraphQL server and schema. You can find out more in the excursion about [data normalization and managing Apollo store](/excursions/excursion-02).
 
 ## Recap
 

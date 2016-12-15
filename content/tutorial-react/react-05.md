@@ -162,7 +162,12 @@ handleSave = () => {
 
 Note how we provide the variables using the `variables` object. As you can see, the mutation return a promise, so we can chain another function by using `then` to return back to the pokemon list.
 
-Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page. To fix this, we have to do one more thing. Head over to `src/index.js` and replace the creation of Apollo Client by this:
+Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page.
+
+
+## Data Normalization and the Apollo store
+
+To fix this, we have to help Apollo Client out a bit. Unlike than Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `src/index.js` like this:
 
 ```js@src/index.js
 const client = new ApolloClient({
@@ -171,11 +176,7 @@ const client = new ApolloClient({
 })
 ```
 
-Note that we added the `dataIdFromObject` attribute that maps an object to the id field on that objects. Go back to your browser and confirm that creating a new pokemon is reflected in the pokedex without refreshing.
-
-## Excursion: Managing the Apollo store
-
-Find out more about in the excursion about [managing Apollo store](/excursions/excursion-02).
+Note that we added the `dataIdFromObject` function to express this relation. Here, we map an object to its id field. How you handle data normalization with `dataIdFromObject` depends on your GraphQL server and schema. You can find out more in the excursion about [data normalization and managing Apollo store](/excursions/excursion-02).
 
 ## Recap
 

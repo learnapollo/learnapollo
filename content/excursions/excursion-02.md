@@ -96,7 +96,7 @@ const AddPokemonCardWithMutation = graphql(createPokemonMutation, {
 
 ## Consistent UI without caching
 
-Depending on your use case, you might be fine with a solution that offers a consistent UI without using caching at all. You could use different techniques, like [refetching](http://dev.apollodata.com/react/receiving-updates.html#Refetch) or  [polling](http://dev.apollodata.com/react/receiving-updates.html#Polling) to accomplish that.
+Depending on your use case, you might be fine with a solution that offers a consistent UI without normalization at all. You could use different techniques, like [refetching](http://dev.apollodata.com/react/receiving-updates.html#Refetch) or [polling](http://dev.apollodata.com/react/receiving-updates.html#Polling) to accomplish that.
 
 In other cases, you want to make sure to query data from the server, even though some data required for your query might already be in your cache. You can do this by using the [forceFetch](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.watchQuery) option. The cache is still updated with results of forced query.
 

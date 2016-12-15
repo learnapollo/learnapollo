@@ -27,6 +27,7 @@ declare var __LAMBDA_DOWNLOAD_EXAMPLE__: string
 declare var __GITHUB_OAUTH_CLIENT_ID__: string
 declare var __ENABLE_SEGMENT__: boolean
 declare var __SEGMENT_TOKEN__: string
+declare var __GA_TRACKING_CODE__: string
 
 declare module 'react-relay' {
 

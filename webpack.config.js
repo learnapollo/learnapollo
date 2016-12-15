@@ -57,6 +57,7 @@ module.exports = {
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
       __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"7FHjXj58suFRzllOdSQ7Ij6a9nvYD2hS"',
+      __GA_TRACKING_CODE__: JSON.stringify('UA-74131346-6'),
       __GITHUB_OAUTH_CLIENT_ID__: '"f83113f8d6c4d78f17e5"',
       __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnapollo-dev_auth"',
       __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-file-processing_getting-started-example"',

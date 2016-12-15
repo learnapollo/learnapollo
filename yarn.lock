@@ -32,6 +32,10 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-ga@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@types/react-ga/-/react-ga-1.4.6.tgz#73be5d19cd56c56f6319a1f3a6c57c4f911ecc39"
+
 "@types/react@*", "@types/react@^0.14.35":
   version "0.14.44"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.44.tgz#033f0b63691b489adfce2397c93d8bcafe7f7356"
@@ -4220,6 +4224,12 @@ react-deep-force-update@^1.0.0:
 react-dom@^15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
+
+react-ga@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.1.2.tgz#7af206c5e8761d7176e15773fe826acdb70ac653"
+  dependencies:
+    object-assign "^4.0.1"
 
 react-prism@^4.0.0:
   version "4.0.0"

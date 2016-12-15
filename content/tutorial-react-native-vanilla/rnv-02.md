@@ -8,7 +8,7 @@ This is the second exercise in the **React Native Vanilla Track** of this Apollo
 
 The **goal** of this exercise is to query information on your very own trainer node. We will use it to add a personal touch to the greeting to our pokedex:
 
-![](../images/react-exercise-02-pokedex.png)
+![](../images/rnv-exercise-02-pokedex.png)
 
 We will learn how to query information from a GraphQL server with Apollo Client.
 

@@ -6,7 +6,7 @@ Welcome to the 4th exercise in the **React Native Vanilla Track** of this Apollo
 
 The **goal** of this exercise is to add some information to the pokemon detail view about the pokemon's trainer:
 
-![](../images/react-exercise-04-pokemonpage.png)
+![](../images/rnv-exercise-04-pokemonpage.png)
 
 We will use fragments and learn how they can be used to define data requirements that are co-located with the component requiring that data.
 

@@ -6,7 +6,7 @@ Welcome to the 6th exercise in the **React Native Vanilla Track** of this Apollo
 
 The **goal** of this exercise is to add the possibility to update and delete existing pokemons:
 
-![](../images/react-exercise-06-pokemonpage.png)
+![](../images/rnv-exercise-06-pokemonpage.png)
 
 This will both let you increase your understanding of mutations as well as show you how you can add multiple mutations to the same component.
 

@@ -16,7 +16,7 @@ We will learn how to query information from a GraphQL server with Apollo Client.
 
 Move to the second exercise, install the dependencies and start the pokedex React app from your console
 
-```sh@an/undisclosed/location
+```sh
 cd pokedex-react/exercise-02
 yarn install # or npm install
 yarn start # or npm start
@@ -51,7 +51,7 @@ Queries offer a flexible way to state data requirements. With Apollo Client, we 
 
 The GraphQL server for the Pokedex App is configured so that we can identify trainers by their name. To query the information of a trainer given his name, you can use the following query:
 
-```
+```graphql
 query TrainerQuery {
   Trainer(name: "__NAME__") {
     id

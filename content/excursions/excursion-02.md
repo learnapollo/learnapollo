@@ -68,7 +68,7 @@ What we do here is to query all the pokemons our trainer owns whenever we create
 
 There is a more efficient way that leverages the `reducer` concept from Redux. When specifying a query or mutation, you can use `updateQueries` to define how the local store should be updated with the incoming query or mutation result.
 
-In our case, we want to update the `Trainer` query:
+In our case, we want to update the `TrainerQuery` query:
 
 ```js
 const AddPokemonCardWithMutation = graphql(createPokemonMutation, {
@@ -78,7 +78,7 @@ const AddPokemonCardWithMutation = graphql(createPokemonMutation, {
         return mutate({
           variables: { ...variables },
           updateQueries: {
-            Trainer: (prev, { mutationResult }) => {
+            TrainerQuery: (prev, { mutationResult }) => {
               const newPokemon = mutationResult.data.createPokemon
               return update(prev, {
                 ownedPokemons: {

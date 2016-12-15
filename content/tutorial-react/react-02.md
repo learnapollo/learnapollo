@@ -82,7 +82,7 @@ const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 
 ### Using query results in React components
 
-Wrapping components like this with `graphql` injects a new `data` object to the props of the inner components. We can stress this by updating the `propTypes` of the `Pokedex` component:
+Wrapping components like this with `graphql` injects a new `data` object to the props of the inner component. We can stress this by updating the `propTypes` of the `Pokedex` component:
 
 ```js
 static propTypes = {

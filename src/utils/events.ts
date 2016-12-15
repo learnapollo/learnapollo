@@ -36,11 +36,11 @@ export const events = {
     action: 'skipped-endpoint',
   },
   SmoochOpened: {
-    category: 'ui',
+    category: 'user',
     action: 'smooch/opened',
   },
   SmoochMessageSent: {
-    category: 'ui',
+    category: 'user',
     action: 'smooch/message-sent',
   },
   ContentCopiedEndpoint: {

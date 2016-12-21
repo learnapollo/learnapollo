@@ -72,12 +72,24 @@ export default class SharePanel extends React.Component<Props, {}> {
             paddingBottom: '2rem',
           }}
           >
-            <a className="github-button" href="https://github.com/learnapollo/learnapollo" data-style="mega" data-count-href="/learnapollo/learnapollo/stargazers" data-count-api="/repos/learnapollo/learnapollo#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star learnapollo/learnapollo on GitHub">Star</a>
+            <div style={{ marginTop: '1rem' }}>
+              <a
+                className='github-button'
+                href='https://github.com/learnapollo/learnapollo'
+                data-style='mega'
+                data-count-href='/learnapollo/learnapollo/stargazers'
+                data-count-api='/repos/learnapollo/learnapollo#stargazers_count'
+                data-count-aria-label='# stargazers on GitHub'
+                aria-label='Star learnapollo/learnapollo on GitHub'
+              >
+                Star
+              </a>
+            </div>
             <TrackLink
               event={events.SharePanelTwitter}
               href={`http://www.twitter.com/share?url=${shareUrl}&text=${shareTitle}`}
               target='_blank'
-              className={styles.button}
+              className={classNames(styles.button, {'ml2': displayMode !== 'medium'})}
               style={{background: '#3cf'}}
             >
               Share on Twitter

@@ -19,7 +19,7 @@ React Native Exponent. More tracks, such as for Angular 2, iOS and Vue.js are pl
 Exercises and solutions are available in separate folders in the provided zip file so you can easily switch
 between and compare different exercises and solutions.
 
-Apart from the self-contained Apollo tutorial, we offerexcursions that will zoom in on selected
+Apart from the self-contained Apollo tutorial, we offer excursions that will zoom in on selected
 topics such as *the Redux DevTools* or *Caching with Apollo Client*. The excursions are not necessary to finish the exercises, but
 can teach you a trick or two or give you a better understanding of specific concepts.
 

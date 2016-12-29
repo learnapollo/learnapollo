@@ -53,7 +53,7 @@ render () {
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
+    return (<CustomText style={{marginTop: 64}}>An unexpexted error occurred</CustomText>)
   }
 
   return (

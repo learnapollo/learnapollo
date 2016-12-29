@@ -100,7 +100,7 @@ The `data` object provides several things, in particular
 * If something went wrong with the query and errors are returned, `data.error` will contain detailed information
 * once `loading` is `false`, we know that the query response arrived and all the fields from the query are available via `data`. In our case, this is a `Trainer` object with the `id` and `name` properties, available at `data.Trainer`
 
-So let's now change the message to display the name of the trainer once `loading` is `false` and no error occured:
+So let's now change the message to display the name of the trainer once `loading` is `false` and no error occurred:
 
 ```js@src/component/Pokedex.js
 render () {
@@ -110,7 +110,7 @@ render () {
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<div>An unexpexted error occured</div>)
+    return (<div>An unexpexted error occurred</div>)
   }
 
   return (
@@ -151,7 +151,7 @@ class Pokedex extends React.Component {
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<div>An unexpexted error occured</div>)
+      return (<div>An unexpexted error occurred</div>)
     }
 
     return (

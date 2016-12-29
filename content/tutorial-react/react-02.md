@@ -110,7 +110,7 @@ render () {
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<div>An unexpexted error occurred</div>)
+    return (<div>An unexpected error occurred</div>)
   }
 
   return (

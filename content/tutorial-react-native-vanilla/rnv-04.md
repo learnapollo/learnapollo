@@ -106,7 +106,7 @@ render () {
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<View style={{marginTop: 64}}>An unexpexted error occured</View>)
+    return (<View style={{marginTop: 64}}>An unexpexted error occurred</View>)
   }
 
   const pokemon = this.props.data.Pokemon

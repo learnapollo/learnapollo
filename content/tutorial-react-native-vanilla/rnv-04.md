@@ -78,11 +78,11 @@ const PokemonQuery = gql`
       ... PokemonCardPokemon
     }
   }
-  ${PokemonCard.fragments.pokemon}
+  ${pokemonCardFragments.pokemon}
 `
 ```
 
-Note that we select the fragment in the query using the `...` syntax, and that we additionally include the fragment after the query with `${PokemonCard.fragments.pokemon}`.
+Note that we select the fragment in the query using the `...` syntax, and that we additionally include the fragment after the query with `${pokemonCardFragments.pokemon}`.
 
 We can see that the `PokemonPage` component doesn't need to know anything about the `PokemonCardPokemon` fragment, other than the fact that it is a fragment on the Pokemon type.
 

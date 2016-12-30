@@ -108,7 +108,7 @@ render () {
 
   if (this.props.data.error) {
     console.log(this.props.data.error)
-    return (<CustomText style={{marginTop: 64}}>An unexpexted error occurred</CustomText>)
+    return (<CustomText style={{marginTop: 64}}>An unexpected error occurred</CustomText>)
   }
 
   return (
@@ -166,7 +166,7 @@ class Pokedex extends React.Component {
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<CustomText style={{marginTop: 64}}>An unexpexted error occurred</CustomText>)
+      return (<CustomText style={{marginTop: 64}}>An unexpected error occurred</CustomText>)
     }
 
     return (

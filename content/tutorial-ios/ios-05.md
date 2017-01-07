@@ -10,21 +10,21 @@ The **goal** of this exercise is to update our table view instantly after adding
 
 ## Introduction
 
-Open the directory that contains the fifth exercise `exercise-05` and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added a another view controller called `PokemonDetailViewController` that is shown when a Pokemon in the table view is tapped. We will deal with this in the last part of this lesson after making sure the table view updates after we added a new Pokemon.
+Open the directory that contains the fifth exercise `exercise-05` and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added another view controller called `PokemonDetailViewController` that is shown when a Pokemon in the table view is tapped. We will deal with this in the last part of this lesson after making sure the table view updates after adding a new Pokemon.
 
 
 ## Fragments
 
-In this lesson, we are going to learn about _fragments_. Fragments are a GraphQL feature that allow to define and reuse _sub-parts_ of a query independently. With Swift's strong type system, they're actually quite an essential tool in using the **Apollo iOS client** whereas in JavaScript they're more of a convenience to save typing and improve structuring.
+In this lesson, we are going to learn about _fragments_. Fragments are a GraphQL feature that allow to define and reuse _sub-parts_ of a query independently. With Swift's strong type system, they're actually quite an essential tool in using the **Apollo iOS client** whereas in JavaScript they're more of a convenience to save typing and improve structuring of your GraphQL queries.
 
 
 ## Using Fragments to Update the Pokedex UI
 
 ### Defining a Fragment
 
-Fragments are defined on a specific _type_ from our GraphQL schema. We are going to define the fragment on the `Pokemon` type, as we had the problem that our types `TrainerQuery.Data.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` didn't match up despite the fact that they carry the same information.
+Fragments are defined on a specific _type_ from our GraphQL schema. We are going to define the fragment on the `Pokemon` type, as we had the problem that our types `TrainerQuery.Data.Trainer.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` didn't match up despite the fact that they carry the same information.
 
-So, let's go and solve this by defining a reusable fragment that we can inject into the query and into the mutation so that `apollo-codegen` generates a type for that fragment that we can then use in multiple contexts.
+So, let's go and solve this by defining a reusable fragment that we can inject into the query and into the mutation so that `apollo-codegen` generates a type for that fragment that we can then use in multiple locations.
 
 We will need the fragment on the `Pokemon` type, its definition looks as follows:
 
@@ -50,9 +50,9 @@ So, go ahead and copy the fragment above into `PokedexTableViewController.graphq
 
 ### Using a Fragment
 
-As mentioned before, a fragment only defines a sub-part of a proper GraphQL query or mutation. This means that we can simply replace these properties contained in the fragment with the fragments itself. In our case, this would look like this:
+As mentioned before, a fragment only defines a sub-part of a proper GraphQL query or mutation. This means that we can simply replace the properties contained in the fragment with the fragment itself. In our case, this would look like this:
 
-Our `TrainerQuery` will now look like this:
+Our `TrainerQuery` will be changed to:
 
 ```graphql
 query Trainer($name: String!) {
@@ -78,9 +78,9 @@ mutation CreatePokemon($name: String!, $url: String!, $trainerId: ID) {
 
 Build the project by hitting `CMD + B` and inspect `API.swift`. Also notice that the compiler will now throw a few errors that we will fix in a second.
 
-In `API.swift`, you'll notice that `apollo-codegen` now generated an additional top-level struct called `PokemonDetails` that represents our newly defined fragment. Further, our two structs from before `TrainerQuery.Data.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` now received a new property of type `Fragments` that carries the information from our fragment.
+In `API.swift`, you'll see that `apollo-codegen` now generated an additional top-level struct called `PokemonDetails` that represents our newly defined fragment. Further, our two structs from before `TrainerQuery.Data.Trainer.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` now received a new property of type `Fragments` that carries the information from our fragment.
 
-Great, we just made our data model a lot more flexibel. Let's go and make the required changes in our code and see how we can use the newly gained flexibility to update to instantly update the UI after a new Pokemon was added.
+Great, we just made our data model a lot more flexible! Let's now go and make the required changes in our code to see how we can use the newly gained flexibility in order to instantly update the UI after a new Pokemon was added to the Pokedex.
 
 First, let's fix the compiler errors: Open `PokemonCell.swift` and change the type of the `ownedPokemon` property to our new fragment based type: `PokemonDetails`.
 
@@ -112,7 +112,7 @@ func setTrainerData(trainer: TrainerQuery.Data.Trainer) {
 }
 ```
 
-Now, the compiler is happy again and the app should build and run normally again.
+Now, the compiler is happy and the app should build and run normally again.
 
 
 ### Updating the UI After Adding a Pokemon
@@ -156,6 +156,48 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 ```
 
 Fantastic, you can now go ahead and add as many Pokemons as you like and the changes will be instantly reflected in your Pokedex without having to restart the app! 
+
+## Implementing the `PokemonDetailViewController`
+
+As a last step in this lesson, you are going to implement the functionality for the `PokemonDetailViewController` that we already added to the project and that was just empty until this if you navigated to it from a table view cell.
+
+This step will be pretty easy thanks to the fragment that we defined. First, go ahead and add the following property to the `PokemonDetailViewController`:
+
+```swift
+var pokemonDetails: PokemonDetails!
+```
+
+Next, we are going to use a similar approach for setting the UI as in `PokemonCell`, add the following method to `PokemonDetailViewController`:
+
+```swift
+func updateUI() {
+    nameTextField.text = pokemonDetails.name
+    imageURLTextField.text = pokemonDetails.url
+    if let pokemonURL = pokemonDetails.url {
+        Alamofire.request(pokemonURL).responseImage { [unowned self] response in
+            if let image = response.result.value {
+                self.pokemonImageView.image = image
+            }
+        }
+    }
+}
+```
+
+> Note: In a production application, you would of course want to cache the image after displaying it on the table view cells (unless it maybe were only a thumbnail version) and pass it to the `PokemonDetailViewController` rather than reloading it every time from the network.
+
+Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property, which is declared as an implicitly unwrapped optional, yet, but try to access it, the app will crash if you test this feature now.
+
+So, let's quickly go and implement the last step, which is assigning the property in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in the `PokedexTableViewController`. Therefore, add the following code right after the first if-statement in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
+
+```swift
+else if segue.identifier == "ShowPokemonDetailsSegue" {
+    let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
+    let selectedRow = tableView.indexPathForSelectedRow!.row
+    pokemonDetailViewController.pokemonDetails = ownedPokemons?[selectedRow]
+}
+```
+
+Run the app and tap on a Pokemon in your Pokedex, the `PokemonDetailViewController` should now display the image, name and url of the Pokemon you selected.
 
 In the next exercise, we are going to learn about more mutations that allow us to update and delete data entries.
 

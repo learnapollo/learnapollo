@@ -1,6 +1,6 @@
-# Tutorial 04 - Fragments
+# Tutorial 05 - Fragments
 
-Welcome to the fifth exercise in the **iOS Track** of this Apollo Client Tutorial!
+Welcome to the 5th exercise in the **iOS Track** of this Apollo Client Tutorial!
 
 
 ## Goal
@@ -10,7 +10,7 @@ The **goal** of this exercise is to update our table view instantly after adding
 
 ## Introduction
 
-Open the directory that contains the fifth exercise `exercise-05` and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added another view controller called `PokemonDetailViewController` that is shown when a Pokemon in the table view is tapped. We will deal with this in the last part of this lesson after making sure the table view updates after adding a new Pokemon.
+Open the directory that contains the 5th exercise (`exercise-05`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added another view controller called `PokemonDetailViewController` that is shown when a Pokemon in the table view is tapped. We will deal with this in the last part of this lesson after making sure the table view updates after adding a new Pokemon.
 
 
 ## Fragments
@@ -18,9 +18,9 @@ Open the directory that contains the fifth exercise `exercise-05` and open `poke
 In this lesson, we are going to learn about _fragments_. Fragments are a GraphQL feature that allow to define and reuse _sub-parts_ of a query independently. With Swift's strong type system, they're actually quite an essential tool in using the **Apollo iOS client** whereas in JavaScript they're more of a convenience to save typing and improve structuring of your GraphQL queries.
 
 
-## Using Fragments to Update the Pokedex UI
+## Using Fragments To Update The Pokedex UI
 
-### Defining a Fragment
+### Defining A Fragment
 
 Fragments are defined on a specific _type_ from our GraphQL schema. We are going to define the fragment on the `Pokemon` type, as we had the problem that our types `TrainerQuery.Data.Trainer.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` didn't match up despite the fact that they carry the same information.
 
@@ -43,12 +43,12 @@ The next question is, where exactly should we define this fragment? The data tha
 - `CreatePokemonViewController`
 - `PokemonDetailViewController`
 
-As it is used all over the place, let's just go and add it to the `PokedexTableViewController` that is also responsible for initially fetching it. We might also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`, so no matter where we define the fragment, it will be available in all other queries and mutations.
+As it is used all over the place, let's just go and add it to the `PokedexTableViewController` which is also responsible for initially fetching it. We could also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`, so no matter where we define the fragment, it will be available in all other queries and mutations.
 
 So, go ahead and copy the fragment above into `PokedexTableViewController.graphql`.
 
 
-### Using a Fragment
+### Using A Fragment
 
 As mentioned before, a fragment only defines a sub-part of a proper GraphQL query or mutation. This means that we can simply replace the properties contained in the fragment with the fragment itself. In our case, this would look like this:
 
@@ -115,15 +115,15 @@ func setTrainerData(trainer: TrainerQuery.Data.Trainer) {
 Now, the compiler is happy and the app should build and run normally again.
 
 
-### Updating the UI After Adding a Pokemon
+### Updating The UI After Adding A Pokemon
 
-Finally, we can take care of updating the table view after adding a new Pokemon to our Pokedex. This is now possible because the Pokemon data which is received in `CreatePokemonViewController` after performing our mutation and which represents the newly added Pokemon has the same type as the Pokemons in the table view. This allows us to simply append it to the array in `PokedexTableViewController`. Let's do this with a simple closure that passes the data from `CreatePokemonViewController` to `PokedexTableViewController`, add the following property to `CreatePokemonViewController` right after the `trainerId` property:
+Finally, we can take care of updating the table view after adding a new Pokemon to our Pokedex. This is now possible because the Pokemon data which is received in `CreatePokemonViewController` after performing our mutation and which represents the newly added Pokemon has the same type as the Pokemons in the table view. This allows us to simply append it to the array in `PokedexTableViewController`. Let's do this with a simple closure that passes the data from `CreatePokemonViewController` to `PokedexTableViewController`. Add the following property to `CreatePokemonViewController` right after the `trainerId` property:
 
 ```swift
 var addedNewPokemon: ((PokemonDetails) -> ())?
 ```
 
-Now, update the callback we are passing to the `perform` call on `apollo` to look as follows:
+Now, update the callback that we are passing to the `perform()` call on `apollo` to look as follows:
 
 ```swift
 apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQLResult?, error: Error?) in
@@ -141,7 +141,7 @@ apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQ
 }
 ```
 
-Note that we are using the closure you just added as a property and pass the newly created Pokemon as an argument, so the last step now will be to define the closure inside `PokedexTableViewController` and append the new Pokemon to our array.
+Note that we are calling the closure that was just added as a property and pass the newly created Pokemon as an argument, so the final step now will be to define the closure inside `PokedexTableViewController` and append the new Pokemon to our array there.
 
 Open `PokedexTableViewController.swift` and update `prepare(for segue: UIStoryboardSegue, sender: Any?)` to look like this:
 
@@ -157,9 +157,10 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 Fantastic, you can now go ahead and add as many Pokemons as you like and the changes will be instantly reflected in your Pokedex without having to restart the app! 
 
-## Implementing the `PokemonDetailViewController`
 
-As a last step in this lesson, you are going to implement the functionality for the `PokemonDetailViewController` that we already added to the project and that was just empty until this if you navigated to it from a table view cell.
+## Implementing The `PokemonDetailViewController`
+
+As a last step in this lesson, you are going to implement the functionality for the `PokemonDetailViewController` that was already added to the project and that is currently empty if you navigate to it from a table view cell.
 
 This step will be pretty easy thanks to the fragment that we defined. First, go ahead and add the following property to the `PokemonDetailViewController`:
 
@@ -185,7 +186,7 @@ func updateUI() {
 
 > Note: In a production application, you would of course want to cache the image after displaying it on the table view cells (unless it maybe were only a thumbnail version) and pass it to the `PokemonDetailViewController` rather than reloading it every time from the network.
 
-Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property, which is declared as an implicitly unwrapped optional, yet, but try to access it, the app will crash if you test this feature now.
+Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property yet, but try to access it, the app will crash if you test this feature now. This is because it is declared as an implicitly unwrapped optional!
 
 So, let's quickly go and implement the last step, which is assigning the property in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in the `PokedexTableViewController`. Therefore, add the following code right after the first if-statement in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
 
@@ -207,7 +208,7 @@ In the next exercise, we are going to learn about more mutations that allow us t
 In this lesson, we learned about using fragments and why they are essential for using the **Apollo iOS client**. Let's revisit the key learning of this exercise:
 - Fragments are a GraphQL feature that define sub-parts of a query
 - They can be reused in multiple queries
-- `apollo-codegen` generates one type per fragment which allows to reuse similar information that originates from different queries or mutations
+- `apollo-codegen` generates one struct per fragment which allows to reuse similar information that originates from different queries or mutations
 
 
 

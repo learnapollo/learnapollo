@@ -12,7 +12,7 @@ In this exercise, our **goal** is to add new Pokemons to the Pokedex. Therefore,
 
 Open the directory that contains the 4th exercise (`exercise-04`) and open `pokedex-apollo.xcworkspace` . 
 
-It already contains a running version of the code you wrote in the previous lesson, however we made a few minor changes: We "untangled" the information about the trainer and now, rather than storing one property `trainer` of type `TrainerQuery.Data.Trainer` in the `PokedexTableViewController`, we now store three individual properties which are the trainer's `id`, `name` and `ownedPokemons`. All parts of the code where `trainer` was used before have been updated accordingly.
+It already contains a running version of the code you wrote in the previous lesson, however we made a few minor changes: We "untangled" the information about the trainer and now, rather than storing one property `trainer` of type `TrainerQuery.Data.Trainer` in `PokedexTableViewController`, we now store three individual properties which are the trainer's `id`, `name` and `ownedPokemons`. All parts of the code where `trainer` was used before have been updated accordingly.
 
 We also added a new view controller called `CreatePokemonViewController` that will allow us to enter data for a new Pokemon in our Pokedex. When segueing from the `PokedexTableViewController` to the `CreatePokemonViewController` we are passing the trainer's ID, so that we can provide this information upon creation of a new Pokemon.
 
@@ -46,15 +46,15 @@ The above mutation will create a new Pokemon with the provided data. Similar to 
 
 To use this mutation in our app, create a new _empty_ file called `CreatePokemonViewController.graphql`, copy the above mutation into this new file and hit `CMD + B` to build the project, then inspect the contents of `API.swift`. 
 
+As you can see, `apollo-codegen` once again did a great job and generated a new class for us called `CreatePokemonMutation`. Its structure is very similar to the queries, in that it has a nested struct called `CreatePokemon` with properties `id`, `name` and `url` that represents our new Pokemon.
+
 
 ### Using the New `CreatePokemonMutation`
-
-As you can see, `apollo-codegen` once again did a great job and generated a new class for us called `CreatePokemonMutation`. Its structure is very similar to the queries, in that it has a nested struct called `CreatePokemon` with properties `id`, `name` and `url` that represents our new Pokemon.
 
 Let's now go and use the mutation in our code! Open `CreatePokemonViewController.swift` and copy the following code snippet into the `addPokemon()` method right after the `guard` statement:
 
 ```swift
-let createPokemonMutation = CreatePokemonMutation(name: name, url: imageURL, trainerId: trainer.id)
+let createPokemonMutation = CreatePokemonMutation(name: name, url: imageURL, trainerId: trainerId)
 activityIndicator.startAnimating()
 apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQLResult?, error: Error?) in
     self.activityIndicator.stopAnimating()
@@ -75,14 +75,20 @@ Let's take a step back again and understand what's going on. We instantiate the 
 
 Run the app and create a new Pokemon, called **Mewthree** using **Mewtwo's** image URL: `http://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png`.  
 
-You should see an output similar to the following in the console: `Created new pokemon: CreatePokemon(__typename: "Pokemon", id: "cixm4hazlitwt01693wg9mey5", name: Optional("Mewthree"), url: Optional("http://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png"))`
+You should see an output similar to the following in the console: 
 
-So, we successfully added a new Pokemon to our database, however, the table view doesn't yet display this new Pokemon.
+```
+Created new pokemon: CreatePokemon(__typename: "Pokemon", id: "cixm4hazlitwt01693wg9mey5", name: Optional("Mewthree"), url: Optional("http://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png"))`
+```
+
+So, we successfully added a new Pokemon to our database, you can verify this in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__). However, **the table view doesn't yet display this new Pokemon!**
 
 
 ### Updating The UI With The New Pokemon
 
-If you restart the app now, you'll notice that **Mewthree** has been successfully added to your Pokedex. However, it would be nice if the table view would update right after we added the new Pokemon so that we don't have to restart the app every time to see the new additions to our Pokedex.
+If you restart the app now, you'll notice that **Mewthree** has been successfully added to your Pokedex. However, it would be nice if the table view updated right after we added the new Pokemon so that we don't have to restart the app every time to see the new additions to our Pokedex.
+
+!["Mewthree is displayed after restarting the app"](../images/ios-ex04-mewthree.png "Mewthree is displayed after restarting the app")
 
 Since we are managing the array `var ownedPokemons: [TrainerQuery.Data.OwnedPokemon]?` in our `PokedexTableViewController` ourselves, we could just use the returned data of the new Pokemon that we receive from performing the mutation to append a new Pokemon to that array. 
 

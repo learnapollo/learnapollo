@@ -11,7 +11,7 @@ In this exercise we will have a look at advanced query features with the **goal*
 
 ## Introduction
 
-Open the directory that contains the 3rd exercise (`exercise-03`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson.
+Open the directory that contains the 3rd exercise (`exercise-03`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added a new class called `PokemonCell` that we will use to display your Pokemons in the second section of the table view. 
 
 
 ## Display A List Of Pokemons With Advanced Queries Features
@@ -36,9 +36,30 @@ query Trainer($name: String!) {
 
 > Note: If you want to test this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll have to add the query variable in the bottom left panel: `{ "name": "__NAME__"}`.
 
-Let's quickly understand the syntax of the parametrized query. When declaring the query named `Trainer`, we can add as many arguments to it as we like by listing them in parantheses. For each argument, we need to provide a _name_ and a _type_. In our case, we only have one (mandatory) argument called `name` that is of type `String`. Variables are always prepended with a `$`. Then, _inside_ the query we can just access the variable by referencing it with its name. 
+Let's quickly understand the syntax of the parametrized query. When declaring the query named `Trainer`, we can add as many arguments to it as we like by listing them in parantheses. Similar to function arguments in Swift, we need to provide a _name_ and a _type_ for each argument. In our case, we only have one (mandatory) argument called `name` that is of type `String`. Variables are always prepended with a `$`. Then, _inside_ the query we can just access the variable by referencing it with its name. 
 
-Go ahead and replace the existing query in `PokedexTableViewController.graphql` with the new query that accepts the trainer's name as a variable, then build the project again using `CMD + B` and inspect `API.swift`. The only initializer of `TrainerQuery` now takes a `String` as an argument which it assigns to a newly added property called `name`. This is also precisely the reason why the compiler throws an error right now, since in our previous usage of the initializer in `PokedexTableViewController.swift`, we didn't provide any arguments. So, let's go and fix that!
+Go ahead and replace the existing query in `PokedexTableViewController.graphql` with the new query that accepts the trainer's name as a variable, then build the project again using `CMD + B` and inspect `API.swift`. The only initializer of `TrainerQuery` now takes a `String` as an argument which it assigns to a newly added property called `name`. 
+
+```swift
+public final class TrainerQuery: GraphQLQuery {
+
+  ...
+
+  public let name: String
+
+  public init(name: String) {
+    self.name = name
+  }
+
+  public var variables: GraphQLMap? {
+    return ["name": name]
+  }
+
+  ...
+}
+```
+
+This is also precisely the reason why the compiler throws an error right now, since in our previous usage of the initializer in `PokedexTableViewController.swift`, we didn't provide any arguments. So, let's go and fix that!
 
 Open `PokedexTableViewController.swift` and add the `name` argument when instantiating `TrainerQuery`:
 
@@ -47,6 +68,8 @@ let trainerQuery = TrainerQuery(name: "__NAME__")
 ```
 
 Run the app again to validate that everything still works as before.
+
+> Note: Using the **Apollo iOS client**, all query variables will be represented as properties on the corresponding classes and need to be provided upon initialization (unless of course they're optional, in which case they default to `nil`).
 
 
 ### Nested Queries
@@ -69,9 +92,9 @@ query Trainer($name: String!) {
 }
 ```
 
-Nested queries are where GraphQL really shines compared to REST. With a REST API, it usually requires multiple calls to request data that goes over one or two relationships in a data model, with GraphQL all data requirements can be specified upfront in the query and the data can be fetched within only one API call.
+> Note: **Nested queries** are where GraphQL really shines compared to REST. With a REST API, it usually requires multiple calls to request data that goes over one or two relationships in a data model, with GraphQL all data requirements can be specified upfront in the query and the data can be fetched within only one API call.
 
-The above query requests all Pokemons that are owned by the trainer called `$name`. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`.
+The above query requests all Pokemons that are owned by the trainer called `$name`. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`. If you run this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll see that your Pokemon team already consists of three Pokemon.
 
 Go ahead and replace the existing query in `PokedexTableViewController.graphql` with the query above, then hit `CMD + B` and inspect `API.swift` again. 
 
@@ -106,7 +129,7 @@ var ownedPokemon: TrainerQuery.Data.Trainer.OwnedPokemon? {
 }
 ```  
 
-We're using the `didSet` property observer again to update the UI elements right after the `ownedPokemon` was assigned, so let's next add the `updateUI()` method we want to invoke here:
+We're using the `didSet` property observer again to update the UI elements right after the `ownedPokemon` was assigned, so let's add the `updateUI()` method invoke here:
 
 ```swift
 func updateUI() {
@@ -123,14 +146,23 @@ func updateUI() {
 }
 ```
 
-Running the app now will display all your Pokemon in the second table view section. Great, you just used a GraphQL query with nesting and a query variable!
+Finally, we need to actually return a `PokemonCell` from `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)`. So, replace the code that generates the cells for the second section (which currently crashes the app with a call to `fatalError()`) like so:
+
+```swift
+case Sections.pokemons.rawValue:
+    let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
+    cell.ownedPokemon = trainer?.ownedPokemons?[indexPath.row]
+    return cell
+```
+
+Running the app now will display all your Pokemons in the second table view section. Great, you just used a GraphQL query with nesting and a query variable!
 
 
 ## Recap
 
-Before we move to lesson 4, let's quickly recap what we learned:
+Before we move to the next lessons, let's quickly recap what we learned:
 - The queries we define in our `.graphql` files can receive variables
-- Each variable has a name and a type and can specified to be mandatory
+- Each variable has a _name_ and a _type_ and can specified to be mandatory using an exclamation point after the type
 - In the actual Swift code, variables are passed using the query's initializer
 - Queries can be nested, allowing us to precisely express our data requirements and fetching all required data in a single request - even over multiple relationships in our data model!
 

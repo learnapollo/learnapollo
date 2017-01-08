@@ -24,7 +24,7 @@ In this lesson, we are going to learn about _fragments_. Fragments are a GraphQL
 
 Fragments are defined on a specific _type_ from our GraphQL schema. We are going to define the fragment on the `Pokemon` type, as we had the problem that our types `TrainerQuery.Data.Trainer.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` didn't match up despite the fact that they carry the same information.
 
-So, let's go and solve this by defining a reusable fragment that we can inject into the query and into the mutation so that `apollo-codegen` generates a type for that fragment that we can then use in multiple locations.
+So, let's go and solve this by defining a reusable fragment that we can inject into the query and into the mutation so that `apollo-codegen` generates a type for that fragment which we can then use in multiple locations.
 
 We will need the fragment on the `Pokemon` type, its definition looks as follows:
 
@@ -34,6 +34,7 @@ fragment PokemonDetails on Pokemon {
   name
   url
 }
+```
 
 The definition of a fragment begins with the keyword `fragment`. Then follows the name of the fragment (in our case that is `PokemonDetails`) and the GraphQL type on which we define the fragment, so here this is `Pokemon`.
 
@@ -43,14 +44,14 @@ The next question is, where exactly should we define this fragment? The data tha
 - `CreatePokemonViewController`
 - `PokemonDetailViewController`
 
-As it is used all over the place, let's just go and add it to the `PokedexTableViewController` which is also responsible for initially fetching it. We could also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`, so no matter where we define the fragment, it will be available in all other queries and mutations.
+As it is used all over the place, let's just go and add it to the `PokedexTableViewController` which is also responsible for initially fetching it. We could also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`. So, no matter where we define the fragment, it will be available in all other queries and mutations.
 
 So, go ahead and copy the fragment above into `PokedexTableViewController.graphql`.
 
 
 ### Using A Fragment
 
-As mentioned before, a fragment only defines a sub-part of a proper GraphQL query or mutation. This means that we can simply replace the properties contained in the fragment with the fragment itself. In our case, this would look like this:
+As mentioned before, a fragment only defines a sub-part of a proper GraphQL query or mutation. This means that we can simply replace the properties contained in the query/mutation with the fragment itself. In our case, this would look like this:
 
 Our `TrainerQuery` will be changed to:
 
@@ -76,7 +77,7 @@ mutation CreatePokemon($name: String!, $url: String!, $trainerId: ID) {
 }
 ```
 
-Build the project by hitting `CMD + B` and inspect `API.swift`. Also notice that the compiler will now throw a few errors that we will fix in a second.
+After incorporating these changes, build the project by hitting `CMD + B` and inspect `API.swift`. Also notice that the compiler will now throw a few errors that we will fix in a second.
 
 In `API.swift`, you'll see that `apollo-codegen` now generated an additional top-level struct called `PokemonDetails` that represents our newly defined fragment. Further, our two structs from before `TrainerQuery.Data.Trainer.OwnedPokemon` and `CreatePokemonMutation.Data.CreatePokemon` now received a new property of type `Fragments` that carries the information from our fragment.
 
@@ -186,9 +187,9 @@ func updateUI() {
 
 > Note: In a production application, you would of course want to cache the image after displaying it on the table view cells (unless it maybe were only a thumbnail version) and pass it to the `PokemonDetailViewController` rather than reloading it every time from the network.
 
-Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property yet, but try to access it, the app will crash if you test this feature now. This is because it is declared as an implicitly unwrapped optional!
+Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property yet, but try to access it, the app will crash if you test this feature now. This is because the property is declared as an implicitly unwrapped optional!
 
-So, let's quickly go and implement the last step, which is assigning the property in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in the `PokedexTableViewController`. Therefore, add the following code right after the first if-statement in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
+So, let's quickly go and implement the last required step, which is assigning the `pokemonDetails` property in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in the `PokedexTableViewController`. Therefore, add the following code right after the first if-statement in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
 
 ```swift
 else if segue.identifier == "ShowPokemonDetailsSegue" {
@@ -207,7 +208,7 @@ In the next exercise, we are going to learn about more mutations that allow us t
 
 In this lesson, we learned about using fragments and why they are essential for using the **Apollo iOS client**. Let's revisit the key learning of this exercise:
 - Fragments are a GraphQL feature that define sub-parts of a query
-- They can be reused in multiple queries
+- They can be reused in multiple queries and mutations
 - `apollo-codegen` generates one struct per fragment which allows to reuse similar information that originates from different queries or mutations
 
 

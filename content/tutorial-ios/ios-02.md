@@ -42,9 +42,9 @@ Let's now build a GraphQL query to retrieve the information of your very own tra
 
 ### Creating Your First GraphQL Query
 
-The GraphQL server for the Pokedex app is configured so that we can retrieve trainers by their name. To query the information of a trainer given their name, you can use the following query:
+The GraphQL server for the Pokedex app is configured so that we can retrieve trainers by their name. To query the information of a trainer given their name, you can use the following query (wait with actually copying the query until the next step where we will create `PokedexTableViewController.graphql`):
 
-```graphql
+```graphql@PokedexTableViewController.graphql
 query Trainer {
   Trainer(name: "__NAME__") {
     id
@@ -129,7 +129,7 @@ We are now ready to finally make our first API request using the `TrainerQuery` 
 
 In the `PokedexTableViewController.swift`, add the following method:
 
-```swift
+```swift@PokedexTableViewController.swift
 func fetchTrainer() {
     let trainerQuery = TrainerQuery()
     apollo.fetch(query: trainerQuery) { result, error in
@@ -146,7 +146,16 @@ func fetchTrainer() {
 }
 ``` 
 
-Then in the last line of `viewDidLoad()`, call the method: `fetchTrainer()`. If you run the app now, you should see your name being printed to the console. 
+Then in the last line of `viewDidLoad()` call the newly created method so that it looks as follows: 
+
+```swift@PokedexTableViewController.swift
+override func viewDidLoad() {
+  super.viewDidLoad()
+  fetchTrainer()
+}
+```
+
+If you run the app now, you should see your name being printed to the console. 
 
 Let's take a step back and understand what happened. In `fetchTrainer()`, we first instantiate a `TrainerQuery`. Right now, we hardcoded the trainer's name in the `PokedexTableViewController.graphql` file, so we don't pass any arguments to the query's initializer. We then use the `trainerQuery` instance and pass it to the `fetch()` method of our `ApolloClient` instance. We also pass a callback (using Swift's trailing closure syntax) to deal with the return value from our query which is either a `GraphQLResult` carrying the returned `TrainerQuery.Data.Trainer` instance or an `Error`.
 
@@ -154,7 +163,7 @@ But we surely want to do more with the result than printing it the console, that
 
 Add the following property to the `PokedexTableViewController`:
 
-```swift
+```swift@PokedexTableViewController.swift
 var trainer: TrainerQuery.Data.Trainer? {
     didSet {
         tableView.reloadData()
@@ -164,7 +173,7 @@ var trainer: TrainerQuery.Data.Trainer? {
 
 Next, replace the contents of `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` with: 
 
-```swift
+```swift@PokedexTableViewController.swift
 switch indexPath.section {
       case Sections.greeting.rawValue:
           let greetingString: String
@@ -186,9 +195,9 @@ switch indexPath.section {
 
 With this code, we make sure that the first section of our table view displays a personalized greeting if the `trainer` property is set.
 
-Finally, in `fetchTrainer()`, replace the last line which was printing the trainer's name with:
+Finally, in `fetchTrainer()`, replace the last line which was printing the trainer's name with an assignment of the `trainer` property:
 
-```swift
+```swift@PokedexTableViewController.swift
 self.trainer = trainer
 ```
 

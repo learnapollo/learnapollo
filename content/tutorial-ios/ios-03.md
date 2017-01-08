@@ -25,7 +25,7 @@ In the previous lesson, our query contained a hardcoded string that was the trai
 
 So, let's see how we can use query variables to solve this issue. Here is the same query we used before, only that this time the name of the trainer can be passed into the query as a variable:
 
-```graphql
+```graphql@PokedexTableViewController.graphql
 query Trainer($name: String!) {
   Trainer(name: $name) {
     id
@@ -63,7 +63,7 @@ This is also precisely the reason why the compiler throws an error right now, si
 
 Open `PokedexTableViewController.swift` and add the `name` argument when instantiating `TrainerQuery`:
 
-```swift
+```swift@PokedexTableViewController.swift
 let trainerQuery = TrainerQuery(name: "__NAME__")
 ```
 
@@ -78,7 +78,7 @@ Now that we saw query variables in action, we can focus on displaying the Pokemo
 
 Therefore, we need to be able to ask for all the `ownedPokemons` of a trainer. We can do so by _nesting_ a query for pokemon data inside the query for the trainer. It'll look like this:
 
-```graphql
+```graphql@PokedexTableViewController.graphql
 query Trainer($name: String!) {
   Trainer(name: $name) {
     id
@@ -92,17 +92,17 @@ query Trainer($name: String!) {
 }
 ```
 
-> Note: **Nested queries** are where GraphQL really shines compared to REST. With a REST API, it usually requires multiple calls to request data that goes over one or two relationships in a data model, with GraphQL all data requirements can be specified upfront in the query and the data can be fetched within only one API call.
+> Note: **Nested queries** are where GraphQL really shines compared to REST. With a REST API, it usually requires multiple calls to request data that goes over one or two relationships in a data model, with GraphQL all data requirements can be specified upfront in the query and the data can be fetched within only one API call! 💯
 
-The above query requests all Pokemons that are owned by the trainer called `$name`. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`. If you run this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll see that your Pokemon team already consists of three Pokemon.
+The above query requests all Pokemons that are owned by the trainer called `$name`. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`. If you run this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll see that your very own Pokemon team already consists of three Pokemon.
 
 Go ahead and replace the existing query in `PokedexTableViewController.graphql` with the query above, then hit `CMD + B` and inspect `API.swift` again. 
 
 We just got another nested struct, this time it's called `OwnedPokemon` and nested inside `TrainerQuery.Data.Trainer`. This well reflects the nesting inside the query. Also notice that the `TrainerQuery.Data.Trainer` got a new property, which is an array of `TrainerQuery.Data.Trainer.OwnedPokemon`.
 
-Let's use this new data in our code! In `PokedexTableViewController.swift`, we can now make use of the fact that the `TrainerQuery.Data.Trainer` knows its owned pokemons, so we can actually display the correct number of pokemons rather than a hardcoded `0`. Change the generation of the `greetingString` inside `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` like so:
+Let's use this new data in our code! In `PokedexTableViewController.swift`, we can now make use of the fact that the `TrainerQuery.Data.Trainer` knows its owned Pokemons, so we can actually display the correct number of Pokemons rather than a hardcoded `0`. Change the generation of the `greetingString` inside `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` like so:
 
-```swift
+```swift@PokedexTableViewController.swift
 let greetingString: String
 if let name = trainer?.name,
    let ownedPokemons = trainer?.ownedPokemons {
@@ -115,13 +115,13 @@ else {
 
 Next, we also want to return the right number of cells for the second table view section, so inside `tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)`, change the last return statement to:
 
-```swift
+```swift@PokedexTableViewController.swift
 return trainer?.ownedPokemons?.count ?? 0
 ```
 
 Finally, we actually want to display the Pokemons on the table view cells. Therefore, let's add a new property to `PokemonCell`:
 
-```swift
+```swift@PokemonCell.swift
 var ownedPokemon: TrainerQuery.Data.Trainer.OwnedPokemon? {
     didSet {
         updateUI()
@@ -129,9 +129,9 @@ var ownedPokemon: TrainerQuery.Data.Trainer.OwnedPokemon? {
 }
 ```  
 
-We're using the `didSet` property observer again to update the UI elements right after the `ownedPokemon` was assigned, so let's add the `updateUI()` method invoke here:
+We're using the `didSet` property observer again to update the UI elements right after the `ownedPokemon` was assigned, so let's add the `updateUI()` method that is invoked here:
 
-```swift
+```swift@PokemonCell.swift
 func updateUI() {
     if let name = ownedPokemon?.name {
         nameLabel.text = name
@@ -148,7 +148,7 @@ func updateUI() {
 
 Finally, we need to actually return a `PokemonCell` from `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)`. So, replace the code that generates the cells for the second section (which currently crashes the app with a call to `fatalError()`) like so:
 
-```swift
+```swift@PokedexTableViewController.swift
 case Sections.pokemons.rawValue:
     let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
     cell.ownedPokemon = trainer?.ownedPokemons?[indexPath.row]

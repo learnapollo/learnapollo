@@ -87,11 +87,15 @@ If you already built the project you might have noticed that the promised `API.s
 
 ## Instantiate The Apollo Client
 
-Next, we want to instantiate the `ApolloClient` so that we can start making requests against our GraphQL API. For the purpose of this tutorial, we will create a global instance of the `ApolloClient` in `AppDelegate.swift`. Therefore, we first need to import the `Apollo` framework using `import Apollo` (which you can add directly below `import UIKit`).
+Next, we want to instantiate the `ApolloClient` so that we can start making requests against our GraphQL API. For the purpose of this tutorial, we will create a global instance of the `ApolloClient` in `AppDelegate.swift`. Therefore, we first need to import the `Apollo` framework with `import Apollo` (which you can add directly below `import UIKit`):
+
+```swift@AppDelegate.swift
+import Apollo
+```
 
 Then add the following two lines after the import statements:
 
-```swift
+```swift@AppDelegate.swift
 let graphlQLEndpointURL = "https://api.graph.cool/simple/v1/__PROJECT_ID__"
 let apollo = ApolloClient(url: URL(string: graphlQLEndpointURL)!)
 ```

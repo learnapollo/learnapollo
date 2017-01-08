@@ -28,9 +28,9 @@ Mutations are very similar to _queries_, but when defining them in our `.graphql
 
 ### Adding a New Pokemon
 
-Let's see what a mutation for adding a new Pokemon would look like:
+Let's see what a mutation for adding a new Pokemon would look like (again, wait with copying the mutation, we will create `CreatePokemonViewController.graphql` in a second):
 
-```graphql
+```graphql@CreatePokemonViewController.graphql
 mutation CreatePokemon($name: String, $url: String!, $trainerId: ID) {
   createPokemon(name: $name, url: $url, trainerId: $trainerId) {
     id
@@ -53,7 +53,7 @@ As you can see, `apollo-codegen` once again did a great job and generated a new 
 
 Let's now go and use the mutation in our code! Open `CreatePokemonViewController.swift` and copy the following code snippet into the `addPokemon()` method right after the `guard` statement:
 
-```swift
+```swift@CreatePokemonViewController.swift 
 let createPokemonMutation = CreatePokemonMutation(name: name, url: imageURL, trainerId: trainerId)
 activityIndicator.startAnimating()
 apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQLResult?, error: Error?) in
@@ -73,7 +73,7 @@ apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQ
 
 Let's take a step back again and understand what's going on. We instantiate the `CreatePokemonMutation` that was generated through `apollo-codegen`, passing the values we retrieved from the text fields as well as the trainer's ID as arguments. We then use our `ApolloClient` instance, to `perform` a mutation this time rather than `fetch`ing data based on a query. Once more, we are using Swift's trailing closure syntax to pass in a callback so that we can handle the return values of our request. In this case, if the mutation is successful, we might receive the data of the new pokemon and finally print it to the console.
 
-Run the app and create a new Pokemon, called **Mewthree** using **Mewtwo's** image URL: `http://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png`.  
+Run the app and create a new Pokemon, called `Mewthree` using `Mewtwo`'s image URL: `http://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png`.  
 
 You should see an output similar to the following in the console: 
 
@@ -86,7 +86,7 @@ So, we successfully added a new Pokemon to our database, you can verify this in 
 
 ### Updating The UI With The New Pokemon
 
-If you restart the app now, you'll notice that **Mewthree** has been successfully added to your Pokedex. However, it would be nice if the table view updated right after we added the new Pokemon so that we don't have to restart the app every time to see the new additions to our Pokedex.
+If you restart the app now, you'll notice that `Mewthree` has been successfully added to your Pokedex. However, it would be nice if the table view updated right after we added the new Pokemon so that we don't have to restart the app every time to see the new additions to our Pokedex.
 
 !["Mewthree is displayed after restarting the app"](../images/ios-ex04-mewthree.png "Mewthree is displayed after restarting the app")
 

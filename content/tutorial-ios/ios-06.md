@@ -19,7 +19,7 @@ Open the directory that contains the 6th exercise (`exercise-06`) and open `poke
 
 As a first step, we want to implement update functionality for our Pokemons. This will be done through a mutation that we need to define upfront. Since the mutation will only be used inside the `PokemonDetailViewController`, now is a good time to create a new `.graphql` file that contains all queries/mutations for the `PokemonDetailViewController`. As before, create a new _empty_ file in Xcode and call it `PokemonDetailViewController.graphql`. Then, copy the following mutation into it:
 
-```graphql
+```graphql@PokemonDetailViewController.graphql
 mutation UpdatePokemon($id: ID!, $name: String!, $url: String!) {
   updatePokemon(id: $id, name: $name, url: $url) {
     ... PokemonDetails
@@ -36,7 +36,7 @@ Build the project by pressing `CMD + B` and inspect `API.swift`. Notice that a n
 
 In `PokemonDetailViewController.swift`, copy the following code snippet into `editAndSaveButtonPressed()`:
 
-```swift
+```swift@PokemonDetailViewController.swift
 if isEditingPokemon {
     // make sure required data is available
     guard let name = nameTextField.text, name.characters.count > 0,
@@ -76,13 +76,13 @@ Go ahead and test the new feature by modifying the name or image URL of one of t
 
 That is because the data in the `ownedPokemons` array in `PokedexTableViewController` is independent from the data we just updated in `PokemonDetailViewController`, so we have to manually update it. Let's do so again with a closure. Add the following property to `PokemonDetailViewController`:
 
-```swift
+```swift@PokemonDetailViewController.swift
 var updatedPokemon: ((PokemonDetails) -> ())?
 ``` 
 
 Then, call the closure in `viewWillDisappear(_ animated: Bool)` like so:
 
-```swift
+```swift@PokemonDetailViewController.swift
 override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     updatedPokemon?(pokemonDetails)
@@ -91,7 +91,7 @@ override func viewWillDisappear(_ animated: Bool) {
 
 Finally, assign the closure in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in `PokedexTableViewController`:
 
-```swift
+```swift@PokedexTableViewController.swift
 pokemonDetailViewController.updatedPokemon = { [unowned self] pokemonDetails in
     if let index = self.ownedPokemons?.index(where: { pokemonDetailsInArray in
         return pokemonDetailsInArray.id == pokemonDetails.id
@@ -112,7 +112,7 @@ Great, that was all you need in order to make sure the updated Pokemon data is r
 
 In order to delete a Pokemon, we will need another mutation. Add the following mutation to your existing `PokemonDetailViewController.graphql` file:
 
-```graphql
+```graphql@PokemonDetailViewController.graphql
 mutation DeletePokemon($id: ID!) {
   deletePokemon(id: $id) {
     id
@@ -127,7 +127,7 @@ This time, since we are deleting the Pokemon, we don't have to ask for more than
 
 Now, as we have the `DeletePokemonMutation` available, let's go ahead and use it to enable deleting Pokemons from the Pokedex. In `PokemonDetailViewController.swift`, copy the following snippet into `deleteButtonPressed()` 
 
-```swift
+```swift@PokemonDetailViewController.swift
 deleteActivityIndicator.startAnimating()
 let deleteMutation = DeletePokemonMutation(id: pokemonDetails.id)
 apollo.perform(mutation: deleteMutation) { [unowned self] result, error in
@@ -151,13 +151,13 @@ However, when testing the feature, once again you'll notice that the table view 
 
 Using a similar approach as before, first add a property to the `PokemonDetailViewController`:
 
-```swift
+```swift@PokemonDetailViewController.swift
 var deletedPokemon: ((GraphQLID) -> ())?
 ```
 
 Next, replace the `print` statement in the callback with a call to the closure (also making sure we received the ID of the deleted Pokemon by properly unwrapping it from the returned `result`):
 
-```swift
+```swift@PokemonDetailViewController.swift
 if let error = error {
     print(#function, "ERROR | Could not delete Pokemon: (\(error))")
 }
@@ -171,7 +171,7 @@ else {
 
 The last step is to assign the closure in `PokedexTableViewController`, so add the following code in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
 
-```swift
+```swift@PokedexTableViewController.swift
 pokemonDetailViewController.deletedPokemon = { [unowned self] id in
     self.ownedPokemons = self.ownedPokemons?.filter { ownedPokemon in
         ownedPokemon.id != id

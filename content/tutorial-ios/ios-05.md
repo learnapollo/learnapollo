@@ -28,7 +28,7 @@ So, let's go and solve this by defining a reusable fragment that we can inject i
 
 We will need the fragment on the `Pokemon` type, its definition looks as follows:
 
-```graphql
+```graphql@PokedexTableViewController.graphql
 fragment PokemonDetails on Pokemon {
   id
   name
@@ -55,7 +55,7 @@ As mentioned before, a fragment only defines a sub-part of a proper GraphQL quer
 
 Our `TrainerQuery` will be changed to:
 
-```graphql
+```graphql@PokedexTableViewController.graphql
 query Trainer($name: String!) {
     Trainer(name: $name) {
         id
@@ -69,7 +69,7 @@ query Trainer($name: String!) {
 
 The `CreatePokemonMutation` gets changed to the following:
 
-```graphql
+```graphql@CreatePokemonViewController.graphql
 mutation CreatePokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {
         ... PokemonDetails
@@ -85,7 +85,7 @@ Great, we just made our data model a lot more flexible! Let's now go and make th
 
 First, let's fix the compiler errors: Open `PokemonCell.swift` and change the type of the `ownedPokemon` property to our new fragment based type: `PokemonDetails`.
 
-```swift
+```swift@PokemonCell.swift 
 var ownedPokemon: PokemonDetails? {
     didSet {
         updateUI()
@@ -95,7 +95,7 @@ var ownedPokemon: PokemonDetails? {
 
 Next, open `PokedexTableViewController.swift` and change the type of `ownedPokemons` to `[PokemonDetails]?`:
 
-```swift
+```swift@PokedexTableViewController.swift
 var ownedPokemons: [PokemonDetails]? = [] {
     didSet {
         tableView.reloadSections([Sections.pokemons.rawValue], with: .none)
@@ -105,7 +105,7 @@ var ownedPokemons: [PokemonDetails]? = [] {
 
 Finally, we need to update the assignment of `ownedPokemons` in `setTrainerData(trainer: TrainerQuery.Data.Trainer)`:
 
-```swift
+```swift@PokedexTableViewController.swift
 func setTrainerData(trainer: TrainerQuery.Data.Trainer) {
     self.trainerId = trainer.id
     self.trainerName = trainer.name
@@ -120,13 +120,13 @@ Now, the compiler is happy and the app should build and run normally again.
 
 Finally, we can take care of updating the table view after adding a new Pokemon to our Pokedex. This is now possible because the Pokemon data which is received in `CreatePokemonViewController` after performing our mutation and which represents the newly added Pokemon has the same type as the Pokemons in the table view. This allows us to simply append it to the array in `PokedexTableViewController`. Let's do this with a simple closure that passes the data from `CreatePokemonViewController` to `PokedexTableViewController`. Add the following property to `CreatePokemonViewController` right after the `trainerId` property:
 
-```swift
+```swift@CreatePokemonViewController.swift
 var addedNewPokemon: ((PokemonDetails) -> ())?
 ```
 
 Now, update the callback that we are passing to the `perform()` call on `apollo` to look as follows:
 
-```swift
+```swift@CreatePokemonViewController.swift
 apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQLResult?, error: Error?) in
     self.activityIndicator.stopAnimating()
     if let error = error {
@@ -146,7 +146,7 @@ Note that we are calling the closure that was just added as a property and pass 
 
 Open `PokedexTableViewController.swift` and update `prepare(for segue: UIStoryboardSegue, sender: Any?)` to look like this:
 
-```swift
+```swift@PokedexTableViewController.swift
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "CreateNewPokemonSegue" {
         let createPokemonViewController = segue.destination as! CreatePokemonViewController
@@ -165,13 +165,13 @@ As a last step in this lesson, you are going to implement the functionality for 
 
 This step will be pretty easy thanks to the fragment that we defined. First, go ahead and add the following property to the `PokemonDetailViewController`:
 
-```swift
+```swift@PokemonDetailViewController.swift
 var pokemonDetails: PokemonDetails!
 ```
 
 Next, we are going to use a similar approach for setting the UI as in `PokemonCell`, add the following method to `PokemonDetailViewController`:
 
-```swift
+```swift@PokemonDetailViewController.swift
 func updateUI() {
     nameTextField.text = pokemonDetails.name
     imageURLTextField.text = pokemonDetails.url
@@ -187,11 +187,21 @@ func updateUI() {
 
 > Note: In a production application, you would of course want to cache the image after displaying it on the table view cells (unless it maybe were only a thumbnail version) and pass it to the `PokemonDetailViewController` rather than reloading it every time from the network.
 
-Now add a call to `updateUI()` as the last line in `viewDidLoad()`. Since we don't actually set the `pokemonDetails` property yet, but try to access it, the app will crash if you test this feature now. This is because the property is declared as an implicitly unwrapped optional!
+Now add a call to `updateUI()` as the last line in `viewDidLoad()`, so that it looks as follows:
+
+```swift@PokemonDetailViewController.swift
+override func viewDidLoad() {
+  super.viewDidLoad()
+  title = "Details"
+  updateUI()
+}
+```
+
+Since we don't actually set the `pokemonDetails` property yet, but try to access it, the app will crash if you test this feature now. This is because the property is declared as an implicitly unwrapped optional!
 
 So, let's quickly go and implement the last required step, which is assigning the `pokemonDetails` property in `prepare(for segue: UIStoryboardSegue, sender: Any?)` in the `PokedexTableViewController`. Therefore, add the following code right after the first if-statement in `prepare(for segue: UIStoryboardSegue, sender: Any?)`:
 
-```swift
+```swift@PokedexTableViewController.swift
 else if segue.identifier == "ShowPokemonDetailsSegue" {
     let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
     let selectedRow = tableView.indexPathForSelectedRow!.row

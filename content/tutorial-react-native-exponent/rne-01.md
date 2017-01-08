@@ -76,7 +76,7 @@ This client will perform the API calls and manage the cache.
 
 In order to connect Apollo Client to the existing store, modify `./state/Store.js`:
 
-```js@./state/AddPokemonCard.js
+```js@./state/Store.js
 // ...
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import client from 'learnapollo/state/Apollo.js';

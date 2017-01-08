@@ -10,7 +10,7 @@ In this exercise, our **goal** is to add new Pokemons to the Pokedex. Therefore,
 
 ## Introduction
 
-Open the directory that contains the 4th exercise (`exercise-04`) and open `pokedex-apollo.xcworkspace` . 
+Open the directory that contains the 4th exercise (`exercise-04`) and open `pokedex-apollo.xcworkspace`. 
 
 It already contains a running version of the code you wrote in the previous lesson, however we made a few minor changes: We "untangled" the information about the trainer and now, rather than storing one property `trainer` of type `TrainerQuery.Data.Trainer` in `PokedexTableViewController`, we now store three individual properties which are the trainer's `id`, `name` and `ownedPokemons`. All parts of the code where `trainer` was used before have been updated accordingly.
 

@@ -44,7 +44,7 @@ The next question is, where exactly should we define this fragment? The data tha
 - `CreatePokemonViewController`
 - `PokemonDetailViewController`
 
-As it is used all over the place, let's just go and add it to the `PokedexTableViewController` which is also responsible for initially fetching it. We could also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`. So, no matter where we define the fragment, it will be available in all other queries and mutations.
+As it is used all over the place, let's just go and add it to the `PokedexTableViewController.graphql` which is also responsible for initially fetching it. We could also create a new `.graphql` file and put the fragment in there - remember that all `.graphql` will be merged by `apollo-codegen`. So, no matter where we define the fragment, it will be available in all other queries and mutations.
 
 So, go ahead and copy the fragment above into `PokedexTableViewController.graphql`.
 

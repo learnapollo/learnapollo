@@ -119,6 +119,15 @@ export const chapters: Chapter[] = [
   }, {
     title: '03 - Advanced Queries',
     alias: 'ios-03',
+  }, {
+    title: '04 - Basic Mutations',
+    alias: 'ios-04',
+  }, {
+    title: '05 - Fragments',
+    alias: 'ios-05',
+  }, {
+    title: '06 - More Mutations',
+    alias: 'ios-06',
   }]),  
   new Chapter('Angular 2', 'tutorial-angular', true, 'Learn how to easily get started Angular 2 and GrahQL with Apollo Client. You will use the prepared application as a playground to experiment with an Angular 2 Pokedex App.', [{
     title: 'Playground',

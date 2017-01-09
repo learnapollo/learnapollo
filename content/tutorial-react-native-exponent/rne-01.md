@@ -107,6 +107,7 @@ This package is analogous to the React integration of Redux, `react-redux`.
 To do this, modify the `./main.js` to wrap the NavigationProvider inside ApolloProvider.
 
 ```js@./main.js
+import { ApolloProvider } from 'react-apollo';
 import Store from 'learnapollo/state/Store';
 import Client from 'learnapollo/state/Apollo';
 

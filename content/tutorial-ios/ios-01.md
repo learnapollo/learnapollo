@@ -78,6 +78,8 @@ The next step is adding a _Build Phase_ to the Xcode project. Execute the follow
 9. This code will now run `apollo-codegen` before compilation and generate a file called `API.swift`. Verify your settings look like this:
   ![Final setup should look like this](../images/ios-ex01-build_phase_2.png "Final setup should look like this")
 
+> Note: If you're running into a versioning issue with the `Apollo` dependency that is installed from Cocoapods and `apollo-codegen`, make sure you have the latest versions of both installed. If Cocoapods fetched an older version of `Apollo`, run `pod update` to solve the issue.
+
 > From the [Apollo iOS Guide](http://dev.apollodata.com/ios/installation.html): _The script above will invoke `apollo-codegen` through the `check-and-run-apollo-codegen.sh` wrapper script, which is actually contained in the `Apollo.framework` bundle. The main reason for this is to check whether the version of `apollo-codegen` installed on your system is compatible with the framework version installed in your project, and to warn you if it isn’t. Without this check, you could end up generating code that is incompatible with the runtime code contained in the framework._
 
 If you already built the project you might have noticed that the promised `API.swift` file has already been generated. However, it only exists on the file system in the root directory of your project and is not part of the actual Xcode project yet (we'll take care of that in the next exercise). Also, the file is still empty because we didn't add any GraphQL queries or mutations yet, so there is nothing to generate.

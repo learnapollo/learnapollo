@@ -59,7 +59,7 @@ module.exports = {
       __GA_TRACKING_CODE__: '"UA-74131346-6"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
       __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
-      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-file-processing_getting-started-example"',
+      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://qtkqo6so2i.execute-api.eu-west-1.amazonaws.com/Prod"',
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       },

@@ -151,7 +151,7 @@ Finally, we need to actually return a `PokemonCell` from `tableView(_ tableView:
 ```swift@PokedexTableViewController.swift
 case Sections.pokemons.rawValue:
     let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
-    cell.ownedPokemon = trainer?.ownedPokemons?[indexPath.row]
+    cell.ownedPokemon = trainer?.ownedPokemons[indexPath.row]
     return cell
 ```
 

@@ -33,7 +33,7 @@ type Pokemon {
 
 We manage pokemon _trainers_ that may _own_ several _Pokemons_ and are identified by both an _id_ and a _name_. A pokemon has an _id_, a _url_ and a _name_ and may be related to a _trainer_. 
 
-> Note: The exclamation points after the type declarations mean that these fields are mandatory.
+> Note: The exclamation points after the type declarations mean that these fields are required.
 
 Let's now build a GraphQL query to retrieve the information of your very own trainer node stored on the server and change the message displayed in `PokedexTableViewController.swift`.
 

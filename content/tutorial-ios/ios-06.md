@@ -27,7 +27,7 @@ mutation UpdatePokemon($id: ID!, $name: String!, $url: String!) {
 }
 ```
 
-Note that if we hadn't made `$name` and `$url` mandatory, the user of this mutation might not provide a value for either of them which would delete the value for the field with a missing parameter. So, here we require both values to prevent the user from accidentally deleting them.
+Note that if we hadn't made `$name` and `$url` required, the user of this mutation might not provide a value for either of them which would delete the value for the field with a missing parameter. So, here we require both values to prevent the user from accidentally deleting them.
 
 Build the project by pressing `CMD + B` and inspect `API.swift`. Notice that a new class called `UpdatePokemonMutation` has been created. Let's go and use it right away!
 

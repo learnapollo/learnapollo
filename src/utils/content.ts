@@ -110,7 +110,7 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started iOS and GrahQL with Apollo iOS Client. Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
+  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started with iOS, GrahQL and the Apollo iOS Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
     title: '01 - Getting Started',
     alias: 'ios-01',
   }, {

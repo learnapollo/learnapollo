@@ -74,7 +74,7 @@ Go ahead and test the new feature by modifying the name or image URL of one of t
 
 ### Updating The UI
 
-That is because the data in the `ownedPokemons` array in `PokedexTableViewController` is independent from the data we just updated in `PokemonDetailViewController`, so we have to manually update it. Let's do so again with a closure. Add the following property to `PokemonDetailViewController`:
+That is because the data in the `ownedPokemons` array in `PokedexTableViewController` is independent from the data we just updated in `PokemonDetailViewController` (because of the _value semantics_ of structs in Swift), so we have to manually update it. Let's do so again with a closure. Add the following property to `PokemonDetailViewController`:
 
 ```swift@PokemonDetailViewController.swift
 var updatedPokemon: ((PokemonDetails) -> ())?

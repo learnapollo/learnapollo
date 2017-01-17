@@ -94,7 +94,7 @@ export const chapters: Chapter[] = [
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
   }]),
-  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, 'Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a  step-by-step tutorial to build a fully-fledged React Native Pokedex App using ExponentJS.', [{
+  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, 'Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged React Native Pokedex App using ExponentJS.', [{
     title: '01 - Getting Started',
     alias: 'rne-01',
   }, {
@@ -110,7 +110,7 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started iOS and GrahQL with Apollo Client. You will use the prepared application as a playground to experiment with an iOS Pokedex App.', [{
+  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started iOS and GrahQL with Apollo iOS Client. Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
     title: '01 - Getting Started',
     alias: 'ios-01',
   }, {

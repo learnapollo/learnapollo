@@ -6,7 +6,6 @@ This is the 2nd exercise in the **iOS Track** of this Apollo Client Tutorial!
 
 The **goal** of this exercise is to query information on your very own trainer node. We will use it to add a personal touch to the greeting in our pokedex:
 
-
 !["Pokedex with personalized greeting"](../images/ios-ex02-final.png "Pokedex with personalized greeting").
 
 

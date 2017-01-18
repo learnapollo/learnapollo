@@ -18,7 +18,7 @@ if (__GA_TRACKING_CODE__) {
   })
 }
 
-if (Smooch && navigator.userAgent !== 'SSR') {
+if (Smooch) {
   Smooch.on('widget:opened', () => {
     ReactGA.event(events.SmoochOpened)
   })

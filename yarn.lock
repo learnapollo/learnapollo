@@ -1202,7 +1202,7 @@ bytes@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.3.0.tgz#d5b680a165b6201739acb611542aabc2d8ceb070"
 
-camel-case@^3.0.0:
+camel-case@3.0.x, camel-case@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
   dependencies:
@@ -2607,6 +2607,19 @@ html-minifier@^3.1.0:
     relateurl "0.2.x"
     uglify-js "2.7.x"
 
+html-minifier@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.2.3.tgz#d2ff536e24d95726c332493d8f77d84dbed85372"
+  dependencies:
+    camel-case "3.0.x"
+    clean-css "3.4.x"
+    commander "2.9.x"
+    he "1.1.x"
+    ncname "1.0.x"
+    param-case "2.1.x"
+    relateurl "0.2.x"
+    uglify-js "2.7.x"
+
 html-webpack-plugin@^2.22.0:
   version "2.24.1"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.24.1.tgz#7f45fc678f66eac2d433f22336b4399da023b57e"
@@ -3390,7 +3403,7 @@ netlify@^1.2.0:
     semaphore "^1.0.5"
     when "^3.7.5"
 
-nightmare@^2.8.1:
+nightmare@2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/nightmare/-/nightmare-2.8.1.tgz#c7d56e4b37d16978fc853ecb3acc976c315e16d9"
   dependencies:
@@ -3665,7 +3678,7 @@ pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
 
-param-case@^2.1.0:
+param-case@2.1.x, param-case@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/param-case/-/param-case-2.1.0.tgz#2619f90fd6c829ed0b958f1c84ed03a745a6d70a"
   dependencies:
@@ -4029,9 +4042,9 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     source-map "^0.5.6"
     supports-color "^3.1.2"
 
-prep@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/prep/-/prep-1.3.4.tgz#23ff51266c4b391d67165409df60d97ff5b8c6a5"
+prep@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/prep/-/prep-1.5.1.tgz#9eafdc2e240ce51740b5e84683816017bcbc726f"
   dependencies:
     babel-runtime "^6.11.6"
     bluebird "^3.4.6"
@@ -4039,8 +4052,9 @@ prep@^1.3.4:
     commander "^2.9.0"
     express "^4.13.4"
     express-history-api-fallback "^2.0.0"
+    html-minifier "^3.2.3"
     mkdirp "^0.5.1"
-    nightmare "^2.8.1"
+    nightmare "2.8.1"
     serve-static "^1.10.2"
     sitemap "^1.8.1"
 

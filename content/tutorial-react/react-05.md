@@ -167,7 +167,7 @@ Check if you got everthing right by opening [http://localhost:3000](http://local
 
 ## Data Normalization and the Apollo store
 
-To fix this, we have to help Apollo Client out a bit. Unlike than Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `src/index.js` like this:
+To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `src/index.js` like this:
 
 ```js@src/index.js
 const client = new ApolloClient({

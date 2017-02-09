@@ -14,7 +14,7 @@ In this exercise we will have a look at advanced query features with the **goal*
 Open the directory that contains the 3rd exercise (`exercise-03`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added a new class called `PokemonCell` that we will use to display your Pokemons in the second section of the table view. 
 
 
-## Display A List Of Pokemons With Advanced Queries Features
+## Display A List Of Pokemons With Advanced Query Features
 
 Before we start working directly on our goal to show the pokemons a trainer owns, let's take some time to get more familiar with some of the available options when using queries.
 

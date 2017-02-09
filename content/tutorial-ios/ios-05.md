@@ -1,4 +1,4 @@
-# Basic Mutations
+# Tutorial 05 - Basic Mutations
 
 Welcome to the 5th exercise in the **iOS Track** of this Apollo Client Tutorial!
 
@@ -174,7 +174,8 @@ To quickly re-iterate, the main reason why this automatic update happens is beca
 
 ## Recap 
 
-In this exercise, we added functionality to our app that allows to add a new Pokemon to our Pokedex and take advantage of the caching and automatic UI updates that's implementing in the **Apollo iOS client**. Here is a summary of what we learned:
+In this exercise, we added functionality to our app that allows to add a new Pokemon to our Pokedex and take advantage of the caching and automatic UI updates that's implemented in the **Apollo iOS client**. Here is a summary of what we learned:
+
 - _Mutations_ are used in GraphQL to update data in the backend
 - Syntactically, they are similar to queries but use the keyword `mutation` instead of `query`
 - `apollo-codegen` will generate one class per _mutation_

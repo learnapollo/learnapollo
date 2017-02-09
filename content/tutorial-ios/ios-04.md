@@ -24,7 +24,7 @@ In this lesson, we are going to learn about _fragments_. Fragments are a GraphQL
 
 ### Why Are Fragments Useful?
 
-With the new `PokemonDetailViewController` we now have have two differents areas in our app where we need to access a Pokemon's `name` and `url` (the `PokemonCell` is the second one). Currently, the only way for us to do so is by using the generated struct `TrainerQuery.Data.Trainer.OwnedPokemon` in both places. However, with this approach we are coupling the data requirements of the `PokemonCell` very tightly to the ones of our `PokemonDetailViewController`. This might turn out very inconvenient when our data requirements change in the future and suddenly one area should include more, less or complemetely different data. Fragments enable independent usage of the same data in various locations, which decouples the data requirements of different views and greatly improves our flexibility!
+With the new `PokemonDetailViewController` we now have have two differents areas in our app where we need to access a Pokemon's `name` and `url` (the `PokemonCell` is the second one). Currently, the only way for us to do so is by using the generated struct `TrainerQuery.Data.Trainer.OwnedPokemon` in both places. However, with this approach we are coupling the data requirements of the `PokemonCell` very tightly to the ones of our `PokemonDetailViewController`. This might turn out very inconvenient when our data requirements change in the future and suddenly one area should include more, less or completely different data. Fragments enable independent usage of the same data in various locations, which decouples the data requirements of different views and greatly improves our flexibility!
 
 
 ### Defining A Fragment
@@ -166,7 +166,8 @@ In the next exercise, we are going to learn about more mutations that allow us t
 
 ## Recap
 
-In this lesson, we learned about using fragments and why they are essential for using the **Apollo iOS client**. Let's revisit the key learning of this exercise:
+In this lesson, we learned about using fragments and why they are essential for using the **Apollo iOS client**. Let's revisit the key learnings of this exercise:
+
 - Fragments are a GraphQL feature that define sub-parts of a query
 - They can be reused in multiple queries and mutations
 - `apollo-codegen` generates one struct per fragment which allows to reuse similar information that originates from different queries or mutations

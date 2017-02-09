@@ -165,6 +165,10 @@ export default class Markdown extends React.Component<Props, {}> {
           return <Download location={self.props.location} repository='pokedex-vue' />
         }
 
+        if (props.literal.indexOf('__DOWNLOAD_IOS__') > -1) {
+          return <Download location={self.props.location} repository='pokedex-ios' />
+        }
+
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
           return <Sharing />
         }
@@ -196,4 +200,3 @@ export default class Markdown extends React.Component<Props, {}> {
     )
   }
 }
-

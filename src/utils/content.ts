@@ -94,7 +94,7 @@ export const chapters: Chapter[] = [
     title: '06 - Multiple Mutations',
     alias: 'rnv-06',
   }]),
-  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, 'Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a  step-by-step tutorial to build a fully-fledged React Native Pokedex App using ExponentJS.', [{
+  new Chapter('React Native Exponent', 'tutorial-react-native-exponent', true, 'Learn how to easily get started with ExponentJS and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged React Native Pokedex App using ExponentJS.', [{
     title: '01 - Getting Started',
     alias: 'rne-01',
   }, {
@@ -110,6 +110,25 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
+  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started with iOS, GrahQL and the Apollo iOS Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
+    title: '01 - Getting Started',
+    alias: 'ios-01',
+  }, {
+    title: '02 - Basic Queries',
+    alias: 'ios-02',
+  }, {
+    title: '03 - Advanced Queries',
+    alias: 'ios-03',
+  }, {
+    title: '04 - Basic Mutations',
+    alias: 'ios-04',
+  }, {
+    title: '05 - Fragments',
+    alias: 'ios-05',
+  }, {
+    title: '06 - More Mutations',
+    alias: 'ios-06',
+  }]),  
   new Chapter('Angular 2', 'tutorial-angular', true, 'Learn how to easily get started Angular 2 and GrahQL with Apollo Client. You will use the prepared application as a playground to experiment with an Angular 2 Pokedex App.', [{
     title: 'Playground',
     alias: 'angular-playground',

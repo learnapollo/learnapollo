@@ -5,7 +5,7 @@ Welcome to the 4th exercise in the **iOS Track** of this Apollo Client Tutorial!
 
 ## Goal
 
-In this exercise, our **goal** is to display a _detail view_ for a Pokemon when the user selects it in the table view. Therefore, we are going to learn about a new GraphQL feature that allow to reuse sub-parts of a query: Fragments! 
+In this exercise, our **goal** is to display a _detail view_ for a Pokemon when the user selects it in the table view. Therefore, we are going to learn about a new GraphQL feature that allows us to reuse sub-parts of a query: Fragments! 
 
 
 ## Introduction

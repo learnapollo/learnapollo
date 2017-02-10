@@ -13,7 +13,7 @@ The **goal** of this exercise is to query information on your very own trainer n
 
 Open the directory that contains the 2nd exercise (`exercise-02`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson.
 
-Before we start firing off some queries, let's first take a look at the GraphQL schema we will be working with throughout this tutorial: 
+Before we start firing off our query, let's first take a look at the GraphQL schema we will be working with throughout this tutorial: 
 
 ```graphql
 type Trainer {
@@ -34,12 +34,12 @@ We manage pokemon _trainers_ that may _own_ several _Pokemons_ and are identifie
 
 > Note: The exclamation points after the type declarations mean that these fields are required.
 
-Let's now build a GraphQL query to retrieve the information of your very own trainer node stored on the server and change the message displayed in `PokedexTableViewController.swift`.
+Let's now build a GraphQL query to retrieve the information of your trainer node stored on the server and change the message displayed in `PokedexTableViewController.swift`.
 
 
-## Displaying Information Of Your Trainer
+## Displaying Information of your Trainer
 
-### Creating Your First GraphQL Query
+### Creating your first GraphQL Query
 
 The GraphQL server for the Pokedex app is configured so that we can retrieve trainers by their name. To query the information of a trainer given their name, you can use the following query (wait with actually copying the query until the next step where we will create `PokedexTableViewController.graphql`):
 
@@ -59,7 +59,7 @@ This query will return the `id` and the `name` of the `Trainer` that is called `
 All right, but how can we use this query in our code and how do we leverage the Swift type system as was promised before?
 
 
-### Adding The Query To The Xcode Project
+### Adding the Query to the Xcode Project
 
 The first thing we need to do in order to use this query is adding it to our project in a `.graphql` file. The script in the build phase will actually assemble and merge all `.graphql` files that are contained in the Xcode project and treat them as one single `.graphql` file. This means that we have all the freedom we want to organize our queries across different files. However, by convention you should define your queries in files that relate to your actual `.swift` files. So, in our case, since we need the result data from the query in the `PokedexTableViewController.swift`, we should create a file called `PokedexTableViewController.graphql` that contains all the queries that fetch the data we want to display on this view controller. In Xcode, there is of course no template for `.graphql` files, so you need to create an _empty_ new file.
 
@@ -170,11 +170,13 @@ var trainer: TrainerQuery.Data.Trainer? {
 }
 ```
 
+This will reload the table view every time the `trainer` property is modified and thus reflect the changes made. 
+
 Next, replace the contents of `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` with: 
 
 ```swift@PokedexTableViewController.swift
 switch indexPath.section {
-      case Sections.greeting.rawValue:
+      case 0:
           let greetingString: String
           if let name = trainer?.name {
               greetingString = "Hello \(name), you have 0 Pokemons in your Pokedex."
@@ -185,7 +187,7 @@ switch indexPath.section {
           let cell = tableView.dequeueReusableCell(withIdentifier: "GreetingCell", for: indexPath) as! GreetingCell
           cell.greetingLabel.text = greetingString
           return cell
-      case Sections.pokemons.rawValue:
+      case 1:
           fatalError("ERROR: Not yet implemented")
       default:
           fatalError("ERROR: Unknown section")
@@ -208,6 +210,7 @@ If you run the app now, the topmost cell should have changed its greeting text t
 ## Recap
 
 Fantastic! You just executed your very first GraphQL query and used the results in a table view. On to the next lesson where we'll learn more about queries. But before, let's quickly revisit what we learned:
+
 - GraphQL queries need to be written in `.graphql` files
 - `apollo-codegen` merges all `.graphql` files in your Xcode project, creates `API.swift` and in there generates Swift types based on the queries
 - A query is sent using the `fetch()` method on `ApolloClient`

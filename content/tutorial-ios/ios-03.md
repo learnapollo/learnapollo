@@ -14,7 +14,7 @@ In this exercise we will have a look at advanced query features with the **goal*
 Open the directory that contains the 3rd exercise (`exercise-03`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added a new class called `PokemonCell` that we will use to display your Pokemons in the second section of the table view. 
 
 
-## Display A List Of Pokemons With Advanced Query Features
+## Display a List of Pokemons with Advanced Query Features
 
 Before we start working directly on our goal to show the pokemons a trainer owns, let's take some time to get more familiar with some of the available options when using queries.
 
@@ -94,13 +94,13 @@ query Trainer($name: String!) {
 
 > Note: **Nested queries** are where GraphQL really shines compared to REST. With a REST API, it usually requires multiple calls to request data that goes over one or two relationships in a data model, with GraphQL all data requirements can be specified upfront in the query and the data can be fetched within only one API call! 💯
 
-The above query requests all Pokemons that are owned by the trainer called `$name`. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`. If you run this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll see that your very own Pokemon team already consists of three Pokemon.
+The above query requests all Pokemons that are owned by the trainer called `$name`, which is a variable that we are passing to the `TrainerQuery`'s initializer upon creation. The Pokemons will be returned as an array, and each of them will have an `id`, a `name` and a `url`. If you run this query in [GraphiQL](https://api.graph.cool/simple/v1/__PROJECT_ID__), you'll see that your Pokemon team already consists of three Pokemon.
 
 Go ahead and replace the existing query in `PokedexTableViewController.graphql` with the query above, then hit `CMD + B` and inspect `API.swift` again. 
 
 We just got another nested struct, this time it's called `OwnedPokemon` and nested inside `TrainerQuery.Data.Trainer`. This well reflects the nesting inside the query. Also notice that the `TrainerQuery.Data.Trainer` got a new property, which is an array of `TrainerQuery.Data.Trainer.OwnedPokemon`.
 
-Let's use this new data in our code! In `PokedexTableViewController.swift`, we can now make use of the fact that the `TrainerQuery.Data.Trainer` knows its owned Pokemons, so we can actually display the correct number of Pokemons rather than a hardcoded `0`. Change the generation of the `greetingString` inside `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` like so:
+Let's use this new type in our code! In `PokedexTableViewController.swift`, we can now make use of the fact that the `TrainerQuery.Data.Trainer` knows its owned Pokemons, so we can actually display the correct number of Pokemons rather than a hardcoded `0`. Change the generation of the `greetingString` inside `tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)` like so:
 
 ```swift@PokedexTableViewController.swift
 let greetingString: String

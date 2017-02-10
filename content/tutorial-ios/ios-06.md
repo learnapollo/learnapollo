@@ -13,11 +13,11 @@ The **goal** of this exercise is to implement features for updating and deleting
 Open the directory that contains the 6th exercise (`exercise-06`) and open `pokedex-apollo.xcworkspace`. It already contains a running version of the code you wrote in the previous lesson. Note that we added some functionality to the `PokemonDetailViewController` that allows us to switch to an _editing state_ in which we can change the name and image URL using the corresponding text fields. However, any changes that we make right now will have no effect in our backend - that's what we want to implement in this exercise.
 
 
-## Updating An Existing Pokemon
+## Updating an Existing Pokemon
 
-### Defining An `UpdatePokemonMutation` 
+### Defining an `UpdatePokemonMutation` 
 
-As a first step, we want to implement update functionality for our Pokemons. This will be done through a mutation that we need to define upfront. Since the mutation will only be used inside the `PokemonDetailViewController`, now is a good time to create a new `.graphql` file that contains all queries/mutations for the `PokemonDetailViewController`. As before, create a new _empty_ file in Xcode and call it `PokemonDetailViewController.graphql`. Then, copy the following mutation into it:
+As a first step, we want to implement update functionality for our Pokemons. This will be done through a mutation that we need to define. Since the mutation will only be used inside the `PokemonDetailViewController`, now is a good time to create a new `.graphql` file that contains all queries/mutations for the `PokemonDetailViewController`. As before, create a new _empty_ file in Xcode and call it `PokemonDetailViewController.graphql`. Then, copy the following mutation into it:
 
 ```graphql@PokemonDetailViewController.graphql
 mutation UpdatePokemon($id: ID!, $name: String!, $url: String!) {
@@ -74,9 +74,9 @@ Go ahead and test the new feature by modifying the name or image URL of one of t
 Thanks to the caching and automatic update functionality that we saw in the previous exercise, you'll also see the updated Pokemon data in the table view if you navigate back to the `PokedexTableViewController`. Let's now add the final bit of functionality which is to delete a Pokemon.
 
 
-## Deleting An Existing Pokemon
+## Deleting an Existing Pokemon
 
-### Defining A `DeletePokemonMutation` 
+### Defining a `DeletePokemonMutation` 
 
 In order to delete a Pokemon, we will need another mutation. Add the following mutation to your existing `PokemonDetailViewController.graphql` file:
 
@@ -98,7 +98,7 @@ Notice that this time we're explicitly asking for the `trainer` and the associat
 
 ### Using the `DeletePokemonMutation`
 
-Now, as we have the `DeletePokemonMutation` available, let's go ahead and use it to enable deleting Pokemons from the Pokedex. In `PokemonDetailViewController.swift`, copy the following snippet into `deleteButtonPressed()` 
+Now, as we have the `DeletePokemonMutation` available, let's go ahead and use it to enable deleting Pokemons from the Pokedex in our app. In `PokemonDetailViewController.swift`, copy the following snippet into `deleteButtonPressed()` 
 
 ```swift@PokemonDetailViewController.swift
 deleteActivityIndicator.startAnimating()
@@ -109,7 +109,7 @@ apollo.perform(mutation: deleteMutation) { result, error in
         print(#function, "ERROR | Could not delete Pokemon: (\(error))")
     }
     else {
-        print("Successfully deleted Pokemon with ID: \(result?.data?.deletePokemon?.id)")
+        print("Successfully deleted Pokemon.")
         let _ = self.navigationController?.popViewController(animated: true)
     }
 }

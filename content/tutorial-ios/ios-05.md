@@ -55,7 +55,7 @@ Let's now go and use the mutation in our code! Open `CreatePokemonViewController
 ```swift@CreatePokemonViewController.swift 
 let createPokemonMutation = CreatePokemonMutation(name: name, url: imageURL, trainerId: trainerId)
 activityIndicator.startAnimating()
-apollo.perform(mutation: createPokemonMutation) { [unowned self] (result: GraphQLResult?, error: Error?) in
+apollo.perform(mutation: createPokemonMutation) { (result: GraphQLResult?, error: Error?) in
     self.activityIndicator.stopAnimating()
     if let error = error {
         print(#function, "ERROR | An error occured while adding the new Pokemon: \(error)")
@@ -111,7 +111,7 @@ Next, we need to update the code in the `fetchTrainer()` method like so:
 
 ```swift@PokedexTableViewController.swift 
         let trainerQuery = TrainerQuery(name: "Nikolas")
-        trainerQueryWatcher = apollo.watch(query: trainerQuery) { [unowned self] (result: GraphQLResult?, error: Error?) in
+        trainerQueryWatcher = apollo.watch(query: trainerQuery) { (result: GraphQLResult?, error: Error?) in
             if let error = error {
                 print(#function, "ERROR | An error occured: \(error)")
                 return

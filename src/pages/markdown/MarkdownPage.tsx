@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
-import Icon from '../../components/Icon/Icon'
+import { Icon } from 'graphcool-styles'
 import SharePanel from '../../components/SharePanel/SharePanel'
 import {chapters} from '../../utils/content';
 const styles: any = require('./MarkdownPage.module.styl')
@@ -63,9 +63,13 @@ export default class MarkdownPage extends React.Component<Props, {}> {
           >
             <Icon
               src={require('../../assets/icons/github.svg')}
-              style={{ paddingRight: '6px' }}
             />
-            <span className='black'>Edit this page</span>
+            <span
+              className='black'
+              style={{ paddingLeft: '6px' }}
+            >
+              Edit this page
+            </span>
           </a>
         </div>
         {showSharePanel() && <SharePanel/>}

@@ -177,4 +177,3 @@ In this lesson, we learned about using fragments and how they help us decouple d
 
 
 
-

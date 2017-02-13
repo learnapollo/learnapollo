@@ -144,6 +144,18 @@ export default PokedexWithData
 All that you have to do now is to update `render` method of `Pokedex.js`. Before actually rendering, we make sure that the `params.page` in the props is a sensible number, if not we navigate to the first page. If all is well, we include the prepared `PageNavigation` component in the `render` method of `Pokedex.js` to allow the user to browse through the different pages:
 
 ```js@src/components/Pokedex.js
+componentWillReceiveProps({ router, data: { Trainer }, params: { page } }) {
+  if (!Trainer) {
+    return
+  }
+  const pokemonCount = Trainer._ownedPokemonsMeta.count
+  if ((!pokemonCount && !this._isFirstPage()) || isNaN(page) || pokemonCount < (page - 1) * POKEMONS_PER_PAGE || page < 1) {
+    router.replace('/1')
+  }
+}
+
+// ...
+
 render () {
   if (this.props.data.loading) {
     return (<div>Loading</div>)
@@ -152,13 +164,6 @@ render () {
   if (this.props.data.error) {
     console.log(this.props.data.error)
     return (<div>An unexpected error occurred</div>)
-  }
-
-  if ((this.props.data.Trainer._ownedPokemonsMeta.count === 0 && !this._isFirstPage())
-    || isNaN(this.props.params.page)
-    || this.props.data.Trainer._ownedPokemonsMeta.count < (this.props.params.page - 1) * POKEMONS_PER_PAGE
-    || this.props.params.page < 1) {
-    this.props.router.replace('/1')
   }
 
   return (

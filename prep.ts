@@ -9,5 +9,6 @@ export default () => {
     routes: chapterRoutes.concat(['/']),
     https: true,
     hostname: 'https://www.learnapollo.com',
+    useragent: 'SSR',
   }
 }

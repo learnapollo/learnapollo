@@ -196,7 +196,7 @@ const PokemonQuery = gql`
 `
 ```
 
-As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, other than with the trainer name variable, we cannot just use a cannot value as the id in our case. For that reason, we have the possibility to access the props when creating the `variables` object. So, we can replace:
+As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, other than with the trainer name variable, we cannot just use a value as the id in our case. For that reason, we have the possibility to access the props when creating the `variables` object. So, we can replace:
 
 ```js
 export default withRouter(PokemonPage)
@@ -264,4 +264,4 @@ Nice, our pokedex starts to get some shape! We added both an overview of all our
 
 * **Constants as query variables** helped us getting started with advanced query features
 * Using GraphQL, we can easily create **nested queries**
-* Combining **router parameters** and **dynamic query variables**, we were able to supply different data to the same component to quickly control what concent we want to render.
+* Combining **router parameters** and **dynamic query variables**, we were able to supply different data to the same component to quickly control what content we want to render.

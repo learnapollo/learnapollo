@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Icon from '../Icon/Icon'
+import { Icon } from 'graphcool-styles'
 import {chapters, Chapter} from '../../utils/content'
 import * as classNames from 'classnames'
 const styles = require('./SetTrack.module.styl')
@@ -14,6 +14,7 @@ const trackIcons = {
   'tutorial-react': require('../../assets/icons/logo-react.svg'),
   'tutorial-react-native-vanilla': require('../../assets/icons/logo-react.svg'),
   'tutorial-react-native-exponent': require('../../assets/icons/logo-exponent.svg'),
+  'tutorial-ios': require('../../assets/icons/logo-ios.svg'),
   'tutorial-angular': require('../../assets/icons/logo-angular.svg'),
   'tutorial-vue': require('../../assets/icons/logo-vue.svg'),
   'excursions': require('../../assets/icons/logo-react.svg'),
@@ -51,7 +52,7 @@ class SetTrack extends React.Component<Props, {}> {
   }
 
   private clickHandler(selectedTrack: Chapter) {
-    const selectedChapter = chapters.find(((c) => c.alias === selectedTrack.alias))
+    const selectedChapter = chapters.find(((c) => c.alias === selectedTrack.alias))!
     this.props.router.replace(`/${selectedChapter.alias}/${selectedChapter.subchapters[0].alias}`)
   }
 }

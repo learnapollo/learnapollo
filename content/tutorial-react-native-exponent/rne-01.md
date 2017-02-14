@@ -76,7 +76,7 @@ This client will perform the API calls and manage the cache.
 
 In order to connect Apollo Client to the existing store, modify `./state/Store.js`:
 
-```js@./state/AddPokemonCard.js
+```js@./state/Store.js
 // ...
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import client from 'learnapollo/state/Apollo.js';
@@ -107,6 +107,7 @@ This package is analogous to the React integration of Redux, `react-redux`.
 To do this, modify the `./main.js` to wrap the NavigationProvider inside ApolloProvider.
 
 ```js@./main.js
+import { ApolloProvider } from 'react-apollo';
 import Store from 'learnapollo/state/Store';
 import Client from 'learnapollo/state/Apollo';
 

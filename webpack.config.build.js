@@ -16,41 +16,41 @@ module.exports = {
     rules: [{
       enforce: 'pre',
       test: /\.ts(x?)$/,
-      loader: 'tslint',
+      loader: 'tslint-loader',
       exclude: /node_modules/,
     }, {
       test: /module\.styl/,
-      loader: 'style!css?modules!postcss!stylus',
+      loader: 'style-loader!css-loader?modules!postcss-loader!stylus-loader',
     }, {
       test: /module\.css/,
-      loader: 'style!css?modules!postcss',
+      loader: 'style-loader!css-loader?modules!postcss-loader',
     }, {
       test: /\.css/,
       exclude: /module\.css/,
-      loader: 'style!css!postcss',
+      loader: 'style-loader!css-loader!postcss-loader',
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel!awesome-typescript',
+      loader: 'babel-loader!awesome-typescript-loader',
     }, {
       test: /\.js$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/,
     }, {
       test: /\.json/,
-      loader: 'json',
+      loader: 'json-loader',
     }, {
       test: /\.(jpg|png)/,
-      loader: 'file',
+      loader: 'file-loader',
     }, {
       test: /content\/.*\.svg$/,
-      loader: 'file',
+      loader: 'file-loader',
     }, {
       test: /icons\/.*\.svg$/,
-      loader: 'raw!svgo?{"plugins":[{"removeStyleElement":true}]}',
+      loader: 'raw-loader!svgo-loader?{"plugins":[{"removeStyleElement":true}]}',
     }, {
       test: /\.md/,
-      loader: 'raw',
+      loader: 'raw-loader',
     }],
   },
   plugins: [
@@ -59,7 +59,7 @@ module.exports = {
       __GA_TRACKING_CODE__: '"UA-74131346-6"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
       __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
-      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-file-processing_getting-started-example"',
+      __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://qtkqo6so2i.execute-api.eu-west-1.amazonaws.com/Prod"',
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       },

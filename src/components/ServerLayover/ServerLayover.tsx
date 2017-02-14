@@ -3,7 +3,7 @@ import * as GraphiQL from 'graphiql'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import * as Relay from 'react-relay'
 import BrowserView from '../BrowserView/BrowserView'
-import Icon from '../Icon/Icon'
+import { Icon } from 'graphcool-styles'
 import * as ReactGA from 'react-ga'
 import { events } from '../../utils/events'
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as Relay from 'react-relay'
-import Icon from '../Icon/Icon'
+import { Icon } from 'graphcool-styles'
 import DeletePokemonMutation from '../../mutations/DeletePokemonMutation'
 import UpdatePokemonMutation from '../../mutations/UpdatePokemonMutation'
 import * as ReactGA from 'react-ga'

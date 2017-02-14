@@ -15,6 +15,7 @@ Open the directory that contains the 2nd exercise (`exercise-02`) and open `poke
 
 Before we start firing off our query, let's first take a look at the GraphQL schema we will be working with throughout this tutorial: 
 
+
 ```graphql
 type Trainer {
   id: String!

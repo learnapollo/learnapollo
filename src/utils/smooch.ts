@@ -1,7 +1,7 @@
 import {getStoredState} from './statestore'
 
 export function initSmooch(): Promise<void> {
-  if (!Smooch) {
+  if (!Smooch || navigator.userAgent === 'SSR') {
     return Promise.resolve()
   }
 

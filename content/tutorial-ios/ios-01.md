@@ -40,6 +40,7 @@ After you executed this step, navigate to the root directory of the project in a
 
 Unlike most other dependencies that are installed with Cocoapods, we are not quite done with setting up the environment after running `pod install`. That is because the **Apollo iOS client** depends on an additional tool called `apollo-codegen`. With every time you build the Xcode project, this tool needs to run before the actual compilation process. The reason for this is that the tool will scan your project for any `.graphql` files and generate a Swift file called `API.swift` which contains your GraphQL _types_. A major advantage of this approach is that we can leverage the Swift type system to make sure we are only querying data that we need, and the compiler will catch any potential issues for us before runtime.
 
+
 > Note: The [Apollo iOS Guide](http://dev.apollodata.com/ios/index.html) also contains detailled information about setup and usage of the **Apollo iOS client**.
 
 
@@ -50,6 +51,7 @@ You first need to globally install `apollo-codegen` on your machine using the _n
 ```bash
 npm install -g apollo-codegen
 ```
+
 
 ### Adding a Build Phase
 
@@ -105,6 +107,7 @@ let apollo = ApolloClient(url: URL(string: graphlQLEndpointURL)!)
 Make sure you use the correct URL that represents your Pokedex sandbox. If you signed in via GitHub, the project ID in the URL should have been set for you automatically. 
 
 The `ApolloClient` we instantiated above can now mainly be used for two different things:
+
 - fetching data with [queries]((http://dev.apollodata.com/ios/queries.html#fetching-queries)) (using its `fetch` method) 
 - updating data with [mutations](http://dev.apollodata.com/ios/mutations.html) (using its `perform` method)
 

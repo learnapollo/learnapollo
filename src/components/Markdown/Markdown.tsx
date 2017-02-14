@@ -8,7 +8,7 @@ import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
 import Download from '../Download/Download'
 import SetTrack from '../SetTrack/SetTrack'
-import Icon from '../Icon/Icon'
+import { Icon } from 'graphcool-styles'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 const styles: any = require('./Markdown.module.css')

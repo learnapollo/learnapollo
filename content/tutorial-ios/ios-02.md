@@ -95,26 +95,30 @@ public final class TrainerQuery: GraphQLQuery {
   public static let operationDefinition =
     "query Trainer {" +
     "  Trainer(name: \"__NAME__\") {" +
+    "    __typename" +
     "    id" +
     "    name" +
     "  }" +
     "}"
+  public init() {
+  }
 
-  public struct Data: GraphQLMapDecodable {
+  public struct Data: GraphQLMappable {
     public let trainer: Trainer?
 
-    public init(map: GraphQLMap) throws {
-      trainer = try map.optionalValue(forKey: "Trainer")
+    public init(reader: GraphQLResultReader) throws {
+      trainer = try reader.optionalValue(for: Field(responseName: "Trainer", arguments: ["name": "__NAME__"]))
     }
 
-    public struct Trainer: GraphQLMapDecodable {
-      public let __typename = "Trainer"
+    public struct Trainer: GraphQLMappable {
+      public let __typename: String
       public let id: GraphQLID
       public let name: String?
 
-      public init(map: GraphQLMap) throws {
-        id = try map.value(forKey: "id")
-        name = try map.optionalValue(forKey: "name")
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        id = try reader.value(for: Field(responseName: "id"))
+        name = try reader.optionalValue(for: Field(responseName: "name"))
       }
     }
   }

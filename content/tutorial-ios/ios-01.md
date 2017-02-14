@@ -25,7 +25,7 @@ The app so far only consists of one table view controller that will display two 
 
 ![Initial Screen](../images/ios-ex01-initial_screen.png "Initial Screen")
 
-## Installing The **Apollo iOS Client** With Cocoapods
+## Installing The Apollo iOS Client With Cocoapods
 
 The **Apollo iOS client** can be installed through Cocoapods or Carthage. Since we are using Cocoapods in this project, go ahead and open the `Podfile` and add the following line:
 

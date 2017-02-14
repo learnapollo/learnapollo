@@ -120,10 +120,10 @@ export const chapters: Chapter[] = [
     title: '03 - Advanced Queries',
     alias: 'ios-03',
   }, {
-    title: '04 - Basic Mutations',
+    title: '04 - Fragments',
     alias: 'ios-04',
   }, {
-    title: '05 - Fragments',
+    title: '05 - Basic Mutations',
     alias: 'ios-05',
   }, {
     title: '06 - More Mutations',

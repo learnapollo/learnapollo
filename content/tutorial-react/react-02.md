@@ -196,4 +196,4 @@ Nice, you executed your first GraphQL query with Apollo Client and used it to di
 * The shape of valid queries depend on the **schema from the GraphQL server** (explore them in the data browser on this page!)
 * Before executing them, we have to **define queries using the `gql` tag** from the `graphql-tag` package
 * **Wrapping a component with `graphql`** from `react-apollo` using a query injects the `data` prop to the inner component
-* The **`data` prop contains the fields of the query, once `data.loading` is `false`**. We can render a loading state as long as `data.loading` if `true`.
+* Once **`data.loading` becomes `false`**, the **`data` prop will contain the fields of the query**. We can render a loading state as long as `data.loading` is `true`.  

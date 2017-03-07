@@ -110,7 +110,7 @@ export const chapters: Chapter[] = [
     title: '05 - Basic Mutations',
     alias: 'rne-05',
   }]),
-  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started with iOS, GrahQL and the Apollo iOS Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
+  new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started with iOS, GraphQL and the Apollo iOS Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
     title: '01 - Getting Started',
     alias: 'ios-01',
   }, {
@@ -129,11 +129,11 @@ export const chapters: Chapter[] = [
     title: '06 - More Mutations',
     alias: 'ios-06',
   }]),  
-  new Chapter('Angular 2', 'tutorial-angular', true, 'Learn how to easily get started Angular 2 and GrahQL with Apollo Client. You will use the prepared application as a playground to experiment with an Angular 2 Pokedex App.', [{
+  new Chapter('Angular 2', 'tutorial-angular', true, 'Learn how to easily get started Angular 2 and GraphQL with Apollo Client. You will use the prepared application as a playground to experiment with an Angular 2 Pokedex App.', [{
     title: 'Playground',
     alias: 'angular-playground',
   }]),
-  new Chapter('Vue.js', 'tutorial-vue', true, 'Learn how to easily get started Vue.js and GrahQL with Apollo Client. You will use the prepared application as a playground to experiment with an Vue.js Pokedex App', [{
+  new Chapter('Vue.js', 'tutorial-vue', true, 'Learn how to easily get started Vue.js and GraphQL with Apollo Client. You will use the prepared application as a playground to experiment with an Vue.js Pokedex App', [{
     title: 'Playground',
     alias: 'vue-playground',
   }]),

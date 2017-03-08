@@ -166,7 +166,7 @@ This results in the two new props `updatePokemon` and `deletePokemon`, so let's 
 
 ```js@src/components/PokemonCard.js
 static propTypes = {
-  pokemon: PokemonCard.fragments.pokemon.propType,
+  pokemon: propType(PokemonCard.fragments.pokemon).isRequired,
   handleCancel: React.PropTypes.func.isRequired,
   afterChange: React.PropTypes.func.isRequired,
   updatePokemon: React.PropTypes.func.isRequired,

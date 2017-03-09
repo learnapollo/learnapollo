@@ -170,7 +170,7 @@ Finally, we are defining the `TrainerQuery` (insert your name!), connect it to o
 ```js@src/component/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery {
-    Trainer(name: "Sashko Stubailo") {
+    Trainer(name: "__NAME__") {
       name
     }
   }

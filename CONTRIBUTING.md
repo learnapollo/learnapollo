@@ -10,8 +10,8 @@ source files in [`content`](https://github.com/learnapollo/learnapollo/tree/mast
 
 ## Contributing to the Pokedex app
 
-Learn Apollo features a practical example app in [React](https://github.com/learnapollo/pokedex-react/blob/master/CONTRIBUTING.md), [Angular 2](https://github.com/learnapollo/pokedex-angular/blob/master/CONTRIBUTING.md), [React Native Vanilla](https://github.com/learnapollo/pokedex-react-native-vanilla/blob/master/CONTRIBUTING.md) and
-[React Native Expo](https://github.com/learnapollo/pokedex-react-native-exponent/blob/master/CONTRIBUTING.md) that follows along
+Learn Apollo features a practical example app in [React](https://github.com/learnapollo/pokedex-react), [Angular 2](https://github.com/learnapollo/pokedex-angular), [React Native Vanilla](https://github.com/learnapollo/pokedex-react-native-vanilla) and
+[React Native Expo](https://github.com/learnapollo/pokedex-react-native-exponent) that follows along
 the interactive guide. If you find some inconsistencies between the guide and the application or you want to contribute
 something else, head over to the respective project to find out more about the contributing workflow for the
 Pokedex app.

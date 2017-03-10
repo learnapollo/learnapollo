@@ -1,6 +1,6 @@
 # Tutorial 03 - Advanced Queries
 
-This is the third exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
+This is the third exercise in the **React Native Expo Track** of this Apollo Client Tutorial!
 
 ## Goal
 
@@ -237,7 +237,7 @@ Have a look at the `PokemonDetailScreen` directory that we prepared for you.
 
 We already created the navigation in `navigation/` that assigns the `PokemonDetailScreen` to the path `pokemonDetail`
 so we can `.push(Router.getRoute('pokemonDetail'))` to change the route.
-Exponent navigation allows us to pass extra parameters to the route like this:
+Expo navigation allows us to pass extra parameters to the route like this:
 
 ```js
 _goToDetail = (pokemon) => {
@@ -251,7 +251,7 @@ In a mobile app, we want the tab bar to be visible only on the first page and to
 navigation tree: that is exactly what `getNavigator` allows us to do.
 Selecting the root navigator and pushing routes directly on top of it overrides the tab bar navigator and thus hides it.
 
-The back button in the nav bar and the native back button on Android is handled by default by exponent-navigation.
+The back button in the nav bar and the native back button on Android is handled by default by Expo ExNavigation.
 
 Then, in the `PokemonDetailScreen`, we can get the paramater `pokemonId` like this:
 
@@ -329,6 +329,6 @@ a single pokemon. Let's go through what we saw in this exercise again:
 
 * **Constants as query variables** helped us getting started with advanced query features
 * Using GraphQL, we can easily create **nested queries**
-* Using the second argument of **exponent router actions**, we can provides the page with custom parameters
+* Using the second argument of **expo router actions**, we can provides the page with custom parameters
 * Combining **router parameters** and **dynamic query variables**, we were able to supply different data to the same
   component to quickly control what content we want to render.

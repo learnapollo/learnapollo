@@ -13,7 +13,7 @@ const trackIcons = {
   'introduction': require('../../assets/icons/logo-react.svg'),
   'tutorial-react': require('../../assets/icons/logo-react.svg'),
   'tutorial-react-native-vanilla': require('../../assets/icons/logo-react.svg'),
-  'tutorial-react-native-exponent': require('../../assets/icons/logo-exponent.svg'),
+  'tutorial-react-native-expo': require('../../assets/icons/logo-expo.svg'),
   'tutorial-ios': require('../../assets/icons/logo-ios.svg'),
   'tutorial-angular': require('../../assets/icons/logo-angular.svg'),
   'tutorial-vue': require('../../assets/icons/logo-vue.svg'),

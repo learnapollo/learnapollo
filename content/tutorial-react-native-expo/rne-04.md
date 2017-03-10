@@ -1,6 +1,6 @@
 # Tutorial 04 - Fragments
 
-Welcome to the 4th exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
+Welcome to the 4th exercise in the **React Native Expo Track** of this Apollo Client Tutorial!
 
 ## Goal
 
@@ -10,7 +10,7 @@ We will use fragments and learn how they can be used to define data requirements
 
 ## Introduction
 
-Change to the 4th exercise, install the dependencies and run the Exponent XDE
+Change to the 4th exercise, install the dependencies and run the Expo XDE
 
 ```sh
 cd pokedex-react-native/exercise-04-initial

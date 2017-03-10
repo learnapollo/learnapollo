@@ -1,6 +1,6 @@
 # Tutorial 02 - Basic Queries
 
-This is the second exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
+This is the second exercise in the **React Native Expo Track** of this Apollo Client Tutorial!
 
 ## Goal
 

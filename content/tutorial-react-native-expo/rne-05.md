@@ -1,7 +1,7 @@
 # Tutorial 05 - Basic Mutations
 
-Welcome to the first exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
-If you prefer React or React Native Vanilla over React Native Exponent, head over to the respective tutorial track.
+Welcome to the first exercise in the **React Native Expo Track** of this Apollo Client Tutorial!
+If you prefer React or React Native Vanilla over React Native Expo, head over to the respective tutorial track.
 
 ## Goal
 
@@ -136,7 +136,7 @@ Check if you got everthing right by running your project in XDE.
 Click the add button. Add the pokemon name and image URL and click the save button.
 
 Weird, the pokemon is not displayed right away, only after refreshing the page.
-Exponent does not unmount the component when we are switching between screens.
+Expo does not unmount the component when we are switching between screens.
 Thus, the query is not executed again and the list not updated.
 
 We have two ways of fixing this:
@@ -146,7 +146,7 @@ We have two ways of fixing this:
 Let's focus on reloading the whole list for now: go and edit the `PokemonsList` component:
 
 ```js
-import { createFocusAwareComponent } from '@exponent/ex-navigation';
+import { createFocusAwareComponent } from '@expo/ex-navigation';
 
 // ...
 

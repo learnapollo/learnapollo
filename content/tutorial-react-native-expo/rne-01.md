@@ -1,7 +1,7 @@
 # Tutorial 01 - Getting Started
 
-Welcome to the first exercise in the **React Native Exponent Track** of this Apollo Client Tutorial!
-If you prefer React or React Native Vanilla over React Native Exponent, head over to the respective tutorial track.
+Welcome to the first exercise in the **React Native Expo Track** of this Apollo Client Tutorial!
+If you prefer React or React Native Vanilla over React Native Expo, head over to the respective tutorial track.
 
 ## Goal
 
@@ -10,14 +10,14 @@ You will get familiar with the infrastructure surrounding Apollo Client for Reac
 
 ## Prerequisites
 
-This tutorial uses [ExponentJS](https://getexponent.com/).
-ExponentJS is a mobile app development tool for React Native with an included SKD for system functionality and also provides UI components
+This tutorial uses [Expo](https://expo.io/).
+Expo is a mobile app development tool for React Native with an included SKD for system functionality and also provides UI components
 
 ## Introduction
 
 Sign up with GitHub to receive your own `pokedex-react-native-exponent` here:
 
-<!-- __DOWNLOAD_RNEXPONENT__ -->
+<!-- __DOWNLOAD_RNEXPO__ -->
 
 Now change to the first exercise and install the dependencies from your console:
 
@@ -37,7 +37,7 @@ Let's take a moment to get more familiar with the structure of the app before we
 * `./screens` - screens and associated components
 * `./state` - configuration of Redux store
 * `./utilities` - utilities
-* `./exp.json` - configuration of exponent project
+* `./exp.json` - configuration of expo project
 * `./main.js` - root file of the project
 
 ## Exercise
@@ -153,7 +153,7 @@ Click on `Device` to start the iOS or Android Simulator.
 ## Recap
 
 Great, you did it!
-You successfully ran the React Native App with Exponent and got familiar with its general structure.
+You successfully ran the React Native App with Expo and got familiar with its general structure.
 Let's quickly summarize what we learned so far:
 
 * To use the **Apollo Client**, we need to import it from `apollo-client` and setup its **networkInterface**

@@ -29,7 +29,7 @@ Currently we have a cool, shiny list of pokemons that are assigned to our traine
 
 ### Adding a button to the `Pokedex`
 
-We already prepared a new component `AddPokemonCard` that lets us create new pokemons and associated it with the `createPokemon` route in `src/index.js`:
+We already prepared a new component `AddPokemonCard` that lets us create new pokemons and associated it with the `createPokemon` route in `index.js`:
 
 ```js
 const scenes = Actions.create(
@@ -45,7 +45,7 @@ We can now add a new button to our `Pokedex` component that redirects to the new
 
 As we need to know which trainer gets assigned the new pokemon, we pass the trainer id when redirecting. This is the new `render` method of `Pokedex`:
 
-```js@src/components/Pokedex.js
+```js@components/Pokedex.js
 render () {
   if (this.props.data.loading) {
     return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
@@ -107,7 +107,7 @@ render () {
 
 Note that we require the trainer id now but didn't need it before, so we should add it to our `TrainerQuery` as well:
 
-```js@src/components/Pokedex.js
+```js@components/Pokedex.js
 const TrainerQuery = gql`
   query TrainerQuery($name: String!) {
     Trainer(name: $name) {
@@ -127,7 +127,7 @@ const TrainerQuery = gql`
 
 Right now, the `AddPokemonCard` doesn't do too much. As we want to create a new pokemon node at the server, now is the time to think about the right mutation for this. Let's first think about the data that is needed for creating a new pokemon. Of course, we need the name and the image URL of the new pokemon. Additionally we also need the trainer id to relate the pokemon to the trainer and vice-versa. The mutation we need to use is called `createPokemon`, which leaves us with the following mutation:
 
-```js@src/components/AddPokemonCard.js
+```js@components/AddPokemonCard.js
 const createPokemonMutation = gql`
   mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {
@@ -144,7 +144,7 @@ const createPokemonMutation = gql`
 
 Note that as we discussed above, the mutation requires the variables `$name`, `$url` and `$trainerId`. Instead of only using `export default AddPokemonCard` we can inject the mutation similar to how we inject queries to `AddPokemonCard`:
 
-```js@src/components/AddPokemonCard.js
+```js@components/AddPokemonCard.js
 const AddPokemonCardWithMutation = graphql(createPokemonMutation)(AddPokemonCard)
 
 export default AddPokemonCardWithMutation
@@ -156,7 +156,7 @@ But wait, how do we supply the needed variables to the mutation? Let's find out!
 
 Other than with queries, injecting mutations doesn't add the query result but the mutation itself as a function. Inside the wrapped component, we can access the mutation via `this.props.mutate`, which is a function that accepts the mutation variables as parameters. So let's first add the new required prop `mutate` at the top of the `AddPokemonCard` class:
 
-```js@src/components/AddPokemonCard.js
+```js@components/AddPokemonCard.js
 static propTypes = {
   mutate: React.PropTypes.func.isRequired,
 }
@@ -164,7 +164,7 @@ static propTypes = {
 
 Now we can call the `createPokemon` mutations by using `mutate` in `handleSave`:
 
-```js@src/components/AddPokemonCard.js
+```js@components/AddPokemonCard.js
 handleSave = () => {
   const {name, url} = this.state
   const trainerId = this.props.trainerId
@@ -189,9 +189,9 @@ Click the add button. Add the pokemon name and image URL and click the save butt
 
 ## Data Normalization and the Apollo store
 
-To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `src/index.js` like this:
+To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `index.js` like this:
 
-```js@src/index.js
+```js@index.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
   dataIdFromObject: o => o.id

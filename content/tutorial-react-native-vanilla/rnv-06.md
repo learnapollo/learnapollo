@@ -96,7 +96,7 @@ if (this.canUpdate()) {
 
 However, you have to implement the `handleUpdate` and `handleDelete` methods yourself. Before that, let us define the required mutations together. As both mutations need the `id` of the pokemon, we have to update the `pokemon` fragment in the `PokemonCard` by adding the `id`:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 static fragments = {
   pokemon: gql`
     fragment PokemonCardPokemon on Pokemon {
@@ -112,7 +112,7 @@ static fragments = {
 
 We want to be able to update pokemon names and image URLs. That's why we make use of `updatePokemon` and its arguments `name` and `url`. Add this mutation to the `PokemonCard`:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 const updatePokemon = gql`
   mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
     updatePokemon(id: $id, name: $name, url: $url) {
@@ -146,7 +146,7 @@ Let's now think about the `deletePokemon` mutation before we will use both mutat
 
 The `deletePokemon` mutation only needs the `id` pokemon to delete it. Add it to `PokemonCard` as well:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 const deletePokemon = gql`
   mutation deletePokemon($id: ID!) {
     deletePokemon(id: $id) {
@@ -160,7 +160,7 @@ const deletePokemon = gql`
 
 Now it's time for you to inject these mutations to `PokemonCard`. By default, injected mutations are accessible with `this.props.mutate`. But how can we inject multiple mutations? We simply provide a `name` option:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 const PokemonCardWithMutations =  graphql(deletePokemon, {name : 'deletePokemon'})(
   graphql(updatePokemon, {name: 'updatePokemon'})(PokemonCard)
 )
@@ -170,7 +170,7 @@ export default PokemonCardWithMutations
 
 This results in the two new props `updatePokemon` and `deletePokemon`, so let's reflect that when defining the `propTypes`:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 static propTypes = {
   pokemon: propType(pokemonCardFragments.pokemon).isRequired,
   updatePokemon: React.PropTypes.func.isRequired,
@@ -182,7 +182,7 @@ static propTypes = {
 
 Finally, you can now call the mutations from within the `onClick` of the buttons:
 
-```js@src/components/PokemonCard.js
+```js@components/PokemonCard.js
 handleUpdate = () => {
   this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, url: this.state.url }})
     .then(() => {
@@ -250,9 +250,9 @@ const deletePokemon = gql`
 
 As before, Apollo Client will merge the previously known pokemons with the pokemons in this mutation response. As the previous known pokemons already contain the now deleted pokemons, the pokemon will still be in the Apollo's store after this deletion. As things like filters on fields exist, there is no way for Apollo to know that in our case, we are fetching all the pokemon ids there are and not only a subset. A quick fix to make things work, is to force fetching the trainer object whenever the pokedex is being rendered.
 
-To do this, head over to the `Pokedex` component in `src/components/Pokedex.js` again and add the `forceFetch: true` option to the options of the query:
+To do this, head over to the `Pokedex` component in `components/Pokedex.js` again and add the `forceFetch: true` option to the options of the query:
 
-```js@src/components/Pokedex.js
+```js@components/Pokedex.js
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
     variables: {
@@ -266,9 +266,9 @@ const PokedexWithData = graphql(TrainerQuery, {
 export default PokedexWithData
 ```
 
-Now we can also get rid of fetching the trainer object in `AddPokemonCard` in `src/components/AddPokemonCard.js` after creating a new pokemon:
+Now we can also get rid of fetching the trainer object in `AddPokemonCard` in `components/AddPokemonCard.js` after creating a new pokemon:
 
-```js@src/components/AddPokemonCard.js
+```js@components/AddPokemonCard.js
 const createPokemonMutation = gql`
   mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {

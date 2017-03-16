@@ -66,7 +66,6 @@
     "netlify-cli": "^1.0.2",
     "postcss-css-variables": "^0.6.0",
     "postcss-loader": "^1.2.2",
-    "prep": "^1.5.1",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

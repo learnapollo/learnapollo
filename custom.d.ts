@@ -7,13 +7,16 @@ declare module 'graphiql'
 declare module 'react-copy-to-clipboard'
 declare module 'cuid'
 
-declare var fetch: any
 declare var Smooch: any
 declare var __LAST_UPDATE__: string
 declare var __LAMBDA_AUTH__: string
 declare var __LAMBDA_DOWNLOAD_EXAMPLE__: string
 declare var __GITHUB_OAUTH_CLIENT_ID__: string
 declare var __GA_TRACKING_CODE__: string
+
+interface Window {
+  Smooch: any
+}
 
 declare module 'react-relay' {
 

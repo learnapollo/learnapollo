@@ -112,6 +112,6 @@ export default class SharePanel extends React.Component<Props, {}> {
   private isDisplayed = () => {
     const lastTimestamp = getStoredState().initialLoadTimestamp
     const currentTimestamp = Date.now()
-    return (currentTimestamp - lastTimestamp) >= millUntilDisplay
+    return lastTimestamp && (currentTimestamp - lastTimestamp) >= millUntilDisplay
   }
 }

@@ -13,8 +13,8 @@ Welcome to *Learn Apollo*, a hands-on tutorial for Apollo Client where you take 
 
 ## The tutorial structure
 
-We offer different so called *tutorial tracks* to work on the Pokedex application. Choose between tracks like React, React Native Vanilla and
-React Native Expo. More tracks, such as for Angular 2, iOS and Vue.js are planned. You can choose whatever you feel most comfortable with or try out something new. Each exercise builds upon the previous one and features individual steps to finish it. And if you're not sure how to best approach a task, just take a sneak peek at the solution folder or drop by at our [Slack channel](http://slack.graph.cool)!
+We offer different so called *tutorial tracks* to work on the Pokedex application. Choose between tracks like React, React Native (Expo) and
+iOS. More tracks, such as for Angular 2 and Vue.js are planned. You can choose whatever you feel most comfortable with or try out something new. Each exercise builds upon the previous one and features individual steps to finish it. And if you're not sure how to best approach a task, just take a sneak peek at the solution folder or drop by at our [Slack channel](http://slack.graph.cool)!
 
 Exercises and solutions are available in separate folders in the provided zip file so you can easily switch
 between and compare different exercises and solutions.

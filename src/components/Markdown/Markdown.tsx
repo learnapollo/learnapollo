@@ -149,12 +149,8 @@ export default class Markdown extends React.Component<Props, {}> {
           return <Download location={self.props.location} repository='pokedex-react' />
         }
 
-        if (props.literal.indexOf('__DOWNLOAD_RNVANILLA__') > -1) {
-          return <Download location={self.props.location} repository='pokedex-react-native-vanilla' />
-        }
-
-        if (props.literal.indexOf('__DOWNLOAD_RNEXPO__') > -1) {
-          return <Download location={self.props.location} repository='pokedex-react-native-exponent' />
+        if (props.literal.indexOf('__DOWNLOAD_RN__') > -1) {
+          return <Download location={self.props.location} repository='pokedex-react-native' />
         }
 
         if (props.literal.indexOf('__DOWNLOAD_ANGULAR__') > -1) {

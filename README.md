@@ -30,19 +30,13 @@ content
 │   ├── react-05.md
 │   ├── react-06.md
 │   └── react-07.md
-├── tutorial-react-native-expo
-│   ├── rne-01.md
-│   ├── rne-02.md
-│   ├── rne-03.md
-│   ├── rne-04.md
-│   └── rne-05.md
-├── tutorial-react-native-vanilla
-│   ├── rnv-01.md
-│   ├── rnv-02.md
-│   ├── rnv-03.md
-│   ├── rnv-04.md
-│   ├── rnv-05.md
-│   └── rnv-06.md
+├── tutorial-react-native
+│   ├── rn-01.md
+│   ├── rn-02.md
+│   ├── rn-03.md
+│   ├── rn-04.md
+│   ├── rn-05.md
+│   └── rn-06.md
 └── tutorial-vue
     └── vue-playground.md
 ```

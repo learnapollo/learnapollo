@@ -36,7 +36,7 @@ export default class LandingPage extends React.Component<Props, {}> {
           </dt>
           <dt>
             <h3>Tutorial Tracks</h3>
-              <p>This tutorial includes tracks for React, React Native Vanilla and React Native Expo,
+              <p>This tutorial includes tracks for React, React Native (Expo) & iOS,
               and many more are planned! You will be guided on a step-by-step basis from a basic starter-kit
               application to a complete Pokedex application using your favorite JavaScript technology.
               Finish multiple tutorial tracks to increase your understanding in React, React Native or other technologies.

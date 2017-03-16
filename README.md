@@ -6,8 +6,8 @@ Source code for [Learn Apollo](https://learnapollo.com)
 
 ## Contribution
 
-If you have a suggestion on how to improve Learn Apollo please either 
-[open an issue](https://github.com/learnapollo/learnapollo/issues/new) or create a pull request by changing the source 
+If you have a suggestion on how to improve Learn Apollo please either
+[open an issue](https://github.com/learnapollo/learnapollo/issues/new) or create a pull request by changing the source
 files in [`content`](https://github.com/learnapollo/learnapollo/tree/master/content).
 
 ```
@@ -30,7 +30,7 @@ content
 │   ├── react-05.md
 │   ├── react-06.md
 │   └── react-07.md
-├── tutorial-react-native-exponent
+├── tutorial-react-native-expo
 │   ├── rne-01.md
 │   ├── rne-02.md
 │   ├── rne-03.md

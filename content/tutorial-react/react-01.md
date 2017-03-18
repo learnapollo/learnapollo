@@ -1,4 +1,4 @@
-# Tutorial 01 - Getting Started
+# Getting Started - React Tutorial (1/7)
 
 Welcome to the first exercise in the **React Track** of this Apollo Client Tutorial! If you prefer React Native, Angular 2 or Vue.js over React, head over to the respective tutorial track.
 

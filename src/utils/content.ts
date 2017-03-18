@@ -1,4 +1,4 @@
-import {Parser, Node} from 'commonmark'
+import { Parser, Node } from 'commonmark'
 
 export class Chapter {
   title: string
@@ -11,8 +11,7 @@ export class Chapter {
               alias: string,
               isTrack: boolean,
               description: string,
-              subchaptersData: SubchapterData[]
-  ) {
+              subchaptersData: SubchapterData[]) {
     this.title = title
     this.alias = alias
     this.isTrack = isTrack
@@ -53,64 +52,64 @@ export const chapters: Chapter[] = [
     title: 'Introduction',
     alias: 'get-started',
   }]),
-  new Chapter('React', 'tutorial-react', true, 'Learn how to easily get started with React and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged React Pokedex App.',[{
-    title: '01 - Getting Started',
+  new Chapter('React', 'tutorial-react', true, 'Learn how to easily get started with React and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged React Pokedex App.', [{
+    title: 'Getting Started',
     alias: 'react-01',
   }, {
-    title: '02 - Basic Queries',
+    title: 'Basic Queries',
     alias: 'react-02',
   }, {
-    title: '03 - Advanced Queries',
+    title: 'Advanced Queries',
     alias: 'react-03',
   }, {
-    title: '04 - Fragments',
+    title: 'Fragments',
     alias: 'react-04',
   }, {
-    title: '05 - Basic Mutations',
+    title: 'Basic Mutations',
     alias: 'react-05',
   }, {
-    title: '06 - Multiple Mutations',
+    title: 'Multiple Mutations',
     alias: 'react-06',
   }, {
-    title: '07 - Pagination',
+    title: 'Pagination',
     alias: 'react-07',
   }]),
   new Chapter('React Native', 'tutorial-react-native', true, 'Learn how to easily get started with React Native and GraphQL with Apollo Client. You will follow a step-by-step tutorial to build a fully-fledged React Native Pokedex App', [{
-    title: '01 - Getting Started',
-    alias: 'rn-01',
+    title: 'Getting Started',
+    alias: 'react-native-01',
   }, {
-    title: '02 - Basic Queries',
-    alias: 'rn-02',
+    title: 'Basic Queries',
+    alias: 'react-native-02',
   }, {
-    title: '03 - Advanced Queries',
-    alias: 'rn-03',
+    title: 'Advanced Queries',
+    alias: 'react-native-03',
   }, {
-    title: '04 - Fragments',
-    alias: 'rn-04',
+    title: 'Fragments',
+    alias: 'react-native-04',
   }, {
-    title: '05 - Basic Mutations',
-    alias: 'rn-05',
+    title: 'Basic Mutations',
+    alias: 'react-native-05',
   }, {
-    title: '06 - Multiple Mutations',
-    alias: 'rn-06',
+    title: 'Multiple Mutations',
+    alias: 'react-native-06',
   }]),
   new Chapter('iOS', 'tutorial-ios', true, 'Learn how to easily get started with iOS, GraphQL and the Apollo iOS Client. You will follow a step-by-step tutorial to build a fully-fledged iOS Pokedex App.', [{
-    title: '01 - Getting Started',
+    title: 'Getting Started',
     alias: 'ios-01',
   }, {
-    title: '02 - Basic Queries',
+    title: 'Basic Queries',
     alias: 'ios-02',
   }, {
-    title: '03 - Advanced Queries',
+    title: 'Advanced Queries',
     alias: 'ios-03',
   }, {
-    title: '04 - Fragments',
+    title: 'Fragments',
     alias: 'ios-04',
   }, {
-    title: '05 - Basic Mutations',
+    title: 'Basic Mutations',
     alias: 'ios-05',
   }, {
-    title: '06 - More Mutations',
+    title: 'Multiple Mutations',
     alias: 'ios-06',
   }]),
   new Chapter('Angular 2', 'tutorial-angular', true, 'Learn how to easily get started Angular 2 and GraphQL with Apollo Client. You will use the prepared application as a playground to experiment with an Angular 2 Pokedex App.', [{
@@ -122,10 +121,10 @@ export const chapters: Chapter[] = [
     alias: 'vue-playground',
   }]),
   new Chapter('Excursions', 'excursions', false, 'Zoom in on selected concepts to build a better understanding of Apollo Client and GraphQL in these excursions.', [{
-    title: '01 - Using the DevTools',
+    title: 'Using the DevTools',
     alias: 'excursion-01',
   }, {
-    title: '02 - Managing Apollo store',
+    title: 'Managing Apollo store',
     alias: 'excursion-02',
   }]),
   new Chapter('Go Further', 'go-further', false, 'Learn about how you can apply the knowledge you gained about Apollo Client and GraphQL throughout this tutorial in one of your next frontend projects.', [{
@@ -171,4 +170,12 @@ export function getLastSubchapterAlias(subchapterAliases: string[]): string {
     }
   }
   return lastFinding
+}
+
+export function getTitleFromChapter(chapterAlias: string): string {
+  return chapters.find(c => c.alias === chapterAlias)!.title
+}
+
+export function getTitleFromSubchapter(subchapterAlias: string): string {
+  return subchapters.find(c => c.alias === subchapterAlias)!.title
 }

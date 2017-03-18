@@ -1,4 +1,4 @@
-# Tutorial 03 - Advanced Queries
+# Advanced Queries - React Tutorial (3/7)
 
 This is the third exercise in the **React Track** of this Apollo Client Tutorial!
 

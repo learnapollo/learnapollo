@@ -1,4 +1,4 @@
-# Tutorial 02 - Basic Queries
+# Basic Queries - React Tutorial (2/7)
 
 This is the second exercise in the **React Track** of this Apollo Client Tutorial!
 

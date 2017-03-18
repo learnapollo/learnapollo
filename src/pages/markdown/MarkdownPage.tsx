@@ -1,10 +1,11 @@
 import * as React from 'react'
+import * as Helmet from 'react-helmet'
 import {Node} from 'commonmark'
 import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
 import { Icon } from 'graphcool-styles'
 import SharePanel from '../../components/SharePanel/SharePanel'
-import {chapters} from '../../utils/content';
+import { chapters, getTitleFromChapter, getTitleFromSubchapter } from '../../utils/content';
 const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
@@ -47,9 +48,18 @@ export default class MarkdownPage extends React.Component<Props, {}> {
       const overviewAlias: string = chapters[chapters.length - 1].alias
       return currentAlias !== introAlias && currentAlias !== overviewAlias
     }
+    const currentSubalias = location.pathname.split('/')[2]
+    const title = `${getTitleFromSubchapter(currentSubalias)} - ${getTitleFromChapter(currentAlias)} + Apollo Tutorial`
 
     return (
       <div className={styles.container} >
+        <Helmet
+          title={title}
+          meta={[
+            {property: 'og:title', content: title},
+            {name: 'twitter:title', content: title},
+          ]}
+        />
         <Markdown
           ast={this.props.ast}
           sourceName={this.props.sourceName}

@@ -1,4 +1,4 @@
-# Tutorial 07 - Pagination
+# Pagination - React Tutorial (7/7)
 
 Welcome to the 7th exercise in the **React Track** of this Apollo Client Tutorial!
 

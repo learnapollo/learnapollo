@@ -1,4 +1,4 @@
-# Tutorial 03 - Advanced Queries
+# Advanced Queries - iOS Tutorial (3/6)
 
 This is the 3rd exercise in the **iOS Track** of this Apollo Client Tutorial!
 

@@ -1,4 +1,4 @@
-# Tutorial 06 - Multiple Mutations
+# Multiple Mutations - React Tutorial (6/7)
 
 Welcome to the 6th exercise in the **React Track** of this Apollo Client Tutorial!
 

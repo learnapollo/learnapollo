@@ -1,4 +1,5 @@
-# Tutorial 06 - Multiple Mutations
+# Multiple Mutations - React-Native Tutorial (6/6)
+
 
 Welcome to the 6th exercise in the **React Native Track** of this Apollo Client Tutorial!
 
@@ -6,7 +7,7 @@ Welcome to the 6th exercise in the **React Native Track** of this Apollo Client 
 
 The **goal** of this exercise is to add the possibility to update and delete existing pokemons:
 
-![](../images/rn-exercise-06-pokemonpage.png)
+![](../images/react-native-exercise-06-pokemonpage.png)
 
 This will both let you increase your understanding of mutations as well as show you how you can add multiple mutations to the same component.
 

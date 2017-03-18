@@ -1,4 +1,5 @@
-# Tutorial 03 - Advanced Queries
+# Advanced Queries - React-Native Tutorial (3/6)
+
 
 This is the third exercise in the **React Native Track** of this Apollo Client Tutorial!
 
@@ -8,11 +9,11 @@ This is the third exercise in the **React Native Track** of this Apollo Client T
 
 In this exercise we will have a look at advanced query features with the **goal** of showing a list of pokemon that our trainer owns:
 
-![](../images/rn-exercise-03-pokedex.png)
+![](../images/react-native-exercise-03-pokedex.png)
 
 Upon clicking on a pokemon in this list, we will see a detailed view of that pokemon and can navigate back to the complete pokedex:
 
-![](../images/rn-exercise-03-pokemonpage.png)
+![](../images/react-native-exercise-03-pokemonpage.png)
 
 ## Introduction
 

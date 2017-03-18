@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as Helmet from 'react-helmet'
 import * as classNames from 'classnames'
 import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
@@ -15,6 +16,25 @@ import { events } from '../../utils/events'
 require('./style.css')
 
 const styles: any = require('./App.module.styl')
+
+const meta = [
+  {
+    name: 'description',
+    content: 'Learn all you need about GraphQL & Apollo and how to use it with React, React Native, Expo, iOS, Vue & Angular', // tslint:disable-line
+  },
+  {property: 'og:type', content: 'website'},
+  {property: 'og:title', content: 'Learn Apollo'},
+  {property: 'og:description', content: 'A hands-on tutorial for Apollo GraphQL Client'},
+  {property: 'og:image', content: 'https://learnapollo.com/images/facebook.png'},
+  {property: 'og:image:width', content: '1200'},
+  {property: 'og:image:height', content: '630'},
+  {property: 'og:site_name', content: 'LEARNAPOLLO'},
+  {name: 'twitter:card', content: 'summary_large_image'},
+  {name: 'twitter:site', content: '@graphcool'},
+  {name: 'twitter:title', content: 'Learn Apollo'},
+  {name: 'twitter:description', content: 'A hands-on tutorial for Apollo GraphQL Client'},
+  {name: 'twitter:image', content: 'https://learnapollo.com/images/twitter.png'},
+]
 
 interface Props {
   children: React.ReactElement<any>
@@ -103,6 +123,10 @@ class App extends React.Component<Props, State> {
     }
     return (
       <div className='flex row-reverse'>
+        <Helmet
+          title='Learn Apollo | Hands-on GraphQL Tutorial'
+          meta={meta}
+        />
         <div className={styles.hamburger} onClick={this.toggleNav}>
           <div className={styles.hamburgerWrapper}/>
         </div>
@@ -154,7 +178,7 @@ class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-                {shouldDisplaySubchapters(chapter, selectedTrackAlias) && chapter.subchapters.map((subchapter) => (
+                {shouldDisplaySubchapters(chapter, selectedTrackAlias) && chapter.subchapters.map((subchapter, subIndex) => (
                   <div
                     className='pb1'
                     key={subchapter.alias}
@@ -176,13 +200,13 @@ class App extends React.Component<Props, State> {
                       }
                       {this.state.storedState.hasRead[subchapter.alias] &&
                       <span className='mr3 fw5 green dib'>
-                          <Icon
-                            src={require('../../assets/icons/check_chapter.svg')}
-                            width={8}
-                            height={8}
-                            color={'#64BF00'}
-                          />
-                        </span>
+                        <Icon
+                          src={require('../../assets/icons/check_chapter.svg')}
+                          width={8}
+                          height={8}
+                          color={'#64BF00'}
+                        />
+                      </span>
                       }
                       <div
                         ref={`link-${slug(subchapter.alias)}`}
@@ -202,7 +226,7 @@ class App extends React.Component<Props, State> {
                           className='black fw3'
                           onClick={this.toggleNav}
                         >
-                          {subchapter.title}
+                          0{subIndex + 1} - {subchapter.title}
                         </Link>
                       </div>
                     </div>

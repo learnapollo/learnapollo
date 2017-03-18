@@ -1,4 +1,4 @@
-# Tutorial 01 - Getting Started
+# Getting Started - React-Native Tutorial (1/6)
 
 Welcome to the first exercise in the **React Native Track** of this Apollo Client Tutorial! The example project will be based on [create-react-native-app](https://github.com/react-community/create-react-native-app/) and [Expo](https://expo.io/).
 
@@ -12,7 +12,7 @@ The **goal** of this first exercise is to install a React Native App and run it 
 
 We will see a generic greeting in our pokedex at the end of this exercise:
 
-![](../images/rn-exercise-01-pokedex.png)
+![](../images/react-native-exercise-01-pokedex.png)
 
 ## Introduction
 

@@ -123,18 +123,14 @@ export default class Markdown extends React.Component<Props, {}> {
               text={props.literal}
               onCopy={() => true}
             >
-              <Icon src={require('../../assets/icons/copy.svg')}
-                    className='dim relative align-right justify-center items-center bg-white black-70 shadow-4 br1'
-                    width={20}
-                    height={20}
-                    style={{
-                      marginLeft: 'auto',
-                      width: 24,
-                      height:24,
-                      padding: '6px',
-                      cursor: 'pointer',
-                    }}
-              />
+              <div className='flex justify-end'>
+                <div
+                  className='dim align-right justify-center pointer items-center bg-white black-70 shadow-4 br1 pa3'
+                  style={{ marginTop: -50 }}
+                >
+                  <Icon src={require('../../assets/icons/copy.svg')} width={24} height={24} />
+                </div>
+              </div>
             </CopyToClipboard>
             }
           </pre>

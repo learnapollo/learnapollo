@@ -1,4 +1,5 @@
-# Tutorial 05 - Basic Mutations
+# Basic Mutations - React-Native Tutorial (5/6)
+
 
 Welcome to the 5th exercise in the **React Native Track** of this Apollo Client Tutorial!
 
@@ -6,11 +7,11 @@ Welcome to the 5th exercise in the **React Native Track** of this Apollo Client 
 
 In this exercise we have the **goal** of adding the possibility to create new pokemons:
 
-![](../images/rn-exercise-05-addpokemon.png)
+![](../images/react-native-exercise-05-addpokemon.png)
 
 A button in the pokedex will redirect to the new component. After creating the pokemon it will appear in our pokedex:
 
-![](../images/rn-exercise-05-pokedex.png)
+![](../images/react-native-exercise-05-pokedex.png)
 
 Data changes in GraphQL are done by using mutations, so it's time for us to learn about them.
 

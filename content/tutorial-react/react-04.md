@@ -1,4 +1,4 @@
-# Tutorial 04 - Fragments
+# Fragments - React Tutorial (4/7)
 
 Welcome to the 4th exercise in the **React Track** of this Apollo Client Tutorial!
 

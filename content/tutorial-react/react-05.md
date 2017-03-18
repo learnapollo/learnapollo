@@ -1,4 +1,4 @@
-# Tutorial 05 - Basic Mutations
+# Basic Mutations - React Tutorial (5/7)
 
 Welcome to the 5th exercise in the **React Track** of this Apollo Client Tutorial!
 

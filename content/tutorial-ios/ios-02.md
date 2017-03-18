@@ -1,4 +1,4 @@
-# Tutorial 02 - Basic Queries
+# Basic Queries - iOS Tutorial (2/6)
 
 This is the 2nd exercise in the **iOS Track** of this Apollo Client Tutorial!
 

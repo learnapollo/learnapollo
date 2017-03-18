@@ -1,4 +1,5 @@
-# Tutorial 02 - Basic Queries
+# Basic Queries - React-Native Tutorial (2/6)
+
 
 This is the second exercise in the **React Native Track** of this Apollo Client Tutorial!
 
@@ -8,7 +9,7 @@ This is the second exercise in the **React Native Track** of this Apollo Client 
 
 The **goal** of this exercise is to query information on your very own trainer node. We will use it to add a personal touch to the greeting to our pokedex:
 
-![](../images/rn-exercise-02-pokedex.png)
+![](../images/react-native-exercise-02-pokedex.png)
 
 We will learn how to query information from a GraphQL server with Apollo Client.
 

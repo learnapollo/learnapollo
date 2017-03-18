@@ -1,4 +1,4 @@
-# Tutorial 06 - More Mutations
+# Multiple Mutations - iOS Tutorial (6/6)
 
 Welcome to the 6th and last exercise in the **iOS Track** of this Apollo Client Tutorial!
 
@@ -61,8 +61,7 @@ if isEditingPokemon {
             self.isEditingPokemon = !self.isEditingPokemon
         }
     }
-}
-else {
+} else {
     isEditingPokemon = !isEditingPokemon
 }
 ```
@@ -107,8 +106,7 @@ apollo.perform(mutation: deleteMutation) { result, error in
     self.deleteActivityIndicator.stopAnimating()
     if let error = error {
         print(#function, "ERROR | Could not delete Pokemon: (\(error))")
-    }
-    else {
+    } else {
         print("Successfully deleted Pokemon.")
         let _ = self.navigationController?.popViewController(animated: true)
     }

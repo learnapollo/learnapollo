@@ -1,4 +1,5 @@
-# Tutorial 04 - Fragments
+# Fragments - React-Native Tutorial (4/6)
+
 
 Welcome to the 4th exercise in the **React Native Track** of this Apollo Client Tutorial!
 
@@ -6,7 +7,7 @@ Welcome to the 4th exercise in the **React Native Track** of this Apollo Client 
 
 The **goal** of this exercise is to add some information to the pokemon detail view about the pokemon's trainer:
 
-![](../images/rn-exercise-04-pokemonpage.png)
+![](../images/react-native-exercise-04-pokemonpage.png)
 
 We will use fragments and learn how they can be used to define data requirements that are co-located with the component requiring that data.
 

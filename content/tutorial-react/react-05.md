@@ -160,7 +160,7 @@ handleSave = () => {
 }
 ```
 
-Note how we provide the variables using the `variables` object. As you can see, the mutation return a promise, so we can chain another function by using `then` to return back to the pokemon list.
+Note how we provide the variables using the `variables` object. As you can see, the mutation returns a promise, so we can chain another function by using `then` to return back to the pokemon list.
 
 Check if you got everthing right by opening [http://localhost:3000](http://localhost:3000) in your browser and click the plus button. Add the pokemon name and image URL and click the save button. Weird, the pokemon is not displayed right away, only after refreshing the page.
 

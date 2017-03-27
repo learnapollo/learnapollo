@@ -61,16 +61,19 @@ export default class SharePanel extends React.Component<Props, {}> {
           </p>
 
           <div
-            className={classNames(
-               'flex',
-               'justify-center',
-               'items-center',
-               {
-                 'flex-column': displayMode === 'medium',
-               })}
+            className={
+              classNames(
+                'flex',
+                'justify-center',
+                'items-center',
+                {
+                  'flex-column': displayMode === 'medium',
+                },
+              )
+            }
             style={{
-            paddingBottom: '2rem',
-          }}
+              paddingBottom: '2rem',
+            }}
           >
             <div style={{ marginTop: '1rem' }}>
               <a

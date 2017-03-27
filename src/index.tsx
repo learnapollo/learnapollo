@@ -40,5 +40,5 @@ ReactDOM.render(
       render={applyRouterMiddleware(useScroll(shouldScrollUp))}
     />
   ),
-  document.getElementById('root')
+  document.getElementById('root'),
 )

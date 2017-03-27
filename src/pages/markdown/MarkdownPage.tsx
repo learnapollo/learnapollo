@@ -5,7 +5,7 @@ import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
 import { Icon } from 'graphcool-styles'
 import SharePanel from '../../components/SharePanel/SharePanel'
-import { chapters, getTitleFromChapter, getTitleFromSubchapter } from '../../utils/content';
+import { chapters, getTitleFromChapter, getTitleFromSubchapter } from '../../utils/content'
 const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {

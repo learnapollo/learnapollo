@@ -78,9 +78,10 @@ class ServerLayover extends React.Component<Props, State> {
                 text={`https://api.graph.cool/simple/v1/${this.props.projectId}`}
                 onCopy={() => ReactGA.event(events.OverlayCopiedEndpoint)}
               >
-                <Icon src={require('../../assets/icons/copy.svg')}
-                      className='dim'
-                      style={{
+                <Icon
+                  src={require('../../assets/icons/copy.svg')}
+                  className='dim'
+                  style={{
                     padding: '6px',
                     background: 'rgba(0,0,0,0.1)',
                     cursor: 'pointer',

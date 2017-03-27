@@ -142,10 +142,10 @@ const subchaptersWithMeta = chapters
         Object.assign(
           {},
           subchapter,
-          {isLast: chapter.subchapters.length - 1 === index}
+          {isLast: chapter.subchapters.length - 1 === index},
         ) as SubchapterDataWithMeta
-      )
-    )
+      ),
+    ),
   )
   .reduce((acc, s) => acc.concat(s), [])
 

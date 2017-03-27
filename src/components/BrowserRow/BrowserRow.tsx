@@ -85,7 +85,7 @@ class BrowserRow extends React.Component<Props, State> {
   private removePokemon = () => {
     ReactGA.event(events.OverlayDeletePokemon)
     Relay.Store.commitUpdate(
-      new DeletePokemonMutation({viewerId: this.props.viewerId, pokemonId: this.props.pokemon.id})
+      new DeletePokemonMutation({viewerId: this.props.viewerId, pokemonId: this.props.pokemon.id}),
     )
   }
 
@@ -93,7 +93,7 @@ class BrowserRow extends React.Component<Props, State> {
     ReactGA.event(events.OverlayUpdatePokemon)
     if (this.state.changesMade) {
       Relay.Store.commitUpdate(
-        new UpdatePokemonMutation({pokemonId: this.props.pokemon.id, name: this.state.name, url: this.state.url})
+        new UpdatePokemonMutation({pokemonId: this.props.pokemon.id, name: this.state.name, url: this.state.url}),
       )
     }
   }

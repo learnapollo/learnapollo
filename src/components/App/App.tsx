@@ -216,9 +216,9 @@ class App extends React.Component<Props, State> {
                         <span
                           className='mr3 fw5 green dib'
                           style={{
-                              width: 8,
-                              height: 8,
-                            }}
+                            width: 8,
+                            height: 8,
+                          }}
                         />
                         }
                         <Link
@@ -280,13 +280,14 @@ class App extends React.Component<Props, State> {
             {previousSubchapter &&
             <div
               className={
-                classNames( styles.jump,
-                            'z-0',
-                            styles.jumpLeft,
-                            {
-                              [styles.jumpActive]: this.state.expandNavButtons,
-                              [styles.layoverPadding]: this.state.showLayover,
-                            }
+                classNames(
+                  styles.jump,
+                  'z-0',
+                  styles.jumpLeft,
+                  {
+                    [styles.jumpActive]: this.state.expandNavButtons,
+                    [styles.layoverPadding]: this.state.showLayover,
+                  },
                 )
               }
             >

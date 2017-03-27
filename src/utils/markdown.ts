@@ -55,7 +55,7 @@ export function buildHeadingsTree(headings: Heading[]): HeadingNode[] {
   return headings
     .reduce(
       (root: HeadingNode, heading: Heading) => inject(root, heading.title, heading.level),
-      {title: null, children: []}
+      {title: null, children: []},
     )
     .children
 }

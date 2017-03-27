@@ -33,6 +33,8 @@ export default class TrackLink extends React.Component<Props, {}> {
     ReactGA.event(this.props.event)
     setTimeout(() => {
       window.location.href = this.props.href
-    }, 250)
+    },
+      250
+    )
   }
 }

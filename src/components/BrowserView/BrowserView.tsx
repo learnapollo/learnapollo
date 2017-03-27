@@ -40,7 +40,7 @@ class BrowserView extends React.Component<Props, State> {
         </div>
         <div className='overflow-auto' style={{paddingBottom: 20}}>
           {this.props.viewer.allPokemons.edges.map((edge) => edge.node).map(
-            (node) => <BrowserRow key={node.id} pokemon={node} viewerId={this.props.viewer.id}/>
+            (node) => <BrowserRow key={node.id} pokemon={node} viewerId={this.props.viewer.id}/>,
           )}
           <div className={`w-100 flex relative ${styles.newRow}`}>
             <input
@@ -102,11 +102,11 @@ class BrowserView extends React.Component<Props, State> {
         viewer: this.props.viewer,
         name: this.state.name,
         url: this.state.url,
-        trainerId: this.props.viewer.allTrainers.edges[0].node.id
+        trainerId: this.props.viewer.allTrainers.edges[0].node.id,
       }),
       {
         onSuccess: () => this.setState({name: '', url: ''}),
-      }
+      },
     )
   }
 }

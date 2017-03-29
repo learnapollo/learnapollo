@@ -100,11 +100,15 @@ const scenes = Actions.create(
   </Scene>
 )
 
-export const routes = (
-  <ApolloProvider client={client}>
-    <Router scenes={scenes}/>
-  </ApolloProvider>
-)
+export default class App extends React.Component {
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <Router scenes={scenes}/>
+      </ApolloProvider>
+    )
+  }
+}
 ```
 
 As we are using `react-native-router-flux` to handle our routes, we wrap the `Router` component. Note that the `/pokedex` route points to the `Pokedex` component.

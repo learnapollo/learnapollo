@@ -116,7 +116,7 @@ else {
 Next, we also want to return the right number of cells for the second table view section, so inside `tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)`, change the last return statement to:
 
 ```swift@PokedexTableViewController.swift
-return trainer?.ownedPokemons!.count ?? 0
+return trainer?.ownedPokemons?.count ?? 0
 ```
 
 Finally, we actually want to display the Pokemons on the table view cells. Therefore, let's add a new property to `PokemonCell`:

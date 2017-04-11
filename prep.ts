@@ -8,6 +8,8 @@ export default () => {
   return {
     routes: chapterRoutes.concat(['/']),
     https: true,
+    concurrency: 50,
+    timeout: 5000,
     hostname: 'https://www.learnapollo.com',
     useragent: 'SSR',
   }

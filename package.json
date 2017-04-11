@@ -42,8 +42,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --history-api-fallback --host 0.0.0.0 --port 4300",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
-    "deploy": "npm run build && tsc --outDir .prep custom.d.ts prep.ts && prep -c .prep/prep.js dist && netlify deploy -p dist -s learnapollo -t $NETLIFY_TOKEN"
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist && npm run prep",
+    "prep": "tsc --outDir .prep custom.d.ts prep.ts && prep-cloud -c .prep/prep.js dist",
+    "deploy": "npm run build && netlify deploy -p dist -s learnapollo -t $NETLIFY_TOKEN"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
@@ -68,6 +69,7 @@
     "netlify-cli": "^1.0.2",
     "postcss-css-variables": "^0.6.0",
     "postcss-loader": "^1.2.2",
+    "prep-cloud": "^0.0.6",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

@@ -87,6 +87,8 @@ Note that we select the fragment in the query using the `...` syntax, and that w
 
 We can see that the `PokemonPage` component doesn't need to know anything about the `PokemonCardPokemon` fragment, other than the fact that it is a fragment on the Pokemon type.
 
+Don't forget to import `pokemonCardFragments` at the top of your PokemonPage.js file in following way `import PokemonCard, { pokemonCardFragments } from './PokemonCard'` so that PokemonPage will have access to the `pokemonCardFragments` prop being passed from `PokemonCard`.
+
 ### Filtering objects with fragments
 
 Right now we are passing the bare object `pokemon` to `PokemonCard`.

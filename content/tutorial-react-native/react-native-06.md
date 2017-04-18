@@ -246,7 +246,7 @@ const deletePokemon = gql`
 `
 ```
 
-As before, Apollo Client will merge the previously known pokemons with the pokemons in this mutation response. As the previous known pokemons already contain the now deleted pokemons, the pokemon will still be in the Apollo's store after this deletion. As things like filters on fields exist, there is no way for Apollo to know that in our case, we are fetching all the pokemon ids there are and not only a subset. A quick fix to make things work, is to force fetch the trainer object whenever the pokedex is being rendered.
+As before, Apollo Client will merge the previously known pokemons with the pokemons in this mutation response. As the previous known pokemons already contain the now deleted pokemons, the pokemon will still be in the Apollo's store after this deletion. As things like filters on fields exist, there is no way for Apollo to know that in our case, we are fetching all the pokemon ids there are and not only a subset. A quick fix to make things work, is to force fetch the trainer object whenever the pokedex is being rendered. The `fetchPolicy: 'cache-and-network'` option tells Apollo to first return the result from cache (if it exists), and then return the network result once it's available.
 
 To do this, head over to the `Pokedex` component in `components/Pokedex.js` again and add the `fetchPolicy: 'cache-and-network'` option to the options of the query:
 

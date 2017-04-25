@@ -97,6 +97,7 @@ const AddPokemonCardWithMutation = graphql(createPokemonMutation, {
           },
         })
       },
+      mutate,
     }
   },
 })(withRouter(AddPokemonCard))

@@ -261,7 +261,7 @@ const PokemonQuery = gql`
 `
 ```
 
-As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, unlike the trainer name variable, we cannot just use a hard-coded value--it should be dynamic based on the id that is passed via props to the component. For this reason, we can supply the appropriate id when creating the `variables` object. So, we can replace:
+As you can see, the query requires a query variable `id` of type `ID` that we have to supply using the query option `variables` as before. However, unlike the trainer name variable, we cannot just use a hard-coded value - it should be dynamic based on the id that is passed via props to the component. For this reason, we can supply the appropriate id when creating the `variables` object. So, we can replace:
 
 ```js
 export default PokemonPage

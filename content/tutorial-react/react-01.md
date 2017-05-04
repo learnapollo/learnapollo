@@ -48,7 +48,7 @@ We can add Apollo Client to our app by adding the following changes to `src/inde
 
 ### Package Dependencies
 
-Open `src/package.json` to have a look what packages we are using.
+Open `package.json` to have a look what packages we are using.
 
 * `apollo-client` - the core package exposes the vanilla JS Apollo Client which provides the core functionality
 * `react-apollo` - the React integration exposes the `ApolloProvider` that can be used to wrap other React components, allowing them to send queries and mutations

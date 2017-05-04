@@ -30,7 +30,7 @@ Currently we have a cool, shiny list of pokemons that are assigned to our traine
 
 ### Adding a button to the `Pokedex`
 
-We already prepared a new component `AddPokemonCard` that lets us create new pokemons and associated it with the `createPokemon` route in `index.js`:
+We already prepared a new component `AddPokemonCard` that lets us create new pokemons and associated it with the `createPokemon` route in `App.js`:
 
 ```js
 const scenes = Actions.create(
@@ -188,9 +188,9 @@ Click the add button. Add the pokemon name and image URL and click the save butt
 
 ## Data Normalization and the Apollo store
 
-To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `index.js` like this:
+To fix this, we have to help Apollo Client out a bit. Unlike Relay, Apollo is not opinionated about if or how objects in query and mutation responses are identified. In our case, all nodes have an `id` field. We can tell Apollo that nodes are identified by this when setting up the `client` in `App.js` like this:
 
-```js@index.js
+```js@App.js
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
   dataIdFromObject: o => o.id,

@@ -50,7 +50,7 @@ content/
     └── vue-playground.md
 ```
 
-## Development [![CircleCI](https://circleci.com/gh/learnapollo/learnapollo.svg?style=svg)](https://circleci.com/gh/learnapollo/learnapollo)
+## Development
 
 ```sh
 yarn install # or npm install

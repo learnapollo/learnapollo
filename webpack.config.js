@@ -57,7 +57,7 @@ module.exports = {
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
       __GA_TRACKING_CODE__: '"UA-74131346-6"',
       __GITHUB_OAUTH_CLIENT_ID__: '"f83113f8d6c4d78f17e5"',
-      __LAMBDA_AUTH__: '"https://learnx.graph.cool/dev/learnrelay"',
+      __LAMBDA_AUTH__: '"https://learnx.graph.cool/dev/learnapollo"',
       __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://dynamic-resources.graph.cool"',
     }),
     new HtmlWebpackPlugin({

@@ -58,7 +58,7 @@ module.exports = {
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
       __GA_TRACKING_CODE__: '"UA-74131346-6"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
-      __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
+      __LAMBDA_AUTH__: '"https://learnx.graph.cool/prod/learnapollo"',
       __LAMBDA_DOWNLOAD_EXAMPLE__: '"https://dynamic-resources.graph.cool"',
       'process.env': {
         'NODE_ENV': JSON.stringify('production')

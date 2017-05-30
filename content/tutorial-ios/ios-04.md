@@ -103,7 +103,7 @@ Finally, we need to update the assignment of `ownedPokemons` in `setTrainerData(
 func setTrainerData(trainer: TrainerQuery.Data.Trainer) {
     self.trainerId = trainer.id
     self.trainerName = trainer.name
-    self.ownedPokemons = trainer.ownedPokemons.map { $0.fragments.pokemonDetails }
+    self.ownedPokemons = trainer.ownedPokemons?.map { $0.fragments.pokemonDetails }
 ```
 
 Now, the compiler is happy and the app should build and run normally again.

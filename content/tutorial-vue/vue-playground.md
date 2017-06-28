@@ -16,5 +16,5 @@ Run the application:
 cd pokedex-vue-master/playground
 yarn install # or npm install
 yarn run dev # or npm run dev
-# open localhost:3000
+# open localhost:4000
 ```

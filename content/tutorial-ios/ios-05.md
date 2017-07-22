@@ -112,7 +112,7 @@ var trainerQueryWatcher: GraphQLQueryWatcher<TrainerQuery>?
 Next, we need to update the code in the `fetchTrainer()` method like so:
 
 ```swift@PokedexTableViewController.swift 
-        let trainerQuery = TrainerQuery(name: "Nikolas")
+        let trainerQuery = TrainerQuery(name: "__NAME__")
         trainerQueryWatcher = apollo.watch(query: trainerQuery) { (result: GraphQLResult?, error: Error?) in
             if let error = error {
                 print(#function, "ERROR | An error occured: \(error)")

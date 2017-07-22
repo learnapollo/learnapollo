@@ -139,7 +139,7 @@ If you're running the app now, you'll be disappointed that the promised automati
 
 ### Finalizing Automatic UI Updates
 
-First, we need to implement `chacheForKeyObject` on the `ApolloClient` which we can do right after we instantiate it in the method `application(_:, didFinishLaunchingWithOptions:)` of the `AppDelegate`. Go ahead and change the current implementation so that it looks as follows:
+First, we need to implement `cacheForKeyObject` on the `ApolloClient` which we can do right after we instantiate it in the method `application(_:, didFinishLaunchingWithOptions:)` of the `AppDelegate`. Go ahead and change the current implementation so that it looks as follows:
 
 ```swift@AppDelegate.swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

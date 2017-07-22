@@ -92,7 +92,7 @@ Next, open `PokedexTableViewController.swift` and change the type of `ownedPokem
 ```swift@PokedexTableViewController.swift
 var ownedPokemons: [PokemonDetails]? = [] {
     didSet {
-        tableView.reloadSections([Sections.pokemons.rawValue], with: .none)
+        tableView.reloadData()
     }
 }
 ```
